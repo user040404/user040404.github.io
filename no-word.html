@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脱ワープロソフトのすすめ</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>脱ワープロソフトのすすめ</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#inkscape">Inkscape</a></li>
+    <li><a href="#tex">Tex</a>
+      <ul>
+        <li><a href="#texの特長">TeXの特長</a></li>
+        <li><a href="#texの処理系">TeXの処理系</a></li>
+        <li><a href="#texに必要なもの">TeXに必要なもの</a></li>
+        <li><a href="#tex-liveのインストール">TeX Liveのインストール</a></li>
+        <li><a href="#lyxのインストール">LyXのインストール</a></li>
+        <li><a href="#lyxの設定">LyXの設定</a></li>
+        <li><a href="#lyxのチュートリアル">LyXのチュートリアル</a></li>
+        <li><a href="#beamerクラス">Beamerクラス</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>ここではWindowsでワープロソフトを使わずに文書を作成する方法を紹介します。以下で紹介する方法ならワープロソフトよりも見栄えのいい文書を簡単に作成できます。</p>
+<h2 id="inkscape">Inkscape</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Inkscape">Inkscape</a>はベクターイメージを編集するためのアプリケーションですが、ビジネス文書のような短い文書であれば簡単に作成できます。ワープロソフトとの大きな違いはテキストやイメージを自由にレイアウトできることです。この特長を活かしてポスターやパンフレットのようなものを作成することもできます。詳細については<a href="http://inkscapedesign.web.fc2.com/index.html">InkscapeでDesign</a>を参照してください。</p>
+<h2 id="tex">Tex</h2>
+<p><a href="https://ja.wikipedia.org/wiki/TeX">TeX</a>(テフもしくはテック)は高度な組版作業を自動化します。<!-- このページの記事をTeXで処理すると[このように](tex.pdf)なります。 -->TeXを利用すればワープロソフトよりも効率的に文書を作成できます。詳細については<a href="https://texwiki.texjp.org/">TeX Wiki</a>を参照してください。</p>
+<h3 id="texの特長">TeXの特長</h3>
+<p>ワープロソフトと違いTeXによる文書作成ではフォントのサイズやスペースのとり方などを気にする必要がありません。文書の見た目についてはすべてTeXが面倒を見てくれます。ユーザが文書の見た目についてやるべきことは、あらかじめ用意されたドキュメントクラスを指定することだけです。文書の見た目を独自に調整することもできますが、その必要はほとんどありません。精緻に組版されるので印刷の仕上がりはとてもきれいです。見出しや箇条書きの連番を割り振ってくれたり、目次や索引を生成してくれたりもします。書誌情報を管理する機能もあります。</p>
+<h3 id="texの処理系">TeXの処理系</h3>
+<p>Texは<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E8%A8%80%E8%AA%9E">マークアップ</a>されたテキストファイル(*.tex)をコンパイルして<a href="https://ja.wikipedia.org/wiki/Portable_Document_Format">PDFファイル</a>(*.pdf)を出力します。文書の作成には<a href="https://ja.wikipedia.org/wiki/LaTeX">LaTex</a>(ラテフもしくはレイテック)という処理系を使用します。以前はpLaTex/upLaTexという処理系を使用していましたが、最近ではLuaLaTeX/XeLaTeXという処理系を使用するのが一般的です。両者の大きな違いは次のとおり。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pLaTex/upLaTex</td>
+<td>LuaLaTeX/XeLaTeX</td>
+</tr>
+<tr>
+<td>既定のフォントしか使用できない</td>
+<td>既存のフォントを自由に使用できる</td>
+</tr>
+<tr>
+<td><a href="https://ja.wikipedia.org/wiki/DVI_(%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88)">DVIファイル</a>を出力してからPDFファイルに変換する</td>
+<td>直接PDFファイルを出力する</td>
+</tr>
+</tbody>
+</table>
+<p>ここでは処理系およびドキュメントクラスとしてLuaLaTeX/jlreqを使用することにします。<a href="https://texwiki.texjp.org/?jlreq">jlreq</a>は<a href="https://www.w3.org/TR/jlreq/?lang=ja">日本語組版処理の要件</a>を満たしているドキュメントクラスです。</p>
+<h3 id="texに必要なもの">TeXに必要なもの</h3>
+<p>TeXを使用するために必要なものは以下の3つです。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TeXディストリビューション</td>
+<td><a href="https://ja.wikipedia.org/wiki/TeX_Live">TeX Live</a></td>
+</tr>
+<tr>
+<td>TeXエディタ<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></td>
+<td><a href="https://ja.wikipedia.org/wiki/LyX">LyX</a></td>
+</tr>
+<tr>
+<td>PDFビューア</td>
+<td><a href="https://www.sumatrapdfreader.org/free-pdf-reader.html">Sumatra PDF</a></td>
+</tr>
+</tbody>
+</table>
+<p>TeXディストリビューションには組版に必要なプログラム(パッケージ)が含まれています。TeXエディタはTeXを使いやすくする統合環境です。ここで紹介しているLyXを使用すれば、ワープロソフトのようなインターフェイスで文書を作成・編集することができます。PDFビューアは組版処理されたPDF形式の文書を確認するために使用します。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<h3 id="tex-liveのインストール">TeX Liveのインストール</h3>
+<p>TeX Liveについては、フルインストールではなく必要なパッケージのみをインストールするようにしたほうがいいでしょう。選択すべきパッケージについては<a href="https://obsica.com/texlive-basic-install/">TeX Live 2023のインストール · Obsica</a>が参考になります。ポータブルアプリケーションとしてインストールしたいのであれば<a href="https://www.nagaoka-ct.ac.jp/ec/labo/visu/usb/tex2/index.shtml">USBメモリ活用講座【実践編・TeX文書作成環境ポータブル化】</a>を参照してください。</p>
+<h3 id="lyxのインストール">LyXのインストール</h3>
+<p><a href="https://www.lyx.org/WebJa.Home">LyXの公式サイト</a>から最新のインストーラをダウンロードします。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>インストールについては<a href="https://texwiki.texjp.org/?LyX">LyX - TeX Wiki</a>を参照してください。</p>
+<h3 id="lyxの設定">LyXの設定</h3>
+<p>LyXを起動したらメニューから [ツール] &gt; [TeX情報] を選択します。LyXがTeXを認識していれば、表示されたダイアログのリストにファイル名(*.cls)がリストされるはずです。ファイル名がリストされないのであれば、以下のようにしてLyXにTeXのインストールフォルダを教えてやる必要があります。</p>
+<ol>
+<li>メニューから [ツール] &gt; [設定] を選択して左のリストから[パス]を選択します。</li>
+<li>[PATH接頭辞]にTeXのインストールフォルダへのパスを追加します。</li>
+<li>メニューから [ツール] &gt; [環境構成] を選択します。</li>
+<li>メッセージダイアログが表示されたら[OK]をクリックしてLyXを再起動します。</li>
+</ol>
+<p>LyXには2つの設定メニュー [ツール] &gt; [設定] および [文書] &gt; [設定] があります。前者がアプリケーションの設定であり、後者が文書に関する設定です。詳細については<a href="https://texwiki.texjp.org/?LyX%2F%E8%A8%AD%E5%AE%9A">LyX/設定 - TeX Wiki</a>および<a href="https://qiita.com/tats-u/items/b7d207f6c453899fe29e">日本語環境のためのLyXの初期設定 #LaTeX - Qiita</a>を参照してください。LuaLaTeXのみを使用するのであれば(u)pLaTeXについての説明は無視してかまいません。ImageMagickはLyXと一緒にインストールされるので別途インストールする必要はありません。</p>
+<p><a href="https://texwiki.texjp.org/?LyX%2F%E8%A8%AD%E5%AE%9A#g3fd040c">レイアウトファイルの追加</a>に従ってドキュメントクラスを追加します。jlreqクラスを追加するには以下のようなレイアウトファイルを作成します。
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">jlreq.layout</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span>#<span style="color:#75715e">% Do not delete the line below; configure depends on this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>#  <span style="color:#66d9ef">\DeclareLaTeXClass</span>{jlreq}
+</span></span><span style="display:flex;"><span>#  <span style="color:#66d9ef">\DeclareCategory</span>{Articles}
+</span></span><span style="display:flex;"><span># Author : foo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># This style provides japanese features 
+</span></span><span style="display:flex;"><span>Format 66
+</span></span><span style="display:flex;"><span>Provides japanese 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Input general definitions
+</span></span><span style="display:flex;"><span>Input article.layout</span></span></code></pre></div></div>
+</figure></p>
+<p>フォントは以下のようにしてプリアンブルに指定します。詳細については<a href="https://texwiki.texjp.org/?LuaTeX-ja">LuaTeX-ja - TeX Wiki</a>および<a href="https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">LuaTeX-jaの使い方</a>を参照してください。</p>
+<ol>
+<li>LyXを起動します。</li>
+<li>メニューから [文書] &gt; [設定] を選択します。</li>
+<li>左のリストから[LaTeXプリアンブル]を選択して以下のようなフォントの設定を入力します。</li>
+</ol>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{luatexja-fontspec}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setmainfont</span>{BIZ UDMincho}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setsansfont</span>{BIZ UDGothic}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setmainjfont</span>{BIZ UDMincho}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setsansjfont</span>{BIZ UDGothic}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setmonofont</span>{UDEVGothic}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[colon=literal]</span>{unicode-math}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\unimathsetup</span>{math-style=ISO,bold-style=ISO}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setmathfont</span>{TeX Gyre Termes Math}</span></span></code></pre></div></div>
+</figure>
+<ol start="4">
+<li>[OK]をクリックします。</li>
+</ol>
+<p>所望のPDFビューアが立ち上がるようにするには以下のようにします。</p>
+<ol>
+<li>LyXを起動します。</li>
+<li>メニューから [ツール] &gt; [設定] を選択します。</li>
+<li>左のリストから [ファイル処理] &gt; [ファイル形式] を選択して[形式]から[PDF (LuaTex)]を選択します。</li>
+<li>[閲覧ソフトウェア]から[詳細設定]を選択してPDFビューアのパスを指定します。</li>
+<li>[OK]をクリックします。</li>
+</ol>
+<p>LyXを単一のウィンドウで使用したい場合は以下のようにします。</p>
+<ol>
+<li>LyXを起動します。</li>
+<li>メニューから [ツール] &gt; [設定] を選択します。</li>
+<li>左のリストから [操作性] &gt; [文書処理] を選択して[単独インスタンスを使用]をチェックします。</li>
+<li>左のリストから[パス]を選択して[LyXサーバパイプ]に\\.\pipe\lyxpipeを指定します。</li>
+<li>[OK]をクリックします。</li>
+</ol>
+<h3 id="lyxのチュートリアル">LyXのチュートリアル</h3>
+<p>LyXの基本的な使い方についてはヘルプのチュートリアルを参照してください。<a href="https://texwiki.texjp.org/?LyX%2F%E4%BD%BF%E3%81%84%E6%96%B9">LyX/使い方 - TeX Wiki</a>にも目を通しておくといいでしょう。</p>
+<h3 id="beamerクラス">Beamerクラス</h3>
+<p><a href="https://ja.wikipedia.org/wiki/Beamer">Beamer</a>はスライドを作成するためのドキュメントクラスクラスです。メニューから [ヘルプ] &gt; [用途別説明書] &gt; [Beamerプレゼンテーション] を選択するとBeamerを使用した説明が表示されます。設定については<a href="https://qiita.com/zr_tex8r/items/69e8cc32038ff29f5ac3">今さら人に聞けない「日本語でBeamer」のキホン - Qiita</a>を参照してください。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>TeX Liveには<a href="https://ja.wikipedia.org/wiki/TeXworks">TeXworks</a>というTeXエディタが含まれていますがTeXのコマンドを直接記述する必要があります。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>TeXworksをPDFビューアとして使用することもできます。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>wingetでは32bit版がインストールされてしまうようです。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

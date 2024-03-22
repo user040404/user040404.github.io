@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ローカルウィキのすすめ</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>ローカルウィキのすすめ</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#サーバとクライアント">サーバとクライアント</a></li>
+    <li><a href="#hugo">Hugo</a></li>
+    <li><a href="#xamppmediawiki">XAMPP/MediaWiki</a>
+      <ul>
+        <li><a href="#xamppのインストール">XAMPPのインストール</a></li>
+        <li><a href="#mediawikiのインストール">MediaWikiのインストール</a></li>
+        <li><a href="#xamppのアップデート">XAMPPのアップデート</a></li>
+        <li><a href="#mediawikiのアップデート">MediaWikiのアップデート</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>ウェブページは<a href="https://ja.wikipedia.org/wiki/HyperText_Markup_Language">HTML</a>というマークアップ言語で記述します。マークアップ言語は文章の構造や見た目を指示するものです。</p>
+<p>ウィキはウェブページをウェブブラウザで作成・編集する仕組みです。ウィキなら簡単なマークアップ言語でウェブページを作成できます。ウィキはウェブサイトを作成するためのものですが、情報を整理する道具としても役に立ちます。ここではローカルな環境でウィキを使用する方法を紹介します。</p>
+<h2 id="サーバとクライアント">サーバとクライアント</h2>
+<p>ウィキを使用する前にウェブの基本的な仕組みについて理解しておく必要があります。</p>
+<p>ウェブはサーバとクライアントのやりとりによって成り立っています。サーバはウェブなどのサービスを提供するプログラムです。クライアントはサーバにサービスを要求するウェブブラウザなどのプログラムです。クライアントはユーザの要求に応じてサーバにリクエストを送ります。サーバはクライアントからのリクエストを受け付けていて、リクエストに応じて保存されているウェブページなどのデータをクライアントに送り返します。このような仕組みによってウェブブラウザはウェブページを表示しています。</p>
+<p>リモートのサーバにウィキを設置するのが一般的ですが、ローカルでサーバを稼働させればローカルの環境でもウィキを利用できます。</p>
+<!-- このサーバ・クライアントという言い方はインターネット以外の場面でも使用されますが意味合いとしてはこの仕組みと同じことです。 -->
+<figure class="center"><img src="server_client.png"/>
+</figure>
+
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Hugo_(%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2)">Hugo</a>はウィキエンジンではなくサイトジェネレータですがローカルウィキのように利用することができます。Hugoの実行ファイル(hugo.exe)をインストールするだけですぐに使用することができ下記のXAMPPよりも高速に動作します。ウェブサーバの機能を内蔵しているのでローカルな環境でもウェブサイトを表示することができます。マークアップ言語には<a href="https://ja.wikipedia.org/wiki/Markdown">Markdown</a>を使用し、ショートコードという機能によってオリジナルのタグを作成することができます。使用方法については<a href="https://maku77.github.io/hugo/">まくまくHugo/Goノート</a>や<a href="https://hugo.nakaken88.com/">なかけんのHugoノート</a>を参照してください。</p>
+<h2 id="xamppmediawiki">XAMPP/MediaWiki</h2>
+<p><a href="https://ja.wikipedia.org/wiki/XAMPP">XAMPP</a>と<a href="https://ja.wikipedia.org/wiki/MediaWiki">MediaWiki</a>を使用してWindows環境にローカルウィキを構築する方法を紹介します。MediaWikiは<a href="https://ja.wikipedia.org">ウィキペディア</a>で使用されている高機能なウィキエンジンです。MediaWikiを使用するには以下のものが必要です。</p>
+<ul>
+<li>ウェブサーバ(ブラウザからアクセスするため)</li>
+<li>データベースサーバ(コンテンツをデータベースで管理するため)</li>
+<li>PHPの実行環境(PHPというプログラミング言語で書かれているため)</li>
+</ul>
+<p>XAMPPはMediaWikiの使用に必要な上記のアプリケーションをまとめてインストールしてくれます。XAMPPをインストールすればMediaWikiだけでなく他のウィキエンジンも使用することができます。自分に合ったウィキエンジンを探してみてください。</p>
+<h3 id="xamppのインストール">XAMPPのインストール</h3>
+<p>MediaWikiをインストールする前にMediaWikiに必要なアプリケーションをXAMPPでインストールします。XAMPPの公式サイト<a href="https://www.apachefriends.org/jp/index.html">Apache
+Friends</a>にはインストーラしかありませんがポータブル版も存在します。ここでは取り回しやすいポータブル版を選択します。<a href="https://sourceforge.net/projects/xampp/files/">SourceForge</a>から最新のXAMPP(xampp-portable-win32-*.7zまたはxampp-portable-win32-*.zip)をダウンロードしてください。ダウンロードしたアーカイブを展開するとxamppというフォルダが生成されるのでこのフォルダをドライブの直下に置きます。他の場所に置くと動作しないので注意してください。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>ここではCドライブに置くことにします。C:\xampp\xampp-control.exeを実行するとコントロールパネルが起動します。続けてApache(ウェブサーバ)とMySQL(データベースサーバ)の[Start]をクリックします。ApacheとMySQLが正常に起動したことを確認したら<a href="http://localhost/">http://localhost/</a>にアクセスします。<em>Welcome to
+XAMPP[というページが表示されたらインストール成功です。最後にコントロールパネルの]Config[をクリックして]Autostart
+of
+modules[のApacheとMySQLをチェックし]Save</em>をクリックします。次回からコントロールパネルを起動するとApacheとMySQLも同時に立ち上がります。C:\xampp\xampp-control.exeのショートカットをスタートアップフォルダに置けばすぐにウィキを使い始めることができます。</p>
+<h3 id="mediawikiのインストール">MediaWikiのインストール</h3>
+<p>XAMPPのインストールが終了したらMediaWikiをインストールします。インストールする前にMediaWikiで使用するデータベースを作成しておきます。ApacheとMySQLを起動して<a href="http://localhost/phpmyadmin/">phpMyAdmin</a>にアクセスします。[データベース]をクリックしてデータベース名を入力し[作成]をクリックします。作成したデータベースの名前はMediaWikiのセットアップ作業で入力する必要があるので覚えておいてください。MediaWikiの公式サイト<a href="https://www.mediawiki.org/wiki/MediaWiki/ja">MediaWiki</a>からMediaWikiをダウンロードします。ダウンロードしたアーカイブを展開するとmediawiki-*というフォルダが生成されます。このフォルダをmwにリネームしてC:\xampp\htdocsに置きます。フォルダ名は任意ですがここではmwとします。<a href="http://localhost/mw/">http://localhost/mw/</a>にアクセスし指示に従ってMediaWikiをセットアップします。セットアップが終了したらダウンロードしたLocalsetting.phpをC:\xampp\htdocs\mwに置いて<a href="http://localhost/mw/">http://localhost/mw/</a>
+にアクセスします。MediaWikiが正常に機能していることを確認してください。警告(Warning)が表示される場合はC:\xampp\php\php.iniの</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">display_errors</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">On</span></span></span></code></pre></div></div>
+</figure>
+<p>をOnからOffにします。</p>
+<h3 id="xamppのアップデート">XAMPPのアップデート</h3>
+<p>XAMPPのアップデートは再インストールになります。新しいXAMPPをインストールする前に作成済みのデータベースをエクスポートします。ApacheとMySQLを起動して<a href="http://localhost/phpmyadmin/">phpMyAdmin</a>にアクセスします。左のペインから自分が作成したデータベースをクリックします。[エクスポート]をクリックして[実行]をクリックします。[データベース名.sql]というファイルがダウンロードされます。複数のデータベースを作成した場合は同じ手順を繰り返します。エクスポートの作業が終了したらApacheとMySQLを停止してXAMPPを終了します。既存のC:\xamppをバックアップしてから新しいXAMPPをインストールします。インストールが終了したらC:\xampp\php\php.iniの以下の設定値を変更します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">max_execution_time</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">300</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">memory_limit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">512M</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">post_max_size</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">256M</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">upload_max_filesize</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">256M</span></span></span></code></pre></div></div>
+</figure>
+<p>エクスポートしたデータベースをインポートするためApacheとMySQLを起動して<a href="http://localhost/phpmyadmin/">phpMyAdmin</a>にアクセスします。[データベース]をクリックしてエクスポートしたデータベースと同名のデータベースを作成します。データベース名を入力して[作成]をクリックします。続けて[インポート]をクリックします。[ファイル選択]をクリックしてエクスポートした同名のデータベースを選択し[実行]をクリックします。複数のデータベースをエクスポートした場合は同じ手順を繰り返します。最後にバックアップしたxampp\htdocs\mwをC:\xampp\htdocsに戻します。</p>
+<h3 id="mediawikiのアップデート">MediaWikiのアップデート</h3>
+<p>MediaWikiのアップデートは上書きインストールになります。C:\xampp\htdocs\mwのファイルを新しいMediaWikiのファイルで上書きしてください。続けてApacheとMySQL
+を起動しコマンドプロンプトで</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>C:\xampp\php\php.exe C:\xampp\htdocs\mw\maintenance\update.php</span></span></code></pre></div></div>
+</figure>
+<p>と入力します。上記のコマンドの処理が正常に終了したら<a href="http://localhost/mw/">http://localhost/mw/</a>
+にアクセスします。MediaWikiが正常に機能していることを確認してください。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>他の場所に置いた場合はsetup_xampp.batを実行する必要があります。しかし不要な問題を避けるためドライブの直下に置くことを推奨します。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

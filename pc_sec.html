@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCのセキュリティ対策</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>PCのセキュリティ対策</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#メディアのセキュリティ">メディアのセキュリティ</a></li>
+    <li><a href="#システムのセキュリティ">システムのセキュリティ</a></li>
+    <li><a href="#ネットワークのセキュリティ">ネットワークのセキュリティ</a></li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>PCの安全性と機密性を高めるための方策を列挙します。</p>
+<h2 id="メディアのセキュリティ">メディアのセキュリティ</h2>
+<ul>
+<li>ハードディスクのパーティションを<a href="https://ja.wikipedia.org/wiki/VeraCrypt">VeraCrypt</a>や<a href="https://ja.wikipedia.org/wiki/LUKS">LUKS</a>で暗号化する。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>リムーバブルメディアのデータをVeraCryptのコンテナファイルに格納する。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li>メディアを廃棄するときは記録したデータを完全に消去して<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>メディアを物理的に破壊する。</li>
+</ul>
+<h2 id="システムのセキュリティ">システムのセキュリティ</h2>
+<ul>
+<li>ユーザアカウントにパスワードを設定する。</li>
+<li>稼働中のPCから離れるときはシステムをロックする。</li>
+<li>出所の不明なプログラムやスクリプトを実行しない。</li>
+<li>オープンソースのソフトウェアやポータブル版のソフトウェアを使用する。</li>
+<li><a href="https://ja.wikipedia.org/wiki/Process_Explorer">ProcessExplorer</a>などのプロセスモニタでプロセスの状態を監視する。</li>
+<li>ソフトウェアをアップデートしてシステムを最新の状態に保つ。</li>
+<li><a href="https://ja.wikipedia.org/wiki/CCleaner">CCleaner</a>などのファイルクリーナで履歴やキャッシュをこまめに削除する。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+<li>自動再生機能を無効にする。</li>
+</ul>
+<h2 id="ネットワークのセキュリティ">ネットワークのセキュリティ</h2>
+<ul>
+<li>PCとモデムの間にルータを介在させる。</li>
+<li>無線LANの通信を暗号化する。</li>
+<li>暗号化された通信プロトコルを使用する。</li>
+<li>メールのCCとBCCを正しく使い分ける。<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
+<li>メールやファイルを<a href="https://ja.wikipedia.org/wiki/GNU_Privacy_Guard">GnuPG</a>で署名･暗号化する。<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>詳細については<a href="https://www.gigafree.net/security/encrypt/VeraCrypt.html">VeraCrypt のダウンロードと使い方 - ｋ本的に無料ソフト・フリーソフト</a>および<a href="https://wiki.archlinux.jp/index.php/Dm-crypt">dm-crypt - ArchWiki</a>を参照してください。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>トラベラーズディスク(VeraCryptのポータブル版)をコンテナファイルと同じ場所に作成しておくと便利です。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>ハードディスクのデータを削除するにはLinuxをライブCDから起動してデータを上書きするコマンドを実行します。詳細については<a href="https://wiki.archlinux.jp/index.php/%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%AE%E5%AE%8C%E5%85%A8%E6%B6%88%E5%8E%BB">ディスクの完全消去 - ArchWiki</a>を参照してください。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>詳細については<a href="https://www.gigafree.net/system/clean/ccleaner.html">CCleaner のダウンロードと使い方 - ｋ本的に無料ソフト・フリーソフト</a>を参照してください。&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>CCでは送り先として指定したメールアドレスが相手に表示されますがBCCでは表示されません。&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>秘密にする鍵と公開する鍵をペアで使用します。公開鍵で暗号化したデータは秘密鍵でしか復号できません。秘密鍵で署名したデータは公開鍵で検証できます。詳細については<a href="https://wiki.archlinux.jp/index.php/GnuPG">GnuPG - ArchWiki</a>を参照してください。&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

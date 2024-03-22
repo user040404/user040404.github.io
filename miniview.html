@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniView 220203</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>MiniView 220203</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#スクリーンショット">スクリーンショット</a></li>
+    <li><a href="#動作環境">動作環境</a></li>
+    <li><a href="#開発環境">開発環境</a></li>
+    <li><a href="#免責事項">免責事項</a></li>
+    <li><a href="#ダウンロード">ダウンロード</a></li>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#アンインストール">アンインストール</a></li>
+    <li><a href="#ファイル構成">ファイル構成</a></li>
+    <li><a href="#ウィンドウ構成">ウィンドウ構成</a></li>
+    <li><a href="#メニュー">メニュー</a>
+      <ul>
+        <li><a href="#ファイル">ファイル</a></li>
+        <li><a href="#編集">編集</a></li>
+        <li><a href="#表示">表示</a></li>
+        <li><a href="#設定">設定</a></li>
+        <li><a href="#ヘルプ">ヘルプ</a></li>
+      </ul>
+    </li>
+    <li><a href="#各種機能">各種機能</a></li>
+    <li><a href="#注意事項">注意事項</a></li>
+    <li><a href="#既知の不具合">既知の不具合</a></li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>MiniViewはシンプルなテキストビューア兼イメージビューアです。</p>
+<h2 id="スクリーンショット">スクリーンショット</h2>
+<figure class="center"><img src="miniview.png"/>
+</figure>
+
+<h2 id="動作環境">動作環境</h2>
+<p>Windows7で動作確認しています。</p>
+<h2 id="開発環境">開発環境</h2>
+<p>以下のものを使用して作成しました。</p>
+<ul>
+<li>ツールチェーン: MinGW(Mingw-w64)</li>
+<li>GUIツールキット: wxWidgets/wxMSW 3.1.5</li>
+<li>GUIビルダ: wxFormBuilder 3.10.1</li>
+</ul>
+<h2 id="免責事項">免責事項</h2>
+<p>このソフトウェアの使用によって損害や不利益が生じても作者は責任を負いません。</p>
+<h2 id="ダウンロード">ダウンロード</h2>
+<p>以下のアーカイブはご自身の環境(32bitもしくは64bit)に合ったものを選択してください。</p>
+<p><a href="./miniview32.zip">miniview32.zip</a> (32bit版)<br>
+<a href="./miniview64.zip">miniview64.zip</a> (64bit版)<br>
+<a href="./miniview.zip">miniview.zip</a> (ソースコード)</p>
+<h2 id="インストール">インストール</h2>
+<p>ダウンロードしたアーカイブを展開するとフォルダMiniViewが作成されます。このフォルダを適当な場所に置けばインストール完了です。フォルダ内のminiview.exeを実行するとMiniViewが起動します。インストールが終了したらアーカイブは削除しても構いません。アップデートする場合は同名のファイルを上書きしてください。</p>
+<h2 id="アンインストール">アンインストール</h2>
+<p>上記のフォルダを削除すればアンインストールされます。</p>
+<h2 id="ファイル構成">ファイル構成</h2>
+<p>以下のファイルで構成されています。ライブラリファイル(*.dll)は実行ファイル(*.exe)と同じ場所に置いてください。</p>
+<ul>
+<li>miniview.exe (アプリケーションのプログラム)</li>
+<li>*.dll (アプリケーションの実行に必要なライブラリ)</li>
+<li>readme.md (最初にお読みください)</li>
+</ul>
+<p>アプリケーション実行後に以下のファイルが同じ場所に作成されます。</p>
+<ul>
+<li>miniview.ini (アプリケーションの設定)</li>
+<li>miniview.log (アプリケーションのログ)</li>
+</ul>
+<h2 id="ウィンドウ構成">ウィンドウ構成</h2>
+<p>メインウィンドウの各ページに開いたファイルの内容が表示されます。ページのタブをマウスホイールで切り替えることができます。タブを右クリックするとページが削除されます。タブをダブルクリックすると他のページがすべて削除されます。</p>
+<h2 id="メニュー">メニュー</h2>
+<p>以下のメニュー項目があります。</p>
+<h3 id="ファイル">ファイル</h3>
+<ul>
+<li>開く<br>
+開くファイルを選択します。</li>
+<li>終了<br>
+アプリケーションを終了します。</li>
+</ul>
+<h3 id="編集">編集</h3>
+<ul>
+<li>コピー<br>
+選択されたテキストをコピーします。</li>
+<li>すべて選択<br>
+表示されているテキストをすべて選択します。</li>
+</ul>
+<h3 id="表示">表示</h3>
+<ul>
+<li>更新<br>
+ファイルをリロードします。</li>
+</ul>
+<h3 id="設定">設定</h3>
+<ul>
+<li>フォント<br>
+テキストのフォントを指定します。</li>
+<li>文字色<br>
+テキストの色を指定します。</li>
+<li>背景色<br>
+背景の色を指定します。</li>
+</ul>
+<h3 id="ヘルプ">ヘルプ</h3>
+<ul>
+<li>バージョン情報<br>
+MiniViewのバージョン情報を表示します。</li>
+</ul>
+<h2 id="各種機能">各種機能</h2>
+<p>上記の他に以下の機能があります。</p>
+<ul>
+<li>ページ内のダブルクリックでファイルをリロード</li>
+<li>マウスホイールで画像をリサイズ</li>
+<li>キー操作(+/-/0)で画像をリサイズ</li>
+</ul>
+<h2 id="注意事項">注意事項</h2>
+<p>ファイラなどで複数のファイルを同時に開こうとすると失敗します。プロセス間通信(DDE)の処理が追いつかないことが原因のようです。待機時間を設定するなどして余裕を持たせるようにしてください。</p>
+<h2 id="既知の不具合">既知の不具合</h2>
+<p>以下の不具合があります。ソースコードに間違いがあれば指摘してください。</p>
+<ul>
+<li>スクロールバー上で英語のコンテキストメニューが表示されます。</li>
+<li>表示されるテキストの末尾に余計な文字が表示されることがあります。</li>
+</ul>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

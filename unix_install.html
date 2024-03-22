@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unixのインストール</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>Unixのインストール</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#biosmbrとuefigpt">BIOS/MBRとUEFI/GPT</a></li>
+    <li><a href="#デバイスマッパーとlukslvm">デバイスマッパーとLUKS/LVM</a></li>
+    <li><a href="#archlinuxのインストール">ArchLinuxのインストール</a>
+      <ul>
+        <li><a href="#インストールの準備">インストールの準備</a></li>
+        <li><a href="#インストールの手順">インストールの手順</a></li>
+        <li><a href="#キーボードの設定">キーボードの設定</a></li>
+        <li><a href="#ターミナルの用意">ターミナルの用意</a></li>
+        <li><a href="#起動モードの確認">起動モードの確認</a></li>
+        <li><a href="#ネットワークの確認">ネットワークの確認</a></li>
+        <li><a href="#システムクロックの更新">システムクロックの更新</a></li>
+        <li><a href="#デバイス名の確認">デバイス名の確認</a></li>
+        <li><a href="#パーティションの作成">パーティションの作成</a></li>
+        <li><a href="#パーティションのフォーマット">パーティションのフォーマット</a></li>
+        <li><a href="#パーティションのマウント">パーティションのマウント</a></li>
+        <li><a href="#リポジトリの設定">リポジトリの設定</a></li>
+        <li><a href="#パッケージのインストール">パッケージのインストール</a></li>
+        <li><a href="#fstabの設定">fstabの設定</a></li>
+        <li><a href="#chroot">chroot</a></li>
+        <li><a href="#タイムゾーンの設定">タイムゾーンの設定</a></li>
+        <li><a href="#ハードウェアクロックの設定">ハードウェアクロックの設定</a></li>
+        <li><a href="#ロカールの設定">ロカールの設定</a></li>
+        <li><a href="#ホスト名の設定">ホスト名の設定</a></li>
+        <li><a href="#インターネット接続の設定">インターネット接続の設定</a></li>
+        <li><a href="#sshの設定">sshの設定</a></li>
+        <li><a href="#rootパスワードの設定">rootパスワードの設定</a></li>
+        <li><a href="#ブートローダの設定">ブートローダの設定</a></li>
+        <li><a href="#初期ramディスクの作成">初期RAMディスクの作成</a></li>
+        <li><a href="#システムの再起動">システムの再起動</a></li>
+        <li><a href="#guestadditionsのインストール">GuestAdditionsのインストール</a></li>
+        <li><a href="#スワップファイルの作成">スワップファイルの作成</a></li>
+        <li><a href="#一般ユーザの作成">一般ユーザの作成</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Arch_Linux">ArchLinux</a>を<a href="https://ja.wikipedia.org/wiki/VirtualBox">VirtualBox</a>にインストールします。詳細については<a href="https://wiki.archlinux.jp/index.php/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">ArchWiki</a>および<a href="https://vboxmania.net/">VirtualBox Mania</a>を参照してください。</p>
+<h2 id="biosmbrとuefigpt">BIOS/MBRとUEFI/GPT</h2>
+<p>LinuxをインストールするにあたってBIOS/MBRとUEFI/GPTの違いを理解しておく必要があります。両者は機能的には同じものでUEFI/GPTはBIOS/MBRの後継として開発されました。</p>
+<p><a href="https://ja.wikipedia.org/wiki/Basic_Input/Output_System">BIOS</a>(Basic Input/Output System)および<a href="https://wiki.archlinux.jp/index.php/Unified_Extensible_Firmware_Interface">UEFI</a>(Unified Extensible Firmware Interface)にはWindowsなどのOSとPCの橋渡しをする役目があります。これらはPCにあらかじめ内蔵されたプログラム(ファームウェア)であり、電源投入時にハードウェアを初期化したりOSを起動したりします。</p>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%96%E3%83%BC%E3%83%88%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89">MBR</a>(Master Boot Record)および<a href="https://ja.wikipedia.org/wiki/GUID%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">GPT</a>(GUID Partition Table)はハードディスクなどのブロックデバイスの先頭にある小さな領域です。ここには<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3">パーティション</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>の構成情報がパーティションテーブルとして格納されています。</p>
+<p>OSをインストールすることができるパーティションを基本パーティション(Primary Partition)といいます。MBRでは4つの基本パーティションしか作成できませんが<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>GPTでは128の基本パーティションを作成できます。</p>
+<p>OSを起動するためのプログラムを<a href="https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%88">ブートローダ</a>といいます。ブートローダは電源投入時にBIOSもしくはUEFIによって実行されます。BIOSではMBRと特定のパーティションにブートローダが格納されています。UEFIでは<a href="https://ja.wikipedia.org/wiki/EFI%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3">ESP</a>(EFI System Partition)という専用のパーティションにブートローダが格納されています。</p>
+<figure class="center"><img src="bios_uefi.png"/>
+</figure>
+
+<h2 id="デバイスマッパーとlukslvm">デバイスマッパーとLUKS/LVM</h2>
+<p>Linuxにはデバイスマッパーと呼ばれるブロックデバイスの仮想レイヤーがあります。これは物理デバイスを抽象化して扱いやすくします。LUKS/LVMはこのデバイスマッパーを利用しています。<a href="https://ja.wikipedia.org/wiki/LUKS">LUKS</a>(Linux Unified Key Setup)はブロックデバイスを暗号化する仕組みです。<a href="https://ja.wikipedia.org/wiki/%E8%AB%96%E7%90%86%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">LVM</a>(Logical Volume Manager)は複数の物理ブロックデバイスを仮想的な1つのブロックデバイスとして扱う仕組みです。</p>
+<p>LVMにはPV/VG/LVという3つの構成要素があります。PV(Phisical Volume)は物理ブロックデバイスです。VG(Volume Group)はPVで構成された仮想的な1つのブロックデバイスです。LV(Logical Volume)はVGに作成された仮想的なパーティションです。この仕組みによって物理ブロックデバイスの構成を気にすることなくパーティションを操作することができます。</p>
+<figure class="center"><img src="lvm.png"/>
+</figure>
+
+<h2 id="archlinuxのインストール">ArchLinuxのインストール</h2>
+<h3 id="インストールの準備">インストールの準備</h3>
+<p>ここではVirtualBoxを使用してUEFIの仮想PCにArchLinuxをインストールします。<a href="https://www.archlinux.jp/download/">ArchLinuxのイメージファイル</a>(archlinux-*-x86_64.iso)をダウンロードしておいてください。</p>
+<p>VirtualBoxでインストール用に作成した仮想PCを以下のように設定します。</p>
+<ol>
+<li>VirtualBoxマネージャーのリストから仮想PCを選択して[設定]をクリックします。</li>
+<li>左のリストから[システム]を選択して[EFIを有効化]をチェックします。</li>
+<li>左のリストから[ストレージ]を選択して[ストレージデバイス]のリストから[空]と表示されたCDのアイコンをクリックします。</li>
+<li>右上にあるCDのアイコンをクリックしてメニューから[ディスクファイルを選択]を選択します。</li>
+<li>表示されたファイル選択ダイアログでArchLinuxのイメージファイルを選択して[開く]をクリックします。</li>
+<li>左のリストから[ネットワーク]を選択して[アダプター1]の[ネットワークアダプターを有効化]がチェックされ[割り当て]が[NAT]になっていることを確認します。</li>
+<li>[高度]をクリックして[ポートフォワーディング]をクリックします。</li>
+<li>一番右上のアイコンをクリックしてルールを追加し、ホストポートに2222、ゲストポートに22を指定して[OK]をクリックします。</li>
+<li>[OK]をクリックします。</li>
+</ol>
+<p>インストール先のハードディスク(sda)のレイアウトを決めておきます。最初のパーティション(sda1)をESPにします。次のパーティション(sda2)をルートパーティションにします。sda2は<a href="https://wiki.archlinux.jp/index.php/Dm-crypt">LUKS</a>で暗号化して、その上に<a href="https://wiki.archlinux.jp/index.php/LVM">LVM</a>を構築します。</p>
+<figure class="center"><img src="lvm_on_luks.png"/>
+</figure>
+
+<p>ArchLinuxにはインストーラとしてarchinstallが用意されています。以下のような面倒な作業をしたくないのであればarchinstallを使用してください。詳細については<a href="https://slacknotebook.com/testing-archinstall-arch-linux-2022-06/">ArchLinuxを超簡単にインストールできる「archinstall」を試す – SlackNote</a>を参照してください。</p>
+<h3 id="インストールの手順">インストールの手順</h3>
+<p>仮想PCを起動してメニューが表示されたら[Arch Linux install medium (x86_64, x64 UEFI)]を選択してください。しばらくすると一時的なUnix環境が構築され自動的にrootユーザにログインします。ここからシェルを使用してインストール作業を進めていきます。ArchLinuxのインストール作業は他のディストリビューションとは少し異なるので、大まかな流れを以下に示します。</p>
+<ol>
+<li>インストール先のディスクを準備する(パーティションの作成、パーティションのフォーマット)</li>
+<li>インストール先のディスクにパッケージをインストールする</li>
+<li>1.で準備したインストール先のディスク(ここではESPおよびルートパーティション)をマウントする</li>
+<li>3.でマウントしたインストール先のディスク(ルートパーティション)にchrootして各種設定を行う</li>
+<li>chrootから抜けてインストール作業を終了する</li>
+<li>インストール先のディスクからシステムを起動する</li>
+<li>インストール後の各種設定を行う</li>
+</ol>
+<p><a href="https://wiki.archlinux.jp/index.php/Arch_%E3%83%96%E3%83%BC%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9">ArchLinuxのブートプロセス</a>を把握しておけば以下のインストール作業をスムーズに進められます。詳細については<a href="https://wiki.archlinux.jp/index.php/%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%AC%E3%82%A4%E3%83%89">インストールガイド - ArchWiki</a>を参照してください。</p>
+<h3 id="キーボードの設定">キーボードの設定</h3>
+<p>キーボードの配列を日本語に設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># loadkeys jp106</span></span></code></pre></div></div>
+</figure>
+<h3 id="ターミナルの用意">ターミナルの用意</h3>
+<p>コンソール画面では入力しづらいのでMSYS2のターミナルで作業できるようにします。</p>
+<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?ssh">ssh</a>で使用するためのパスワードを設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># passwd</span></span></code></pre></div></div>
+</figure>
+<p>MSYS2のターミナルでsshを実行してホストOSからゲストOSに接続します。設定したパスワードを入力すれば接続できます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ssh -p 2222 root@localhost</span></span></code></pre></div></div>
+</figure>
+<p>接続に失敗した場合は以下のようにして再度接続します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ssh-keygen -R &#39;[localhost]:2222&#39;</span></span></code></pre></div></div>
+</figure>
+<p>以後はMSYS2のターミナルで作業することができます。</p>
+<h3 id="起動モードの確認">起動モードの確認</h3>
+<p>UEFIモードで起動していることを確認します。ファイルがリストされていれば問題ありません。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls /sys/firmware/efi/efivars</span></span></code></pre></div></div>
+</figure>
+<h3 id="ネットワークの確認">ネットワークの確認</h3>
+<p>ネットワークインターフェイスが認識され有効であることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ip link</span></span></code></pre></div></div>
+</figure>
+<!--
+ここでは使用しませんがWi-Fiに接続する場合はコマンドwifi-menuを入力します。
+ここでは使用しませんが[Wi-Fi](https://wiki.archlinux.jp/index.php/%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E8%A8%AD%E5%AE%9A)に接続する方法を記載しておきます。ネットワークインターフェイスをwlan0としています。最初にインターフェイス名とアクセスポイントとの接続状態を確認します。次にインターフェイスを初期化してアクセスポイント(SSID)と暗号化キー(PASSPHRASE)をインターフェイスに関連付けます。最後にインターフェイスにIPアドレスを割り当てます。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># iw dev
+</span></span><span style="display:flex;"><span># iw dev wlan0 link
+</span></span><span style="display:flex;"><span># ip link set wlan0 up
+</span></span><span style="display:flex;"><span># wpa_supplicant -B -i wlan0 -c &lt;(wpa_passphrase SSID PASSPHRASE)
+</span></span><span style="display:flex;"><span># dhcpcd wlan0</span></span></code></pre></div></div>
+</figure>
+-->
+<p>インターネットに接続できていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ping -c3 archlinux.jp</span></span></code></pre></div></div>
+</figure>
+<h3 id="システムクロックの更新">システムクロックの更新</h3>
+<p>システムの時刻(システムクロック)を合わせます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># timedatectl set-ntp true</span></span></code></pre></div></div>
+</figure>
+<p>システムクロックが合っていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># timedatectl status</span></span></code></pre></div></div>
+</figure>
+<h3 id="デバイス名の確認">デバイス名の確認</h3>
+<p>インストール先のデバイス/dev/sdaを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lsblk |grep -Ev &#39;rom|loop|airoot&#39;</span></span></code></pre></div></div>
+</figure>
+<h3 id="パーティションの作成">パーティションの作成</h3>
+<p>/dev/sdaに<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティション</a>を作成してレイアウトを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># parted /dev/sda
+</span></span><span style="display:flex;"><span>(parted) mklabel gpt
+</span></span><span style="display:flex;"><span>(parted) mkpart ESP fat32 1MiB 512MiB
+</span></span><span style="display:flex;"><span>(parted) set 1 esp on
+</span></span><span style="display:flex;"><span>(parted) mkpart primary ext4 512MiB 100%
+</span></span><span style="display:flex;"><span>(parted) print
+</span></span><span style="display:flex;"><span>(parted) quit</span></span></code></pre></div></div>
+</figure>
+<p>sda2をcrypt-rootというデバイス名で暗号化します。暗号化したデバイスやパーティションを使用するにはパスワードを入力して解錠する必要があります。解錠すると指定したデバイス名で/dev/mapperに追加され、暗号化したデバイスやパーティションを使用できるようになります。/dev/sda2を解錠すると/dev/mapper/crypt-rootとして追加されます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cryptsetup luksFormat /dev/sda2
+</span></span><span style="display:flex;"><span># cryptsetup luksDump /dev/sda2
+</span></span><span style="display:flex;"><span># cryptsetup open /dev/sda2 crypt-root</span></span></code></pre></div></div>
+</figure>
+<p>crypt-root(暗号化したsda2)をPV(物理ブロックデバイス)として登録します。このPVをvgという名前のVG(仮想的なブロックデバイス)に追加します。このvg全体を使用してrootという名前のLV(仮想的なパーティション)を作成します。作成したLVはvg-rootというデバイス名[(VG名)-(LV名)]で/dev/mapperに追加されます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pvcreate /dev/mapper/crypt-root
+</span></span><span style="display:flex;"><span># vgcreate vg /dev/mapper/crypt-root
+</span></span><span style="display:flex;"><span># lvcreate -l 100%FREE vg -n root</span></span></code></pre></div></div>
+</figure>
+<p>/dev/mapper/crypt-rootにLVMが構築され、作成したLVが/dev/mapper/vg-rootとして使用できるようになります。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<h3 id="パーティションのフォーマット">パーティションのフォーマット</h3>
+<p>パーティションをフォーマットします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mkfs.vfat -F32 /dev/sda1
+</span></span><span style="display:flex;"><span># mkfs.ext4 /dev/mapper/vg-root</span></span></code></pre></div></div>
+</figure>
+<h3 id="パーティションのマウント">パーティションのマウント</h3>
+<p>/mnt/にルートパーティションをマウントします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mount /dev/mapper/vg-root /mnt</span></span></code></pre></div></div>
+</figure>
+<p>ESPは/mnt/boot/にマウントします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mkdir /mnt/boot
+</span></span><span style="display:flex;"><span># mount /dev/sda1 /mnt/boot</span></span></code></pre></div></div>
+</figure>
+<p>ルートパーティションをマウントしてからESPをマウントするようにしてください。そうしないとESPが消えてしまいます。</p>
+<h3 id="リポジトリの設定">リポジトリの設定</h3>
+<p>パッケージは/etc/pacman.d/mirrorlistの上位にリストされているリポジトリからダウンロードされます。コマンド<a href="https://wiki.archlinux.jp/index.php/Reflector">reflector</a>を入力して日本のリポジトリを選択します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># reflector --sort rate --country Japan --latest 10 --save /etc/pacman.d/mirrorlist</span></span></code></pre></div></div>
+</figure>
+<!--
+パッケージは/etc/pacman.d/mirrorlistの上位にリストされているリポジトリからダウンロードされます。日本のリポジトリを利用したいのでリストに追加します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano /etc/pacman.d/mirrorlist</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/pacman.d/mirrorlist</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+</span></span><span style="display:flex;"><span>Server = http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch</span></span></code></pre></div></div>
+</figure>
+-->
+<h3 id="パッケージのインストール">パッケージのインストール</h3>
+<p>必要なパッケージをインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman-key --init &amp;&amp; pacman -Sy archlinux-keyring
+</span></span><span style="display:flex;"><span># pacstrap -K /mnt base base-devel linux linux-firmware linux-headers lvm2 nano networkmanager openssh sudo</span></span></code></pre></div></div>
+</figure>
+<h3 id="fstabの設定">fstabの設定</h3>
+<p><a href="https://wiki.archlinux.jp/index.php/Fstab">fstab</a>を生成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># genfstab -U /mnt &gt;&gt;/mnt/etc/fstab</span></span></code></pre></div></div>
+</figure>
+<p>fstabの内容を確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cat /mnt/etc/fstab</span></span></code></pre></div></div>
+</figure>
+<h3 id="chroot">chroot</h3>
+<p>インストールするシステムに<a href="https://wiki.archlinux.jp/index.php/Chroot">chroot</a>します。/mnt/が/になります。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># arch-chroot /mnt</span></span></code></pre></div></div>
+</figure>
+<h3 id="タイムゾーンの設定">タイムゾーンの設定</h3>
+<p>タイムゾーンを東京に設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ln -fs /usr/share/zoneinfo/Asia/Tokyo /etc/localtime</span></span></code></pre></div></div>
+</figure>
+<h3 id="ハードウェアクロックの設定">ハードウェアクロックの設定</h3>
+<p>ハードウェアクロックをシステムクロックに合わせます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hwclock --systohc --utc</span></span></code></pre></div></div>
+</figure>
+<h3 id="ロカールの設定">ロカールの設定</h3>
+<p>/etc/locale.genから使用するロカール(en_US.UTF-8およびja_JP.UTF-8)をアンコメントします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano /etc/locale.gen</span></span></code></pre></div></div>
+</figure>
+<p>ロカールを生成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># locale-gen</span></span></code></pre></div></div>
+</figure>
+<p>デフォルトのロカールを設定します。現時点では日本語にしません。GUI環境を構築してから日本語にします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo LANG=en_US.UTF-8 &gt;/etc/locale.conf
+</span></span><span style="display:flex;"><span># export LANG=en_US.UTF-8</span></span></code></pre></div></div>
+</figure>
+<p><a href="https://wiki.archlinux.jp/index.php/Linux_%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB">コンソール画面</a>のキーボード配列およびフォントを設定します。デフォルトのフォントは小さいので大きめのフォントを指定しています。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S terminus-font
+</span></span><span style="display:flex;"><span># echo &#34;KEYMAP=jp106&#34; &gt;/etc/vconsole.conf
+</span></span><span style="display:flex;"><span># echo &#34;FONT=ter-124b&#34; &gt;&gt;/etc/vconsole.conf</span></span></code></pre></div></div>
+</figure>
+<h3 id="ホスト名の設定">ホスト名の設定</h3>
+<p>ホスト名を追加します。以下のHOSTNAMEは自分のホスト名に置き換えてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo HOSTNAME &gt;/etc/hostname
+</span></span><span style="display:flex;"><span># nano /etc/hosts</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/hosts</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>127.0.0.1       localhost
+</span></span><span style="display:flex;"><span>::1             localhost
+</span></span><span style="display:flex;"><span>127.0.1.1       HOSTNAME.localdomain HOSTNAME</span></span></code></pre></div></div>
+</figure>
+<h3 id="インターネット接続の設定">インターネット接続の設定</h3>
+<p>NetworkManagerを有効にして再起動後もインターネットに接続できるようにしておきます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># systemctl enable NetworkManager</span></span></code></pre></div></div>
+</figure>
+<!--
+[DHCP](https://wiki.archlinux.jp/index.php/Dhcpcd)の設定を有効にします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S dhcpcd
+</span></span><span style="display:flex;"><span># systemctl enable dhcpcd</span></span></code></pre></div></div>
+</figure>
+-->
+<h3 id="sshの設定">sshの設定</h3>
+<p>sshdを有効にして再起動後もsshで接続できるようにしておきます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># systemctl enable sshd</span></span></code></pre></div></div>
+</figure>
+<p>sshの設定ファイル/etc/ssh/sshd_configから以下の項目をアンコメントして設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano /etc/ssh/sshd_config</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/ssh/sshd_config</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Port 22
+</span></span><span style="display:flex;"><span>PermitRootLogin yes
+</span></span><span style="display:flex;"><span>PasswordAuthentication yes</span></span></code></pre></div></div>
+</figure>
+<h3 id="rootパスワードの設定">rootパスワードの設定</h3>
+<p>rootユーザのパスワードを設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># passwd</span></span></code></pre></div></div>
+</figure>
+<h3 id="ブートローダの設定">ブートローダの設定</h3>
+<p>ここではブートマネージャとして<a href="https://wiki.archlinux.jp/index.php/Systemd-boot">systemd-boot</a>を使用します。</p>
+<p>/boot/に置かれているブートイメージvmlinuz-linux/initramfs-linux.img/initramfs-linux-fallback.imgを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls -la /boot</span></span></code></pre></div></div>
+</figure>
+<p>ESPにブートローダをインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># bootctl --path=/boot install</span></span></code></pre></div></div>
+</figure>
+<p><a href="https://wiki.archlinux.jp/index.php/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B3%E3%83%BC%E3%83%89">マイクロコード</a>をインストールします。CPUの製造元(IntelもしくはAMD)に応じてどちらかをインストールしてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S intel-ucode
+</span></span><span style="display:flex;"><span># pacman -S amd-ucode</span></span></code></pre></div></div>
+</figure>
+<p>ブートローダの設定ファイル/boot/loader/loader.confを必要に応じて変更します。パースエラーを引き起こすので、行末のコメントはファイルに含めないでください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano /boot/loader/loader.conf</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/boot/loader/loader.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>default         arch.conf   # デフォルトエントリのファイル名
+</span></span><span style="display:flex;"><span>timeout         60          # ブートメニューの表示時間(秒)
+</span></span><span style="display:flex;"><span>console-mode    auto        # コンソール画面の解像度
+</span></span><span style="display:flex;"><span>editor          no          # ブートオプション変更の可否</span></span></code></pre></div></div>
+</figure>
+<p>起動画面でeを押してブートオプションにinit=/bin/bashを書き加えるとパスワード無しでroot権限が手に入ってしまいます。ブートオプションは変更できないようにしておきましょう。</p>
+<p>ブートローダのエントリを追加します。</p>
+<p>ルートパーティション/dev/sda2のPARTUUIDを/boot/loader/entries/arch.confに出力しておきます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd /boot/loader/entries
+</span></span><span style="display:flex;"><span># blkid -s PARTUUID -o value /dev/sda2 &gt;arch.conf</span></span></code></pre></div></div>
+</figure>
+<p>続けて以下のような内容のファイルを作成します。PARTUUIDには上で出力したものを使用します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano arch.conf</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/boot/loader/entries/arch.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>title   Arch Linux
+</span></span><span style="display:flex;"><span>linux   /vmlinuz-linux
+</span></span><span style="display:flex;"><span>initrd  /intel-ucode.img
+</span></span><span style="display:flex;"><span>#initrd  /amd-ucode.img
+</span></span><span style="display:flex;"><span>initrd  /initramfs-linux.img
+</span></span><span style="display:flex;"><span>options cryptdevice=PARTUUID=********-****-****-****-************:crypt-root root=/dev/mapper/vg-root rw</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cp arch.conf arch-fallback.conf
+</span></span><span style="display:flex;"><span># nano arch-fallback.conf</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/boot/loader/entries/arch-fallback.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>title   Arch Linux Fallback
+</span></span><span style="display:flex;"><span>linux   /vmlinuz-linux
+</span></span><span style="display:flex;"><span>initrd  /intel-ucode.img
+</span></span><span style="display:flex;"><span>#initrd  /amd-ucode.img
+</span></span><span style="display:flex;"><span>initrd  /initramfs-linux-fallback.img
+</span></span><span style="display:flex;"><span>options cryptdevice=PARTUUID=********-****-****-****-************:crypt-root root=/dev/mapper/vg-root rw</span></span></code></pre></div></div>
+</figure>
+<p>ブートローダが自動で更新されるようにするため/etc/pacman.d/hooks/にファイルsystemd-boot.hookを作成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd /etc/pacman.d
+</span></span><span style="display:flex;"><span># mkdir hooks
+</span></span><span style="display:flex;"><span># cd hooks
+</span></span><span style="display:flex;"><span># nano systemd-boot.hook</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/pacman.d/hooks/systemd-boot.hook</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Trigger]
+</span></span><span style="display:flex;"><span>Type = Package
+</span></span><span style="display:flex;"><span>Operation = Upgrade
+</span></span><span style="display:flex;"><span>Target = systemd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Action]
+</span></span><span style="display:flex;"><span>Description = Updating systemd-boot
+</span></span><span style="display:flex;"><span>When = PostTransaction
+</span></span><span style="display:flex;"><span>Exec = /usr/bin/bootctl update</span></span></code></pre></div></div>
+</figure>
+<!--
+ここではブートマネージャとして[GRUB](https://wiki.archlinux.jp/index.php/GRUB)を使用します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S grub efibootmgr
+</span></span><span style="display:flex;"><span># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+</span></span><span style="display:flex;"><span># grub-mkconfig -o /boot/grub/grub.cfg
+</span></span><span style="display:flex;"><span># mkdir /boot/EFI/boot
+</span></span><span style="display:flex;"><span># cp /boot/EFI/grub/grubx64.efi /boot/EFI/boot/bootx64.efi</span></span></code></pre></div></div>
+</figure>
+
+/dev/sda2の[UUID](https://wiki.archlinux.jp/index.php/%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%81%AA%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%AE%E5%91%BD%E5%90%8D#by-uuid)を確認してから/etc/default/grubをエディタで開きます。起動時に暗号化した/dev/sda2を解錠できるようにするためにカーネルのパラメータを設定します。デバイス名にはUUIDを指定してください。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lsblk -f
+</span></span><span style="display:flex;"><span># nano /etc/default/grub</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/default/grub</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>GRUB_CMDLINE_LINUX=&#34;cryptdevice=UUID=81e69136-b1c6-46c7-8141-8e76554b2a2c:crypt-root root=/dev/mapper/vg-root&#34;</span></span></code></pre></div></div>
+</figure>
+
+GRUBの設定を変更したらgrub-mkconfigを実行して設定を更新する必要があります。忘れやすいので注意してください。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># grub-mkconfig -o /boot/grub/grub.cfg</span></span></code></pre></div></div>
+</figure>
+-->
+<h3 id="初期ramディスクの作成">初期RAMディスクの作成</h3>
+<p><a href="https://wiki.archlinux.jp/index.php/Mkinitcpio#HOOKS">フック</a>を設定します。/etc/mkinitcpio.confの以下に示す箇所を書き換えます。項目の順番を間違えないようにしてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nano /etc/mkinitcpio.conf</span></span></code></pre></div></div>
+</figure>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/mkinitcpio.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>#HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
+</span></span><span style="display:flex;"><span>HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck)</span></span></code></pre></div></div>
+</figure>
+<p><a href="https://wiki.archlinux.jp/index.php/Mkinitcpio">initramfs</a>を生成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mkinitcpio -p linux</span></span></code></pre></div></div>
+</figure>
+<h3 id="システムの再起動">システムの再起動</h3>
+<p>chrootから抜けます。ここでインストール作業は終了です。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># exit</span></span></code></pre></div></div>
+</figure>
+<p>/mnt/にマウントしたパーティションをアンマウントします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># umount -R /mnt</span></span></code></pre></div></div>
+</figure>
+<p>仮想PCからArchLinuxのインストールディスクを取り出します。メニューから [デバイス] &gt; [光学ドライブ] &gt; [仮想ドライブからディスクを除去] を選択してください。</p>
+<p>システムを再起動します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># reboot</span></span></code></pre></div></div>
+</figure>
+<p>起動直後にLUKSで設定したパスワードを要求されます。パスワードが正しければルートパーティションが解錠されてシステムが起動します。</p>
+<h3 id="guestadditionsのインストール">GuestAdditionsのインストール</h3>
+<p>VirtualBoxのGuestAdditionsをインストールします。メニューから [デバイス] &gt; [Guest Additions CDイメージの挿入] を選択してください。</p>
+<p>CDドライブ/dev/sr0を確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lsblk</span></span></code></pre></div></div>
+</figure>
+<p>CDドライブをマウントします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mkdir /mnt/cdrom
+</span></span><span style="display:flex;"><span># mount /dev/sr0 /mnt/cdrom</span></span></code></pre></div></div>
+</figure>
+<p>CDの内容を確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls /mnt/cdrom</span></span></code></pre></div></div>
+</figure>
+<p>CDのVBoxLinuxAdditions.runというスクリプトを実行します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># sh /mnt/cdrom/VBoxLinuxAdditions.run</span></span></code></pre></div></div>
+</figure>
+<p>再起動後にGuestAdditionsが有効になっていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># reboot
+</span></span><span style="display:flex;"><span># systemctl status vboxadd-service</span></span></code></pre></div></div>
+</figure>
+<h3 id="スワップファイルの作成">スワップファイルの作成</h3>
+<p>スワップファイルを作成します。スワップファイルはメモリが足りなくなったときに使用されます。メモリサイズに余裕があれば必要ありません。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># fallocate -l 512M /swapfile
+</span></span><span style="display:flex;"><span># chmod 600 /swapfile
+</span></span><span style="display:flex;"><span># mkswap /swapfile
+</span></span><span style="display:flex;"><span># swapon /swapfile
+</span></span><span style="display:flex;"><span># echo /swapfile none swap defaults 0 0 &gt;&gt;/etc/fstab</span></span></code></pre></div></div>
+</figure>
+<p>再起動後にスワップファイルが有効になっていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># reboot
+</span></span><span style="display:flex;"><span># free -h</span></span></code></pre></div></div>
+</figure>
+<h3 id="一般ユーザの作成">一般ユーザの作成</h3>
+<p>一般ユーザを作成します。以下のUSERNAMEは自分のユーザ名に置き換えてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># useradd -m -G wheel -s /bin/bash USERNAME</span></span></code></pre></div></div>
+</figure>
+<p>USERNAMEのパスワードを設定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># passwd USERNAME</span></span></code></pre></div></div>
+</figure>
+<p>visudoで/etc/sudoersの&quot;%wheel ALL=(ALL) ALL&quot;をアンコメントします。</p>
+<!-- Defaults timestamp_timeout=0 -->
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># EDITOR=nano visudo</span></span></code></pre></div></div>
+</figure>
+<p>USERNAMEでログインし直します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># su USERNAME</span></span></code></pre></div></div>
+</figure>
+<!--
+pacmanのカラー出力を有効にします。/etc/pacman.confをエディタで開いてColorのコメントを解除してください。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo nano /etc/pacman.conf</span></span></code></pre></div></div>
+</figure>
+
+使用されているグラフィックカードを確認した後、ビデオドライバおよび[X](https://wiki.archlinux.jp/index.php/Xorg)をインストールします。次にXのキーボードレイアウトを日本語に設定します。最後にXが起動することを確認してください。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ lspci | grep -e VGA -e 3D
+</span></span><span style="display:flex;"><span>$ sudo pacman -S xf86-video-vmware xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm
+</span></span><span style="display:flex;"><span>$ localectl set-x11-keymap jp
+</span></span><span style="display:flex;"><span>$ startx</span></span></code></pre></div></div>
+</figure>
+
+[フォント](https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88)をインストールします。ここではNotoフォントをインストールしています。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra</span></span></code></pre></div></div>
+</figure>
+
+フォントを設定します。/etc/fonts/local.confに以下の設定を記述してフォントキャッシュを更新します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo nano /etc/fonts/local.conf</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/fonts/local.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>&lt;?xml version=&#34;1.0&#34;?&gt;
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;
+</span></span><span style="display:flex;"><span>&lt;fontconfig&gt;
+</span></span><span style="display:flex;"><span>  &lt;alias&gt;
+</span></span><span style="display:flex;"><span>    &lt;family&gt;serif&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;prefer&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Serif&lt;/family&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Serif CJK JP&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;/prefer&gt;
+</span></span><span style="display:flex;"><span>  &lt;/alias&gt;
+</span></span><span style="display:flex;"><span>  &lt;alias&gt;
+</span></span><span style="display:flex;"><span>    &lt;family&gt;sans-serif&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;prefer&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Sans&lt;/family&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Sans CJK JP&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;/prefer&gt;
+</span></span><span style="display:flex;"><span>  &lt;/alias&gt;
+</span></span><span style="display:flex;"><span>  &lt;alias&gt;
+</span></span><span style="display:flex;"><span>    &lt;family&gt;monospace&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;prefer&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Sans Mono&lt;/family&gt;
+</span></span><span style="display:flex;"><span>      &lt;family&gt;Noto Sans Mono CJK JP&lt;/family&gt;
+</span></span><span style="display:flex;"><span>    &lt;/prefer&gt;
+</span></span><span style="display:flex;"><span>  &lt;/alias&gt;
+</span></span><span style="display:flex;"><span>&lt;/fontconfig&gt;</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ fc-cache -fv</span></span></code></pre></div></div>
+</figure>
+
+ロカールを日本語に設定します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo nano /etc/locale.conf</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">/etc/locale.conf</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>LANG=ja_JP.UTF-8
+</span></span><span style="display:flex;"><span># LANG=en_US.UTF-8</span></span></code></pre></div></div>
+</figure>
+
+ディスプレイマネージャ([LightDM](https://wiki.archlinux.jp/index.php/LightDM))をインストールして有効にします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S lightdm lightdm-gtk-greeter
+</span></span><span style="display:flex;"><span>$ sudo systemctl enable lightdm</span></span></code></pre></div></div>
+</figure>
+
+ネットワークマネージャ([NetworkManager](https://wiki.archlinux.jp/index.php/NetworkManager))をインストールして有効にします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S networkmanager
+</span></span><span style="display:flex;"><span>$ sudo systemctl enable NetworkManager
+</span></span><span style="display:flex;"><span>$ sudo systemctl start NetworkManager</span></span></code></pre></div></div>
+</figure>
+
+ウィンドウマネージャ(Openbox)とターミナルエミュレータ(LXTerminal)をインストールします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S openbox lxterminal</span></span></code></pre></div></div>
+</figure>
+
+Xの起動時にウィンドウマネージャとしてOpenboxが起動するようにします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ nano ~/.xinitrc</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/.xinitrc</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># twm &amp;
+</span></span><span style="display:flex;"><span># xclock -geometry 50x50-1+1 &amp;
+</span></span><span style="display:flex;"><span># xterm -geometry 80x50+494+51 &amp;
+</span></span><span style="display:flex;"><span># xterm -geometry 80x20+494-0 &amp;
+</span></span><span style="display:flex;"><span># exec xterm -geometry 80x66+0+0 -name login
+</span></span><span style="display:flex;"><span>exec openbox-session</span></span></code></pre></div></div>
+</figure>
+
+IME([fcitx5](https://wiki.archlinux.jp/index.php/Fcitx5))をインストールします。次に~/.xprofileをエディタで開いて以下の設定を記述します。最後に設定を開いて入力メソッドにMozcが追加されていることを確認します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S fcitx5 fcitx5-mozc fcitx5-im fcitx5-configtool
+</span></span><span style="display:flex;"><span>$ nano ~/.xprofile
+</span></span><span style="display:flex;"><span>$ fcitx5-configtool</span></span></code></pre></div></div>
+</figure>
+
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/.xprofile</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>export GTK_IM_MODULE=fcitx
+</span></span><span style="display:flex;"><span>export QT_IM_MODULE=fcitx
+</span></span><span style="display:flex;"><span>export XMODIFIERS=@im=fcitx
+</span></span><span style="display:flex;"><span>export DefaultIMModule=fcitx
+</span></span><span style="display:flex;"><span>fcitx-autostart</span></span></code></pre></div></div>
+</figure>
+
+[AUR](https://wiki.archlinux.jp/index.php/Arch_User_Repository)のパッケージを扱えるようにするためAURヘルパー(yay)をインストールします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S git
+</span></span><span style="display:flex;"><span>$ git clone https://aur.archlinux.org/yay.git
+</span></span><span style="display:flex;"><span>$ cd yay
+</span></span><span style="display:flex;"><span>$ makepkg -si
+</span></span><span style="display:flex;"><span>$ cd
+</span></span><span style="display:flex;"><span>$ rm -rfv yay</span></span></code></pre></div></div>
+</figure>
+
+デスクトップ環境([LXDE](https://wiki.archlinux.jp/index.php/LXDE))をインストールします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo pacman -S lxde</span></span></code></pre></div></div>
+</figure>
+
+再起動します。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ sudo reboot</span></span></code></pre></div></div>
+</figure>
+-->
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>ブロックデバイスは複数の区画に分割することができます。その区画をパーティションといいます。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>基本パーティションの1つを拡張パーティション(Extended Partition)に指定すれば、その中にいくつでも論理パーティション(Logical Partition)を作成することができます。ただし拡張パーティションにはOSをインストールできません。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>LUKSの上にLVMを構築した場合、デバイスをまたいでLVMを使用することができなくなるので注意してください。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

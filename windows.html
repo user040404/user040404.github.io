@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windowsのカスタマイズ</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>Windowsのカスタマイズ</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#パーティションの分割">パーティションの分割</a></li>
+    <li><a href="#パーティションの暗号化">パーティションの暗号化</a></li>
+    <li><a href="#システムのカスタマイズ">システムのカスタマイズ</a>
+      <ul>
+        <li><a href="#視覚効果の無効化">視覚効果の無効化</a></li>
+        <li><a href="#自動再生の無効化">自動再生の無効化</a></li>
+        <li><a href="#常駐プログラムおよび自動起動の設定">常駐プログラムおよび自動起動の設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#キーバインドのカスタマイズ">キーバインドのカスタマイズ</a></li>
+    <li><a href="#アプリケーションのインストール">アプリケーションのインストール</a>
+      <ul>
+        <li><a href="#ポータブルアプリケーション">ポータブルアプリケーション</a></li>
+      </ul>
+    </li>
+    <li><a href="#ウェブブラウザのカスタマイズ">ウェブブラウザのカスタマイズ</a></li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>Windowsを使い始める前にやっておくべきことを紹介します。</p>
+<h2 id="パーティションの分割">パーティションの分割</h2>
+<p>WindowsはCドライブにインストールされます。従ってWindowsを再インストールするとCドライブに作成したデータはすべて削除されてしまいます。このような場合に備えてCドライブとは別のドライブにデータを保存するのが一般的です。</p>
+<p>PCでは物理的に1台しかないハードディスクを論理的に複数のハードディスクとして扱うことができます。具体的にはハードディスクを区画(パーティション)に分割し、その区画にドライブを割り当てます。</p>
+<p>Cドライブが占有しているハードディスクにDドライブを追加するには、Cドライブのパーティションを圧縮して空いたスペースに新しくパーティションを作成し、そのパーティションにDドライブを割り当てます。詳細については<a href="http://support.microsoft.com/kb/944248/ja">Windows でパーティションを増やすには?</a>を参照してください。</p>
+<h2 id="パーティションの暗号化">パーティションの暗号化</h2>
+<p>WindowsがインストールされているCドライブ(が割り当てられているパーティション)をシステムドライブ(システムパーティション)といいます。情報漏洩を防ぐためにシステムドライブ以外のドライブのパーティションを<a href="https://ja.wikipedia.org/wiki/VeraCrypt">VeraCrypt</a>で暗号化します。暗号化したパーティションはパスワードを入力して任意のドライブにマウントします。詳細については<a href="https://www.gigafree.net/security/encrypt/VeraCrypt.html">VeraCrypt のダウンロードと使い方 - ｋ本的に無料ソフト・フリーソフト</a>を参照してください。</p>
+<h2 id="システムのカスタマイズ">システムのカスタマイズ</h2>
+<p>Windows11でコントロールパネルを開く方法については<a href="https://win11lab.info/win11-controlpanel/">Windows11でコントロールパネルの開き方とショートカットを作る方法 - Win11ラボ</a>を参照してください。</p>
+<h3 id="視覚効果の無効化">視覚効果の無効化</h3>
+<ol>
+<li>スタートメニューから [コントロール パネル] &gt; [システムとセキュリティ] &gt; [システム] &gt; [システムの詳細設定] を選択します。</li>
+<li>[システムのプロパティ]ダイアログの [パフォーマンス] &gt; [設定] をクリックします。</li>
+<li>[視覚効果]タブから[パフォーマンスを優先する]をチェックして[OK]をクリックします。</li>
+</ol>
+<h3 id="自動再生の無効化">自動再生の無効化</h3>
+<ol>
+<li>スタートメニューから [コントロール パネル] &gt; [ハードウェアとサウンド] &gt; [自動再生] を選択します。</li>
+<li>[すべてのメディアとデバイスで自動再生を使う]のチェックを外して[保存]をクリックします。</li>
+</ol>
+<h3 id="常駐プログラムおよび自動起動の設定">常駐プログラムおよび自動起動の設定</h3>
+<ol>
+<li>検索窓に[msconfig]と入力して[msconfig.exe]を選択します。</li>
+<li>[システム構成]ダイアログの以下を設定して[OK]をクリックします。</li>
+</ol>
+<ul>
+<li>[サービス]タブからWindowsの稼動中に常駐させる必要のないプログラムのチェックを外します。</li>
+<li>[スタートアップ]タブからWindows起動時に起動する必要のないプログラムのチェックを外します。</li>
+</ul>
+<h2 id="キーバインドのカスタマイズ">キーバインドのカスタマイズ</h2>
+<p><a href="http://satoshi.web5.jp/">ChangeKey</a>でキーバインドを変更します。押しにくい位置にある使用頻度の高いキー(Ctrlキー・Tabキー・Escキーなど)と押しやすい位置にある使用頻度の低いキー(CapsLockキー・Windowsキー・アプリケーションキーなど)を入れ替えます。</p>
+<h2 id="アプリケーションのインストール">アプリケーションのインストール</h2>
+<p><a href="http://www.forest.impress.co.jp/">窓の杜</a>/<a href="http://www.gigafree.net/">ｋ本的に無料ソフト・フリーソフト</a>/<a href="http://www.softnavi.com/">FreeSoftNavi</a>/<a href="https://freesoft-100.com/">フリーソフト100</a>/<a href="/my_apps.html">お気に入りのソフト</a>などを参考にして自分に必要なアプリケーションをインストールします。</p>
+<h3 id="ポータブルアプリケーション">ポータブルアプリケーション</h3>
+<p>ポータブルアプリケーションはUSBメモリなどのメディアに入れて持ち運ぶことができるアプリケーションです。主要なアプリケーションのポータブル版は<a href="https://portableapps.com/ja">PortableApps.com</a>から入手できます。ポータブルアプリケーションはインストール作業が不要であり、フォルダをコピーするだけで簡単にバックアップできます。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h2 id="ウェブブラウザのカスタマイズ">ウェブブラウザのカスタマイズ</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Mozilla_Firefox">Firefox</a>や<a href="https://ja.wikipedia.org/wiki/Google_Chrome">Chrome</a>には自由に機能を追加することができます。</p>
+<p><a href="https://ja.wikipedia.org/wiki/UBlock_Origin">uBlock</a>を追加すればウェブページに表示される広告を一掃することができます。インストールしたら次の手順に従って設定します。</p>
+<ol>
+<li><a href="https://github.com/tofukko/filter#%E8%B1%86%E8%85%90%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF">豆腐フィルタ</a>(日本用の外部フィルタ)を追加します。</li>
+<li>ツールバーのuBlockのアイコンをクリックして[ダッシュボード]のアイコンをクリックします。</li>
+<li>外部フィルターの[Myフィルター]と[豆腐フィルタ]を有効にします。SNSのボタンが不要であれば[Fanboy’s Social Blocking List]を有効にします。その他のフィルタは無効にします。</li>
+<li>[適用]をクリックします。</li>
+</ol>
+<p>ウェブページにブロックしたいものがあれば右クリックメニューから[要素をブロック]を選択します。自動的にフィルタが作成されて[Myフィルター]に登録することができます。ブロックしたくないウェブサイトは[ホワイトリスト]に登録します。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>インストール作業が必要なアプリケーションでもポータブル版としてインストールできることがあります。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

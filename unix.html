@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unixの基本事項</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>Unixの基本事項</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#ディストリビューション">ディストリビューション</a></li>
+    <li><a href="#ユーザインターフェース">ユーザインターフェース</a></li>
+    <li><a href="#ユーザとグループ">ユーザとグループ</a></li>
+    <li><a href="#ランレベルとデーモン">ランレベルとデーモン</a></li>
+    <li><a href="#ブートローダ">ブートローダ</a></li>
+    <li><a href="#ファイルシステム">ファイルシステム</a>
+      <ul>
+        <li><a href="#ファイル">ファイル</a></li>
+        <li><a href="#ディレクトリ">ディレクトリ</a></li>
+        <li><a href="#シンボリックリンク">シンボリックリンク</a></li>
+        <li><a href="#パーミッション">パーミッション</a></li>
+      </ul>
+    </li>
+    <li><a href="#ディレクトリ構造">ディレクトリ構造</a></li>
+    <li><a href="#ホームディレクトリ">ホームディレクトリ</a></li>
+    <li><a href="#設定ファイル">設定ファイル</a></li>
+    <li><a href="#アーカイブファイル">アーカイブファイル</a></li>
+    <li><a href="#デバイスファイル">デバイスファイル</a></li>
+    <li><a href="#パッケージシステム">パッケージシステム</a></li>
+    <li><a href="#ウィンドウシステム">ウィンドウシステム</a></li>
+    <li><a href="#日本語入力システム">日本語入力システム</a></li>
+    <li><a href="#サウンドシステム">サウンドシステム</a></li>
+    <li><a href="#印刷システム">印刷システム</a></li>
+    <li><a href="#デスクトップ環境">デスクトップ環境</a></li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF">パーソナルコンピュータ</a>(PC)を使用するには最初に<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">オペレーティングシステム</a>(OS)というソフトウェアをインストールする必要があります。市販のPCには<a href="https://ja.wikipedia.org/wiki/Microsoft_Windows">Windows</a>というOSが付属していますがWindowsではなく<a href="https://ja.wikipedia.org/wiki/Unix%E7%B3%BB">Unix系</a>のOS(<a href="https://ja.wikipedia.org/wiki/FreeBSD">FreeBSD</a>や<a href="https://ja.wikipedia.org/wiki/Linux">Linux</a>)を使用することもできます。<!-- またMSYS2などを使用してWindowsにUnixライクな環境を導入することもできます。 -->ここでは<a href="https://ja.wikipedia.org/wiki/UNIX">Unix</a>を使用するにあたって知っておきたい事柄を紹介します。</p>
+<h2 id="ディストリビューション">ディストリビューション</h2>
+<p>様々な<a href="https://ja.wikipedia.org/wiki/Linux%E3%83%87%E3%82%A3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ディストリビューション</a>(配布形態)が存在しますが大きな違いはありません。多くのディストリビューションが無料で提供されています。</p>
+<h2 id="ユーザインターフェース">ユーザインターフェース</h2>
+<p>コマンドを直接入力するキーボード操作中心のインターフェース(<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9">CUI/CLI</a>)です。</p>
+<h2 id="ユーザとグループ">ユーザとグループ</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC">root</a>という名前のユーザがシステムの全権を掌握します。その他のユーザは一般ユーザとして扱われます。ユーザは複数のグループに所属できます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?useradd">useradd</a>でユーザを追加します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?su">su</a>でユーザを変更します。</p>
+<h2 id="ランレベルとデーモン">ランレベルとデーモン</h2>
+<p>0～6の<a href="https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%AC%E3%83%99%E3%83%AB">ランレベル</a>(動作モード)を指定できます。ランレベルの一般的な定義は次のとおり。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>停止</td>
+<td>システムを停止もしくはシャットダウンする。</td>
+</tr>
+<tr>
+<td>1</td>
+<td>シングルユーザモード</td>
+<td>rootユーザのみが作業できるシステムを起動する。ネットワークには接続せずデーモンも起動しない。</td>
+</tr>
+<tr>
+<td>2～5</td>
+<td>マルチユーザモード</td>
+<td>デフォルトのシステムを起動する。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>再起動</td>
+<td>システムを再起動する。</td>
+</tr>
+</tbody>
+</table>
+<p>ランレベル1がWindowsの<a href="https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%BC%E3%83%95%E3%83%A2%E3%83%BC%E3%83%89">セーフモード</a>に相当します。<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3_(%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2)">デーモン</a>はWindowsの<a href="https://ja.wikipedia.org/wiki/Windows%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9">サービスプログラム</a>に相当します。</p>
+<h2 id="ブートローダ">ブートローダ</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%88">ブートローダ</a>には主に<a href="https://ja.wikipedia.org/wiki/GNU_GRUB">GRUB</a>(GRand Unified Bootloader)が使用されます。ブートローダはシステムを起動するプログラムです。Windowsや他のOSとのマルチブートにも対応しています。</p>
+<h2 id="ファイルシステム">ファイルシステム</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ファイルシステム</a>には<a href="https://ja.wikipedia.org/wiki/Ext">ext</a>(Extended File
+System)や<a href="https://ja.wikipedia.org/wiki/XFS">XFS</a>(eXtents File System)などが使用されます。Windowsのファイルシステムのように断片化することはほとんどありません。Windowsのファイルシステム(<a href="https://ja.wikipedia.org/wiki/File_Allocation_Table">FAT</a>/<a href="https://ja.wikipedia.org/wiki/NT_File_System">NTFS</a>)にもアクセスできます。-Tオプションをつけてコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?df">df</a>を入力すると使用中のファイルシステムが表示されます。ファイルシステムの種類やそれぞれの違いについては<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B7%A5%B9%A5%C6%A5%E0">用語集:ファイルシステム: UNIX/Linuxの部屋</a>を参照してください。</p>
+<h3 id="ファイル">ファイル</h3>
+<p>Windowsとは異なり<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D">ファイル名</a>の大文字と小文字は区別されます。Windowsのようにスペースを含むファイル名を扱うことはありません。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>ファイル名の頭にピリオドをつけたファイル(通称ドットファイル)は隠しファイルとして扱われます。Unixでは<a href="https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E5%AD%90">拡張子</a>のことをサフィクス(suffix)といいます。サフィクスはユーザがファイルの種類を判別するために使用されますが、サフィクスに基づいて動作するコマンドやアプリケーションもあります。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?touch">touch</a>で空ファイルを作成します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?chown">chown</a>でファイルの所有者・所有グループを変更します。ファイル名やファイルサイズの制約については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%C0%A9%B8%C2%A4%DE%A4%C8%A4%E1">用語集:ファイル制限まとめ: UNIX/Linuxの部屋</a>を参照してください。</p>
+<h3 id="ディレクトリ">ディレクトリ</h3>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA">ディレクトリ</a>はWindowsのフォルダに相当します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?ls">ls</a>でディレクトリの内容を表示します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?mkdir">mkdir</a>でディレクトリを作成します。</p>
+<h3 id="シンボリックリンク">シンボリックリンク</h3>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%83%AA%E3%83%B3%E3%82%AF">シンボリックリンク</a>はWindowsのショートカットに相当します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?ls">ln</a>でシンボリックリンクを作成します。</p>
+<h3 id="パーミッション">パーミッション</h3>
+<p>ファイルには[読み出し/書き込み/実行]の基本属性があります。実行属性が付与されていないプログラムやスクリプトは実行できません。ディレクトリもファイルと同じ属性を持ちますがその意味は次のようになります。</p>
+<ul>
+<li>ディレクトリの読み出し属性: ディレクトリのファイルを一覧できる</li>
+<li>ディレクトリの書き込み属性: ディレクトリにファイルを作成できるまたはディレクトリのファイルを削除できる</li>
+<li>ディレクトリの実行属性: ディレクトリのファイルを読み書きできる</li>
+</ul>
+<p>上記の基本属性に加えて[SUID/SGID/スティッキー]という特殊な属性があります。意味は次のとおり。</p>
+<ul>
+<li>実行ファイルのSUID属性: 実行ファイルの所有者が実行したと見なされる</li>
+<li>実行ファイルのSGID属性: 実行ファイルの所有グループ(に属するユーザ)が実行したと見なされる</li>
+<li>ディレクトリのSGID属性: ディレクトリに作成したファイルがそのディレクトリと同じ所有グループになる</li>
+<li>ディレクトリのスティッキー属性: ディレクトリに作成したファイルを所有者のみが削除できる</li>
+</ul>
+<p>-lオプションをつけてコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?ls">ls</a>を入力するとファイルの<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3">パーミッション</a>(アクセス権限)が表示されます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?umask">umask</a>でデフォルトのパーミッションを設定します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?chmod">chmod</a>でパーミッションを変更します。</p>
+<h2 id="ディレクトリ構造">ディレクトリ構造</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">FHS</a>(Filesystem Hierarchy Standard: ファイルシステム階層標準)で規定された<a href="https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA">ルートディレクトリ</a>を頂点とするディレクトリ構造を持ちます。そのためシステムがインストールされるパーティションはルートパーティションと呼ばれます。Windowsのようなドライブレターはなく他のドライブやパーティションは/devに収められた<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">デバイスファイル</a>として参照されます。パスの区切り文字には&quot;\&quot;(バックスラッシュ)ではなく&quot;/&quot;(スラッシュ)を使用します。詳細については<a href="http://linuxjm.sourceforge.jp/html/LDP_man-pages/man7/hier.7.html">Man page of HIER</a>を参照してください。</p>
+<h2 id="ホームディレクトリ">ホームディレクトリ</h2>
+<p>/homeに各ユーザの<a href="https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA">ホームディレクトリ</a>が配置されます。ユーザを追加すると/etc/skelの内容が新しいユーザのホームディレクトリにコピーされます。コマンド入力時にはホームディレクトリのパスを~(チルダ)で置き換えることができます。</p>
+<h2 id="設定ファイル">設定ファイル</h2>
+<p>システムやアプリケーションの設定はテキストファイルに保存されます。Windowsの<a href="https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%B8%E3%82%B9%E3%83%88%E3%83%AA">レジストリ</a>のようなものは存在しません。設定を変更する場合はテキストエディタで<a href="https://ja.wikipedia.org/wiki/%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">設定ファイル</a>を書き換えます。ユーザの設定はホームディレクトリにドットファイルとして保存されます。ファイル名のサフィクスとしてよく使用されるrcは&quot;Run
+Command&quot;の略です。</p>
+<h2 id="アーカイブファイル">アーカイブファイル</h2>
+<p>ファイルを圧縮するには<a href="https://ja.wikipedia.org/wiki/Gzip">gzip</a>(*.gz)というコマンドを使用します。gzipよりも圧縮率の高い<a href="https://ja.wikipedia.org/wiki/Bzip2">bzip2</a>(*.bz2)というコマンドも使用できます。複数のファイルを<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)">アーカイブ</a>する場合は<a href="https://ja.wikipedia.org/wiki/Tar">tar</a>(*.tar)というプログラムで1つのファイルにまとめてからgzipやbzip2で圧縮します。tarを使って圧縮されたファイル(*.tar.gz, *.tar.bz2)をターボール(tarball)ということがあります。アーカイブファイルはコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?tar">tar</a>で作成します。紛らわしいですがWindowsのアーカイブフォーマット(*.zip)とは関係ありません。</p>
+<h2 id="デバイスファイル">デバイスファイル</h2>
+<p>ハードディスクドライブや光学ドライブなどのデバイスはファイルとして扱われます。Windowsのようにドライブレターで区別することはしません。<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">デバイスファイル</a>は/devに収められています。デバイスにアクセスする場合はデバイスファイルを任意のディレクトリに<a href="https://ja.wikipedia.org/wiki/Mount_(UNIX)">マウント</a>します。デバイスをディレクトリにマウントすると、マウントしたデバイスの内容をそのディレクトリから参照したり操作したりすることができます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?mount">mount</a>および<a href="http://x68000.q-e-d.net/~68user/unix/pickup?umount">umount</a>でデバイスをマウント・アンマウントします。/etc/fstabを書き換えて起動時に自動でマウントさせるようにすることもできます。fstabはFile System Tableの略です。</p>
+<h2 id="パッケージシステム">パッケージシステム</h2>
+<p>利用できるアプリケーションは<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">パッケージ</a>という形で<a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA">リポジトリ</a>というサーバに置かれています。パッケージの形式はディストリビューションによって異なります。パッケージはパッケージマネージャを使用してインストール・アップデート・アンインストールします。インストール済みのパッケージをまとめてアップデートすることもできます。</p>
+<h2 id="ウィンドウシステム">ウィンドウシステム</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ウィンドウシステム</a>には<a href="https://ja.wikipedia.org/wiki/X_Window_System">X Window System</a>を採用しています。<a href="https://ja.wikipedia.org/wiki/X%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ディスプレイマネージャ</a>がログイン画面を表示してログインと同時にXが起動します。ログイン後は<a href="https://ja.wikipedia.org/wiki/X%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ウィンドウマネージャ</a>がウィンドウを制御します。機能や見た目の異なるウィンドウマネージャを自由に選択することができます。</p>
+<h2 id="日本語入力システム">日本語入力システム</h2>
+<p><a href="https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">日本語入力</a>では<a href="https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%97%E3%83%83%E3%83%88%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">入力メソッド</a>が入力を受け付けて変換エンジンが漢字に変換します。</p>
+<h2 id="サウンドシステム">サウンドシステム</h2>
+<p>サウンドカードを制御する<a href="https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%83%B3%E3%83%89%E3%82%B5%E3%83%BC%E3%83%90">サウンドサーバ</a>は<a href="https://ja.wikipedia.org/wiki/PulseAudio">PulseAudio</a>や<a href="https://ja.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">ALSA</a>(Advanced Linux Sound Architecture)です。</p>
+<h2 id="印刷システム">印刷システム</h2>
+<p>プリンタを制御する<a href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%82%B5%E3%83%BC%E3%83%90">プリントサーバ</a>は<a href="https://ja.wikipedia.org/wiki/CUPS">CUPS</a>(Common Unix Printing System)です。</p>
+<h2 id="デスクトップ環境">デスクトップ環境</h2>
+<p>Windowsのような<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%92%B0%E5%A2%83">デスクトップ環境</a>も使用することができます。代表的なデスクトップ環境は<a href="https://ja.wikipedia.org/wiki/GNOME">GNOME</a>と<a href="https://ja.wikipedia.org/wiki/KDE">KDE</a>です。より軽量なデスクトップ環境としては<a href="https://ja.wikipedia.org/wiki/Xfce">Xfce</a>や<a href="https://ja.wikipedia.org/wiki/LXDE">LXDE</a>などがあります。この他にも様々なデスクトップ環境が用意されています。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>名前にスペースを含むファイルを参照するにはファイル名を&rsquo;(クォート)で括る必要があります。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>

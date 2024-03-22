@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSPのカスタマイズ</title>
+<link rel="stylesheet" href="https://foo02.github.io/normalize.css" />
+<link rel="stylesheet" href="https://foo02.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+
+<div><a href="https://foo02.github.io/">トップページ</a></div>
+<h1>DSPのカスタマイズ</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#dspの機能">DSPの機能</a>
+      <ul>
+        <li><a href="#イコライザ">イコライザ</a></li>
+        <li><a href="#コンプレッサ">コンプレッサ</a></li>
+        <li><a href="#リバーブ">リバーブ</a></li>
+      </ul>
+    </li>
+    <li><a href="#dspの使用例">DSPの使用例</a>
+      <ul>
+        <li><a href="#1by1のdsp">1by1のDSP</a></li>
+        <li><a href="#xmplayのdsp">XMPlayのDSP</a></li>
+        <li><a href="#foobar2000のdsp">foobar2000のDSP</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p>オーディオプレーヤの再生時にフィルターとして機能するDSPについて説明します。</p>
+<h2 id="dspの機能">DSPの機能</h2>
+<p>主なDSPとしてイコライザ・コンプレッサ・リバーブがあります。</p>
+<h3 id="イコライザ">イコライザ</h3>
+<p>イコライザは音の高さに応じて音量を上げたり下げたりします。ここでは縦向きのスライドバーが横に並んだインターフェイスを有するグラフィックイコライザについて説明します。</p>
+<figure class="center"><img src="dsp01.png"/>
+</figure>
+
+<p>イコライザは低域・中域・高域(インターフェースの左側・中央・右側)の3つのパートに分けて調整します。各パートの音量を上げると音は次のように変化します。</p>
+<ul>
+<li>低域の音量を適度に上げると丸く柔らかい音になるが、過度に上げるとこもった音になる</li>
+<li>中域の音量を適度に上げると落ち着いた音になるが、過度に上げるとメリハリのない音になる</li>
+<li>高域の音量を適度に上げると鋭く硬い音になるが、過度に上げると耳障りな音になる</li>
+</ul>
+<h3 id="コンプレッサ">コンプレッサ</h3>
+<p>コンプレッサは小さすぎる音を大きくして大きすぎる音を小さくします。このような処理を「音圧を上げる」といいます。音圧を上げると迫力のある音になり、音量に大きな差のある曲が聴きやすくなります。しかし音圧を上げすぎると、音に歪みが生じたり曲が平板になったりします。</p>
+<figure class="center"><img src="dsp02.png"/>
+</figure>
+
+<p>曲全体の音量差を小さくするには閾値(Threshold)を下げます。閾値を下げると音量が小さくなるので出力ゲイン(Output Gain)を上げます。</p>
+<!-- コンプレッサには音圧の強度や音量の増幅率を設定するパラメータがあります。曲全体の音量差を小さくするには音圧の強度を上げます。 -->
+<h3 id="リバーブ">リバーブ</h3>
+<p>リバーブは残響音を再現します。</p>
+<figure class="center"><img src="dsp03.png"/>
+</figure>
+
+<p>リバーブには次のようなパラメータがあります。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wet</td>
+<td>残響の度合い</td>
+</tr>
+<tr>
+<td>Dry</td>
+<td>原音の度合い</td>
+</tr>
+<tr>
+<td>Damping</td>
+<td>反響しにくさ</td>
+</tr>
+<tr>
+<td>Room Size</td>
+<td>空間の広さ</td>
+</tr>
+<tr>
+<td>Room Width</td>
+<td>残響のステレオ感</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dspの使用例">DSPの使用例</h2>
+<!--
+### WinampのDSPプラグイン
+
+[Winamp](http://winampheritage.com/)のDSPプラグインは多くのオーディオプレーヤで利用できます。上記の3つの機能を追加するプラグインを紹介します。
+
+| | |
+| - | - |
+| イコライザ | [Shibatch Super Equalizer](http://winampheritage.com/plugin/shibatch-equalizer-plugin/4591) |
+| コンプレッサ | [Compressor & Wider](http://winampheritage.com/plugin/compwide/104516) |
+| リバーブ | [Freeverb](http://winampheritage.com/plugin/winamp-freeverb/144431) |
+-->
+<h3 id="1by1のdsp">1by1のDSP</h3>
+<p><a href="https://mpesch3.de/1by1.html">1by1</a>はコンプレッサを標準装備しています。イコライザには<a href="http://winampheritage.com/plugin/shibatch-equalizer-plugin/4591">Shibatch Super Equalizer</a>を使用します。イコライザ(dsp_superequ.dll)は1by1のインストールフォルダに置いてください。DSPの設定方法は次のとおり。</p>
+<ol>
+<li>1by1を起動します。</li>
+<li>メニューから[Options]を選択します。</li>
+<li>表示されたダイアログの左のリストから[Dcoders]を選択します。</li>
+<li>下のリストからイコライザを選択して[Settings]をクリックします。</li>
+<li>表示されたダイアログでイコライザを設定したら[Save]をクリックして設定を保存します。</li>
+<li>保存したイコライザの設定ファイル(*.eq)を[Autoload]に指定します。</li>
+<li>[Enable]をチェックして[OK]をクリックし[DSP]をチェックします。</li>
+<li>左のリストから[Enhancer1]を選択します。</li>
+<li>左上の[Enable]をチェックして右下の[Presets]からプリセットを選択します。</li>
+<li>[Close]をクリックします。</li>
+</ol>
+<p>1by1のコンプレッサ(<a href="https://mpesch3.de/misc.html">dsp_1by1enh</a>)はWinampのDSPプラグインとしても使用することができます。</p>
+<h3 id="xmplayのdsp">XMPlayのDSP</h3>
+<p><a href="http://www.un4seen.com/xmplay.html">XMPlay</a>はイコライザ・コンプレッサ・リバーブの機能を標準装備しています。DSPの設定方法は次のとおり。</p>
+<ol>
+<li>XMPlayを起動します。</li>
+<li>[Options and stuff]のボタンをクリックします。</li>
+<li>表示されたダイアログの左のツリーから[DSP]を選択します。
+<ul>
+<li>イコライザを有効にするには[Equalizer]をチェックします。右上のリストからプリセットを選択できます。</li>
+<li>コンプレッサを有効にするには[Amplification]の[Auto-amp]から[dynamic]を選択します。[Reset on new track]のチェックははずしておきます。</li>
+<li>リバーブを有効にするには[Reverb]をチェックします。time(残響時間)/level(残響レベル)/cutoff(反響しにくさ)を指定できます。</li>
+</ul>
+</li>
+<li>閉じるボタンをクリックします。</li>
+</ol>
+<p>XMPlayではWinampのDSPプラグインを使用できます。プラグインはXMPlayのインストールフォルダもしくはそのサブフォルダに置いてください。手順は次のとおり。</p>
+<ol>
+<li>XMPlayを起動します。</li>
+<li>[Options and stuff]のボタンをクリックします。</li>
+<li>表示されたダイアログの左のツリーから[Plugins]を選択します。</li>
+<li>右上の[Add]をクリックして[Winamp DSP wrapper]をリストに追加します。</li>
+<li>リストに追加された[Winamp DSP wrapper]を選択し左下の[Config]をクリックします。</li>
+<li>表示されたダイアログのリストから使用したいプラグインを選択します。</li>
+<li>[Config]をクリックしてプラグインを設定します。</li>
+<li>[Enabled]をチェックして閉じるボタンをクリックします。</li>
+<li>続けてプラグインを追加するなら手順4に戻ります。
+プラグインの順序は[Up/Down]で変更できます。[Remove]で追加したプラグインを削除できます。</li>
+<li>閉じるボタンをクリックします。</li>
+</ol>
+<h3 id="foobar2000のdsp">foobar2000のDSP</h3>
+<p><a href="http://www.foobar2000.org/">foobar2000</a>はプラグインを追加して機能を拡張することができます。ここではイコライザ・コンプレッサ・リバーブのプラグインとして<a href="http://www.foobar2000.org/components/view/foo_dsp_xgeq">Graphic Equalizer</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_sqrcomp">SqrSoft Compressor</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_effect">Effect DSP</a>を追加します。DSPの設定方法は次のとおり。</p>
+<ol>
+<li>foobar2000を起動します。</li>
+<li>メニューから [File] &gt; [Preference] を選択します。</li>
+<li>表示されたダイアログの左のツリーから[Components]を選択します。</li>
+<li>[Install]&hellip;をクリックして上記のプラグインをインストールします。インストールが完了したらfoobar2000を再起動します。</li>
+<li>左のツリーから [Playback] &gt; [DSP Manager] を選択します。</li>
+<li>右の[Available DSPs]のリストから有効にしたいDSPの＋をクリックすると[Active DSPs]のリストにプラグインが追加されます。ここではSqrSoft Compressor, Graphic Equalizer, Reverbをこの順で有効にします。順番はドラッグで変更できます。×をクリックするとリストからプラグインが削除されます。</li>
+<li>左の[Active DSPs]のリストからそれぞれのDSPの&hellip;をクリックします。各DSPの設定ダイアログが表示されるので逐一設定します。</li>
+<li>[OK]をクリックします。</li>
+</ol>
+<p><a href="https://foobar2000.xrea.jp/?DSP#j28af2f4">Winamp DSP Bridge</a>を追加するとWinampのDSPプラグインを使用できます。</p>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>
