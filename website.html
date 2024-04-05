@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ウェブサイト開設の手引き</title>
+<link rel="stylesheet" href="https://user040404.github.io/normalize.css" />
+<link rel="stylesheet" href="https://user040404.github.io/style.css" />
+<link rel="icon" href="/favicon.png" />
+</head><body><header>
+<script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+<div id="date"><time datetime="2024-04-06 08:54:32">2024-04-06 08:54:32</time></div>
+<div><a href="https://user040404.github.io/">トップページ</a></div>
+<h1>ウェブサイト開設の手引き</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#hugoおよびgitのインストール">HugoおよびGitのインストール</a></li>
+    <li><a href="#ウェブサイトの作成">ウェブサイトの作成</a></li>
+    <li><a href="#ウェブサイトの公開">ウェブサイトの公開</a></li>
+  </ul>
+</nav>
+</header>
+<div id="content">
+<h2 id="はじめに">はじめに</h2>
+<p><a href="https://ja.wikipedia.org/wiki/Hugo_(%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2)">Hugo</a>で作成したウェブサイトを<a href="https://ja.wikipedia.org/wiki/GitHub">GitHub</a>で公開する方法を紹介します。Hugoは<a href="https://ja.wikipedia.org/wiki/Markdown">Markdown</a>ファイル(*.md)から<a href="https://ja.wikipedia.org/wiki/HyperText_Markup_Language">HTML</a>ファイル(*.html)を生成します。生成されたHTMLファイルをGitHubにアップロードすればウェブサイトが公開されます。HTMLファイルのアップロードには<a href="https://ja.wikipedia.org/wiki/Git">Git</a>を使用します。HugoおよびGitについては<a href="https://maku77.github.io/">天才まくまくノート</a>を参照してください。</p>
+<h2 id="hugoおよびgitのインストール">HugoおよびGitのインストール</h2>
+<p>HugoおよびGitはコマンドラインで操作するアプリケーションです。ここではコマンドラインの環境としてMSYS2を使用します。MSYS2については<a href="/unix.html">Unixの基本操作</a>を参照してください。</p>
+<p>MSYS2からHugoおよびGitをインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S hugo git</span></span></code></pre></div></div>
+</figure>
+<h2 id="ウェブサイトの作成">ウェブサイトの作成</h2>
+<p><a href="https://maku77.github.io/p/bt5enw6/">Hugoで新規のWebサイトを作成する</a>の説明に従ってウェブサイトを作成します。</p>
+<p>最初にウェブサイトの雛形を作成します。ウェブサイトを構成するファイルがプロジェクトのディレクトリ(ここでは~/my_site)に生成されます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd
+</span></span><span style="display:flex;"><span># hugo new site my_site
+</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site was created in D:\Applications\MSYS2\App\msys64\home\user\my_site.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Just a few more steps...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Change the current directory to D:\Applications\MSYS2\App\msys64\home\user\my_site.
+</span></span><span style="display:flex;"><span>2. Create or install a theme:
+</span></span><span style="display:flex;"><span>   - Create a new theme with the command &#34;hugo new theme &lt;THEMENAME&gt;&#34;
+</span></span><span style="display:flex;"><span>   - Install a theme from https://themes.gohugo.io/
+</span></span><span style="display:flex;"><span>3. Edit hugo.toml, setting the &#34;theme&#34; property to the theme name.
+</span></span><span style="display:flex;"><span>4. Create new content with the command &#34;hugo new content &lt;SECTIONNAME&gt;\&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;.
+</span></span><span style="display:flex;"><span>5. Start the embedded web server with the command &#34;hugo server --buildDrafts&#34;.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>See documentation at https://gohugo.io/.</span></span></code></pre></div></div>
+</figure>
+<p>表示された英語の手順に従って作業を進めていきます。</p>
+<p>プロジェクトのディレクトリに移動します。Hugoのコマンドはプロジェクトのトップディレクトリで実行するようにしてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd my_site</span></span></code></pre></div></div>
+</figure>
+<p>Hugoのウェブサイトにはテーマを指定する必要があります。既存のテーマを利用することもできますが、ここでは新たにテーマmy_themeを作成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo new theme my_theme</span></span></code></pre></div></div>
+</figure>
+<p>作成したテーマを設定ファイルhugo.tomlで指定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo &#34;theme = &#39;my_theme&#39;&#34; &gt;&gt;hugo.toml</span></span></code></pre></div></div>
+</figure>
+<p>記事ファイルhello.mdを作成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo new content hello.md</span></span></code></pre></div></div>
+</figure>
+<p>contentディレクトリにhello.mdが生成されていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls content</span></span></code></pre></div></div>
+</figure>
+<p>hello.mdをテキストエディタで開くと、ヘッダの部分にタイトルや日付が記述されているのが確認できます。ヘッダの下に記事の本文を書いて保存します。Markdownの記述方法については<a href="https://qiita.com/kamorits/items/6f342da395ad57468ae3#%E7%94%BB%E5%83%8F%E3%81%AE%E6%8C%BF%E5%85%A5">Qiita マークダウン記法 一覧表・チートシート</a>を参照してください。</p>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">content/hello.md</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>title = &#39;Hello&#39;
+</span></span><span style="display:flex;"><span>date = 2024-04-04T04:04:04+09:00
+</span></span><span style="display:flex;"><span>draft = true
+</span></span><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>Hello!</span></span></code></pre></div></div>
+</figure>
+<p>Hugoのウェブサーバを起動します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo server --buildDrafts</span></span></code></pre></div></div>
+</figure>
+<p>ウェブブラウザからhttp://localhost:1313/にアクセスするとウェブサイトのトップページが表示され、作成した記事へのリンクが確認できます。</p>
+<p>通常はウェブサーバをバックグラウンドで起動させた状態で記事の作成および更新を行います。contentディレクトリの内容が変更されるとウェブブラウザが自動的にリロードされます。</p>
+<p>コマンドhugoを入力するとpublicディレクトリにウェブサイトのHTMLファイルが生成されます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo
+</span></span><span style="display:flex;"><span>Start building sites …
+</span></span><span style="display:flex;"><span>hugo v0.121.2-6d5b44305eaa9d0a157946492a6f319da38de154 windows/amd64 BuildDate=2024-01-05T12:21:15Z VendorInfo=gohugoio
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                   | EN
+</span></span><span style="display:flex;"><span>-------------------+-----
+</span></span><span style="display:flex;"><span>  Pages            | 17
+</span></span><span style="display:flex;"><span>  Paginator pages  |  0
+</span></span><span style="display:flex;"><span>  Non-page files   |  1
+</span></span><span style="display:flex;"><span>  Static files     |  1
+</span></span><span style="display:flex;"><span>  Processed images |  0
+</span></span><span style="display:flex;"><span>  Aliases          |  0
+</span></span><span style="display:flex;"><span>  Sitemaps         |  1
+</span></span><span style="display:flex;"><span>  Cleaned          |  0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Total in 175 ms</span></span></code></pre></div></div>
+</figure>
+<h2 id="ウェブサイトの公開">ウェブサイトの公開</h2>
+<p>ウェブサイトを公開するにはGitHubのアカウントを取得する必要があります。ユーザ名とパスワードを指定すればアカウントを作成できます。当然ですが他の人が使用しているユーザ名を使用することはできません。アカウントが取得できたらログインしてuser_name.github.ioという名前のリポジトリを作成します。user_nameは自身のユーザ名に置き換えてください。このリポジトリのmainブランチにウェブサイトのコンテンツを置くとアドレスhttps://user_name.github.io/でアクセスすることができます。</p>
+<p>GitHubのリポジトリ(以下リモートリポジトリ)にコンテンツをアップロードするにはローカルリポジトリが必要です。プロジェクトmy_siteのpublicディレクトリにローカルリポジトリを作成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd ~/my_site/public
+</span></span><span style="display:flex;"><span># git init</span></span></code></pre></div></div>
+</figure>
+<p>このローカルリポジトリで使用するユーザ名およびメールアドレスを設定します。USER_NAMEおよびUSER_EMAILは自身のユーザ名とメールアドレスに置き換えてください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git config user.name USER_NAME
+</span></span><span style="display:flex;"><span># git config user.email USER_EMAIL</span></span></code></pre></div></div>
+</figure>
+<p>このローカルリポジトリの内容をリモートリポジトリにプッシュすればアップロードすることができます。</p>
+<p>アップロードのプロトコルには公開鍵認証のSSHを使用するのでその鍵が必要です。~/.sshに既に鍵が存在する場合はそれを使用することができます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls ~/.ssh</span></span></code></pre></div></div>
+</figure>
+<p>鍵が存在しない場合は鍵を作成します。鍵のファイル名とパスフレーズ(鍵のパスワード)を聞かれますが、何も入力せずにそのままEnterキーを押してください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ssh-keygen -t rsa</span></span></code></pre></div></div>
+</figure>
+<p>秘密鍵(~/.ssh/id_rsa)と公開鍵(~/.ssh/id_rsa.pub)が生成されていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls ~/.ssh</span></span></code></pre></div></div>
+</figure>
+<p>公開鍵をクリップボードにコピーします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># clip &lt;~/.ssh/id_rsa.pub</span></span></code></pre></div></div>
+</figure>
+<p>GitHubのアカウントにログインして公開鍵を登録します。右上隅にあるプロファイルの画像をクリックして [Settings] &gt; [SSH and GPG keys] の[New SSH key]をクリックします。[Key type]のリストから[Authentication Key]を選択して、先ほどコピーした公開鍵を[Key]に貼り付けたら[Add SSH key]をクリックします。[Title]は空欄のままで構いません。</p>
+<p>GitHubにSSHで接続できることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ssh -T git@github.com</span></span></code></pre></div></div>
+</figure>
+<p>リモートリポジトリをoriginとして参照できるようにします。user_nameは自身のユーザ名に置き換えてください。addをrmに置き換えれば削除することになります。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git remote add origin git@github.com:user_name/user_name.github.io.git</span></span></code></pre></div></div>
+</figure>
+<p>リモートリポジトリが正しく設定されていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git remote -v</span></span></code></pre></div></div>
+</figure>
+<p>コンテンツをアップロードします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git add .
+</span></span><span style="display:flex;"><span># git commit -m &#39;first commit&#39;
+</span></span><span style="display:flex;"><span># git push -u origin main</span></span></code></pre></div></div>
+</figure>
+
+
+    </div><footer>
+<div>Powered by <a href="https://gohugo.io/">Hugo</a></div>
+<div><a target="_blank" href="https://www.amazon.co.jp/b?_encoding=UTF8&tag=foo23-22&linkCode=ur2&linkId=5c65ecd6930af79eab6fbe1abe8e5cb1&camp=247&creative=1211&node=2127209051">Amazonのパソコン・周辺機器</a></div>
+</footer>
+</body>
+</html>
