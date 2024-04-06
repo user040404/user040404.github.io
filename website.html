@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2024-04-06 13:57:33">2024-04-06 13:57:33</time></div>
+<div id="date"><time datetime="2024-04-06 14:12:42">2024-04-06 14:12:42</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -105,34 +105,35 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo new content hello.md</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo new post/hello.md</span></span></code></pre></div></div>
 </figure>
 <p>contentディレクトリにhello.mdが生成されていることを確認します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls content</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls content/post</span></span></code></pre></div></div>
 </figure>
-<p>hello.mdをテキストエディタで開くと、ヘッダの部分にタイトルや日付が記述されているのが確認できます。ヘッダの下に記事の本文を書いて保存します。Markdownの記述方法については<a href="https://qiita.com/kamorits/items/6f342da395ad57468ae3#%E7%94%BB%E5%83%8F%E3%81%AE%E6%8C%BF%E5%85%A5">Qiita マークダウン記法 一覧表・チートシート</a>を参照してください。</p>
+<p>hello.mdをテキストエディタで開くと、ヘッダの部分にタイトルや日付が記述されているのが確認できます。ドラフトの指定は解除しておきます。</p>
 
 
 <figure class="xCodeBlock">
-<figcaption class="xCodeBlock_title">content/hello.md</figcaption>
+<figcaption class="xCodeBlock_title">content/post/hello.md</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+++
 </span></span><span style="display:flex;"><span>title = &#39;Hello&#39;
 </span></span><span style="display:flex;"><span>date = 2024-04-04T04:04:04+09:00
-</span></span><span style="display:flex;"><span>draft = true
+</span></span><span style="display:flex;"><span>draft = false
 </span></span><span style="display:flex;"><span>+++
 </span></span><span style="display:flex;"><span>Hello!</span></span></code></pre></div></div>
 </figure>
+<p>ヘッダの下に記事の本文を書いて保存します。Markdownの記述方法については<a href="https://qiita.com/kamorits/items/6f342da395ad57468ae3#%E7%94%BB%E5%83%8F%E3%81%AE%E6%8C%BF%E5%85%A5">Qiita マークダウン記法 一覧表・チートシート</a>を参照してください。</p>
 <h3 id="ウェブサーバの起動">ウェブサーバの起動</h3>
 <p>Hugoのウェブサーバを起動します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo server --buildDrafts</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo server</span></span></code></pre></div></div>
 </figure>
 <p>ウェブブラウザからhttp://localhost:1313/にアクセスするとウェブサイトのトップページが表示され、作成した記事へのリンクが確認できます。</p>
 <p>通常はウェブサーバをバックグラウンドで起動させた状態で記事の作成および更新を行います。contentディレクトリの内容が変更されるとウェブブラウザが自動的にリロードされます。</p>
