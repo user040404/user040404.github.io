@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2024-04-06 16:23:32">2024-04-06 16:23:32</time></div>
+<div id="date"><time datetime="2024-04-07 05:23:52">2024-04-07 05:23:52</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -37,6 +37,8 @@
         <li><a href="#ウェブサイトのアップロード">ウェブサイトのアップロード</a></li>
       </ul>
     </li>
+    <li><a href="#更新日時の取得">更新日時の取得</a></li>
+    <li><a href="#ウェブサイトの更新">ウェブサイトの更新</a></li>
   </ul>
 </nav>
 </header>
@@ -179,6 +181,7 @@
 <h3 id="githubアカウントの取得">GitHubアカウントの取得</h3>
 <p>ウェブサイトを公開するにはGitHubのアカウントを取得する必要があります。ユーザ名とパスワードを指定すればアカウントを作成できます。当然ですが他の人が使用しているユーザ名を使用することはできません。以後user_nameは自身のユーザ名に置き換えてください。</p>
 <h3 id="sshの設定">SSHの設定</h3>
+<p><a href="https://ja.wikipedia.org/wiki/Secure_Shell">SSH</a>はサーバとやりとりするデータを暗号化する仕組みです。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?ssh">sshコマンドの使い方: UNIX/Linuxの部屋</a>を参照してください。</p>
 <p>アップロードのプロトコルには公開鍵認証のSSHを使用するのでその鍵が必要です。~/.sshに既に鍵が存在する場合はそれを使用することができます。</p>
 
 
@@ -193,7 +196,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ssh-keygen -t rsa</span></span></code></pre></div></div>
 </figure>
-<p>秘密鍵(~/.ssh/id_rsa)と公開鍵(~/.ssh/id_rsa.pub)が生成されていることを確認します。</p>
+<p>秘密鍵~/.ssh/id_rsaと公開鍵~/.ssh/id_rsa.pubが生成されていることを確認します。</p>
 
 
 <figure class="xCodeBlock">
@@ -236,13 +239,14 @@
 </span></span><span style="display:flex;"><span># git config user.email USER_EMAIL</span></span></code></pre></div></div>
 </figure>
 <h3 id="ブランチ名の変更">ブランチ名の変更</h3>
-<p>ローカルリポジトリで使用するブランチ名をmasterからmainに変更します。</p>
+<p>ローカルリポジトリで使用するブランチをmasterからmainに変更します。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git branch -M main</span></span></code></pre></div></div>
 </figure>
+<p>Gitのデフォルトブランチはmasterですが、差別的な表現ということでGitHubではmasterからmainに変更されたようです。</p>
 <h3 id="リモートリポジトリの登録">リモートリポジトリの登録</h3>
 <p>リモートリポジトリをoriginとして参照できるようにします。</p>
 
@@ -251,7 +255,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git remote add origin git@github.com:user_name/user_name.github.io.git</span></span></code></pre></div></div>
 </figure>
-<p>変更するにはgit remote set-urlとします。git remote rmとすれば削除できます。</p>
+<p>変更するにはgit remote set-url originとします。git remote rm originとすれば削除できます。</p>
 <p>リモートリポジトリが正しく設定されていることを確認します。</p>
 
 
@@ -270,7 +274,7 @@
 </span></span><span style="display:flex;"><span># git commit -m &#39;first commit&#39;
 </span></span><span style="display:flex;"><span># git push -u origin main</span></span></code></pre></div></div>
 </figure>
-<p>ウェブブラウザからリモートリポジトリにアクセスしてREADMEがコミットされていることを確認します。リモートリポジトリのmainブランチにコンテンツを置くとアドレスhttps://user_name.github.io/でアクセスすることができます。</p>
+<p>ウェブブラウザからリモートリポジトリにアクセスしてREADMEがコミットされていることを確認します。</p>
 <p>最後に入力したコマンドgit push -u origin mainは-uオプションを付加したことにより以後git pushとして実行できるようになります。</p>
 <h3 id="ウェブサイトのアップロード">ウェブサイトのアップロード</h3>
 <p>コンテンツをローカルリポジトリにコミットしてリモートリポジトリにプッシュします。</p>
@@ -281,6 +285,85 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git add .
 </span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;
 </span></span><span style="display:flex;"><span># git push</span></span></code></pre></div></div>
+</figure>
+<p>リモートリポジトリのmainブランチにコンテンツを置くとアドレスhttps://user_name.github.io/でアクセスすることができます。</p>
+<h2 id="更新日時の取得">更新日時の取得</h2>
+<p>HugoにはGitのログからファイルの更新日時を取得する機能があります。この機能を使用してウェブページのフッタに更新日時を表示してみます。</p>
+<p>ファイルの更新日時を取得するにはプロジェクトのトップディレクトリ(ここでは~/my_site)にリポジトリを作成する必要があります。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd ~/my_site
+</span></span><span style="display:flex;"><span># git init</span></span></code></pre></div></div>
+</figure>
+<p>このリポジトリはpublicディレクトリのリポジトリには影響しません。publicディレクトリはこのリポジトリの追跡対象にならないということです。</p>
+<p>contentディレクトリのファイルだけを追跡対象にしたいので、その他のファイルおよびディレクトリを追跡対象から外します。~/my_site/.gitignoreに以下を記述します。</p>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/my_site/.gitignore</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>archetypes/
+</span></span><span style="display:flex;"><span>data/
+</span></span><span style="display:flex;"><span>layouts/
+</span></span><span style="display:flex;"><span>public/
+</span></span><span style="display:flex;"><span>resources/
+</span></span><span style="display:flex;"><span>static/
+</span></span><span style="display:flex;"><span>themes/
+</span></span><span style="display:flex;"><span>hugo.toml</span></span></code></pre></div></div>
+</figure>
+<p>ファイルの更新日時を取得するために以下を設定ファイル~/my_site/hugo.tomlに追加します。</p>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/my_site/hugo.toml</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>enableGitInfo = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[frontmatter]
+</span></span><span style="display:flex;"><span>  date = [&#34;:fileModTime&#34;]</span></span></code></pre></div></div>
+</figure>
+<p>フッタのテンプレート~/my_site/layouts/partials/footer.htmlに更新日時を挿入します。</p>
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/my_site/layouts/partials/footer.html</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>&lt;div id=&#34;date&#34;&gt;&lt;time datetime=&#34;{{ .Lastmod.Format &#34;2006-01-02 15:04:05&#34; }}&#34;&gt;{{ .Lastmod.Format ( .Site.Params.dateformat | default &#34;2006-01-02 15:04:05&#34;) }}&lt;/time&gt;&lt;/div&gt;</span></span></code></pre></div></div>
+</figure>
+<p>リポジトリにコミットしてログを生成します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd ~/my_site
+</span></span><span style="display:flex;"><span># git add .
+</span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;</span></span></code></pre></div></div>
+</figure>
+<p>ウェブサーバを起動してウェブブラウザで記事のページを表示してみてください。フッタに更新日時が表示されているはずです。</p>
+<h2 id="ウェブサイトの更新">ウェブサイトの更新</h2>
+<p>以下のようなシェルスクリプトを使用すればコマンド1つでウェブサイトの更新作業を終わらせることができます。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>PROJECT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/my_site&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 更新日時を取得するためにGitのログを生成</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">${</span>PROJECT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツを出力</span>
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツをアップロード</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">${</span>PROJECT<span style="color:#e6db74">}</span>/public
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span></span></span></code></pre></div></div>
 </figure>
 
 
