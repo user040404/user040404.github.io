@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2024-04-07 05:23:52">2024-04-07 05:23:52</time></div>
+<div id="date"><time datetime="2024-04-08 18:03:50">2024-04-08 18:03:50</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -120,7 +120,7 @@
 
 
 <figure class="xCodeBlock">
-<figcaption class="xCodeBlock_title">content/posts/hello.md</figcaption>
+<figcaption class="xCodeBlock_title">~/my_site/content/posts/hello.md</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+++
 </span></span><span style="display:flex;"><span>title = &#39;Hello&#39;
 </span></span><span style="display:flex;"><span>date = 2024-04-04T04:04:04+09:00
@@ -137,7 +137,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># hugo server</span></span></code></pre></div></div>
 </figure>
-<p>ウェブブラウザからhttp://localhost:1313/にアクセスするとウェブサイトのトップページが表示され、作成した記事へのリンクが確認できます。</p>
+<p>ウェブブラウザからhttp://localhost:1313/にアクセスするとウェブサイトのトップページが表示され、作成した記事のリンクをクリックすると記事が表示されます。</p>
 <p>通常はウェブサーバをバックグラウンドで起動させた状態で記事の作成および更新を行います。contentディレクトリの内容が変更されるとウェブブラウザが自動的にリロードされます。</p>
 <h3 id="htmlファイルの生成">HTMLファイルの生成</h3>
 <p>コマンドhugoを入力するとpublicディレクトリにウェブサイトのHTMLファイルが生成されます。</p>
@@ -163,7 +163,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Total in 175 ms</span></span></code></pre></div></div>
 </figure>
-<p>以下のように記事ファイルを作成するとpublic/foo/index.htmlとなってしまいます。</p>
+<p>以下のように記事ファイルを作成するとpublic/foo/index.htmlと出力されてしまいます。</p>
 
 
 <figure class="xCodeBlock">
@@ -248,7 +248,7 @@
 </figure>
 <p>Gitのデフォルトブランチはmasterですが、差別的な表現ということでGitHubではmasterからmainに変更されたようです。</p>
 <h3 id="リモートリポジトリの登録">リモートリポジトリの登録</h3>
-<p>リモートリポジトリをoriginとして参照できるようにします。</p>
+<p>リモートリポジトリをoriginとして参照できるようにします。リモートリポジトリのアドレスはgit@github.com:user_name/user_name.github.io.gitです。</p>
 
 
 <figure class="xCodeBlock">
@@ -286,7 +286,7 @@
 </span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;
 </span></span><span style="display:flex;"><span># git push</span></span></code></pre></div></div>
 </figure>
-<p>リモートリポジトリのmainブランチにコンテンツを置くとアドレスhttps://user_name.github.io/でアクセスすることができます。</p>
+<p>リモートリポジトリのmainブランチにコンテンツを置いておくとウェブブラウザからhttps://user_name.github.io/でアクセスすることができます。</p>
 <h2 id="更新日時の取得">更新日時の取得</h2>
 <p>HugoにはGitのログからファイルの更新日時を取得する機能があります。この機能を使用してウェブページのフッタに更新日時を表示してみます。</p>
 <p>ファイルの更新日時を取得するにはプロジェクトのトップディレクトリ(ここでは~/my_site)にリポジトリを作成する必要があります。</p>
