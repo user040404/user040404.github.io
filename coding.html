@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>コーディングスタイルの例</title>
-<link rel="stylesheet" href="https://user040404.github.io/normalize.css" />
-<link rel="stylesheet" href="https://user040404.github.io/style.css" />
+<link rel="stylesheet" href="http://localhost:1313/normalize.css" />
+<link rel="stylesheet" href="http://localhost:1313/style.css" />
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
 <div id="date"><time datetime="2024-03-23 05:36:32">2024-03-23 05:36:32</time></div>
-<div><a href="https://user040404.github.io/">トップページ</a></div>
+<div><a href="http://localhost:1313/">トップページ</a></div>
 <h1>コーディングスタイルの例</h1>
 <nav id="TableOfContents">
   <ul>
@@ -55,361 +55,361 @@
 <p>識別子には意味のある英単語をできれば3語以上使用し、それぞれの単語はできるだけ省略しないようにします。</p>
 <p>単語の区切り方には以下のようなものがあります。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>スネークケース(snake_case)</td>
-<td>それぞれの単語を&quot;_&quot;(アンダースコア)で区切る(すべて小文字)</td>
-</tr>
-<tr>
-<td>アッパースネークケース(UPPER_SNAKE_CASE)</td>
-<td>それぞれの単語を&quot;_&quot;(アンダースコア)で区切る(すべて大文字)</td>
-</tr>
-<tr>
-<td>キャメルケース(camelCase)</td>
-<td>それぞれの単語の頭文字を大文字にする(先頭は小文字)</td>
-</tr>
-<tr>
-<td>パスカルケース(PascalCase)</td>
-<td>それぞれの単語の頭文字を大文字にする(先頭は大文字)</td>
-</tr>
-<tr>
-<td>ケバブケース(kebab-case)</td>
-<td>それぞれの単語を&quot;-&quot;(ハイフン)で区切る(すべて小文字)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>スネークケース(snake_case)</td>
+          <td>それぞれの単語を&quot;_&quot;(アンダースコア)で区切る(すべて小文字)</td>
+      </tr>
+      <tr>
+          <td>アッパースネークケース(UPPER_SNAKE_CASE)</td>
+          <td>それぞれの単語を&quot;_&quot;(アンダースコア)で区切る(すべて大文字)</td>
+      </tr>
+      <tr>
+          <td>キャメルケース(camelCase)</td>
+          <td>それぞれの単語の頭文字を大文字にする(先頭は小文字)</td>
+      </tr>
+      <tr>
+          <td>パスカルケース(PascalCase)</td>
+          <td>それぞれの単語の頭文字を大文字にする(先頭は大文字)</td>
+      </tr>
+      <tr>
+          <td>ケバブケース(kebab-case)</td>
+          <td>それぞれの単語を&quot;-&quot;(ハイフン)で区切る(すべて小文字)</td>
+      </tr>
+  </tbody>
 </table>
 <p>識別子の種類に応じて以下のように単語の区切り方を決めておきます。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>スネークケース(snake_case)で命名するもの</td>
-<td>ファイル・変数・名前空間</td>
-</tr>
-<tr>
-<td>パスカルケース(PascalCase)で命名するもの</td>
-<td>クラス・構造体(共用体)・関数・定義した型・列挙型</td>
-</tr>
-<tr>
-<td>アッパースネークケース(UPPER_SNAKE_CASE)で命名するもの</td>
-<td>記号定数・列挙型のメンバ・マクロ</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>スネークケース(snake_case)で命名するもの</td>
+          <td>ファイル・変数・名前空間</td>
+      </tr>
+      <tr>
+          <td>パスカルケース(PascalCase)で命名するもの</td>
+          <td>クラス・構造体(共用体)・関数・定義した型・列挙型</td>
+      </tr>
+      <tr>
+          <td>アッパースネークケース(UPPER_SNAKE_CASE)で命名するもの</td>
+          <td>記号定数・列挙型のメンバ・マクロ</td>
+      </tr>
+  </tbody>
 </table>
 <p>コメントに頼らなくても名前によって変数の役割や関数の機能が分かるようにします。関数名は&quot;動詞+目的語&quot;の形にします。ループのインデックスなど狭い範囲で使用する変数の名前はできるだけ短くして目立たないようにします。</p>
 <p>プログラム全体で使用する定数には、コードが読みやすくなるように適切な名前をつけます。名前のつけられた定数を記号定数といいます。記号定数を使用することによってコードの可読性が向上するだけでなくメンテナンスも容易になります。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>よく使用される識別子には以下のようなものがあります。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>識別子</td>
-<td>意味</td>
-<td>備考</td>
-</tr>
-<tr>
-<td>i, j, k</td>
-<td>整数</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>n, num</td>
-<td>整数</td>
-<td>number</td>
-</tr>
-<tr>
-<td>c, ch</td>
-<td>文字</td>
-<td>character</td>
-</tr>
-<tr>
-<td>s, str</td>
-<td>文字列</td>
-<td>string</td>
-</tr>
-<tr>
-<td>buf, buff</td>
-<td>バッファ</td>
-<td>buffer</td>
-</tr>
-<tr>
-<td>tmp, temp</td>
-<td>一時的</td>
-<td>temporary</td>
-</tr>
-<tr>
-<td>func</td>
-<td>関数</td>
-<td>function</td>
-</tr>
-<tr>
-<td>arg</td>
-<td>引数</td>
-<td>argument</td>
-</tr>
-<tr>
-<td>r</td>
-<td>半径</td>
-<td>radius</td>
-</tr>
-<tr>
-<td>rect</td>
-<td>長方形</td>
-<td>rectangle</td>
-</tr>
-<tr>
-<td>x</td>
-<td>x座標</td>
-<td></td>
-</tr>
-<tr>
-<td>y</td>
-<td>y座標</td>
-<td></td>
-</tr>
-<tr>
-<td>cx</td>
-<td>幅</td>
-<td></td>
-</tr>
-<tr>
-<td>cy</td>
-<td>高さ</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>識別子</td>
+          <td>意味</td>
+          <td>備考</td>
+      </tr>
+      <tr>
+          <td>i, j, k</td>
+          <td>整数</td>
+          <td>integer</td>
+      </tr>
+      <tr>
+          <td>n, num</td>
+          <td>整数</td>
+          <td>number</td>
+      </tr>
+      <tr>
+          <td>c, ch</td>
+          <td>文字</td>
+          <td>character</td>
+      </tr>
+      <tr>
+          <td>s, str</td>
+          <td>文字列</td>
+          <td>string</td>
+      </tr>
+      <tr>
+          <td>buf, buff</td>
+          <td>バッファ</td>
+          <td>buffer</td>
+      </tr>
+      <tr>
+          <td>tmp, temp</td>
+          <td>一時的</td>
+          <td>temporary</td>
+      </tr>
+      <tr>
+          <td>func</td>
+          <td>関数</td>
+          <td>function</td>
+      </tr>
+      <tr>
+          <td>arg</td>
+          <td>引数</td>
+          <td>argument</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>半径</td>
+          <td>radius</td>
+      </tr>
+      <tr>
+          <td>rect</td>
+          <td>長方形</td>
+          <td>rectangle</td>
+      </tr>
+      <tr>
+          <td>x</td>
+          <td>x座標</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>y</td>
+          <td>y座標</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>cx</td>
+          <td>幅</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>cy</td>
+          <td>高さ</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>クラス名および関数名にはそのクラスや関数の特徴に応じて以下のようなプレフィクスをつけます。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>種類</td>
-<td>プレフィクス</td>
-<td>備考</td>
-</tr>
-<tr>
-<td>テンプレート</td>
-<td>t</td>
-<td>template</td>
-</tr>
-<tr>
-<td>インターフェイス</td>
-<td>i</td>
-<td>interface</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>種類</td>
+          <td>プレフィクス</td>
+          <td>備考</td>
+      </tr>
+      <tr>
+          <td>テンプレート</td>
+          <td>t</td>
+          <td>template</td>
+      </tr>
+      <tr>
+          <td>インターフェイス</td>
+          <td>i</td>
+          <td>interface</td>
+      </tr>
+  </tbody>
 </table>
 <p>クラス型の変数名にはそのクラスの種類に応じて以下のようなプレフィクスをつけます。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>クラス</td>
-<td>プレフィクス</td>
-</tr>
-<tr>
-<td>string</td>
-<td>str</td>
-</tr>
-<tr>
-<td>iterator</td>
-<td>it</td>
-</tr>
-<tr>
-<td>vector</td>
-<td>vec</td>
-</tr>
-<tr>
-<td>list</td>
-<td>list</td>
-</tr>
-<tr>
-<td>map</td>
-<td>map</td>
-</tr>
-<tr>
-<td>pair</td>
-<td>pair</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>クラス</td>
+          <td>プレフィクス</td>
+      </tr>
+      <tr>
+          <td>string</td>
+          <td>str</td>
+      </tr>
+      <tr>
+          <td>iterator</td>
+          <td>it</td>
+      </tr>
+      <tr>
+          <td>vector</td>
+          <td>vec</td>
+      </tr>
+      <tr>
+          <td>list</td>
+          <td>list</td>
+      </tr>
+      <tr>
+          <td>map</td>
+          <td>map</td>
+      </tr>
+      <tr>
+          <td>pair</td>
+          <td>pair</td>
+      </tr>
+  </tbody>
 </table>
 <p>変数名にはその変数のスコープや種類に応じて以下のようなプレフィクスをつけます。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>種類</td>
-<td>プレフィクス</td>
-<td>備考</td>
-</tr>
-<tr>
-<td>メンバ変数</td>
-<td>m_</td>
-<td>member</td>
-</tr>
-<tr>
-<td>定数のメンバ変数</td>
-<td>mc_ もしくは m_k</td>
-<td>member constant</td>
-</tr>
-<tr>
-<td>定数(const)</td>
-<td>c_ もしくは k</td>
-<td>constant</td>
-</tr>
-<tr>
-<td>静的変数(static)</td>
-<td>s_</td>
-<td>static</td>
-</tr>
-<tr>
-<td>グローバル変数</td>
-<td>g_</td>
-<td>global</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>種類</td>
+          <td>プレフィクス</td>
+          <td>備考</td>
+      </tr>
+      <tr>
+          <td>メンバ変数</td>
+          <td>m_</td>
+          <td>member</td>
+      </tr>
+      <tr>
+          <td>定数のメンバ変数</td>
+          <td>mc_ もしくは m_k</td>
+          <td>member constant</td>
+      </tr>
+      <tr>
+          <td>定数(const)</td>
+          <td>c_ もしくは k</td>
+          <td>constant</td>
+      </tr>
+      <tr>
+          <td>静的変数(static)</td>
+          <td>s_</td>
+          <td>static</td>
+      </tr>
+      <tr>
+          <td>グローバル変数</td>
+          <td>g_</td>
+          <td>global</td>
+      </tr>
+  </tbody>
 </table>
 <p>変数名にはその変数の型に応じて(関数名にはその関数の戻り値の型に応じて)以下のようなプレフィクスをつけます。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>型</td>
-<td>プレフィクス</td>
-<td>備考</td>
-</tr>
-<tr>
-<td>class</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>struct</td>
-<td>st</td>
-<td>structure</td>
-</tr>
-<tr>
-<td>union</td>
-<td>uni</td>
-<td></td>
-</tr>
-<tr>
-<td>enum</td>
-<td>e</td>
-<td>enumerate</td>
-</tr>
-<tr>
-<td>bool</td>
-<td>b</td>
-<td></td>
-</tr>
-<tr>
-<td>char</td>
-<td>c</td>
-<td>character</td>
-</tr>
-<tr>
-<td>unsigned</td>
-<td>u</td>
-<td></td>
-</tr>
-<tr>
-<td>short</td>
-<td>s</td>
-<td></td>
-</tr>
-<tr>
-<td>long</td>
-<td>l</td>
-<td></td>
-</tr>
-<tr>
-<td>int</td>
-<td>i</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>float</td>
-<td>f</td>
-<td></td>
-</tr>
-<tr>
-<td>double</td>
-<td>d</td>
-<td></td>
-</tr>
-<tr>
-<td>[ ] (配列)</td>
-<td>a</td>
-<td>array</td>
-</tr>
-<tr>
-<td>&amp; (参照)</td>
-<td>r</td>
-<td>reference</td>
-</tr>
-<tr>
-<td>* (ポインタ)</td>
-<td>p</td>
-<td>pointer</td>
-</tr>
-<tr>
-<td>*func( ) (関数ポインタ)</td>
-<td>pf</td>
-<td>pointer of function</td>
-</tr>
-<tr>
-<td>テンプレート引数</td>
-<td>t</td>
-<td>template</td>
-</tr>
-<tr>
-<td>定義した型</td>
-<td>tn</td>
-<td>typename</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>型</td>
+          <td>プレフィクス</td>
+          <td>備考</td>
+      </tr>
+      <tr>
+          <td>class</td>
+          <td>なし</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>struct</td>
+          <td>st</td>
+          <td>structure</td>
+      </tr>
+      <tr>
+          <td>union</td>
+          <td>uni</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>enum</td>
+          <td>e</td>
+          <td>enumerate</td>
+      </tr>
+      <tr>
+          <td>bool</td>
+          <td>b</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>char</td>
+          <td>c</td>
+          <td>character</td>
+      </tr>
+      <tr>
+          <td>unsigned</td>
+          <td>u</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>short</td>
+          <td>s</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>long</td>
+          <td>l</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>int</td>
+          <td>i</td>
+          <td>integer</td>
+      </tr>
+      <tr>
+          <td>float</td>
+          <td>f</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>double</td>
+          <td>d</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>[ ] (配列)</td>
+          <td>a</td>
+          <td>array</td>
+      </tr>
+      <tr>
+          <td>&amp; (参照)</td>
+          <td>r</td>
+          <td>reference</td>
+      </tr>
+      <tr>
+          <td>* (ポインタ)</td>
+          <td>p</td>
+          <td>pointer</td>
+      </tr>
+      <tr>
+          <td>*func( ) (関数ポインタ)</td>
+          <td>pf</td>
+          <td>pointer of function</td>
+      </tr>
+      <tr>
+          <td>テンプレート引数</td>
+          <td>t</td>
+          <td>template</td>
+      </tr>
+      <tr>
+          <td>定義した型</td>
+          <td>tn</td>
+          <td>typename</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="制御文">制御文</h2>
 <p>制御文は以下のようなスタイルで記述します。</p>

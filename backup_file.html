@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ファイルのバックアップ</title>
-<link rel="stylesheet" href="https://user040404.github.io/normalize.css" />
-<link rel="stylesheet" href="https://user040404.github.io/style.css" />
+<link rel="stylesheet" href="http://localhost:1313/normalize.css" />
+<link rel="stylesheet" href="http://localhost:1313/style.css" />
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
 <div id="date"><time datetime="2025-01-10 07:43:01">2025-01-10 07:43:01</time></div>
-<div><a href="https://user040404.github.io/">トップページ</a></div>
+<div><a href="http://localhost:1313/">トップページ</a></div>
 <h1>ファイルのバックアップ</h1>
 <nav id="TableOfContents">
   <ul>
@@ -31,90 +31,90 @@
 <h3 id="ディスクの構成">ディスクの構成</h3>
 <p>ここでは以下のようなディスクの構成を想定します。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内蔵のSSD</td>
-<td>CドライブおよびDドライブ</td>
-</tr>
-<tr>
-<td>外付けのハードディスク</td>
-<td>Eドライブ</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>内蔵のSSD</td>
+          <td>CドライブおよびDドライブ</td>
+      </tr>
+      <tr>
+          <td>外付けのハードディスク</td>
+          <td>Eドライブ</td>
+      </tr>
+  </tbody>
 </table>
 <p>CドライブにインストールしたWindowsの再インストールに備えてCドライブからDドライブにファイルをバックアップします。自身が作成・ダウンロードしたファイルはすべてDドライブに保存します。さらにSSDの故障に備えてハードディスク(DドライブからEドライブ)にもバックアップします。SSDにCドライブしかない場合は新たにDドライブを作成してください。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <h3 id="フォルダの構成">フォルダの構成</h3>
-<p>Dドライブには以下のようなフォルダを作成してファイルを分類整理します。プロファイルフォルダのフォルダにはDドライブのフォルダを割り当てておきます。やり方については<a href="http://windows.microsoft.com/ja-JP/windows7/Redirect-a-folder-to-a-new-location">フォルダーを新しい場所にリダイレクトする</a>を参照してください。</p>
+<p>Dドライブには以下のようなフォルダを作成してファイルを分類整理します。ホームフォルダのフォルダにはDドライブのフォルダを割り当てておきます。やり方については<a href="http://windows.microsoft.com/ja-JP/windows7/Redirect-a-folder-to-a-new-location">フォルダーを新しい場所にリダイレクトする</a>を参照してください。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Desktop (デスクトップ)</td>
-<td>デスクトップのショートカット</td>
-</tr>
-<tr>
-<td>Downloads (ダウンロード)</td>
-<td>デフォルトのダウンロード先</td>
-</tr>
-<tr>
-<td>Bookmarks (お気に入り)</td>
-<td>ブラウザのブックマーク</td>
-</tr>
-<tr>
-<td>Documents (ドキュメント)</td>
-<td>ドキュメントファイル</td>
-</tr>
-<tr>
-<td>Pictures (ピクチャ)</td>
-<td>イメージファイル</td>
-</tr>
-<tr>
-<td>Music (ミュージック)</td>
-<td>オーディオファイル</td>
-</tr>
-<tr>
-<td>Videos (ビデオ)</td>
-<td>ビデオファイル</td>
-</tr>
-<tr>
-<td>Applications</td>
-<td>ポータブルアプリケーションのインストール先</td>
-</tr>
-<tr>
-<td>System</td>
-<td>システムフォルダにインストールするプログラム・ライブラリ (*.exe, *.dll)</td>
-</tr>
-<tr>
-<td>AppData</td>
-<td>プロファイルフォルダに保存されている設定ファイル (*.ini, *.json)</td>
-</tr>
-<tr>
-<td>Archives</td>
-<td>ダウンロードしたファイル (*.7zip, *.zip, *.isoなど)</td>
-</tr>
-<tr>
-<td>Shortcuts</td>
-<td>アプリケーションのショートカット</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bookmarks (お気に入り)</td>
+          <td>ブラウザのブックマーク</td>
+      </tr>
+      <tr>
+          <td>Downloads (ダウンロード)</td>
+          <td>デフォルトのダウンロード先</td>
+      </tr>
+      <tr>
+          <td>Desktop (デスクトップ)</td>
+          <td>デスクトップのショートカット</td>
+      </tr>
+      <tr>
+          <td>Documents (ドキュメント)</td>
+          <td>ドキュメントファイル</td>
+      </tr>
+      <tr>
+          <td>Pictures (ピクチャ)</td>
+          <td>イメージファイル</td>
+      </tr>
+      <tr>
+          <td>Music (ミュージック)</td>
+          <td>オーディオファイル</td>
+      </tr>
+      <tr>
+          <td>Videos (ビデオ)</td>
+          <td>ビデオファイル</td>
+      </tr>
+      <tr>
+          <td>$HOME</td>
+          <td>ホームフォルダに保存されている設定ファイルなど (*.ini, *.json)</td>
+      </tr>
+      <tr>
+          <td>Applications</td>
+          <td>ポータブルアプリケーションのインストール先</td>
+      </tr>
+      <tr>
+          <td>Archives</td>
+          <td>ダウンロードしたファイル (*.7zip, *.zip, *.isoなど)</td>
+      </tr>
+      <tr>
+          <td>Shortcuts</td>
+          <td>アプリケーションのショートカット</td>
+      </tr>
+      <tr>
+          <td>System</td>
+          <td>システムフォルダにインストールするプログラム・ライブラリ (*.exe, *.dll)</td>
+      </tr>
+  </tbody>
 </table>
 <!-- [^2]: インストーラによってアプリケーションをインストールする場合はデフォルトのインストール先であるC\\Program Filesにインストールするようにしてください。他の場所にインストールすると問題を起こすことがあります。
 
 [^3]: このフォルダにパスを通してどのアプリケーションからも参照できるようにしておきます。パスの設定方法については[PATH を環境変数に設定する方法](http://support.microsoft.com/kb/880124/ja)を参照してください。 -->
 <h2 id="バックアップの実行">バックアップの実行</h2>
 <p>2つの異なるドライブやフォルダの内容を同期させることをミラーリングといいます。<a href="http://www2.biglobe.ne.jp/~sota/">Backup</a>や<a href="https://fastcopy.jp/">FastCopy</a>を使用すれば簡単にミラーリングすることができます。ここではBackupを使用してミラーリングする方法を紹介します。</p>
-<figure class="center"><img src="backup.png"/>
+<figure class="center"><img src="backup.png">
 </figure>
 
 <p>DドライブをEドライブにミラーリングするには次のようにします。</p>
