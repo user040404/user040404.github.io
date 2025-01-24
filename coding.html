@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-01-25 03:05:01">2025-01-25 03:05:01</time></div>
+<div id="date"><time datetime="2025-01-25 06:30:30">2025-01-25 06:30:30</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>コーディングスタイルの例</h1>
 <nav id="TableOfContents">
@@ -40,7 +40,7 @@
 </header>
 <div id="content">
 <h2 id="はじめに">はじめに</h2>
-<p>プログラミングにおいて読みやすく間違いに気づきやすいコードを記述するための工夫がコーディングスタイルです。以下に示すようなスタイルにこだわる必要はありませんが、一貫したスタイルで記述されていないコードにはやはり問題があります。ここでは参考としてC++のコーディングスタイルを紹介します。C++のコーディングスタイルについては<a href="https://google.github.io/styleguide/cppguide.html">Googleのコーディングガイドライン</a>や<a href="http://stlalv.la.coocan.jp/">C++マニアック</a>が参考になります。</p>
+<p>プログラミングにおいて読みやすく間違いに気づきやすいコードを記述するための工夫がコーディングスタイルです。以下に示すようなスタイルにこだわる必要はありませんが、一貫したスタイルで記述されていないコードにはやはり問題があります。ここでは参考としてC++のコーディングスタイルを紹介します。<a href="https://google.github.io/styleguide/cppguide.html">Googleのコーディングガイドライン</a>および<a href="http://stlalv.la.coocan.jp/">C++マニアック</a>を参考にしました。</p>
 <h2 id="コメント">コメント</h2>
 <p>他の人がコードを読む手助けになるようなコメントを記述するようにします。実行される文の処理をそのまま記述したようなコメントには意味がありません。</p>
 <h2 id="空白文字">空白文字</h2>
@@ -283,11 +283,6 @@
           <td>member</td>
       </tr>
       <tr>
-          <td>定数のメンバ変数</td>
-          <td>mc_</td>
-          <td>member constant</td>
-      </tr>
-      <tr>
           <td>定数(const)</td>
           <td>c_</td>
           <td>constant</td>
@@ -467,10 +462,12 @@
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">foo.h</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// ヘッダファイル単体でコンパイルできるようにします。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// テンプレートやインライン関数などの定義は宣言と同じファイルに含めるようにします。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// /path/to/file/foo.h に対して以下のようなインクルードガードを記述します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  ヘッダファイル単体でコンパイルできるようにします。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  テンプレートやインライン関数などの定義は宣言と同じファイルに含めるようにします。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  /path/to/file/foo.h に対して以下のようなインクルードガードを記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef PATH_TO_FILE_FOO_H_
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PATH_TO_FILE_FOO_H_
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -514,13 +511,13 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// クラスの定義では public] &gt; [protected] &gt; [private の順にメンバを記述します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// それぞれのセクションでは以下の順にメンバを記述します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    型] &gt; [定数] &gt; [ファクトリ関数 -&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    コンストラクタ] &gt; [代入演算子] &gt; [デストラクタ -&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    その他のメンバ関数] &gt; [メンバ変数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// メンバ関数の定義が長い場合はクラス定義の外側に記述します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  クラスの定義では [public] -&gt; [protected] -&gt; [private] の順にメンバを記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  それぞれのセクションでは以下の順にメンバを記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  [型] -&gt; [定数] -&gt; [ファクトリ関数] -&gt; [コンストラクタ] -&gt; [代入演算子] -&gt; [デストラクタ] -&gt; [その他のメンバ関数] -&gt; [メンバ変数]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  メンバ関数の定義が長い場合はクラス定義の外側に記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  MyClass() <span style="color:#f92672">:</span> m_i(<span style="color:#ae81ff">0</span>) {}
