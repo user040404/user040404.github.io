@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-01-25 06:30:30">2025-01-25 06:30:30</time></div>
+<div id="date"><time datetime="2025-01-26 07:48:00">2025-01-26 07:48:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>コーディングスタイルの例</h1>
 <nav id="TableOfContents">
@@ -43,13 +43,14 @@
 <p>プログラミングにおいて読みやすく間違いに気づきやすいコードを記述するための工夫がコーディングスタイルです。以下に示すようなスタイルにこだわる必要はありませんが、一貫したスタイルで記述されていないコードにはやはり問題があります。ここでは参考としてC++のコーディングスタイルを紹介します。<a href="https://google.github.io/styleguide/cppguide.html">Googleのコーディングガイドライン</a>および<a href="http://stlalv.la.coocan.jp/">C++マニアック</a>を参考にしました。</p>
 <h2 id="コメント">コメント</h2>
 <p>他の人がコードを読む手助けになるようなコメントを記述するようにします。実行される文の処理をそのまま記述したようなコメントには意味がありません。</p>
+<p>適切な変数名・関数名を使用して、コメントがなくてもプログラムの処理の流れが分かるような読みやすいコードを書くようにしましょう。</p>
 <h2 id="空白文字">空白文字</h2>
 <h3 id="空行">空行</h3>
 <p>空行はコードを読みやすくするために使用します。コードブロックの前後に空行を挿入します。</p>
 <h3 id="スペース">スペース</h3>
 <p>スペースはコードを読みやすくするために使用します。括弧の前後や演算子の前後にはスペースを挿入します。</p>
 <h3 id="インデント">インデント</h3>
-<p>コードの階層構造を分かりやすくするために階層ごとにスペース2文字もしくは4文字を行頭に挿入してインデントします。</p>
+<p>コードの階層構造を分かりやすくするために階層ごとにスペース4文字(もしくは2文字)を行頭に挿入して字下げします。</p>
 <h2 id="識別子">識別子</h2>
 <p>識別子には意味のある英単語をできれば3語以上使用し、それぞれの単語はできるだけ省略しないようにします。</p>
 <p>単語の区切り方には以下のようなものがあります。</p>
@@ -106,7 +107,7 @@
       </tr>
   </tbody>
 </table>
-<p>コメントに頼らなくても名前によって変数の役割や関数の機能が分かるようにします。関数名は&quot;動詞+目的語&quot;の形にします。ループのインデックスなど狭い範囲で使用する変数の名前はできるだけ短くして目立たないようにします。</p>
+<p>コメントに頼らなくても名前によって変数の役割や関数の機能が分かるようにします。関数名は「動詞+目的語」の形にします。ループのインデックスなど狭い範囲で使用する変数の名前はできるだけ短くして目立たないようにします。</p>
 <p>プログラム全体で使用する定数には、コードが読みやすくなるように適切な名前をつけます。名前のつけられた定数を記号定数といいます。記号定数を使用することによってコードの可読性が向上するだけでなくメンテナンスも容易になります。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>よく使用される識別子には以下のようなものがあります。</p>
 <table>
@@ -125,12 +126,12 @@
       </tr>
       <tr>
           <td>i, j, k</td>
-          <td>整数</td>
-          <td>integer</td>
+          <td>ループ変数</td>
+          <td>index</td>
       </tr>
       <tr>
           <td>n, num</td>
-          <td>整数</td>
+          <td>数値</td>
           <td>number</td>
       </tr>
       <tr>
@@ -150,7 +151,7 @@
       </tr>
       <tr>
           <td>tmp, temp</td>
-          <td>一時的</td>
+          <td>一時的なもの</td>
           <td>temporary</td>
       </tr>
       <tr>
@@ -430,9 +431,9 @@
 </span></span><span style="display:flex;"><span>    ...                }                    } <span style="color:#66d9ef">while</span> ( ... );
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
 </figure>
-<p>命令文が1行の場合でも&quot;{ }&quot;(ブレース)は省略しないようにします。</p>
+<p>命令文が1行の場合でも{}は省略しないようにします。</p>
 <p>命令文がない場合でもswitch文のdefaultは省略しないようにします。</p>
-<p>ループ内でしか使用しない変数は()内で宣言します。それらが複数ある場合はループに入る直前に宣言しても構いません。</p>
+<p>ループ内でしか使用しない変数(ループ変数など)は()内で宣言します。それらが複数ある場合はループに入る直前に宣言しても構いません。</p>
 <h2 id="宣言および定義">宣言および定義</h2>
 <h3 id="マクロ">マクロ</h3>
 <p>必要な場合を除きマクロはできるだけ使用しないようにします。マクロが必要になるのは、ヘッダファイルを取り込んだり、インクルードガードしたり、条件付きコンパイルしたりするときです。</p>
@@ -451,7 +452,7 @@
 <p>nullポインタにはNULLではなくnullptrを使用します。</p>
 <h3 id="関数">関数</h3>
 <p>関数の定義はできるだけ短く記述します。40行くらいが目安です。1行に収まるのであればinline関数にしてもいいでしょう。</p>
-<p>戻り値を&quot;( )&quot;(括弧)でくくる必要はありません。</p>
+<p>戻り値を()でくくる必要はありません。</p>
 <h3 id="クラス">クラス</h3>
 <p>暗黙の型変換を避けるため変換コンストラクタにはexplicitを指定します。</p>
 <p>コピーしないクラスはoperator=およびコピーコンストラクタを非公開(private)にします。</p>
@@ -465,9 +466,10 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  ヘッダファイル単体でコンパイルできるようにします。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  テンプレートやインライン関数などの定義は宣言と同じファイルに含めるようにします。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  /path/to/file/foo.h に対して以下のようなインクルードガードを記述します。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// /path/to/file/foo.h に対して以下のようなインクルードガードを記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef PATH_TO_FILE_FOO_H_
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PATH_TO_FILE_FOO_H_
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -475,13 +477,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> my {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">iGetValue</span>();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> tWrite(T t);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T1, <span style="color:#66d9ef">typename</span> T2<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> tWriteMax(T1 ta, T2 tb);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">GetValue</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> TWrite(T a);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T1, <span style="color:#66d9ef">typename</span> T2<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> TWriteMax(T1 a, T2 b);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point2D</span> { <span style="color:#75715e">// 相互に関連する変数は構造体にまとめて定義します。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> { <span style="color:#75715e">// 相互に関連する変数は構造体にまとめて定義します。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> x;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> y;
 </span></span><span style="display:flex;"><span>};
@@ -492,29 +494,31 @@
 </span></span><span style="display:flex;"><span>  BLUE,
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">iGetValue</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">GetValue</span>()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> tWrite(T t)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> TWrite(T a)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> t <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T1, <span style="color:#66d9ef">typename</span> T2<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> tWriteMax(T1 ta, T2 tb)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> TWriteMax(T1 a, T2 b)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> ((ta <span style="color:#f92672">&gt;=</span> tb) <span style="color:#f92672">?</span> (ta) <span style="color:#f92672">:</span> (tb)) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> ((a <span style="color:#f92672">&gt;=</span> b) <span style="color:#f92672">?</span> (a) <span style="color:#f92672">:</span> (b)) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  クラスの定義では [public] -&gt; [protected] -&gt; [private] の順にメンバを記述します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  それぞれのセクションでは以下の順にメンバを記述します。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  [型] -&gt; [定数] -&gt; [ファクトリ関数] -&gt; [コンストラクタ] -&gt; [代入演算子] -&gt; [デストラクタ] -&gt; [その他のメンバ関数] -&gt; [メンバ変数]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *  メンバ関数の定義が長い場合はクラス定義の外側に記述します。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span>
@@ -522,9 +526,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  MyClass() <span style="color:#f92672">:</span> m_i(<span style="color:#ae81ff">0</span>) {}
 </span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> i) <span style="color:#f92672">:</span> m_i(i) {}
-</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> MyClass<span style="color:#f92672">&amp;</span> r) <span style="color:#f92672">:</span> m_i(r.iGet()) {}
+</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> MyClass<span style="color:#f92672">&amp;</span> r) <span style="color:#f92672">:</span> m_i(r.Get()) {}
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">~</span>MyClass() {}
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">iGet</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> m_i; }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Get</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> m_i; }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Set</span>(<span style="color:#66d9ef">int</span> i) { m_i <span style="color:#f92672">=</span> i; <span style="color:#66d9ef">return</span>; }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
@@ -543,13 +547,16 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// ヘッダファイルは以下の順でアルファベット順にインクルードします。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// Cのシステムヘッダファイル
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cのシステムヘッダファイル
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// C++のシステムヘッダファイル
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// C++のシステムヘッダファイル
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// 他のライブラリのヘッダファイル
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 他のライブラリのヘッダファイル
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 自身のプロジェクトのヘッダファイル
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
@@ -572,17 +579,17 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>Point2D st_point {<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>};
+</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>Point st_point {<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>};
 </span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> st_point.x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> st_point.y <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> my<span style="color:#f92672">::</span>iGetValue()) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> my<span style="color:#f92672">::</span>GetValue()) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; is true&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; is false&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>tWrite<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">100</span>);
-</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>tWriteMax<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>);
+</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>TWrite<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>TWriteMax<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> EXIT_SUCCESS;
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
