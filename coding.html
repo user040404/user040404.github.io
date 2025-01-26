@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-01-26 07:48:00">2025-01-26 07:48:00</time></div>
+<div id="date"><time datetime="2025-01-27 08:44:00">2025-01-27 08:44:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>コーディングスタイルの例</h1>
 <nav id="TableOfContents">
@@ -433,7 +433,7 @@
 </figure>
 <p>命令文が1行の場合でも{}は省略しないようにします。</p>
 <p>命令文がない場合でもswitch文のdefaultは省略しないようにします。</p>
-<p>ループ内でしか使用しない変数(ループ変数など)は()内で宣言します。それらが複数ある場合はループに入る直前に宣言しても構いません。</p>
+<p>ループ変数などループ内でしか使用しない変数は()内で宣言します。それらが複数ある場合はループに入る直前に宣言しても構いません。</p>
 <h2 id="宣言および定義">宣言および定義</h2>
 <h3 id="マクロ">マクロ</h3>
 <p>必要な場合を除きマクロはできるだけ使用しないようにします。マクロが必要になるのは、ヘッダファイルを取り込んだり、インクルードガードしたり、条件付きコンパイルしたりするときです。</p>
@@ -524,15 +524,15 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>  MyClass() <span style="color:#f92672">:</span> m_i(<span style="color:#ae81ff">0</span>) {}
-</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> i) <span style="color:#f92672">:</span> m_i(i) {}
-</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> MyClass<span style="color:#f92672">&amp;</span> r) <span style="color:#f92672">:</span> m_i(r.Get()) {}
+</span></span><span style="display:flex;"><span>  MyClass() <span style="color:#f92672">:</span> _num(<span style="color:#ae81ff">0</span>) {}
+</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> num) <span style="color:#f92672">:</span> _num(num) {}
+</span></span><span style="display:flex;"><span>  MyClass(<span style="color:#66d9ef">const</span> MyClass<span style="color:#f92672">&amp;</span> my_class) <span style="color:#f92672">:</span> _num(my_class.Get()) {}
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">~</span>MyClass() {}
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Get</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> m_i; }
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Set</span>(<span style="color:#66d9ef">int</span> i) { m_i <span style="color:#f92672">=</span> i; <span style="color:#66d9ef">return</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Get</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> _num; }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Set</span>(<span style="color:#66d9ef">int</span> num) { _num <span style="color:#f92672">=</span> num; <span style="color:#66d9ef">return</span>; }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> m_i;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> _num;
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>} <span style="color:#75715e">// namespace my
@@ -575,17 +575,17 @@
 </span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> str <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> str.size() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>Point point {<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>};
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> point.x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> point.y <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>i) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>Point st_point {<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>};
-</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> st_point.x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> st_point.y <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> my<span style="color:#f92672">::</span>GetValue()) {
-</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; is true&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Value is&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; is false&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Value is 0 or null&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  my<span style="color:#f92672">::</span>TWrite<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">100</span>);
