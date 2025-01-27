@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2024-03-23 05:36:32">2024-03-23 05:36:32</time></div>
+<div id="date"><time datetime="2025-01-28 06:43:44">2025-01-28 06:43:44</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>GUIプログラミングの手引</h1>
 <nav id="TableOfContents">
@@ -95,8 +95,11 @@
 </span></span><span style="display:flex;"><span># pacman -S mingw-w64-x86_64-toolchain</span></span></code></pre></div></div>
 </figure>
 <p>mingw-w64-*-toolchainはMinGWのパッケージグループです。32bit(i686)および64bit(x86_64)の環境で動作するアプリケーションを作成するためのツールチェーンを個別にインストールします。MinGWを使用するにはスタートメニューから[MSYS2 MinGW 32-bit]もしくは[MSYS2 MinGW 64-bit]のいずれかを選択します。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<p>MinGWにはテキストエディタが含まれていないので別途用意します。MSYS2には<a href="https://ja.wikipedia.org/wiki/Geany">Geany</a>/<a href="https://ja.wikipedia.org/wiki/Gedit">gedit</a>/<a href="https://ja.wikipedia.org/wiki/Kate">Kate</a>/<a href="https://ja.wikipedia.org/wiki/Vim">Vim</a>などのテキストエディタが用意されています。文字コードとしてUnicodeが扱えるものであればWindows用のテキストエディタでも構いません。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
-<!-- リソースエディタには[ResEdit](http://www.resedit.net/)などを使用します。 -->
+<p>MinGWにはテキストエディタが含まれていないので別途用意します。文字コードとしてUnicodeが扱えるものであればWindows用のテキストエディタでも構いません。プログラムのコーディングに特化したテキストエディタもあり、そのようなテキストエディタはコードエディタと呼ばれています。現在ではほとんどの開発者がコードエディタとして<a href="https://code.visualstudio.com/">VSCode</a>を使用しています。</p>
+<!--
+リソースエディタには[ResEdit](http://www.resedit.net/)などを使用します。
+MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikipedia.org/wiki/Gedit)/[Kate](https://ja.wikipedia.org/wiki/Kate)/[Vim](https://ja.wikipedia.org/wiki/Vim)などのテキストエディタが用意されています。
+-->
 <h2 id="プログラミングの作業工程">プログラミングの作業工程</h2>
 <h3 id="hello-world">Hello World</h3>
 <p>細かい理屈は後回しにして実際に簡単なプログラムを作って動かしてみましょう。文字化けを防ぐためテキストエディタでソースコードを保存する際は文字コードとしてUTF-8を指定してください。</p>
@@ -238,11 +241,11 @@
 </figure>
 <p>ウィンドウが表示されたら成功です。かなり長いコードですがこれが雛形です。処理の流れを簡単に説明します。</p>
 <ol>
-<li>ウィンドウクラスを元にウィンドウを作成します。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+<li>ウィンドウクラスを元にウィンドウを作成します。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
 <li>メッセージループを開始します。</li>
 <li>イベントが発生するとシステムがメッセージを発行します。</li>
 <li>メッセージループがメッセージを受け取りウィンドウプロシージャに送信します。</li>
-<li>ウィンドウプロシージャがメッセージを受け取りイベントを処理します。<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
+<li>ウィンドウプロシージャがメッセージを受け取りイベントを処理します。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
 <li>アプリケーションが終了するまで3～5を繰り返します。</li>
 </ol>
 <p>イベントの処理を記述することがWindowsプログラミングの主な作業になります。このようなプログラムを<a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%A7%86%E5%8B%95%E5%9E%8B">イベントドリブン</a>といいます。ウィンドウプロシージャはシステムから自動的に呼び出されるという意味でコールバック関数とも呼ばれます。</p>
@@ -391,7 +394,7 @@
 </figure>
 
 <h3 id="ビルド作業の自動化">ビルド作業の自動化</h3>
-<p>上のようにコマンドを入力して実行ファイルを作成する作業をビルドといいます。コマンドmakeを使用すれば、更新されたファイルのみを対象にして効率よくビルドすることができます。以下のようなビルドの処理内容を記述したMakefileというファイルをソースファイルと同じ場所にあらかじめ作成しておきます。<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<p>上のようにコマンドを入力して実行ファイルを作成する作業をビルドといいます。コマンドmakeを使用すれば、更新されたファイルのみを対象にして効率よくビルドすることができます。以下のようなビルドの処理内容を記述したMakefileというファイルをソースファイルと同じ場所にあらかじめ作成しておきます。<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
 
 
 <figure class="xCodeBlock">
@@ -578,16 +581,13 @@
 <p>MSYS2 MinGW 64-bitの環境で作成したプログラムは32bitの環境では動作しないので注意してください。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>プログラムのコーディングには<a href="https://code.visualstudio.com/">Visual Studio Code</a>を使用する人が多いようです。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>ウィンドウクラスはC++のクラスとは関係ありません。混同しないように注意してください。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>ウィンドウクラスはC++のクラスとは関係ありません。混同しないように注意してください。&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>イベントについての情報はパラメータとしてウィンドウプロシージャに渡されます。&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>イベントについての情報はパラメータとしてウィンドウプロシージャに渡されます。&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:6">
-<p>コマンドを記述する行はタブでインデントしてください。スペースでインデントするとエラーになります。&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>コマンドを記述する行はタブでインデントしてください。スペースでインデントするとエラーになります。&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
