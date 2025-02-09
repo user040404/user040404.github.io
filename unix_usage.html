@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-10 03:21:21">2025-02-10 03:21:21</time></div>
+<div id="date"><time datetime="2025-02-10 08:37:37">2025-02-10 08:37:37</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -43,18 +43,16 @@
 <h2 id="はじめに">はじめに</h2>
 <p><a href="https://ja.wikipedia.org/wiki/MSYS">MSYS2</a>を使用してUnixの基本操作を説明します。MSYS2はWindowsで動作するコンパクトなUnix環境です。Unixについては<a href="unix_windows">Unixの基本事項</a>を参照してください。</p>
 <h2 id="msys2のインストール">MSYS2のインストール</h2>
-<p>Windowsのユーザ名に日本語が使用されている場合はMSYS2のホームディレクトリのパスをWindowsの環境変数HOMEに設定しておく必要があります。64bit版ではC:\msys64\home(32bit版ではC:\msys32\home)にホームディレクトリが作成されます。</p>
+<p>Windowsのユーザ名に日本語が使用されている場合はMSYS2のホームディレクトリのパスをWindowsの環境変数HOMEに設定しておく必要があります。デフォルトではC:\msys64\homeにホームディレクトリが作成されます。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>HOME=C:\msys64\home\your_name</span></span></code></pre></div></div>
 </figure>
-<p><a href="https://www.msys2.org/">MSYS2
-homepage</a>からMSYS2のインストーラをダウンロードします。64bit版(msys2-x86_64-*.exe)と32bit版(msys2-i686-*.exe)が置いてあるので自身の環境に合ったものを選択してください。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p><a href="https://www.msys2.org/">MSYS2のウェブサイト</a>からMSYS2のインストーラをダウンロードします。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>インストーラを実行しセットアップウィザードの指示に従ってインストールします。インストール先はデフォルトのままCドライブの直下にしておくのが無難です。パスにスペースなどが含まれていると問題が起きる可能性があります。</p>
-<p><em>Run MSYS2
-now</em>をチェックしてセットアップウィザードを終了するとターミナル(コマンドの入出力を行うアプリケーション)が起動します。次のコマンドを入力してMSYS2にインストールされているパッケージをアップデートします。</p>
+<p>[Run MSYS2 now]をチェックしてセットアップウィザードを終了するとターミナル(コマンドの入出力を行うアプリケーション)が起動します。次のコマンドを入力してMSYS2にインストールされているパッケージをアップデートします。</p>
 
 
 <figure class="xCodeBlock">
@@ -197,12 +195,12 @@ now</em>をチェックしてセットアップウィザードを終了すると
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">/etc/fstab</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>C:\Users /users
-</span></span><span style="display:flex;"><span>C:\Program\040Files /pf
-</span></span><span style="display:flex;"><span>C:\Windows\System32 /sys32</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>C:/Users /users
+</span></span><span style="display:flex;"><span>C:/Program\040Files /pf
+</span></span><span style="display:flex;"><span>C:/Windows/System32 /sys32</span></span></code></pre></div></div>
 </figure>
 <h3 id="マニュアルの設定">マニュアルの設定</h3>
-<p>マニュアルを表示するコマンドmanおよび日本語のマニュアルをインストールします。インストールする前にコマンドidを入力して自身のユーザ名と属しているグループ名を確認しておきます。</p>
+<p>マニュアルを表示するコマンドmanと日本語のマニュアルをインストールします。インストールする前にコマンドidを入力して自身のユーザ名と属しているグループ名を確認しておきます。</p>
 
 
 <figure class="xCodeBlock">
@@ -227,7 +225,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </span></span><span style="display:flex;"><span># mandb</span></span></code></pre></div></div>
 </figure>
 <h2 id="ターミナルvscode">ターミナル(VSCode)</h2>
-<p>MSYS2をVisualStudioCode(以下VSCode)のプロファイルに追加するには次のようにします。詳細については<a href="https://qiita.com/chirimen/items/04e2e10c86c9ecd1e158">Visual Studio Code の統合ターミナルで MSYS2 の bash を選択できるようにする #Windows - Qiita</a>を参照してください。環境変数については<a href="https://qiita.com/yumetodo/items/42132a1e8435504448aa">Visual Studio Code 15.1の統合シェルをMSYS2のbashにする #Bash - Qiita</a>が参考になります。</p>
+<p>MSYS2をVisualStudioCode(以下VSCode)のプロファイルに追加するには次のようにします。詳細については<a href="https://qiita.com/chirimen/items/04e2e10c86c9ecd1e158">VisualStudioCodeの統合ターミナルでMSYS2のbashを選択できるようにする</a>を参照してください。環境変数については<a href="https://qiita.com/yumetodo/items/42132a1e8435504448aa">VisualStudioCode15.1の統合シェルをMSYS2のbashにする</a>が参考になります。</p>
 <p>VSCodeの設定ファイル(settings.json)を開いて以下の内容を追加します。パスおよび環境変数の部分は必要に応じて書き換えてください。</p>
 
 
@@ -264,7 +262,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; [<span style="color:#66d9ef">guid</span>]::NewGuid()</span></span></code></pre></div></div>
 </figure>
-<p>Windowsターミナルの設定ファイル(settings.json)を開いてlistの項目に以下の内容を追加します。guidには上で取得したGUIDを記述します。パスおよび環境変数の部分は必要に応じて書き換えてください。設定項目の詳細については<a href="https://qiita.com/yumetodo/items/4aa03d1eb3d887bca1a8">Windows Terminalでもmsys2を使おう #msys2 - Qiita</a>を参照してください。</p>
+<p>Windowsターミナルの設定ファイル(settings.json)を開いてlistの項目に以下の内容を追加します。guidには上で取得したGUIDを記述します。パスおよび環境変数の部分は必要に応じて書き換えてください。設定項目の詳細については<a href="https://qiita.com/yumetodo/items/4aa03d1eb3d887bca1a8">WindowsTerminalでもmsys2を使おう</a>を参照してください。</p>
 
 
 <figure class="xCodeBlock">
@@ -283,7 +281,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </figure>
 <p>MSYS2を既定のプロファイルにしたい場合はdefaultProfileのGUIDを書き換えてください。</p>
 <h2 id="コマンドシェルbash">コマンドシェル(bash)</h2>
-<p>入力したコマンドはコマンドシェル(以下シェル)が実行します。シェルにはいくつか種類がありますがここではデフォルトのシェルである<a href="https://ja.wikipedia.org/wiki/Bash">bash</a>を使用します。詳細については<a href="https://www.tohoho-web.com/ex/shell.html">とほほのBash入門</a>/<a href="http://se.cite.ehime-u.ac.jp/~aman/memo/bash/">bash入門</a>/<a href="http://x68000.q-e-d.net/~68user/unix/">UNIXの部屋</a>などを参照してください。</p>
+<p>入力したコマンドはコマンドシェル(以下シェル)が実行します。ここではデフォルトのシェルである<a href="https://ja.wikipedia.org/wiki/Bash">bash</a>を使用します。詳細については<a href="https://www.tohoho-web.com/ex/shell.html">とほほのBash入門</a>/<a href="http://se.cite.ehime-u.ac.jp/~aman/memo/bash/">bash入門</a>/<a href="http://x68000.q-e-d.net/~68user/unix/">UNIXの部屋</a>などを参照してください。</p>
 <p>シェルの基本的なコマンドを以下に示します。</p>
 <table>
   <thead>
@@ -364,7 +362,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
   </tbody>
 </table>
 <p>実行中のコマンドを強制的に停止するにはCtrl+cを押します。</p>
-<p>コマンドのオプションは-(ハイフン)で指定します。-(ハイフン)が単独で使用された場合は標準入出力として扱われます。--はコマンドのオプションの終わりを指示します。スペース・タブ・改行はデリミタ(区切り文字)として機能します。コマンドラインやシェルスクリプトでこれらの空白文字を不用意に入力しないでください。エラーを引き起こす原因になります。</p>
+<p>コマンドのオプションは-(ハイフン)で指定します。-(ハイフン)が単独で使用された場合は標準入出力として扱われます。--はコマンドオプションの終わりを指示します。スペース・タブ・改行はデリミタ(区切り文字)として機能します。コマンドラインやシェルスクリプトでこれらの空白文字を不用意に入力しないでください。エラーを引き起こす原因になります。</p>
 <p>シェルには以下のメタキャラクタ(特殊文字)が存在しこれらの文字はシェルの中で特別な意味を持ちます。</p>
 
 
@@ -373,8 +371,8 @@ now</em>をチェックしてセットアップウィザードを終了すると
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>* ? ~ # \ $ &#34; &#39; ` ! ; | &lt; &gt; &amp; ( ) [ ] { }</span></span></code></pre></div></div>
 </figure>
 <p>メタキャラクタを普通の文字として扱いたい場合は\(バックスラッシュ)でエスケープします。&rsquo;(シングルクォート)で文字列を括れば文字列内のメタキャラクタをすべてエスケープできます。&rsquo;(シングルクォート)ではなく&quot;(ダブルクォート)を使用するとメタキャラクタがシェルに解釈されます。</p>
-<p>ワイルドカードを使用すればパターンにマッチする複数のファイルを一括で処理できます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B0%A5%ED%A5%D6">用語集:ファイルグロブ: UNIX/Linuxの部屋</a>を参照してください。</p>
-<p>パイプやリダイレクトを使用すればコマンドをつなげて実行したりコマンドの入出力先を変更したりすることができます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%EA%A5%C0%A5%A4%A5%EC%A5%AF%A5%C8">用語集:リダイレクト: UNIX/Linuxの部屋</a>や<a href="https://shellscript.sunone.me/input_output.html">入力と出力 | UNIX &amp; Linux コマンド・シェルスクリプト リファレンス</a>を参照してください。</p>
+<p>ワイルドカードを使用すればパターンにマッチする複数のファイルを一括で処理できます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B0%A5%ED%A5%D6">用語集:ファイルグロブ: UNIXの部屋</a>を参照してください。</p>
+<p>パイプラインやリダイレクトを使用すればコマンドをつなげて実行したりコマンドの入出力先を変更したりすることができます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%EA%A5%C0%A5%A4%A5%EC%A5%AF%A5%C8">用語集:リダイレクト: UNIXの部屋</a>や<a href="https://shellscript.sunone.me/input_output.html">入力と出力 | UNIXコマンド・シェルスクリプトリファレンス</a>を参照してください。</p>
 <p>リダイレクトについてかみ砕いて説明します。知っておくべきことは次のとおり。</p>
 <ul>
 <li>ディスクリプタは入出力先に割り当てられた番号</li>
@@ -382,7 +380,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 <li>標準出力(ディスプレイ)のディスクリプタは1</li>
 <li>標準エラー出力(ディスプレイ)のディスクリプタは2</li>
 </ul>
-<p>ディスクリプタn, mおよびファイルfooに対して以下のように記述します。</p>
+<p>ディスクリプタn, ディスクリプタmおよびファイルfoo.txtに対して以下のように記述します。</p>
 <table>
   <thead>
       <tr>
@@ -392,24 +390,24 @@ now</em>をチェックしてセットアップウィザードを終了すると
   </thead>
   <tbody>
       <tr>
-          <td>n&lt;foo</td>
-          <td>コマンドの入力nにファイルfooをセットする(n=0ならnを省略可)</td>
+          <td>n&lt;foo.txt</td>
+          <td>コマンドの入力nにファイルfoo.txtをセットする(n=0ならnを省略可)</td>
       </tr>
       <tr>
           <td>n&lt;&amp;m</td>
           <td>コマンドの入力nにmをセットする(n=0ならnを省略可)</td>
       </tr>
       <tr>
-          <td>n&gt;foo</td>
-          <td>コマンドの出力nにファイルfooをセットする(n=1ならnを省略可)</td>
+          <td>n&gt;foo.txt</td>
+          <td>コマンドの出力nにファイルfoo.txtをセットする(n=1ならnを省略可)</td>
       </tr>
       <tr>
           <td>n&gt;&amp;m</td>
           <td>コマンドの出力nにmをセットする(n=1ならnを省略可)</td>
       </tr>
       <tr>
-          <td>&amp;&gt;foo もしくは &gt;&amp;foo</td>
-          <td>標準出力・標準エラー出力をまとめてファイルfooに出力する</td>
+          <td>&amp;&gt;foo.txt もしくは &gt;&amp;foo.txt</td>
+          <td>標準出力・標準エラー出力をまとめてファイルfoo.txtに出力する</td>
       </tr>
   </tbody>
 </table>
@@ -493,7 +491,9 @@ now</em>をチェックしてセットアップウィザードを終了すると
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sc</span></span></code></pre></div></div>
 </figure>
-<p>pacmanの設定は/etc/pacman.confに記述されています。pacmanのメッセージをカラー表示するにはMisc optionsのColorを有効にします。不要なリポジトリを無効にするには下記の該当する項目をコメントアウトします。</p>
+<p>パッケージマネージャはよく使用するので、上記のコマンドに対して覚えやすいエイリアス(後述)を設定しておくといいでしょう。</p>
+<p>pacmanの設定は/etc/pacman.confに記述されています。pacmanのメッセージをカラー表示するには[Misc options]の[Color]を有効にします。</p>
+<p>不要なリポジトリを無効にするには下記の該当する項目をコメントアウトします。</p>
 
 
 <figure class="xCodeBlock">
@@ -996,7 +996,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
-<p>以下のようにコマンドのエイリアス(alias: 別名)を定義することができます。<!-- 詳細については[コマンド:alias: UNIX/Linuxの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
+<p>以下のようにコマンドのエイリアス(alias: 別名)を定義することができます。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
 
 
 <figure class="xCodeBlock">
@@ -1037,13 +1037,14 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </span></span><span style="display:flex;"><span>alias vp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vimpager&#39;</span>
 </span></span><span style="display:flex;"><span>alias vr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -R&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias pm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -S&#39;</span>
-</span></span><span style="display:flex;"><span>alias pmc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sc&#39;</span>
-</span></span><span style="display:flex;"><span>alias pmg<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sg&#39;</span>
-</span></span><span style="display:flex;"><span>alias pms<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Ss&#39;</span>
-</span></span><span style="display:flex;"><span>alias pmu<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syu&#39;</span>
-</span></span><span style="display:flex;"><span>alias pmq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qqe&#39;</span>
-</span></span><span style="display:flex;"><span>alias pmr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Rs&#39;</span>
+</span></span><span style="display:flex;"><span>alias delete-cache<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sc&#39;</span>
+</span></span><span style="display:flex;"><span>alias install-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -S&#39;</span>
+</span></span><span style="display:flex;"><span>alias list-group<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sg&#39;</span>
+</span></span><span style="display:flex;"><span>alias list-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qqe&#39;</span>
+</span></span><span style="display:flex;"><span>alias search-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Ss&#39;</span>
+</span></span><span style="display:flex;"><span>alias show-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Si&#39;</span>
+</span></span><span style="display:flex;"><span>alias uninstall-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Rs&#39;</span>
+</span></span><span style="display:flex;"><span>alias update-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syyu&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>alias df<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;df -h&#39;</span>
 </span></span><span style="display:flex;"><span>alias du<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -h&#39;</span>
@@ -1107,7 +1108,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
 </figure>
-<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。詳細については<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIX &amp; Linux コマンド・シェルスクリプト リファレンス</a>を参照してください。</p>
+<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。詳細については<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIXコマンド・シェルスクリプトリファレンス</a>を参照してください。</p>
 <p>変数の特殊な参照方法についてかみ砕いて説明します。ポイントは次の3つです。</p>
 <ul>
 <li>変数が使用されていない(=/-)もしくは使用されている(+)</li>
@@ -1285,17 +1286,17 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </table>
 <p>lftpを終了するにはコマンドbye/exit/quitなどを入力します。</p>
 <p>スクリプト(lftpで実行する一連のコマンドを記述したテキストファイル)を使用してクライアントからサーバにディレクトリの内容をミラーリングアップロードする方法を以下に紹介します。</p>
-<p>あらかじめスクリプト~/fooを作成しておきます。</p>
+<p>あらかじめスクリプト~/upload.rcを作成しておきます。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim ~/foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim ~/upload.rc</span></span></code></pre></div></div>
 </figure>
 
 
 <figure class="xCodeBlock">
-<figcaption class="xCodeBlock_title">~/foo</figcaption>
+<figcaption class="xCodeBlock_title">~/upload.rc</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># FTPサーバのアカウントにログインします。</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ユーザ名(USERNAME)・パスワード(PASSWORD)・ホスト名(HOSTNAME)を自分のものに置き換えてください。</span>
 </span></span><span style="display:flex;"><span>open -u USERNAME,PASSWORD HOSTNAME
@@ -1310,12 +1311,12 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ログアウトします。</span>
 </span></span><span style="display:flex;"><span>close</span></span></code></pre></div></div>
 </figure>
-<p>スクリプト~/fooを指定してコマンドlftpを入力します。</p>
+<p>スクリプト~/upload.rcを指定してコマンドlftpを入力します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp -v -f ~/foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp -vf ~/upload.rc</span></span></code></pre></div></div>
 </figure>
 <h2 id="メールクライアントmutt">メールクライアント(mutt)</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Mutt">mutt</a>は高機能なメールクライアントです。詳細については<a href="https://wiki.archlinux.jp/index.php/Mutt">Mutt - ArchWiki</a>や<a href="https://www.emaillab.org/mutt/1.4/doc/manual_ja.html">The Mutt E-Mail Client</a>を参照してください。</p>
@@ -1475,7 +1476,7 @@ set ssl_starttls = yes # STARTTLS
 <!--
 ## 電卓(bc)
 
-電卓には[bc](https://ja.wikipedia.org/wiki/Bc_(UNIX))を使用することができます。詳細については[bcコマンドの使い方: UNIX/Linuxの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?bc)を参照してください。
+電卓には[bc](https://ja.wikipedia.org/wiki/Bc_(UNIX))を使用することができます。詳細については[bcコマンドの使い方: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?bc)を参照してください。
 
 bcをインストールします。
 
@@ -1517,7 +1518,7 @@ bcをインストールします。
 <p>ポータブル版は<a href="https://portableapps.com/node/56214">MSYS2 Portable 2022.05.03 Dev Test 1</a>から入手できます。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>vimを使用してlessの表示を色分けすることができます。詳細については<a href="https://nanasi.jp/articles/vim/less_vim.html">less.vim : lessコマンドの代わりにvimエディタを使用 — 名無しのvim使い</a>を参照してください。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>vimを使用してlessを色分け表示できます。詳細については<a href="https://nanasi.jp/articles/vim/less_vim.html">less.vim : lessコマンドの代わりにvimエディタを使用</a>を参照してください。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
