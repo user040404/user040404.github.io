@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-10 03:17:01">2025-02-10 03:17:01</time></div>
+<div id="date"><time datetime="2025-02-10 03:21:21">2025-02-10 03:21:21</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -520,7 +520,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 </span></span><span style="display:flex;"><span>Include = /etc/pacman.d/mirrorlist.msys</span></span></code></pre></div></div>
 </figure>
 <h2 id="テキストエディタvim">テキストエディタ(vim)</h2>
-<p>設定ファイルはテキストエディタ(以下エディタ)で編集します。エディタにはいくつか種類がありますがここでは<a href="https://ja.wikipedia.org/wiki/Vim">vim</a>を使用します。詳細については<a href="https://maku77.github.io/vim/">まくまくVimノート</a>や<a href="http://nanasi.jp/">名無しのvim使い</a>を参照してください。</p>
+<p>設定ファイルはテキストエディタ(以下エディタ)で編集します。ここではエディタとして<a href="https://ja.wikipedia.org/wiki/Vim">vim</a>を使用します。詳細については<a href="https://maku77.github.io/vim/">まくまくVimノート</a>や<a href="http://nanasi.jp/">名無しのvim使い</a>を参照してください。</p>
 <p>vimをインストールします。</p>
 
 
@@ -867,7 +867,7 @@ now</em>をチェックしてセットアップウィザードを終了すると
 <p><a href="https://maku77.github.io/vim/edit/paste-in-insert-mode.html">ショートカット</a>を利用するとコマンドラインで文字列を素早く入力することができます。</p>
 <p>置換対象の文字列を省略すると最後に検索した文字列が置換対象になります。大文字・小文字を区別しない場合は検索パターンに\cを指定します。正規表現を使用する場合は検索パターンに\vを指定します。</p>
 <p>1から10の連番を入力するにはノーマルモードから [i] &gt; [0] &gt; [Enter] &gt; [Esc] &gt; [9.] &gt; [ggVG] &gt; [g] &gt; [Ctrl+a] のようにします。Ctrl+aの前にgを入力すると増分をインクリメントしながらインクリメントすることができます。</p>
-<p>vimの設定は~/.vimrcに以下のように記述します。so <del>/.vimrcというコマンドを実行すると</del>/.vimrcがリロードされます。soはsourceの略です。</p>
+<p>vimの設定は~/.vimrcに以下のように記述します。so ~/.vimrcというコマンドを実行すると~/.vimrcがリロードされます。soはsourceの略です。</p>
 
 
 <figure class="xCodeBlock">
