@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-10 08:37:37">2025-02-10 08:37:37</time></div>
+<div id="date"><time datetime="2025-02-10 16:06:01">2025-02-10 16:06:01</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -770,24 +770,24 @@
           <td>:%s/foo/bar/gc</td>
       </tr>
       <tr>
-          <td>ファイルfooをバッファに追加</td>
-          <td>:e foo</td>
+          <td>ファイルfoo.txtをバッファに追加</td>
+          <td>:e foo.txt</td>
       </tr>
       <tr>
           <td>バッファのファイルをリスト</td>
           <td>:ls</td>
       </tr>
       <tr>
-          <td>バッファのファイルfooに切り替え(バッファの番号も指定可)</td>
-          <td>:b foo</td>
+          <td>バッファのファイルfoo.txtに切り替え(バッファの番号も指定可)</td>
+          <td>:b foo.txt</td>
       </tr>
       <tr>
           <td>バッファのファイルをすべて終了</td>
           <td>:qa</td>
       </tr>
       <tr>
-          <td>カーソル位置にファイルfooを挿入</td>
-          <td>:r foo</td>
+          <td>カーソル位置にファイルfoo.txtを挿入</td>
+          <td>:r foo.txt</td>
       </tr>
       <tr>
           <td>[インサートモード]</td>
@@ -939,7 +939,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showmatch</span> <span style="color:#75715e">&#34;括弧入力時に対応する括弧を強調</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">whichwrap</span>=<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">s</span>,&lt;,&gt;,[,] <span style="color:#75715e">&#34;矢印キーによる行移動を拡張</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backspace</span>=<span style="color:#a6e22e">indent</span>,<span style="color:#a6e22e">eol</span>,<span style="color:#a6e22e">start</span> <span style="color:#75715e">&#34;インサートモードのBS/Ctrl+w/Ctrl+uを拡張</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>+=<span style="color:#a6e22e">unnamed</span> <span style="color:#e6db74">&#34;無名レジスタ(&#34;</span>)<span style="color:#a6e22e">とクリップボード</span>(*)<span style="color:#a6e22e">を同期</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>+=<span style="color:#a6e22e">unnamed</span> <span style="color:#75715e">&#34;無名レジスタとクリップボードを同期</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>+=<span style="color:#a6e22e">autoselect</span> <span style="color:#75715e">&#34;選択範囲をクリップボードにコピー</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;set binary noeol &#34;ファイル末尾の改行なし</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
@@ -973,20 +973,20 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>:helptags ~/vimdoc-ja/doc</span></span></code></pre></div></div>
 </figure>
 <p>ヘルプを表示するには:hと入力します。:qと入力すれば終了します。</p>
-<p>テキストファイル~/fooをvimで開くには以下のように入力します。</p>
+<p>テキストファイル~/foo.txtをvimで開くには以下のように入力します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim ~/foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim ~/foo.txt</span></span></code></pre></div></div>
 </figure>
 <p>以下のように入力すると読み出しモードで開くことができます。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim -R ~/foo
-</span></span><span style="display:flex;"><span># view ~/foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim -R ~/foo.txt
+</span></span><span style="display:flex;"><span># view ~/foo.txt</span></span></code></pre></div></div>
 </figure>
 <h2 id="エイリアスおよびシェルスクリプト">エイリアスおよびシェルスクリプト</h2>
 <p>bashの設定は~/.bashrcもしくは~/.bash_profileに記述します。~/.bashrcはbashを起動するたびにロードされますが~/.bash_profileはログイン時に一度だけロードされます。変更した設定を有効にするにはbashを再起動するかsourceコマンドを入力して設定ファイルをリロードします。sourceコマンドは.(ドット)コマンドで代用可能です。</p>
@@ -1401,11 +1401,11 @@ set ssl_starttls = yes # STARTTLS
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> display_message<span style="color:#f92672">()</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    cat <span style="color:#e6db74">&lt;&lt;_EOT_ 1&gt;&amp;2
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    DuckDuckGo: sw &#39;検索語句&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    英辞郎:     sw e &#39;検索語句&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    goo国語辞書 sw g &#39;検索語句&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    e-Words:    sw ew &#39;検索語句&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Wikipedia:  sw w &#39;検索語句&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    DuckDuckGo:         sw &#39;検索語句&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Wikipedia:          sw w &#39;検索語句&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ロングマン英和辞典: sw en &#39;検索語句&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    goo国語辞書:        sw jp &#39;検索語句&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    IT用語辞典 e-Words: sw ew &#39;検索語句&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">_EOT_</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
@@ -1417,21 +1417,21 @@ set ssl_starttls = yes # STARTTLS
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> $1 in
-</span></span><span style="display:flex;"><span>  e <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#e6db74">`</span>
-</span></span><span style="display:flex;"><span>    w3m https://eow.alc.co.jp/search?q<span style="color:#f92672">=</span>$s
+</span></span><span style="display:flex;"><span>  w <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    w3m https://ja.wikipedia.org/wiki/$s
 </span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  g <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  en <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> -<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    w3m https://www.ldoceonline.com/jp/dictionary/english-japanese/$s
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>  jp <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#e6db74">`</span>
 </span></span><span style="display:flex;"><span>    w3m https://dictionary.goo.ne.jp/srch/jn/$s/m0u/
 </span></span><span style="display:flex;"><span>    ;;
 </span></span><span style="display:flex;"><span>  ew <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#e6db74">`</span>
 </span></span><span style="display:flex;"><span>    w3m http://e-words.jp/w/$s
-</span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  w <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#e6db74">`</span>
-</span></span><span style="display:flex;"><span>    w3m https://ja.wikipedia.org/wiki/$s
 </span></span><span style="display:flex;"><span>    ;;
 </span></span><span style="display:flex;"><span>  * <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    display_message
