@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-10 16:06:01">2025-02-10 16:06:01</time></div>
+<div id="date"><time datetime="2025-02-11 03:48:49">2025-02-11 03:48:49</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1297,18 +1297,17 @@
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">~/upload.rc</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># FTPサーバのアカウントにログインします。</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ユーザ名(USERNAME)・パスワード(PASSWORD)・ホスト名(HOSTNAME)を自分のものに置き換えてください。</span>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># FTPサーバのアカウントにログインします</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ユーザ名(USERNAME)・パスワード(PASSWORD)・ホスト名(HOSTNAME)を自分のものに置き換えてください</span>
 </span></span><span style="display:flex;"><span>open -u USERNAME,PASSWORD HOSTNAME
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># クライアントからサーバにミラーリングアップロードします。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># クライアントからサーバにミラーリングアップロードします</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># オプション&#34;--dry-run&#34;を指定して正しく処理されることを確認してください</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># オプション&#34;--dry-run&#34;を外すと実際に処理されます</span>
+</span></span><span style="display:flex;"><span>mirror --reverse -R -n -e -p -v --dry-run /local/path/to/dir /remote/path/to/dir
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># mirror --reverse -R -n -e -p -v /local/path/to/dir /remote/path/to/dir</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 最初に以下のコマンドを実行して正しく処理されることを確認してください。</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># オプション&#34;--dry-run&#34;を外すと実際に処理されます。</span>
-</span></span><span style="display:flex;"><span>mirror --reverse -R -n -e -p -v --dry-run /local/path/to/dir /remote/path/to/dir
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ログアウトします。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ログアウトします</span>
 </span></span><span style="display:flex;"><span>close</span></span></code></pre></div></div>
 </figure>
 <p>スクリプト~/upload.rcを指定してコマンドlftpを入力します。</p>
@@ -1396,10 +1395,9 @@ set ssl_starttls = yes # STARTTLS
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">~/.bashrc</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ウェブを検索する</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> sw<span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> display_message<span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> sw<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> display_message<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    cat <span style="color:#e6db74">&lt;&lt;_EOT_ 1&gt;&amp;2
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    DuckDuckGo:         sw &#39;検索語句&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Wikipedia:          sw w &#39;検索語句&#39;
@@ -1408,36 +1406,39 @@ set ssl_starttls = yes # STARTTLS
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    IT用語辞典 e-Words: sw ew &#39;検索語句&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">_EOT_</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $1 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo $1 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    w3m https://start.duckduckgo.com/?q<span style="color:#f92672">=</span>$s<span style="color:#ae81ff">\&amp;</span>kl<span style="color:#f92672">=</span>jp-jp<span style="color:#ae81ff">\&amp;</span>kp<span style="color:#f92672">=</span>-2<span style="color:#ae81ff">\&amp;</span>kh<span style="color:#f92672">=</span>1<span style="color:#ae81ff">\&amp;</span>k1<span style="color:#f92672">=</span>-1
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> $# -ne <span style="color:#ae81ff">2</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>    display_message
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> $1 in
-</span></span><span style="display:flex;"><span>  w <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  w<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    w3m https://ja.wikipedia.org/wiki/$s
 </span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  en <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> -<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  en<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> -<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    w3m https://www.ldoceonline.com/jp/dictionary/english-japanese/$s
 </span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  jp <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  jp<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> +<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    w3m https://dictionary.goo.ne.jp/srch/jn/$s/m0u/
 </span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  ew <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  ew<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo $2 | tr <span style="color:#e6db74">&#39; &#39;</span> _<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    w3m http://e-words.jp/w/$s
 </span></span><span style="display:flex;"><span>    ;;
-</span></span><span style="display:flex;"><span>  * <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  *<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    display_message
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    ;;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
 </figure>
