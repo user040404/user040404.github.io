@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-11 10:10:00">2025-02-11 10:10:00</time></div>
+<div id="date"><time datetime="2025-02-12 07:29:30">2025-02-12 07:29:30</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1119,12 +1119,12 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
 </figure>
-<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。シェルスクリプトの書き方については<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIXコマンド・シェルスクリプトリファレンス</a>で詳しく解説されているので、そちらを参考にしてください。</p>
+<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。シェルスクリプトの書き方については、<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIXコマンド・シェルスクリプトリファレンス</a>で詳しく解説されているので、そちらを参考にしてください。</p>
 <p>変数の特殊な参照方法についてかみ砕いて説明します。ポイントは次の3つです。</p>
 <ul>
+<li>NULLを使用済みとして扱う(=/-/+)もしくは未使用として扱う(:=/:-/:+)</li>
 <li>変数が使用されていない(=/-)もしくは使用されている(+)</li>
 <li>返す値を変数に代入する(=)もしくは代入しない(-/+)</li>
-<li>NULLを使用済みとして扱う(=/-/+)もしくは未使用として扱う(:=/:-/:+)</li>
 </ul>
 <table>
   <thead>
@@ -1135,28 +1135,28 @@
   </thead>
   <tbody>
       <tr>
-          <td>${VAR=foo}</td>
-          <td>$VARが未使用ならfooを返す。$VARが使用済みなら$VARを返す。$VARにfooを代入する。</td>
+          <td>${var=foo}</td>
+          <td>$varが使用済みなら$varの値を返す。$varが未使用なら$varにfooを代入してfooを返す。</td>
       </tr>
       <tr>
-          <td>${VAR-foo}</td>
-          <td>$VARが未使用ならfooを返す。$VARが使用済みなら$VARを返す。$VARにfooを代入しない。</td>
+          <td>${var-foo}</td>
+          <td>$varが使用済みなら$varの値を返す。$varが未使用なら$varにfooを代入せずにfooを返す。</td>
       </tr>
       <tr>
-          <td>${VAR+foo}</td>
-          <td>$VARが使用済みならfooを返す。$VARが未使用ならNULLを返す。$VARにfooを代入しない。</td>
+          <td>${var+foo}</td>
+          <td>$varが使用済みなら$varにfooを代入せずにfooを返す。$varが未使用ならNULLを返す。</td>
       </tr>
       <tr>
-          <td>${VAR:=foo}</td>
-          <td>$VARが未使用もしくはNULLならfooを返す。$VARが使用済みなら$VARを返す。$VARにfooを代入する。</td>
+          <td>${var:=foo}</td>
+          <td>$varが使用済みなら$varの値を返す。$varが未使用もしくはNULLなら$varにfooを代入してfooを返す。</td>
       </tr>
       <tr>
-          <td>${VAR:-foo}</td>
-          <td>$VARが未使用もしくはNULLならfooを返す。$VARが使用済みなら$VARを返す。$VARにfooを代入しない。</td>
+          <td>${var:-foo}</td>
+          <td>$varが使用済みなら$varの値を返す。$varが未使用もしくはNULLなら$varにfooを代入せずにfooを返す。</td>
       </tr>
       <tr>
-          <td>${VAR:+foo}</td>
-          <td>$VARが使用済みならfooを返す。$VARが未使用もしくはNULLならNULLを返す。$VARにfooを代入しない。</td>
+          <td>${var:+foo}</td>
+          <td>$varが使用済みなら$varにfooを代入せずにfooを返す。$varが未使用もしくはNULLならNULLを返す。</td>
       </tr>
   </tbody>
 </table>
