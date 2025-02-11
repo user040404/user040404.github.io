@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-11 03:48:49">2025-02-11 03:48:49</time></div>
+<div id="date"><time datetime="2025-02-11 09:09:11">2025-02-11 09:09:11</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -989,7 +989,15 @@
 </span></span><span style="display:flex;"><span># view ~/foo.txt</span></span></code></pre></div></div>
 </figure>
 <h2 id="エイリアスおよびシェルスクリプト">エイリアスおよびシェルスクリプト</h2>
-<p>bashの設定は~/.bashrcもしくは~/.bash_profileに記述します。~/.bashrcはbashを起動するたびにロードされますが~/.bash_profileはログイン時に一度だけロードされます。変更した設定を有効にするにはbashを再起動するかsourceコマンドを入力して設定ファイルをリロードします。sourceコマンドは.(ドット)コマンドで代用可能です。</p>
+<p>bashの設定は~/.bashrcもしくは~/.bash_profileに記述します。~/.bashrcはbashを起動するたびにロードされますが~/.bash_profileはログイン時に一度だけロードされます。</p>
+<p>変更した設定を有効にするには以下のようにしてbashを再起動するか</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># exec $SHELL -l</span></span></code></pre></div></div>
+</figure>
+<p>sourceコマンドを入力して設定ファイルをリロードします。sourceコマンドは.(ドット)コマンドで代用可能です。</p>
 
 
 <figure class="xCodeBlock">
@@ -1052,20 +1060,13 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>alias path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;echo -e ${PATH//:/\\n}&#39;</span></span></span></code></pre></div></div>
 </figure>
-<p>エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。例えばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
+<p>エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。</p>
+<p>例えばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># \ls</span></span></code></pre></div></div>
-</figure>
-<p>エイリアスの変更を反映するには以下のように既存のエイリアスをすべて削除してから設定ファイルをリロードします。</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># unalias -a
-</span></span><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
 <!--
 ~/.bash\_aliasを有効にするには~/.bashrc内の以下の箇所のコメントを解除します。
@@ -1077,6 +1078,16 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.bash_aliases&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>  source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.bash_aliases&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div></div>
+</figure>
+
+エイリアスの変更を反映するには以下のように既存のエイリアスをすべて削除してから設定ファイルをリロードします。
+
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># unalias -a
+</span></span><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
 -->
 <p>以下のように関数を定義してコマンドを自作することもできます。</p>
@@ -1108,7 +1119,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
 </figure>
-<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。詳細については<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIXコマンド・シェルスクリプトリファレンス</a>を参照してください。</p>
+<p>一度にたくさんのコマンドを実行したい場合はシェルスクリプトを利用しましょう。シェルスクリプトの書き方については<a href="https://maku77.github.io/linux/">まくまくLinux/Shellノート</a>や<a href="http://shellscript.sunone.me/">UNIXコマンド・シェルスクリプトリファレンス</a>で詳しく解説されているので、そちらを参考にしてください。</p>
 <p>変数の特殊な参照方法についてかみ砕いて説明します。ポイントは次の3つです。</p>
 <ul>
 <li>変数が使用されていない(=/-)もしくは使用されている(+)</li>
@@ -1162,7 +1173,8 @@
 </figure>
 -->
 <h2 id="バージョン管理システムgit">バージョン管理システム(git)</h2>
-<p>バージョン管理システムでファイルの更新履歴を記録することができます。ここではバージョン管理システムとして<a href="https://ja.wikipedia.org/wiki/Git">git</a>を使用します。以下のコマンドを入力してgitがインストールされていることを確認してください。</p>
+<p>バージョン管理システムでファイルの更新履歴を記録することができます。ここではバージョン管理システムとして<a href="https://ja.wikipedia.org/wiki/Git">git</a>を使用します。</p>
+<p>以下のコマンドを入力してgitがインストールされていることを確認してください。</p>
 
 
 <figure class="xCodeBlock">
@@ -1208,7 +1220,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># wget2 http://www.example.com/path/to/file</span></span></code></pre></div></div>
 </figure>
-<p>ウェブサイトをダウンロードするには以下のオプションと共にウェブサイトのURLを指定してコマンドを入力します。毎回オプションを指定するのは面倒なのでエイリアスを設定しておくと便利です。</p>
+<p>ウェブサイトをダウンロードするには以下のオプションと共にウェブサイトのURLを指定してコマンドを入力します。エイリアスを設定しておくと便利です。</p>
 
 
 <figure class="xCodeBlock">
@@ -1233,7 +1245,11 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp
 </span></span><span style="display:flex;"><span>lftp :~&gt;</span></span></code></pre></div></div>
 </figure>
-<p>FTPサーバのアカウントにログインするには続けて次のように入力します。USERNAMEは自分のアカウントのユーザ名に置き換えてください。HOSTNAMEは接続するFTPサーバのホスト名に置き換えてください。</p>
+<p>FTPサーバのアカウントにログインするには続けて次のように入力します。ユーザ名とホスト名を自身のものに置き換えてください。</p>
+<ul>
+<li>USERNAME -&gt; 自分のアカウントのユーザ名</li>
+<li>HOSTNAME -&gt; 接続するFTPサーバのホスト名</li>
+</ul>
 
 
 <figure class="xCodeBlock">
@@ -1241,7 +1257,8 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>lftp :~&gt; open -u USERNAME HOSTNAME</span></span></code></pre></div></div>
 </figure>
 <p>続けてアカウントのパスワードを要求されます。正しいパスワードを入力するとログインに成功します。</p>
-<p>FTPサーバにログインしたらlftpのコマンドを使用してサーバにファイルをアップロードしたりサーバからファイルをダウンロードしたりすることができます。lftpの基本的なコマンドには以下のようなものがあります。</p>
+<p>FTPサーバにログインしたらlftpのコマンドを使用してサーバにファイルをアップロードしたりサーバからファイルをダウンロードしたりすることができます。</p>
+<p>lftpの基本的なコマンドには以下のようなものがあります。</p>
 <table>
   <thead>
       <tr>
@@ -1285,8 +1302,8 @@
   </tbody>
 </table>
 <p>lftpを終了するにはコマンドbye/exit/quitなどを入力します。</p>
-<p>スクリプト(lftpで実行する一連のコマンドを記述したテキストファイル)を使用してクライアントからサーバにディレクトリの内容をミラーリングアップロードする方法を以下に紹介します。</p>
-<p>あらかじめスクリプト~/upload.rcを作成しておきます。</p>
+<p>スクリプト(lftpで実行する一連のコマンドを記述したテキストファイル)を使用してクライアントからサーバにディレクトリの内容をミラーリングアップロードする方法を紹介します。</p>
+<p>あらかじめ以下のようなスクリプト~/upload.rcを作成しておきます。</p>
 
 
 <figure class="xCodeBlock">
