@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-06 08:00:00">2025-02-06 08:00:00</time></div>
+<div id="date"><time datetime="2025-02-14 07:26:01">2025-02-14 07:26:01</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>脱ワープロソフトのすすめ</h1>
 <nav id="TableOfContents">
@@ -90,9 +90,10 @@
 </table>
 <p>TeXディストリビューションには組版に必要なプログラム(パッケージ)が含まれています。TeXエディタはTeXを使いやすくする統合環境です。ここで紹介しているLyXを使用すれば、ワープロソフトのようなインターフェイスで文書を作成・編集することができます。PDFビューアは組版処理されたPDF形式の文書を確認するために使用します。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <h3 id="tex-liveのインストール">TeX-Liveのインストール</h3>
-<p>TeX Liveについては、フルインストールではなく必要なパッケージのみをインストールするようにしたほうがいいでしょう。選択すべきパッケージについては<a href="https://obsica.com/texlive-basic-install/">TeX Live 2023のインストール</a>が参考になります。ポータブルアプリケーションとしてインストールしたいのであれば<a href="https://www.nagaoka-ct.ac.jp/ec/labo/visu/usb/tex2/index.shtml">USBメモリ活用講座【実践編・TeX文書作成環境ポータブル化】</a>を参照してください。</p>
+<p>TeX-Liveについては、フルインストールではなく必要なパッケージのみをインストールするようにしたほうがいいでしょう。選択すべきパッケージについては<a href="https://obsica.com/texlive-basic-install/">TeX Live 2023のインストール</a>が参考になります。ポータブルアプリケーションとしてインストールしたいのであれば<a href="https://www.nagaoka-ct.ac.jp/ec/labo/visu/usb/tex2/index.shtml">USBメモリ活用講座【実践編・TeX文書作成環境ポータブル化】</a>を参照してください。</p>
 <h3 id="lyxのインストール">LyXのインストール</h3>
-<p><a href="https://www.lyx.org/WebJa.Home">LyXの公式サイト</a>から最新のインストーラをダウンロードします。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>インストールについては<a href="https://texwiki.texjp.org/?LyX">LyX - TeX Wiki</a>を参照してください。</p>
+<p><a href="https://www.lyx.org/WebJa.Home">LyXの公式サイト</a>から最新のインストーラをダウンロードします。インストールについては<a href="https://texwiki.texjp.org/?LyX">LyX - TeX Wiki</a>を参照してください。</p>
+<!-- [^3]: wingetでは32bit版がインストールされてしまうようです。 -->
 <h3 id="lyxの設定">LyXの設定</h3>
 <p>LyXを起動したらメニューから [ツール] &gt; [TeX情報] を選択します。LyXがTeXを認識していれば、表示されたダイアログのリストにファイル名(*.cls)がリストされるはずです。ファイル名がリストされないのであれば、以下のようにしてLyXにTeXのインストールフォルダを教えてやる必要があります。</p>
 <ol>
@@ -112,7 +113,7 @@
 </span></span><span style="display:flex;"><span>#  <span style="color:#66d9ef">\DeclareCategory</span>{Articles}
 </span></span><span style="display:flex;"><span># Author : foo
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># This style provides japanese features 
+</span></span><span style="display:flex;"><span># This style provides japanese features
 </span></span><span style="display:flex;"><span>Format 66
 </span></span><span style="display:flex;"><span>Provides japanese 1
 </span></span><span style="display:flex;"><span>
@@ -167,9 +168,6 @@
 </li>
 <li id="fn:2">
 <p>TeXworksをPDFビューアとして使用することもできます。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>wingetでは32bit版がインストールされてしまうようです。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
