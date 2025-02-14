@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-14 03:08:18">2025-02-14 03:08:18</time></div>
+<div id="date"><time datetime="2025-02-15 07:00:01">2025-02-15 07:00:01</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -208,7 +208,7 @@ MSYS2からHugoおよびGitをインストールします。
 <p>ウェブサイトを公開するにはGitHubのアカウントを取得する必要があります。ユーザ名とパスワードを指定すればアカウントを作成できます。当然ですが他の人が使用しているユーザ名を使用することはできません。以後user_nameは自身のユーザ名に置き換えてください。</p>
 <h3 id="sshの設定">SSHの設定</h3>
 <p><a href="https://ja.wikipedia.org/wiki/Secure_Shell">SSH</a>はサーバとやりとりするデータを暗号化する仕組みです。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?ssh">sshコマンドの使い方: UNIXの部屋</a>を参照してください。</p>
-<p>アップロードのプロトコルには公開鍵認証のSSHを使用するのでその鍵が必要です。~/.sshに既に鍵が存在する場合はそれを使用することができます。</p>
+<p>アップロードのプロトコルには公開鍵認証のSSHを使用するのでその鍵が必要です。~/.sshに既に鍵が存在する場合はそれを使用できます。</p>
 
 
 <figure class="xCodeBlock">
@@ -247,7 +247,7 @@ MSYS2からHugoおよびGitをインストールします。
 <h3 id="リモートリポジトリの作成">リモートリポジトリの作成</h3>
 <p>GitHubのアカウントにログインしてリポジトリを作成します。ページの右上隅の[+]をクリックして[New repository]を選択します。[Repository name]にuser_name.github.ioを指定して[Create repository]をクリックします。</p>
 <h3 id="ローカルリポジトリの作成">ローカルリポジトリの作成</h3>
-<p>GitHubのリポジトリ(以下リモートリポジトリ)にコンテンツをアップロードするにはローカルリポジトリが必要です。プロジェクトmy_siteのpublicディレクトリにローカルリポジトリを作成します。ローカルリポジトリの内容をリモートリポジトリにプッシュすればアップロードすることができます。</p>
+<p>GitHubのリポジトリ(以下リモートリポジトリ)にコンテンツをアップロードするにはローカルリポジトリが必要です。プロジェクトmy_siteのpublicディレクトリにローカルリポジトリを作成します。ローカルリポジトリの内容をリモートリポジトリにプッシュすればアップロードできます。</p>
 
 
 <figure class="xCodeBlock">
@@ -312,7 +312,7 @@ MSYS2からHugoおよびGitをインストールします。
 </span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;
 </span></span><span style="display:flex;"><span># git push</span></span></code></pre></div></div>
 </figure>
-<p>リモートリポジトリのmainブランチにコンテンツを置いておくとウェブブラウザからhttps://user_name.github.io/でアクセスすることができます。</p>
+<p>リモートリポジトリのmainブランチにコンテンツを置いておくとウェブブラウザからhttps://user_name.github.io/というアドレスでアクセスできます。</p>
 <h2 id="更新日時の取得">更新日時の取得</h2>
 <p>HugoにはGitのログからファイルの更新日時を取得する機能があります。この機能を使用してウェブページのフッタに更新日時を表示してみます。</p>
 <p>ファイルの更新日時を取得するにはプロジェクトのトップディレクトリ(ここでは~/my_site)にリポジトリを作成する必要があります。</p>
