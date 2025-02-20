@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-15 07:00:01">2025-02-15 07:00:01</time></div>
+<div id="date"><time datetime="2025-02-21 03:57:57">2025-02-21 03:57:57</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ローカル辞書の例</h1>
 <nav id="TableOfContents">
@@ -24,12 +24,19 @@
 </header>
 <div id="content">
 <h2 id="はじめに">はじめに</h2>
-<p>ローカルの辞書はオンラインの辞書よりも高速です。ここでは英和辞書のデータをローカルの辞書として利用する方法を取り上げます。辞書ファイルを閲覧できるアプリケーションも紹介します。</p>
+<p>ローカルの辞書はオンラインの辞書よりも高速です。ここではダウンロードした英和辞書のデータを利用する方法を紹介します。辞書ファイルを閲覧する方法も紹介します。</p>
 <h2 id="辞書データのダウンロード">辞書データのダウンロード</h2>
-<p><a href="https://www.kujirahand.com/web-tools/EJDictFreeDL.php">こちらのサイト</a>から英和辞書のデータ(テキスト形式)をダウンロードできます。ダウンロードしたアーカイブから辞書データのファイル(ejdict-hand-utf8.txt)を取り出します。このファイルはテキストファイルなのでテキストエディタで自由に読み書きできます。</p>
+<p><a href="https://www.kujirahand.com/web-tools/EJDictFreeDL.php">こちらのサイト</a>から英和辞書のデータ(テキスト形式)をダウンロードできます。ダウンロードしたアーカイブから辞書データのファイル(ejdict-hand-utf8.txt)を取り出します。</p>
 <h2 id="辞書データの整形">辞書データの整形</h2>
-<p>ダウンロードした辞書データには重複する項目が含まれています。これでは都合が悪いので以下のようなPerlスクリプトを使用して重複する項目をひとつにまとめます。PerlはMSYS2にインストールされています。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<p>スクリプトを実行する前にejdict-hand-utf8.txtをスクリプトファイルと同じ場所に置いてください。</p>
+<p>ダウンロードした辞書データには重複する項目が含まれています。これでは都合が悪いので以下のようなPerlスクリプトを使用して重複する項目をひとつにまとめます。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>最初に以下のコマンドを入力してPerlをインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget install StrawberryPerl.StrawberryPerl</span></span></code></pre></div></div>
+</figure>
+<p>以下のスクリプトをテキストエディタで作成してoutput_ejdict.plという名前で保存します。</p>
 
 
 <figure class="xCodeBlock">
@@ -73,15 +80,17 @@
 </span></span><span style="display:flex;"><span>close(IN);
 </span></span><span style="display:flex;"><span>close(OUT);</span></span></code></pre></div></div>
 </figure>
-<p>スクリプトファイルを指定してコマンドperlを入力します。整形されたデータがejdict-hand-utf8.outとして出力されます。</p>
+<p>ejdict-hand-utf8.txtをoutput_ejdict.plと同じ場所に置いてoutput_ejdict.plを実行します。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># perl output_ejdict.pl</span></span></code></pre></div></div>
 </figure>
+<p>整形されたデータがejdict-hand-utf8.outとして出力されます。</p>
 <h2 id="辞書データの登録-mousedictionary">辞書データの登録 (MouseDictionary)</h2>
-<p><a href="https://mouse-dictionary.netlify.app/ja/">MouseDictionary</a>は辞書の機能を追加するブラウザの拡張機能です。ローカルの辞書データを登録できます。</p>
+<p><a href="https://mouse-dictionary.netlify.app/ja/">MouseDictionary</a>は辞書の機能を追加するブラウザの拡張機能です。</p>
+<p>上で作成したejdict-hand-utf8.outをMouseDictionaryに登録します。</p>
 <ol>
 <li>MouseDictionaryをウェブブラウザに追加します。</li>
 <li>ブラウザに追加されたMouseDictionaryのアイコンを右クリックして[オプション]を選択します。</li>
@@ -93,7 +102,9 @@
 <p>以上で辞書データの登録は完了です。その他の設定は好みに応じて変更してください。</p>
 <p>使用するにはブラウザのMouseDictionaryのアイコンをクリックします。表示されたウィンドウにマウスでポイントした英単語の意味が表示されます。</p>
 <h2 id="辞書データの登録-サクラエディタ">辞書データの登録 (サクラエディタ)</h2>
-<p><a href="https://sakura-editor.github.io/">サクラエディタ</a>のキーワードヘルプ機能をローカルの辞書として使用できます。ただし、辞書データのフォーマットがMouseDictionaryとは異なり<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>、文字コードがUnicodeのままでは文字化けします。テキストエディタでejdict-hand-utf8.outを整形してから文字コードにShift-JISを指定してejdict-hand-sjis.khpとして保存してください。</p>
+<p><a href="https://sakura-editor.github.io/">サクラエディタ</a>のキーワードヘルプ機能を辞書として使用できます。</p>
+<p>テキストエディタでejdict-hand-utf8.outを整形してから、文字コードにShift-JISを指定して、ejdict-hand-sjis.khpという名前で保存してください。文字コードがUnicodeのままでは文字化けします。辞書データのフォーマットについてはサクラエディタのヘルプを参照してください。</p>
+<p>ejdict-hand-sjis.khpをサクラエディタに登録します。</p>
 <ol>
 <li>サクラエディタを起動します。</li>
 <li>メニューから [設定] &gt; [タイプ別設定一覧] を選択します。</li>
@@ -105,15 +116,15 @@
 <p>以上で辞書データの登録は完了です。その他の設定は好みに応じて変更してください。</p>
 <p>使用するにはテキストファイルを開いて英単語を選択します。ポップアップに英単語の意味が表示されます。</p>
 <h2 id="辞書ファイルの閲覧">辞書ファイルの閲覧</h2>
-<p><a href="https://portableapps.com/apps/education/goldendict_portable">GoldenDict</a>(以下GD)は様々なフォーマットの辞書ファイルに対応した辞書ブラウザです。GDを使用すると複数の辞書を簡単に横断検索できます。インストールしたらインストールフォルダのData\contentに辞書ファイルを置いてください。辞書ファイルは<a href="https://cloud.freemdict.com/index.php/s/pgKcDcbSDTCzXCs?path=%2F">FreeMdictCloud</a>にあります。最初にGDを起動すると辞書のインデックスが生成されます。入力ボックスに検索語句を入力すると、検索語句を含む辞書およびその見出しがリストされ、見出しを選択するとその内容が表示されます。使用する辞書は種類や用途に応じてグループ分けすることができます。</p>
+<p><a href="https://portableapps.com/apps/education/goldendict_portable">GoldenDict</a>は様々なフォーマットの辞書ファイルに対応した辞書ブラウザです。複数の辞書を横断検索できます。</p>
+<p>インストールしたらインストールフォルダのData\contentに辞書ファイルを置いてください。辞書ファイルは<a href="https://cloud.freemdict.com/index.php/s/pgKcDcbSDTCzXCs?path=%2F">こちらのサイト</a>にあります。</p>
+<p>初回起動時に辞書のインデックスが生成されます。テキストボックスに語句を入力して見出しを選択すると、その内容が表示されます。</p>
+<!-- 使用する辞書は種類や用途に応じてグループ分けすることができます。 -->
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
 <p>Perlの詳細については<a href="http://wisdom.sakura.ne.jp/programming/perl/index.html">Perl入門</a>や<a href="https://www.tohoho-web.com/wwwperl.htm">とほほのperl入門</a>を参照してください。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>フォーマットの詳細についてはサクラエディタのヘルプを参照してください。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
