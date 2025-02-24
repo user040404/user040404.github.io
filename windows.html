@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-23 17:05:00">2025-02-23 17:05:00</time></div>
+<div id="date"><time datetime="2025-02-25 03:28:49">2025-02-25 03:28:49</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -83,17 +83,16 @@
 </ol>
 <p>ウェブページにブロックしたいものがあれば、右クリックメニューから[要素をブロック]を選択します。自動的にフィルタが作成されて[Myフィルター]に登録されます。ブロックしたくないウェブサイトは[ホワイトリスト]に登録します。</p>
 <h2 id="windowsターミナルのカスタマイズ">Windowsターミナルのカスタマイズ</h2>
-<p><a href="https://ja.wikipedia.org/wiki/Windows_Terminal">Windowsターミナル</a>は、文字を入力してコマンドを実行するためのアプリケーションです。例えば<a href="https://ja.wikipedia.org/wiki/Windows_Package_Manager">Windowsパッケージマネージャ</a>は、ターミナル上でwingetというコマンドを入力して、アプリケーションをインストールしたりアップデートしたりします。このようなコンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。ターミナル用のフォントとしてCascadiaが用意されていますが、<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>などの方が見やすいかもしれません。</p>
-<p>ターミナル上のテキストをコピーするには、コピーしたいテキストを選択して右クリックします。ターミナル上で右クリックすると、コピーしたテキストがカーソルの位置にペーストされます。</p>
+<p><a href="https://ja.wikipedia.org/wiki/Windows_Terminal">Windowsターミナル</a>は、文字を入力してコマンドを実行するためのアプリケーションです。例えば<a href="https://ja.wikipedia.org/wiki/Windows_Package_Manager">Windowsパッケージマネージャ</a>は、ターミナル上でwingetというコマンドを入力して、アプリケーションをインストールしたりアップデートしたりします。このようなコンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。ターミナル用のフォントとしてCascadiaが用意されています。</p>
 <h2 id="powershellのカスタマイズ">PowerShellのカスタマイズ</h2>
-<p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。PowerShellはオブジェクト指向で設計され、やりたいことを簡単に記述できるようになりました。様々なデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
+<p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。オブジェクト指向のPowerShellでは、やりたいことを簡単に記述できるようになりました。様々なデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
 <p>PowerShellの起動時に%UserProfile%\Documents\PowerShell\profile.ps1の内容が実行されます。このファイルを使用してPowerShellをカスタマイズできます。</p>
 
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">%UserProfile%\Documents\PowerShell\profile.ps1</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># コマンドラインのオプションを設定</span>
-</span></span><span style="display:flex;"><span>Set-PSReadLineOption -EditMode Emacs <span style="color:#75715e"># EditModeはWindows(default)/Emacs/Viから選択可能</span>
+</span></span><span style="display:flex;"><span>Set-PSReadLineOption -EditMode Emacs <span style="color:#75715e"># 編集モードはWindows/Emacs/Viから選択可能</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 確認メッセージのレベルを設定</span>
 </span></span><span style="display:flex;"><span>$ConfirmPreference = <span style="color:#e6db74">&#39;Medium&#39;</span>
@@ -105,16 +104,14 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 環境変数を取得するコマンド</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Get-Path {
-</span></span><span style="display:flex;"><span>    $path = [<span style="color:#66d9ef">System.Environment</span>]::GetEnvironmentVariable(<span style="color:#e6db74">&#34;Path&#34;</span>, <span style="color:#e6db74">&#34;Machine&#34;</span>) +
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#66d9ef">System.Environment</span>]::GetEnvironmentVariable(<span style="color:#e6db74">&#34;Path&#34;</span>, <span style="color:#e6db74">&#34;Machine&#34;</span>) +
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;;&#34;</span> +
 </span></span><span style="display:flex;"><span>    [<span style="color:#66d9ef">System.Environment</span>]::GetEnvironmentVariable(<span style="color:#e6db74">&#34;Path&#34;</span>, <span style="color:#e6db74">&#34;User&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> $path
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 環境変数をリスト表示するコマンド</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Show-Path {
-</span></span><span style="display:flex;"><span>    $path = Get-Path
-</span></span><span style="display:flex;"><span>    $path.Split(<span style="color:#e6db74">&#39;;&#39;</span>).Where({ $_ <span style="color:#f92672">-ne</span> <span style="color:#e6db74">&#39;&#39;</span> }).<span style="color:#66d9ef">ForEach</span>({ Write-Output $_ }) | Sort-Object
+</span></span><span style="display:flex;"><span>    $(Get-Path).Split(<span style="color:#e6db74">&#39;;&#39;</span>).Where({ $_ <span style="color:#f92672">-ne</span> <span style="color:#e6db74">&#39;&#39;</span> }).<span style="color:#66d9ef">ForEach</span>({ Write-Output $_ }) | Sort-Object
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 環境変数を更新するコマンド</span>
