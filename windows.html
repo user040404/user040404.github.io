@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-27 09:42:43">2025-02-27 09:42:43</time></div>
+<div id="date"><time datetime="2025-02-27 16:32:33">2025-02-27 16:32:33</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -86,6 +86,13 @@
 <p><a href="https://ja.wikipedia.org/wiki/Windows_Terminal">Windowsターミナル</a>は、文字を入力してコマンドを実行するためのアプリケーションです。例えば<a href="https://ja.wikipedia.org/wiki/Windows_Package_Manager">Windowsパッケージマネージャ</a>は、ターミナル上でwingetというコマンドを入力して、アプリケーションをインストールしたりアップデートしたりします。このようなコンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。ターミナル用のフォントとしてCascadiaが用意されています。</p>
 <h2 id="powershellのカスタマイズ">PowerShellのカスタマイズ</h2>
 <p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。オブジェクト指向のPowerShellでは、やりたいことを簡単に記述できるようになりました。様々なデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
+<p>PowerShellの最新版をインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget install Microsoft.PowerShell</span></span></code></pre></div></div>
+</figure>
 <p>PowerShellの起動時に%UserProfile%\Documents\PowerShell\profile.ps1の内容が実行されます。このファイルを使用してPowerShellをカスタマイズできます。</p>
 
 
