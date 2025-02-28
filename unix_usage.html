@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-23 10:20:50">2025-02-23 10:20:50</time></div>
+<div id="date"><time datetime="2025-02-28 15:46:27">2025-02-28 15:46:27</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -881,7 +881,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">autocmd</span> <span style="color:#a6e22e">BufReadPost</span> * <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;&#39;\&#34;&#34;</span>) &gt; <span style="color:#ae81ff">1</span> &amp;&amp; <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;&#39;\&#34;&#34;</span>) &lt;= <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;$&#34;</span>) | <span style="color:#a6e22e">exe</span> <span style="color:#e6db74">&#34;normal! g`\&#34;&#34;</span> | <span style="color:#66d9ef">endif</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">END</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;ファイル・ディレクトリに関する設定 ---------------------------------------</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; ファイル・ディレクトリに関する設定 ---------------------------------------</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">encoding</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span> <span style="color:#75715e">&#34;文字コードを指定</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">fileencodings</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span>,<span style="color:#a6e22e">iso</span><span style="color:#ae81ff">-2022</span>-<span style="color:#a6e22e">jp</span>,<span style="color:#a6e22e">sjis</span>,<span style="color:#a6e22e">euc</span>-<span style="color:#a6e22e">jp</span> <span style="color:#75715e">&#34;ファイルエンコードを指定</span>
@@ -901,7 +901,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undofile</span> <span style="color:#75715e">&#34;アンドゥファイル(.*.*.un~)を作成</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undodir</span>=<span style="color:#e6db74">/tmp/</span> <span style="color:#75715e">&#34;アンドゥファイルを/tmpに保存</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;表示に関する設定 ---------------------------------------------------------</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 表示に関する設定 ---------------------------------------------------------</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">on</span> <span style="color:#75715e">&#34;構文を色分け表示</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">background</span>=dark <span style="color:#75715e">&#34;明るい背景色(light)もしくは暗い背景色(dark)</span>
@@ -922,7 +922,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">hi</span> <span style="color:#a6e22e">DoubleByteSpace</span> <span style="color:#a6e22e">ctermbg</span>=<span style="color:#a6e22e">blue</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">match</span> <span style="color:#a6e22e">DoubleByteSpace</span> <span style="color:#e6db74">/　/</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;入力に関する設定 ---------------------------------------------------------</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 入力に関する設定 ---------------------------------------------------------</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">mouse</span>=<span style="color:#a6e22e">a</span> <span style="color:#75715e">&#34;マウスを有効化</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">textwidth</span>=<span style="color:#ae81ff">78</span> <span style="color:#75715e">&#34;行の文字数</span>
@@ -1022,10 +1022,9 @@
 </span></span><span style="display:flex;"><span>alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -FH --color=auto --group-directories-first&#39;</span>
 </span></span><span style="display:flex;"><span>alias la<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -A&#39;</span>
 </span></span><span style="display:flex;"><span>alias ll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -Alh --time-style=long-iso&#39;</span>
-</span></span><span style="display:flex;"><span>alias dir<span style="color:#f92672">=</span>ll
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias jj<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/share/vim/vim91/macros/less.sh&#39;</span>
 </span></span><span style="display:flex;"><span>alias less<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;less -gmj10&#39;</span>
+</span></span><span style="display:flex;"><span>alias jj<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/share/vim/vim91/macros/less.sh&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>alias grep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span>
 </span></span><span style="display:flex;"><span>alias egrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;egrep --color=auto&#39;</span>
@@ -1045,6 +1044,12 @@
 </span></span><span style="display:flex;"><span>alias vp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vimpager&#39;</span>
 </span></span><span style="display:flex;"><span>alias vr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -R&#39;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias df<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;df -h&#39;</span>
+</span></span><span style="display:flex;"><span>alias du<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -h&#39;</span>
+</span></span><span style="display:flex;"><span>alias du1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -d1&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;echo -e ${PATH//:/\\n}&#39;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>alias delete-cache<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sc&#39;</span>
 </span></span><span style="display:flex;"><span>alias install-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -S&#39;</span>
 </span></span><span style="display:flex;"><span>alias list-group<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sg&#39;</span>
@@ -1052,13 +1057,7 @@
 </span></span><span style="display:flex;"><span>alias search-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Ss&#39;</span>
 </span></span><span style="display:flex;"><span>alias show-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Si&#39;</span>
 </span></span><span style="display:flex;"><span>alias uninstall-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Rs&#39;</span>
-</span></span><span style="display:flex;"><span>alias update-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syyu&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias df<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;df -h&#39;</span>
-</span></span><span style="display:flex;"><span>alias du<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -h&#39;</span>
-</span></span><span style="display:flex;"><span>alias du1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -d1&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;echo -e ${PATH//:/\\n}&#39;</span></span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>alias update-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syyu&#39;</span></span></span></code></pre></div></div>
 </figure>
 <p>エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。</p>
 <p>例えばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
