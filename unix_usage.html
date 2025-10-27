@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-28 15:46:27">2025-02-28 15:46:27</time></div>
+<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -24,7 +24,7 @@
         <li><a href="#マニュアルの設定">マニュアルの設定</a></li>
       </ul>
     </li>
-    <li><a href="#ターミナルvscode">ターミナル(VSCode)</a></li>
+    <li><a href="#ターミナルvs-code">ターミナル(VS Code)</a></li>
     <li><a href="#ターミナルwindowsターミナル">ターミナル(Windowsターミナル)</a></li>
     <li><a href="#コマンドシェルbash">コマンドシェル(bash)</a></li>
     <li><a href="#パッケージマネージャpacman">パッケージマネージャ(pacman)</a></li>
@@ -51,7 +51,7 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>HOME=C:\msys64\home\your_name</span></span></code></pre></div></div>
 </figure>
 <p><a href="https://www.msys2.org/">MSYS2のウェブサイト</a>からMSYS2のインストーラをダウンロードします。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<p>インストーラを実行しセットアップウィザードの指示に従ってインストールします。インストール先はデフォルトのままCドライブの直下にしておくのが無難です。パスにスペースなどが含まれていると問題が起きる可能性があります。</p>
+<p>インストーラを実行しセットアップウィザードの指示にしたがってインストールします。インストール先はデフォルトのままCドライブの直下にしておくのが無難です。パスにスペースなどが含まれていると問題が起きる可能性があります。</p>
 <p>[Run MSYS2 now]をチェックしてセットアップウィザードを終了するとターミナル(コマンドの入出力を行うアプリケーション)が起動します。次のコマンドを入力してMSYS2にインストールされているパッケージをアップデートします。</p>
 
 
@@ -167,7 +167,7 @@
 </table>
 <p>ターミナルの画面出力を消去するにはCtrl+lを押すか、コマンドclearを入力します。</p>
 <h3 id="ターミナルの設定">ターミナルの設定</h3>
-<p>右クリックメニューから[Options]を選択するとターミナルの見た目や機能を細かく設定できます。インターフェースを日本語表示にするには、表示されたダイアログの左のリストから[Window]を選択して[UI language]を[ja]にして[Save]をクリックします。</p>
+<p>右クリックメニューから[Options]を選択するとターミナルの見た目や機能を細かく設定できます。インターフェイスを日本語表示にするには、表示されたダイアログの左のリストから[Window]を選択して[UI language]を[ja]にして[Save]をクリックします。</p>
 <p>設定ダイアログの左のリストから[テキスト]を選択するとフォントを指定できます。見やすいフォントとしては<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>や<a href="https://myrica.estable.jp/">Myrica</a>などがあります。</p>
 <p>設定ダイアログの左のリストから[外観]を選択すると配色を指定できます。配色のテーマ(*.minttyrc)は~/.mintty/themesに置くと追加されます。<a href="https://github.com/oumu/mintty-color-schemes">mintty-color-schemes</a>のテーマを以下のようにして追加します。</p>
 
@@ -188,7 +188,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo $LANG</span></span></code></pre></div></div>
 </figure>
-<p>デフォルトのロカールはja_JP.UTF-8です。これの意味はja(言語は日本語)_JP(国は日本).UTF-8(使用する文字コードはUTF-8)です。ロカールの設定を変更する必要はありません。日本語入力についても設定することはありません。Windowsと同じ方法で日本語を入力することができます。</p>
+<p>デフォルトのロカールはja_JP.UTF-8です。これの意味はja(言語は日本語)_JP(国は日本).UTF-8(使用する文字コードはUTF-8)です。ロカールの設定を変更する必要はありません。日本語入力についても設定することはありません。Windowsと同じ方法で日本語を入力できます。</p>
 <h3 id="マウントの設定">マウントの設定</h3>
 <p>起動時にデバイスやディレクトリをマウントするには下のように/etc/fstabを記述します。パスの区切りは&quot;/&quot;(スラッシュ)でも&quot;\&quot;(バックスラッシュ)でも構いません。スペースは\040に置き換えます。/etc/fstabの設定を反映させるにはMSYS2を再起動する必要があります。</p>
 
@@ -224,9 +224,9 @@
 </span></span><span style="display:flex;"><span># rm -rfv man-pages-ja-20231115
 </span></span><span style="display:flex;"><span># mandb</span></span></code></pre></div></div>
 </figure>
-<h2 id="ターミナルvscode">ターミナル(VSCode)</h2>
-<p>MSYS2をVisualStudioCode(以下VSCode)のプロファイルに追加するには次のようにします。詳細については<a href="https://qiita.com/chirimen/items/04e2e10c86c9ecd1e158">VisualStudioCodeの統合ターミナルでMSYS2のbashを選択できるようにする</a>を参照してください。環境変数については<a href="https://qiita.com/yumetodo/items/42132a1e8435504448aa">VisualStudioCode15.1の統合シェルをMSYS2のbashにする</a>が参考になります。</p>
-<p>VSCodeの設定ファイル(settings.json)を開いて以下の内容を追加します。パスおよび環境変数の部分は必要に応じて書き換えてください。</p>
+<h2 id="ターミナルvs-code">ターミナル(VS Code)</h2>
+<p>MSYS2をVisual Studio Code(以下VS Code)のプロファイルに追加するには次のようにします。詳細については<a href="https://qiita.com/chirimen/items/04e2e10c86c9ecd1e158">VisualStudioCodeの統合ターミナルでMSYS2のbashを選択できるようにする</a>を参照してください。環境変数については<a href="https://qiita.com/yumetodo/items/42132a1e8435504448aa">VisualStudioCode15.1の統合シェルをMSYS2のbashにする</a>が参考になります。</p>
+<p>VS Codeの設定ファイル(settings.json)を開いて以下の内容を追加します。パスおよび環境変数の部分は必要に応じて書き換えてください。</p>
 
 
 <figure class="xCodeBlock">
@@ -372,7 +372,7 @@
 </figure>
 <p>メタキャラクタを普通の文字として扱いたい場合は\(バックスラッシュ)でエスケープします。&rsquo;(シングルクォート)で文字列を括れば文字列内のメタキャラクタをすべてエスケープできます。&rsquo;(シングルクォート)ではなく&quot;(ダブルクォート)を使用するとメタキャラクタがシェルに解釈されます。</p>
 <p>ワイルドカードを使用すればパターンにマッチする複数のファイルを一括で処理できます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B0%A5%ED%A5%D6">用語集:ファイルグロブ: UNIXの部屋</a>を参照してください。</p>
-<p>パイプラインやリダイレクトを使用すればコマンドをつなげて実行したりコマンドの入出力先を変更したりすることができます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%EA%A5%C0%A5%A4%A5%EC%A5%AF%A5%C8">用語集:リダイレクト: UNIXの部屋</a>や<a href="https://shellscript.sunone.me/input_output.html">入力と出力 | UNIXコマンド・シェルスクリプトリファレンス</a>を参照してください。</p>
+<p>パイプラインやリダイレクトを使用すればコマンドをつなげて実行したりコマンドの入出力先を変更したりできます。詳細については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%EA%A5%C0%A5%A4%A5%EC%A5%AF%A5%C8">用語集:リダイレクト: UNIXの部屋</a>や<a href="https://shellscript.sunone.me/input_output.html">入力と出力 | UNIXコマンド・シェルスクリプトリファレンス</a>を参照してください。</p>
 <p>リダイレクトについてかみ砕いて説明します。知っておくべきことは次のとおり。</p>
 <ul>
 <li>ディスクリプタは入出力先に割り当てられた番号</li>
@@ -528,11 +528,11 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S vim</span></span></code></pre></div></div>
 </figure>
-<p>vimには[ノーマル/インサート/ビジュアル/コマンド]の4つのモードがあります。編集コマンドを受け付けるノーマルモードで起動し、ノーマルモードを軸に他の3つのモードに遷移します。文字を入力するときはインサートモードに移行します。範囲を選択するときはビジュアルモードに移行します。検索や置換などのコマンドを実行するときはコマンドモードに移行します。ノーマルモードもしくはビジュアルモードで:(コロン)を入力するとコマンドモードに移行し、下のコマンドラインから:に続けて任意のコマンドを入力できます。ノーマルモードに戻るにはEsc(Ctrl+[)もしくはCtrl+cを入力します。</p>
+<p>vimには[ノーマル/インサート/ビジュアル/コマンド]の4つのモードがあります。編集コマンドを受け付けるノーマルモードで起動し、ノーマルモードを軸に他の3つのモードに遷移します。文字を入力するときはインサートモードに移行します。範囲を選択するときはビジュアルモードに移行します。検索や置換などのコマンドを実行するときはコマンドモードに移行します。ノーマルモードまたはビジュアルモードで:(コロン)を入力するとコマンドモードに移行し、下のコマンドラインから:に続けて任意のコマンドを入力できます。ノーマルモードに戻るにはEsc(Ctrl+[)もしくはCtrl+cを入力します。</p>
 <figure class="center"><img src="vim_mode.png">
 </figure>
 
-<p>vimの基本的なコマンドを以下に示します。詳細については<a href="https://qiita.com/jintz/items/d357478271179c90ffab">VSCodeで始めるVim</a>を参照してください。</p>
+<p>vimの基本的なコマンドを以下に示します。詳細については<a href="https://qiita.com/jintz/items/d357478271179c90ffab">VS Codeで始めるVim</a>を参照してください。</p>
 <table>
   <thead>
       <tr>
@@ -863,10 +863,10 @@
       </tr>
   </tbody>
 </table>
-<p>読み込んだファイルはバッファに保存され、バッファを切り替えることによって複数のファイルを同時に編集することができます。</p>
-<p><a href="https://maku77.github.io/vim/edit/paste-in-insert-mode.html">ショートカット</a>を利用するとコマンドラインで文字列を素早く入力することができます。</p>
+<p>読み込んだファイルはバッファに保存され、バッファを切り替えることによって複数のファイルを同時に編集できます。</p>
+<p><a href="https://maku77.github.io/vim/edit/paste-in-insert-mode.html">ショートカット</a>を利用するとコマンドラインで文字列を素早く入力できます。</p>
 <p>置換対象の文字列を省略すると最後に検索した文字列が置換対象になります。大文字・小文字を区別しない場合は検索パターンに\cを指定します。正規表現を使用する場合は検索パターンに\vを指定します。</p>
-<p>1から10の連番を入力するにはノーマルモードから [i] &gt; [0] &gt; [Enter] &gt; [Esc] &gt; [9.] &gt; [ggVG] &gt; [g] &gt; [Ctrl+a] のようにします。Ctrl+aの前にgを入力すると増分をインクリメントしながらインクリメントすることができます。</p>
+<p>1から10の連番を入力するにはノーマルモードから [i] &gt; [0] &gt; [Enter] &gt; [Esc] &gt; [9.] &gt; [ggVG] &gt; [g] &gt; [Ctrl+a] のようにします。Ctrl+aの前にgを入力すると増分をインクリメントしながらインクリメントできます。</p>
 <p>vimの設定は~/.vimrcに以下のように記述します。so ~/.vimrcというコマンドを実行すると~/.vimrcがリロードされます。soはsourceの略です。</p>
 
 
@@ -1004,7 +1004,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
-<p>以下のようにコマンドのエイリアス(alias: 別名)を定義することができます。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
+<p>以下のようにコマンドのエイリアス(alias: 別名)を定義できます。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
 
 
 <figure class="xCodeBlock">
@@ -1060,7 +1060,7 @@
 </span></span><span style="display:flex;"><span>alias update-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syyu&#39;</span></span></span></code></pre></div></div>
 </figure>
 <p>エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。</p>
-<p>例えばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
+<p>たとえばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
 
 
 <figure class="xCodeBlock">
@@ -1172,7 +1172,7 @@
 </figure>
 -->
 <h2 id="バージョン管理システムgit">バージョン管理システム(git)</h2>
-<p>バージョン管理システムでファイルの更新履歴を記録することができます。ここではバージョン管理システムとして<a href="https://ja.wikipedia.org/wiki/Git">git</a>を使用します。</p>
+<p>バージョン管理システムでファイルの更新履歴を記録できます。ここではバージョン管理システムとして<a href="https://ja.wikipedia.org/wiki/Git">git</a>を使用します。</p>
 <p>以下のコマンドを入力してgitがインストールされていることを確認してください。</p>
 
 
@@ -1180,7 +1180,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git -v</span></span></code></pre></div></div>
 </figure>
-<p>gitのチュートリアルとしては<a href="https://backlog.com/ja/git-tutorial/">サル先生のGit入門</a>がおすすめです。gitコマンドの使い方およびgitの設定については<a href="https://www.tohoho-web.com/ex/git.html">とほほのGit入門</a>や<a href="https://maku77.github.io/git/">まくまくGitノート</a>を参照してください。</p>
+<p>gitのチュートリアルとしては<a href="https://backlog.com/ja/git-tutorial/">サル先生のGit入門</a>がオススメです。gitコマンドの使い方およびgitの設定については<a href="https://www.tohoho-web.com/ex/git.html">とほほのGit入門</a>や<a href="https://maku77.github.io/git/">まくまくGitノート</a>を参照してください。</p>
 <p>gitにはGUIのフロントエンドも用意されています。管理しているファイルの状態や更新履歴を確認する場合はターミナルよりもGUIの方が見やすくて便利かもしれません。</p>
 <p>ファイルの状態を確認するにはgit guiを起動します。</p>
 
@@ -1256,7 +1256,7 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>lftp :~&gt; open -u USERNAME HOSTNAME</span></span></code></pre></div></div>
 </figure>
 <p>続けてアカウントのパスワードを要求されます。正しいパスワードを入力するとログインに成功します。</p>
-<p>FTPサーバにログインしたらlftpのコマンドを使用してサーバにファイルをアップロードしたりサーバからファイルをダウンロードしたりすることができます。</p>
+<p>FTPサーバにログインしたらlftpのコマンドを使用してサーバにファイルをアップロードしたりサーバからファイルをダウンロードしたりできます。</p>
 <p>lftpの基本的なコマンドには以下のようなものがあります。</p>
 <table>
   <thead>
@@ -1405,7 +1405,7 @@ set ssl_starttls = yes # STARTTLS
 <p>基本的なキー操作はlessやvimに似ています。マウス操作にも対応しています。</p>
 <p>Hを押すとヘルプが表示されます。設定を変更したいならoを押します。qを押せば終了します。</p>
 <p>キーバインドを変更したい場合は~/.w3m/keymapを書き換えます。</p>
-<p>次のような関数を定義すればコマンドからウェブを検索することができます。</p>
+<p>次のような関数を定義すればコマンドからウェブを検索できます。</p>
 
 
 <figure class="xCodeBlock">
@@ -1493,7 +1493,7 @@ set ssl_starttls = yes # STARTTLS
 <!--
 ## 電卓(bc)
 
-電卓には[bc](https://ja.wikipedia.org/wiki/Bc_(UNIX))を使用することができます。詳細については[bcコマンドの使い方: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?bc)を参照してください。
+電卓には[bc](https://ja.wikipedia.org/wiki/Bc_(UNIX))を使用できます。詳細については[bcコマンドの使い方: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?bc)を参照してください。
 
 bcをインストールします。
 

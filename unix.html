@@ -8,14 +8,14 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-15 07:00:01">2025-02-15 07:00:01</time></div>
+<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本事項</h1>
 <nav id="TableOfContents">
   <ul>
     <li><a href="#はじめに">はじめに</a></li>
     <li><a href="#ディストリビューション">ディストリビューション</a></li>
-    <li><a href="#ユーザインターフェース">ユーザインターフェース</a></li>
+    <li><a href="#ユーザインターフェイス">ユーザインターフェイス</a></li>
     <li><a href="#ユーザとグループ">ユーザとグループ</a></li>
     <li><a href="#ランレベルとデーモン">ランレベルとデーモン</a></li>
     <li><a href="#ブートローダ">ブートローダ</a></li>
@@ -45,9 +45,9 @@
 <h2 id="はじめに">はじめに</h2>
 <p><a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF">パーソナルコンピュータ</a>(PC)を使用するには最初に<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">オペレーティングシステム</a>(OS)というソフトウェアをインストールする必要があります。市販のPCには<a href="https://ja.wikipedia.org/wiki/Microsoft_Windows">Windows</a>というOSが付属していますがWindowsではなく<a href="https://ja.wikipedia.org/wiki/Unix%E7%B3%BB">Unix系</a>のOS(<a href="https://ja.wikipedia.org/wiki/FreeBSD">FreeBSD</a>や<a href="https://ja.wikipedia.org/wiki/Linux">Linux</a>)を使用することもできます。<!-- またMSYS2などを使用してWindowsにUnixライクな環境を導入することもできます。 -->ここでは<a href="https://ja.wikipedia.org/wiki/UNIX">Unix</a>を使用するにあたって知っておきたい事柄を紹介します。</p>
 <h2 id="ディストリビューション">ディストリビューション</h2>
-<p>様々な<a href="https://ja.wikipedia.org/wiki/Linux%E3%83%87%E3%82%A3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ディストリビューション</a>(配布形態)が存在しますが大きな違いはありません。多くのディストリビューションが無料で提供されています。</p>
-<h2 id="ユーザインターフェース">ユーザインターフェース</h2>
-<p>コマンドを直接入力するキーボード操作中心のインターフェース(<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9">CUI/CLI</a>)です。</p>
+<p>さまざまな<a href="https://ja.wikipedia.org/wiki/Linux%E3%83%87%E3%82%A3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ディストリビューション</a>(配布形態)が存在しますが大きな違いはありません。多くのディストリビューションが無料で提供されています。</p>
+<h2 id="ユーザインターフェイス">ユーザインターフェイス</h2>
+<p>コマンドを直接入力するキーボード操作中心のインターフェイス(<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9">CUI/CLI</a>)です。</p>
 <h2 id="ユーザとグループ">ユーザとグループ</h2>
 <p><a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC">root</a>という名前のユーザがシステムの全権を掌握します。その他のユーザは一般ユーザとして扱われます。ユーザは複数のグループに所属できます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?useradd">useradd</a>でユーザを追加します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?su">su</a>でユーザを変更します。</p>
 <h2 id="ランレベルとデーモン">ランレベルとデーモン</h2>
@@ -120,7 +120,7 @@ Command&quot;の略です。</p>
 <h2 id="アーカイブファイル">アーカイブファイル</h2>
 <p>ファイルを圧縮するには<a href="https://ja.wikipedia.org/wiki/Gzip">gzip</a>(*.gz)というコマンドを使用します。gzipよりも圧縮率の高い<a href="https://ja.wikipedia.org/wiki/Bzip2">bzip2</a>(*.bz2)というコマンドも使用できます。複数のファイルを<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)">アーカイブ</a>する場合は<a href="https://ja.wikipedia.org/wiki/Tar">tar</a>(*.tar)というプログラムで1つのファイルにまとめてからgzipやbzip2で圧縮します。tarを使って圧縮されたファイル(*.tar.gz, *.tar.bz2)をターボール(tarball)ということがあります。アーカイブファイルはコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?tar">tar</a>で作成します。紛らわしいですがWindowsのアーカイブフォーマット(*.zip)とは関係ありません。</p>
 <h2 id="デバイスファイル">デバイスファイル</h2>
-<p>ハードディスクドライブや光学ドライブなどのデバイスはファイルとして扱われます。Windowsのようにドライブレターで区別することはしません。<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">デバイスファイル</a>は/devに収められています。デバイスにアクセスする場合はデバイスファイルを任意のディレクトリに<a href="https://ja.wikipedia.org/wiki/Mount_(UNIX)">マウント</a>します。デバイスをディレクトリにマウントすると、マウントしたデバイスの内容をそのディレクトリから参照したり操作したりすることができます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?mount">mount</a>および<a href="http://x68000.q-e-d.net/~68user/unix/pickup?umount">umount</a>でデバイスをマウント・アンマウントします。/etc/fstabを書き換えて起動時に自動でマウントさせるようにすることもできます。fstabはFile System Tableの略です。</p>
+<p>ハードディスクドライブや光学ドライブなどのデバイスはファイルとして扱われます。Windowsのようにドライブレターで区別することはしません。<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">デバイスファイル</a>は/devに収められています。デバイスにアクセスする場合はデバイスファイルを任意のディレクトリに<a href="https://ja.wikipedia.org/wiki/Mount_(UNIX)">マウント</a>します。デバイスをディレクトリにマウントすると、マウントしたデバイスの内容をそのディレクトリから参照したり操作したりできます。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?mount">mount</a>および<a href="http://x68000.q-e-d.net/~68user/unix/pickup?umount">umount</a>でデバイスをマウント・アンマウントします。/etc/fstabを書き換えて起動時に自動でマウントさせるようにすることもできます。fstabはFile System Tableの略です。</p>
 <h2 id="パッケージシステム">パッケージシステム</h2>
 <p>利用できるアプリケーションは<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">パッケージ</a>という形で<a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA">リポジトリ</a>というサーバに置かれています。パッケージの形式はディストリビューションによって異なります。パッケージはパッケージマネージャを使用してインストール・アップデート・アンインストールします。インストール済みのパッケージをまとめてアップデートすることもできます。</p>
 <h2 id="ウィンドウシステム">ウィンドウシステム</h2>
@@ -132,7 +132,7 @@ Command&quot;の略です。</p>
 <h2 id="印刷システム">印刷システム</h2>
 <p>プリンタを制御する<a href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%82%B5%E3%83%BC%E3%83%90">プリントサーバ</a>は<a href="https://ja.wikipedia.org/wiki/CUPS">CUPS</a>(Common Unix Printing System)です。</p>
 <h2 id="デスクトップ環境">デスクトップ環境</h2>
-<p>Windowsのような<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%92%B0%E5%A2%83">デスクトップ環境</a>も使用できます。代表的なデスクトップ環境は<a href="https://ja.wikipedia.org/wiki/GNOME">GNOME</a>と<a href="https://ja.wikipedia.org/wiki/KDE">KDE</a>です。より軽量なデスクトップ環境としては<a href="https://ja.wikipedia.org/wiki/Xfce">Xfce</a>や<a href="https://ja.wikipedia.org/wiki/LXDE">LXDE</a>などがあります。この他にも様々なデスクトップ環境が用意されています。</p>
+<p>Windowsのような<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%92%B0%E5%A2%83">デスクトップ環境</a>も使用できます。代表的なデスクトップ環境は<a href="https://ja.wikipedia.org/wiki/GNOME">GNOME</a>と<a href="https://ja.wikipedia.org/wiki/KDE">KDE</a>です。より軽量なデスクトップ環境としては<a href="https://ja.wikipedia.org/wiki/Xfce">Xfce</a>や<a href="https://ja.wikipedia.org/wiki/LXDE">LXDE</a>などがあります。この他にもさまざまなデスクトップ環境が用意されています。</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

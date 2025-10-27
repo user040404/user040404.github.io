@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-15 07:00:01">2025-02-15 07:00:01</time></div>
+<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixのインストール</h1>
 <nav id="TableOfContents">
@@ -65,7 +65,7 @@
 
 <h2 id="デバイスマッパーとlukslvm">デバイスマッパーとLUKS/LVM</h2>
 <p>Linuxにはデバイスマッパーと呼ばれるブロックデバイスの仮想レイヤーがあります。これは物理デバイスを抽象化して扱いやすくします。LUKS/LVMはこのデバイスマッパーを利用しています。<a href="https://ja.wikipedia.org/wiki/LUKS">LUKS</a>(Linux Unified Key Setup)はブロックデバイスを暗号化する仕組みです。<a href="https://ja.wikipedia.org/wiki/%E8%AB%96%E7%90%86%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">LVM</a>(Logical Volume Manager)は複数の物理ブロックデバイスを仮想的な1つのブロックデバイスとして扱う仕組みです。</p>
-<p>LVMにはPV/VG/LVという3つの構成要素があります。PV(Phisical Volume)は物理ブロックデバイスです。VG(Volume Group)はPVで構成された仮想的な1つのブロックデバイスです。LV(Logical Volume)はVGに作成された仮想的なパーティションです。この仕組みによって物理ブロックデバイスの構成を気にすることなくパーティションを操作することができます。</p>
+<p>LVMにはPV/VG/LVという3つの構成要素があります。PV(Phisical Volume)は物理ブロックデバイスです。VG(Volume Group)はPVで構成された仮想的な1つのブロックデバイスです。LV(Logical Volume)はVGに作成された仮想的なパーティションです。この仕組みによって物理ブロックデバイスの構成を気にすることなくパーティションを操作できます。</p>
 <figure class="center"><img src="lvm.png">
 </figure>
 
@@ -94,8 +94,8 @@
 <ol>
 <li>インストール先のディスクを準備する(パーティションの作成、パーティションのフォーマット)</li>
 <li>インストール先のディスクにパッケージをインストールする</li>
-<li>1.で準備したインストール先のディスク(ここではESPおよびルートパーティション)をマウントする</li>
-<li>3.でマウントしたインストール先のディスク(ルートパーティション)にchrootして各種設定を行う</li>
+<li>1で準備したインストール先のディスク(ここではESPおよびルートパーティション)をマウントする</li>
+<li>3でマウントしたインストール先のディスク(ルートパーティション)にchrootして各種設定を行う</li>
 <li>chrootから抜けてインストール作業を終了する</li>
 <li>インストール先のディスクからシステムを起動する</li>
 <li>インストール後の各種設定を行う</li>
@@ -132,7 +132,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ssh-keygen -R &#39;[localhost]:2222&#39;</span></span></code></pre></div></div>
 </figure>
-<p>以後はMSYS2のターミナルで作業することができます。</p>
+<p>以後はMSYS2のターミナルで作業できます。</p>
 <h3 id="起動モードの確認">起動モードの確認</h3>
 <p>UEFIモードで起動していることを確認します。ファイルがリストされていれば問題ありません。</p>
 
@@ -915,7 +915,7 @@ IME([fcitx5](https://wiki.archlinux.jp/index.php/Fcitx5))をインストール�
 <hr>
 <ol>
 <li id="fn:1">
-<p>ブロックデバイスは複数の区画に分割することができます。その区画をパーティションといいます。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>ブロックデバイスは複数の区画に分割できます。その区画をパーティションといいます。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p>基本パーティションの1つを拡張パーティション(Extended Partition)に指定すれば、その中にいくつでも論理パーティション(Logical Partition)を作成できます。ただし拡張パーティションにはOSをインストールできません。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>

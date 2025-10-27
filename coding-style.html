@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-15 07:00:01">2025-02-15 07:00:01</time></div>
+<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>コーディングスタイルの例</h1>
 <nav id="TableOfContents">
@@ -42,7 +42,7 @@
 <h2 id="はじめに">はじめに</h2>
 <p>プログラミングにおいて読みやすく間違いに気づきやすいコードを記述するための工夫がコーディングスタイルです。以下に示すようなスタイルにこだわる必要はありませんが、一貫したスタイルで記述されていないコードにはやはり問題があります。ここでは参考としてC++のコーディングスタイルを紹介します。<a href="https://google.github.io/styleguide/cppguide.html">Googleのコーディングガイドライン</a>および<a href="http://stlalv.la.coocan.jp/">C++マニアック</a>を参考にしました。</p>
 <h2 id="コメント">コメント</h2>
-<p>コメントがなくてもプログラムの処理の流れが分かるように適切な変数名・関数名を使用しましょう。</p>
+<p>コメントがなくてもプログラムの処理の流れがわかるように適切な変数名・関数名を使用しましょう。</p>
 <p>他の人がコードを読む手助けになるようなコメントを記述するようにします。実行される文の処理をそのまま記述したようなコメントには意味がありません。</p>
 <h2 id="空白文字">空白文字</h2>
 <h3 id="空行">空行</h3>
@@ -107,7 +107,7 @@
       </tr>
   </tbody>
 </table>
-<p>コメントに頼らなくても名前によって変数の役割や関数の機能が分かるようにします。関数名は「動詞+目的語」の形にします。ループのインデックスなど狭い範囲で使用する変数の名前はできるだけ短くして目立たないようにします。</p>
+<p>コメントに頼らなくても名前によって変数の役割や関数の機能がわかるようにします。関数名は「動詞+目的語」の形にします。ループのインデックスなど狭い範囲で使用する変数の名前はできるだけ短くして目立たないようにします。</p>
 <p>プログラム全体で使用する定数には、コードが読みやすくなるように適切な名前をつけます。名前のつけられた定数を記号定数といいます。記号定数を使用することによってコードの可読性が向上するだけでなくメンテナンスも容易になります。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>よく使用される識別子には以下のようなものがあります。</p>
 <table>
@@ -597,7 +597,7 @@
 <!--
 ## コードフォーマッタ(ClangFormat)
 
-コードフォーマッタは設定に従ってプログラムのコードを整形してくれます。[Clang](https://ja.wikipedia.org/wiki/Clang)というコンパイラに付属しているClangFormatはC言語ライクなプログラミング言語(C/C++/Objective-C/Objective-C++)に対応しているフォーマッタです。
+コードフォーマッタは設定にしたがってプログラムのコードを整形してくれます。[Clang](https://ja.wikipedia.org/wiki/Clang)というコンパイラに付属しているClangFormatはC言語ライクなプログラミング言語(C/C++/Objective-C/Objective-C++)に対応しているフォーマッタです。
 
 ClangはMSYS2でインストールできます。
 
