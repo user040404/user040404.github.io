@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-02-22 11:25:25">2025-02-22 11:25:25</time></div>
+<div id="date"><time datetime="2025-10-29 01:29:53">2025-10-29 01:29:53</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>レジストリのバックアップ</h1>
 <nav id="TableOfContents">
@@ -27,34 +27,78 @@
 <p>復元ポイントの作成によってバックアップしたレジストリを復元するには「システムの復元」を実行します。詳細については<a href="http://windows.microsoft.com/ja-JP/windows7/products/features/system-restore">システムの復元</a>を参照してください。</p>
 <h2 id="レジストリキーのバックアップ">レジストリキーのバックアップ</h2>
 <p>特定のレジストリキーをバックアップするにはレジストリエディタを使用します。詳細については<a href="http://windows.microsoft.com/ja-JP/windows7/Back-up-the-registry">レジストリをバックアップする</a>を参照してください。</p>
-<p>ここではバッチファイルを使用してレジストリをバックアップする方法を紹介します。バッチファイルは拡張子が*.batのテキストファイルです。</p>
-<p>テキストエディタで次のようなバッチファイルを作成してください。</p>
+<p>ここではPowerShellのスクリプトを使用してレジストリをバックアップする方法を紹介します。</p>
+<p>テキストエディタで次のようなスクリプトファイルを作成してください。</p>
 
 
 <figure class="xCodeBlock">
-<figcaption class="xCodeBlock_title">reg_export.bat</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>@<span style="color:#66d9ef">echo</span> off
+<figcaption class="xCodeBlock_title">%UserProfile%\export_registry.ps1</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Export-RegistryKey {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span> (
+</span></span><span style="display:flex;"><span>        [Parameter(<span style="color:#a6e22e">Mandatory</span> = $true)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">string</span>]$RegistryKeyPath,
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: レジストリのバックアップ</span>
+</span></span><span style="display:flex;"><span>        [Parameter(<span style="color:#a6e22e">Mandatory</span> = $true)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">string</span>]$OutputFolder
+</span></span><span style="display:flex;"><span>    )
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: 最初にバックアップ先のフォルダを指定します。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 出力フォルダが存在するか確認し、存在しなければ作成する</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">-Not</span> (Test-Path -Path $OutputFolder)) {
+</span></span><span style="display:flex;"><span>        New-Item -ItemType Directory -Path $OutputFolder
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: 次のコマンドでバックアップ先のフォルダに移動します。</span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: cd /d &#34;バックアップ先のフォルダのパス&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 出力ファイルのパスを作成する</span>
+</span></span><span style="display:flex;"><span>    $KeyName = $RegistryKeyPath <span style="color:#f92672">-replace</span> <span style="color:#e6db74">&#39;[\\:]&#39;</span>, <span style="color:#e6db74">&#39;_&#39;</span>  <span style="color:#75715e"># 無効な文字を置換する</span>
+</span></span><span style="display:flex;"><span>    $OutputFile = Join-Path -Path $OutputFolder -ChildPath <span style="color:#e6db74">&#34;</span>${KeyName}<span style="color:#e6db74">.reg&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">cd</span> /d <span style="color:#e6db74">&#34;D:\RegFiles&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># レジストリキーをエクスポートする</span>
+</span></span><span style="display:flex;"><span>    reg export $RegistryKeyPath $OutputFile /y
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: 以下でレジストリキーをバックアップします。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># エクスポートを確認する</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Test-Path -Path $OutputFile) {
+</span></span><span style="display:flex;"><span>        Write-Output <span style="color:#e6db74">&#34;レジストリキーは正常にエクスポートされました: </span>$OutputFile<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        Write-Output <span style="color:#e6db74">&#34;レジストリキーのエクスポートに失敗しました。&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: 次のコマンドでレジストリキーをエクスポートします。</span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: reg export &#34;エクスポートするキーのパス&#34; &#34;レジストリファイル(*.reg)の名前&#34; /y</span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: - キーのパスはレジストリエディタからコピーします。</span>
-</span></span><span style="display:flex;"><span>:<span style="color:#75715e">: - 複数のキーをバックアップする場合は複数行にわたって記述します。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Export-MultipleRegistryKeys {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span> (
+</span></span><span style="display:flex;"><span>        [Parameter(<span style="color:#a6e22e">Mandatory</span> = $true)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">string[]</span>]$RegistryKeyPaths,  <span style="color:#75715e"># 複数キーを配列で受け取る</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>reg export <span style="color:#e6db74">&#34;HKEY_CURRENT_USER\Console&#34;</span> <span style="color:#e6db74">&#34;Console.reg&#34;</span> /y
-</span></span><span style="display:flex;"><span>reg export <span style="color:#e6db74">&#34;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit&#34;</span> <span style="color:#e6db74">&#34;Regedit.reg&#34;</span> /y</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>        [Parameter(<span style="color:#a6e22e">Mandatory</span> = $true)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">string</span>]$OutputFolder
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> ($keyPath <span style="color:#66d9ef">in</span> $RegistryKeyPaths) {
+</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#e6db74">&#34;エクスポートしています: </span>$keyPath<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        Export-RegistryKey -RegistryKeyPath $keyPath -OutputFolder $OutputFolder
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># エクスポートするキーのパス</span>
+</span></span><span style="display:flex;"><span>$keys = @(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;HKCU\Software\Microsoft\Windows\CurrentVersion\Run&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;HKCU\Console&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># エクスポートするキーの出力先</span>
+</span></span><span style="display:flex;"><span>$path = Join-Path -Path $HOME -ChildPath <span style="color:#e6db74">&#34;RegistryBackup&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Export-MultipleRegistryKeys -RegistryKeyPaths $keys -OutputFolder $path</span></span></code></pre></div></div>
 </figure>
-<p>このバッチファイルを実行するとバックアップ先のフォルダにレジストリファイル(*.reg)が作成されます。レジストリファイルを実行するとバックアップしたレジストリが復元されます。</p>
+<p>ターミナルで上記のスクリプトファイルを実行します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd
+</span></span><span style="display:flex;"><span># export_registry.ps1</span></span></code></pre></div></div>
+</figure>
+<p>出力先のフォルダにレジストリファイル(*.reg)が作成されます。レジストリファイルを実行するとレジストリが復元されます。</p>
 
 
     </div><footer>
