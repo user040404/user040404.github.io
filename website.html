@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
+<div id="date"><time datetime="2025-10-29 08:02:00">2025-10-29 08:02:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -157,7 +157,7 @@ MSYS2からHugoおよびGitをインストールします。
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">profile.ps1</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Start-HugoServer {
-</span></span><span style="display:flex;"><span>    $path = Get-Hugo
+</span></span><span style="display:flex;"><span>    $path = Join-Path -Path $HOME -ChildPath <span style="color:#e6db74">&#34;my_site&#34;</span>
 </span></span><span style="display:flex;"><span>    $script = {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">param</span>($path)
 </span></span><span style="display:flex;"><span>        hugo -s $path server
@@ -295,9 +295,9 @@ MSYS2からHugoおよびGitをインストールします。
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo &#39;# user_name.github.io&#39; &gt;&gt;README.md
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># echo &#34;# user_name.github.io&#34; &gt;&gt;README.md
 </span></span><span style="display:flex;"><span># git add README.md
-</span></span><span style="display:flex;"><span># git commit -m &#39;first commit&#39;
+</span></span><span style="display:flex;"><span># git commit -m &#34;first commit&#34;
 </span></span><span style="display:flex;"><span># git push -u origin main</span></span></code></pre></div></div>
 </figure>
 <p>ウェブブラウザからリモートリポジトリにアクセスしてREADMEがコミットされていることを確認します。</p>
@@ -309,7 +309,7 @@ MSYS2からHugoおよびGitをインストールします。
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git add .
-</span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;
+</span></span><span style="display:flex;"><span># git commit -m &#34;update&#34;
 </span></span><span style="display:flex;"><span># git push</span></span></code></pre></div></div>
 </figure>
 <p>リモートリポジトリのmainブランチにコンテンツを置いておくとウェブブラウザからhttps://user_name.github.io/というアドレスでアクセスできます。</p>
@@ -362,7 +362,7 @@ MSYS2からHugoおよびGitをインストールします。
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd ~/my_site
 </span></span><span style="display:flex;"><span># git add .
-</span></span><span style="display:flex;"><span># git commit -m &#39;update&#39;</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span># git commit -m &#34;update&#34;</span></span></code></pre></div></div>
 </figure>
 <p>ウェブサーバを起動してウェブブラウザで記事のページを表示してみてください。フッタに更新日時が表示されているはずです。</p>
 <h2 id="ウェブサイトの更新">ウェブサイトの更新</h2>
@@ -372,26 +372,30 @@ MSYS2からHugoおよびGitをインストールします。
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">upload-content.ps1</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$path_here = Get-Location
-</span></span><span style="display:flex;"><span>$path_to_site = <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/my_site&#34;</span>
+</span></span><span style="display:flex;"><span>$path_to_site = Join-Path -Path $HOME -ChildPath <span style="color:#e6db74">&#34;my_site&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Set-Location -Path $path_to_site
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 更新日時を取得するためにGitのログを生成</span>
-</span></span><span style="display:flex;"><span>Set-Location -Path $path_to_site
 </span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
-</span></span><span style="display:flex;"><span>$path = Join-Path -Path $path_to_site -ChildPath <span style="color:#e6db74">&#39;config.toml&#39;</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
+</span></span><span style="display:flex;"><span>$path = Join-Path -Path $path_to_site -ChildPath <span style="color:#e6db74">&#34;config.toml&#34;</span>
 </span></span><span style="display:flex;"><span>Add-Content -Path $path -Value $null
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#e6db74">&#34;------------------------------------------------------------&#34;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツを出力</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#e6db74">&#39;------------------------------------------------------------&#39;</span>
 </span></span><span style="display:flex;"><span>hugo -s $path_to_site
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#e6db74">&#39;------------------------------------------------------------&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#e6db74">&#34;------------------------------------------------------------&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツをアップロード</span>
-</span></span><span style="display:flex;"><span>$path = Join-Path -Path $path_to_site -ChildPath <span style="color:#e6db74">&#39;public&#39;</span>
+</span></span><span style="display:flex;"><span>$path = Join-Path -Path $path_to_site -ChildPath <span style="color:#e6db74">&#34;public&#34;</span>
 </span></span><span style="display:flex;"><span>Set-Location -Path $path
 </span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
 </span></span><span style="display:flex;"><span>git push origin main
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Set-Location -Path $path_here</span></span></code></pre></div></div>
 </figure>
 <!--
@@ -406,7 +410,7 @@ MSYS2からHugoおよびGitをインストールします。
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 更新日時を取得するためにGitのログを生成</span>
 </span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">${</span>PROJECT<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツを出力</span>
 </span></span><span style="display:flex;"><span>hugo
@@ -414,7 +418,7 @@ MSYS2からHugoおよびGitをインストールします。
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ウェブサイトのコンテンツをアップロード</span>
 </span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">${</span>PROJECT<span style="color:#e6db74">}</span>/public
 </span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;update&#39;</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
 </span></span><span style="display:flex;"><span>git push origin main
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span></span></span></code></pre></div></div>
