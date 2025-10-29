@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.png" />
 </head><body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-29 08:02:00">2025-10-29 08:02:00</time></div>
+<div id="date"><time datetime="2025-10-29 09:02:12">2025-10-29 09:02:12</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ウェブサイト開設の手引き</h1>
 <nav id="TableOfContents">
@@ -157,12 +157,25 @@ MSYS2からHugoおよびGitをインストールします。
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">profile.ps1</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Start-HugoServer {
-</span></span><span style="display:flex;"><span>    $path = Join-Path -Path $HOME -ChildPath <span style="color:#e6db74">&#34;my_site&#34;</span>
+</span></span><span style="display:flex;"><span>    $path = Get-HugoPath
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># すでに hugo サーバーが起動しているか確認</span>
+</span></span><span style="display:flex;"><span>    $existing = Get-Process -Name <span style="color:#e6db74">&#34;hugo&#34;</span> -ErrorAction SilentlyContinue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($existing) {
+</span></span><span style="display:flex;"><span>        Write-Output <span style="color:#e6db74">&#34;hugo はすでに起動しています（PID: </span>$($existing.Id)<span style="color:#e6db74">）&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># サーバー起動スクリプト</span>
 </span></span><span style="display:flex;"><span>    $script = {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">param</span>($path)
-</span></span><span style="display:flex;"><span>        hugo -s $path server
+</span></span><span style="display:flex;"><span>        hugo -s <span style="color:#e6db74">&#34;</span>$path<span style="color:#e6db74">&#34;</span> server | Out-Null
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    Start-Job -ScriptBlock $script -ArgumentList $path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 非同期で起動</span>
+</span></span><span style="display:flex;"><span>    Start-Job -ScriptBlock $script -ArgumentList $path | Out-Null
+</span></span><span style="display:flex;"><span>    Write-Output <span style="color:#e6db74">&#34;hugo を起動しました: hugo -s &#34;&#34;</span>$($path)<span style="color:#e6db74">&#34;&#34; server&#34;</span>
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
 </figure>
 <h3 id="htmlファイルの生成">HTMLファイルの生成</h3>
