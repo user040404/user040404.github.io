@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
+<div id="date"><time datetime="2025-10-31 08:44:00">2025-10-31 08:44:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -42,7 +42,31 @@
 </header>
 <div id="content">
 <h2 id="はじめに">はじめに</h2>
-<p><a href="https://ja.wikipedia.org/wiki/MSYS">MSYS2</a>を使用してUnixの基本操作を説明します。MSYS2はWindowsで動作するコンパクトなUnix環境です。Unixについては<a href="unix_windows">Unixの基本事項</a>を参照してください。</p>
+<p>ここではUnixの基本操作を説明します。Unixについては<a href="unix_windows">Unixの基本事項</a>を参照してください。</p>
+<p>Windows上でUnixを使用するには次のような方法があります。</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WSL(Windows Subsystem for Linux)</td>
+          <td>Windows標準のLinuxエミュレータ。高速・軽量ですぐに使用できる。</td>
+      </tr>
+      <tr>
+          <td>MSYS2</td>
+          <td>最小限の機能を備えたコンパクトなUnix環境。</td>
+      </tr>
+      <tr>
+          <td>VirtualBox/VMware</td>
+          <td>Unix系のOSを動かせるPCエミュレータ。上の方法と比べると若干重い。</td>
+      </tr>
+  </tbody>
+</table>
+<p>いちばん手軽な方法はWSLです。デスクトップ環境を使用したいのであればVirtualBox/VMwareを選択します。ここでは<a href="https://ja.wikipedia.org/wiki/MSYS">MSYS2</a>を使用します。</p>
 <h2 id="msys2のインストール">MSYS2のインストール</h2>
 <p>Windowsのユーザ名に日本語が使用されている場合はMSYS2のホームディレクトリのパスをWindowsの環境変数HOMEに設定しておく必要があります。デフォルトではC:\msys64\homeにホームディレクトリが作成されます。</p>
 
@@ -169,7 +193,7 @@
 <p>ターミナルの画面出力を消去するにはCtrl+lを押すか、コマンドclearを入力します。</p>
 <h3 id="ターミナルの設定">ターミナルの設定</h3>
 <p>右クリックメニューから[Options]を選択するとターミナルの見た目や機能を細かく設定できます。インターフェイスを日本語表示にするには、表示されたダイアログの左のリストから[Window]を選択して[UI language]を[ja]にして[Save]をクリックします。</p>
-<p>設定ダイアログの左のリストから[テキスト]を選択するとフォントを指定できます。見やすいフォントとしては<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>や<a href="https://myrica.estable.jp/">Myrica</a>などがあります。</p>
+<p>設定ダイアログの左のリストから[テキスト]を選択するとフォントを指定できます。見やすいフォントとしては<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>や<a href="https://github.com/yuru7/PlemolJP">PlemolJP</a>などがあります。</p>
 <p>設定ダイアログの左のリストから[外観]を選択すると配色を指定できます。配色のテーマ(*.minttyrc)は~/.mintty/themesに置くと追加されます。<a href="https://github.com/oumu/mintty-color-schemes">mintty-color-schemes</a>のテーマを以下のようにして追加します。</p>
 
 
