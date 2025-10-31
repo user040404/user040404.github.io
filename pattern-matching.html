@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-31 16:15:35">2025-10-31 16:15:35</time></div>
+<div id="date"><time datetime="2025-11-01 08:48:08">2025-11-01 08:48:08</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>テキストのパターンマッチング</h1>
 <nav id="TableOfContents">
@@ -235,12 +235,28 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列を表します。(ワイルドカードのアスタリスクと同じ意味になります)
 </span></span><span style="display:flex;"><span>パターン^$は空行を表します。
 </span></span><span style="display:flex;"><span>パターン^.*$は任意の1行を表します。
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>パターン[ -~]は制御文字を含まない表示可能な半角文字を表します。
 </span></span><span style="display:flex;"><span>パターン[\x00-\x7F]は制御文字を含む半角文字を表します。
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>パターン[｡-ﾟ]は半角カタカナを表します。
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>パターン[^\x00-\x7F]およびパターン[^ -~｡-ﾟ]は全角文字を表します。
-</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9 -/:-@[-`{-~]は半角の英数字・記号を表します。
-</span></span><span style="display:flex;"><span>パターン[Ａ-Ｚａ-ｚ０-９！-～]は全角の英数字・記号を表します。</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9]は半角の英数字を表します。
+</span></span><span style="display:flex;"><span>パターン[!-/:-@[-`{-~]は半角の記号を表します。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>パターン[Ａ-Ｚａ-ｚ０-９]は全角の英数字を表します。
+</span></span><span style="display:flex;"><span>パターン[！-～]は全角の記号を表します。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>パターン[\u3040-\u309F]はひらがなを表します。
+</span></span><span style="display:flex;"><span>パターン[\u30A0-\u30FF]はカタカナ(全角)を表します。
+</span></span><span style="display:flex;"><span>パターン[\u4E00-\u9FFF]は漢字(CJK統合漢字ブロック)を表します。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}はメールアドレスにマッチします。
+</span></span><span style="display:flex;"><span>パターンhttps?://[^\s/.?#].[^\s]*はURLにマッチします。
+</span></span><span style="display:flex;"><span>パターン(?:A-Za-z0-9?.)+[A-Za-z]{2,}はドメイン名にマッチします。
+</span></span><span style="display:flex;"><span>パターン&lt;([A-Za-z][A-Za-z0-9-]*)\b[^&gt;]*&gt;(.*?)&lt;/\1&gt;はタグに囲まれたHTMLの要素にマッチします。\1にタグ名\2に内部コンテンツがキャプチャされます。</span></span></code></pre></div></div>
 </figure>
 <div class="footnotes" role="doc-endnotes">
 <hr>
