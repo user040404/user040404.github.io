@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-29 07:14:34">2025-10-29 07:14:34</time></div>
+<div id="date"><time datetime="2025-10-31 15:50:00">2025-10-31 15:50:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>テキストのパターンマッチング</h1>
 <nav id="TableOfContents">
@@ -227,14 +227,20 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン(foo)(bar)\2\1は文字列foobarbarfooにマッチします。</span></span></code></pre></div></div>
 </figure>
-<p>慣用的な表現として以下のようなものがあります。</p>
+<p>よく使用される慣用的な正規表現として以下のようなものがあります。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列を表します。(ワイルドカードのアスタリスクと同じ意味になります)
 </span></span><span style="display:flex;"><span>パターン^$は空行を表します。
-</span></span><span style="display:flex;"><span>パターン^.*$は任意の1行を表します。</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>パターン^.*$は任意の1行を表します。
+</span></span><span style="display:flex;"><span>パターン[ -~]は制御文字を含まない表示可能な半角文字(ASCIIの半角英数字・記号)を表します。
+</span></span><span style="display:flex;"><span>パターン[\x00-\x7F]は制御文字を含む半角文字を表します。
+</span></span><span style="display:flex;"><span>パターン[｡-ﾟ]は半角カタカナを表します。
+</span></span><span style="display:flex;"><span>パターン[^\x00-\x7F]およびパターン[^ -~｡-ﾟ]は全角文字を表します。
+</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9 -/:-@[-`{-~]は半角の英数字・記号を表します。
+</span></span><span style="display:flex;"><span>パターン[Ａ-Ｚａ-ｚ０-９！-～]は全角の英数字・記号を表します。</span></span></code></pre></div></div>
 </figure>
 <div class="footnotes" role="doc-endnotes">
 <hr>
