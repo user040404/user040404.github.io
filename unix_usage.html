@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-31 08:44:00">2025-10-31 08:44:00</time></div>
+<div id="date"><time datetime="2025-10-31 09:22:02">2025-10-31 09:22:02</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1435,6 +1435,105 @@ set ssl_starttls = yes # STARTTLS
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">~/.bashrc</figcaption>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># w3m-search: w3mで各種検索エンジンを開く関数</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使い方:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34;        # DuckDuckGoで検索</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;apple&#34; ddg     # ddg: DuckDuckGo</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;apple&#34; wiki    # wiki: Wikipedia(検索結果ページ)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;word&#34; longman  # longman: ロングマン英和(Longman)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;単語&#34; kotobank # kotobank: コトバンク</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;term&#34; ewords   # ewords: e-Words</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 例: w3m-search &#34;artificial intelligence&#34; wiki</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>w3m-search<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  local query engine url enc_q
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage: w3m-search \&#34;検索語\&#34; [engine]&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>  engine<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>2<span style="color:#66d9ef">:-</span>ddg<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># URLエンコード(簡易。UTF-8環境前提)</span>
+</span></span><span style="display:flex;"><span>  enc_q<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#39;%s&#39;</span> <span style="color:#e6db74">&#34;</span>$query<span style="color:#e6db74">&#34;</span> | perl -MURI::Escape -ne <span style="color:#e6db74">&#39;chomp; print uri_escape($_), &#34;\n&#34;&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$engine<span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    ddg|duckduckgo<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># DuckDuckGo 検索</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://duckduckgo.com/?q=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    wiki|wikipedia<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Wikipedia 検索(言語は自動検出せず日本語優先; 日本語ページがなければ言語切替可)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 日本語クエリはja.wikipedia、英語クエリはen.wikipediaの検索結果へ飛ばす例</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> printf <span style="color:#e6db74">&#39;%s&#39;</span> <span style="color:#e6db74">&#34;</span>$query<span style="color:#e6db74">&#34;</span> | grep -qP <span style="color:#e6db74">&#39;[\x{3040}-\x{30FF}\x{4E00}-\x{9FFF}]&#39;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://ja.wikipedia.org/w/index.php?search=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://en.wikipedia.org/w/index.php?search=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    longman<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># ロングマン英和辞典(Longman Dictionary of Contemporary English)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Longmanのサイトは商用辞書ページ。以下はLongmanの検索ページにクエリを渡す例。</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.ldoceonline.com/search/?q=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    kotobank<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># コトバンク(複数辞典を横断検索)</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://kotobank.jp/word/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    ewords<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># e-Words(IT用語辞典)</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://e-words.jp/search.html?word=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Unknown engine: </span><span style="color:#e6db74">${</span>engine<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Supported: ddg, wiki, longman, kotobank, ewords&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># w3mを起動(-I utf-8 -O utf-8 は必要に応じて)</span>
+</span></span><span style="display:flex;"><span>  w3m -I utf-8 -O utf-8 <span style="color:#e6db74">&#34;</span>$url<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
+</figure>
+<h2 id="スクリプト言語nodejspythonperl">スクリプト言語(node.js/python/perl)</h2>
+<p>node.js/python/perlの実行環境をインストールします。リポジトリに応じてパッケージ名のプレフィクスを適宜変更してください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S mingw-w64-x86_64-{nodejs,python,perl}</span></span></code></pre></div></div>
+</figure>
+<p>実行環境がインストールされていることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># node --version
+</span></span><span style="display:flex;"><span># python --version
+</span></span><span style="display:flex;"><span># perl --version</span></span></code></pre></div></div>
+</figure>
+<p>スクリプトが正しく実行されることを確認します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd
+</span></span><span style="display:flex;"><span># mkdir hello
+</span></span><span style="display:flex;"><span># cd hello
+</span></span><span style="display:flex;"><span># echo &#39;console.log(&#34;Hello World!&#34;);&#39; &gt;hello.js
+</span></span><span style="display:flex;"><span># echo &#39;print (&#34;Hello World!&#34;)&#39; &gt;hello.py
+</span></span><span style="display:flex;"><span># echo &#39;print &#34;Hello World!\n&#34;;&#39; &gt;hello.pl
+</span></span><span style="display:flex;"><span># node hello.js
+</span></span><span style="display:flex;"><span># python hello.py
+</span></span><span style="display:flex;"><span># perl hello.pl</span></span></code></pre></div></div>
+</figure>
+<!--
+
+
+<figure class="xCodeBlock">
+<figcaption class="xCodeBlock_title">~/.bashrc</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ウェブを検索する</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> sw<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
@@ -1483,39 +1582,7 @@ set ssl_starttls = yes # STARTTLS
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div></div>
 </figure>
-<h2 id="スクリプト言語nodejspythonperl">スクリプト言語(node.js/python/perl)</h2>
-<p>node.js/python/perlの実行環境をインストールします。リポジトリに応じてパッケージ名のプレフィクスを適宜変更してください。</p>
 
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S mingw-w64-x86_64-{nodejs,python,perl}</span></span></code></pre></div></div>
-</figure>
-<p>実行環境がインストールされていることを確認します。</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># node --version
-</span></span><span style="display:flex;"><span># python --version
-</span></span><span style="display:flex;"><span># perl --version</span></span></code></pre></div></div>
-</figure>
-<p>スクリプトが正しく実行されることを確認します。</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd
-</span></span><span style="display:flex;"><span># mkdir hello
-</span></span><span style="display:flex;"><span># cd hello
-</span></span><span style="display:flex;"><span># echo &#39;console.log(&#34;Hello World!&#34;);&#39; &gt;hello.js
-</span></span><span style="display:flex;"><span># echo &#39;print (&#34;Hello World!&#34;)&#39; &gt;hello.py
-</span></span><span style="display:flex;"><span># echo &#39;print &#34;Hello World!\n&#34;;&#39; &gt;hello.pl
-</span></span><span style="display:flex;"><span># node hello.js
-</span></span><span style="display:flex;"><span># python hello.py
-</span></span><span style="display:flex;"><span># perl hello.pl</span></span></code></pre></div></div>
-</figure>
-<!--
 ## 電卓(bc)
 
 電卓には[bc](https://ja.wikipedia.org/wiki/Bc_(UNIX))を使用できます。詳細については[bcコマンドの使い方: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?bc)を参照してください。
