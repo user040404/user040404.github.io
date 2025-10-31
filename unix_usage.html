@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-31 09:22:02">2025-10-31 09:22:02</time></div>
+<div id="date"><time datetime="2025-10-31 11:03:43">2025-10-31 11:03:43</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1034,27 +1034,28 @@
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">~/.bashrc</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias relogin<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;exec $SHELL -l&#39;</span>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># シェル再ログイン</span>
+</span></span><span style="display:flex;"><span>alias relogin<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;exec $SHELL -l&#39;</span>
 </span></span><span style="display:flex;"><span>alias re<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relogin&#39;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 画面クリア</span>
 </span></span><span style="display:flex;"><span>alias c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;clear&#39;</span>
 </span></span><span style="display:flex;"><span>alias cls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;reset&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias ..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd ../&#39;</span>
-</span></span><span style="display:flex;"><span>alias ....<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd ../../&#39;</span>
-</span></span><span style="display:flex;"><span>alias -- -<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd -&#39;</span>
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイル・ディレクトリ表示</span>
 </span></span><span style="display:flex;"><span>alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -FH --color=auto --group-directories-first&#39;</span>
 </span></span><span style="display:flex;"><span>alias la<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -A&#39;</span>
 </span></span><span style="display:flex;"><span>alias ll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -Alh --time-style=long-iso&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias less<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;less -gmj10&#39;</span>
 </span></span><span style="display:flex;"><span>alias jj<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/share/vim/vim91/macros/less.sh&#39;</span>
+</span></span><span style="display:flex;"><span>alias less<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;less -gmj10&#39;</span>
+</span></span><span style="display:flex;"><span>alias -- -<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd -&#39;</span>
+</span></span><span style="display:flex;"><span>alias ..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd ..&#39;</span>
+</span></span><span style="display:flex;"><span>alias ...<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd ../..&#39;</span>
+</span></span><span style="display:flex;"><span>alias ....<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd ../../..&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias grep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span>
-</span></span><span style="display:flex;"><span>alias egrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;egrep --color=auto&#39;</span>
-</span></span><span style="display:flex;"><span>alias fgrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fgrep --color=auto&#39;</span>
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイル・ディレクトリ操作</span>
+</span></span><span style="display:flex;"><span>alias mkdirp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mkdir -p&#39;</span> <span style="color:#75715e"># 親ディレクトリも作成</span>
+</span></span><span style="display:flex;"><span>alias rmrf<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rm -rf&#39;</span> <span style="color:#75715e"># 注意して使用</span>
 </span></span><span style="display:flex;"><span>alias cp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cp -piv&#39;</span>
 </span></span><span style="display:flex;"><span>alias mv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mv -iv&#39;</span>
 </span></span><span style="display:flex;"><span>alias rm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rm -iv&#39;</span>
@@ -1064,25 +1065,70 @@
 </span></span><span style="display:flex;"><span>alias chmod<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;chmod -v&#39;</span>
 </span></span><span style="display:flex;"><span>alias chown<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;chown -v&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias vi<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim&#39;</span>
-</span></span><span style="display:flex;"><span>alias vc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vimcat&#39;</span>
-</span></span><span style="display:flex;"><span>alias vp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vimpager&#39;</span>
-</span></span><span style="display:flex;"><span>alias vr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -R&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 検索</span>
+</span></span><span style="display:flex;"><span>alias grep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias fgrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fgrep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias egrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;egrep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias rrg<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rg --hidden --glob &#34;!.git/*&#34;&#39;</span> <span style="color:#75715e"># ripgrepを使えるなら便利</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias df<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;df -h&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># プロセス管理</span>
+</span></span><span style="display:flex;"><span>alias psg<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ps aux | grep -v grep | grep -i&#39;</span> <span style="color:#75715e"># 例: psg sshd</span>
+</span></span><span style="display:flex;"><span>alias top<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;htop&#39;</span> <span style="color:#75715e"># htopがある場合</span>
+</span></span><span style="display:flex;"><span>alias meminfo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;free -h&#34;</span>
+</span></span><span style="display:flex;"><span>alias df<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;df -hT&#39;</span>
 </span></span><span style="display:flex;"><span>alias du<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -h&#39;</span>
 </span></span><span style="display:flex;"><span>alias du1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;du -d1&#39;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ネットワーク関連</span>
+</span></span><span style="display:flex;"><span>alias ip<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ip -c&#39;</span> <span style="color:#75715e"># ipコマンドのカラー表示(iproute2)</span>
+</span></span><span style="display:flex;"><span>alias myip<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;curl -s https://ifconfig.me&#39;</span> <span style="color:#75715e"># 外部IP確認</span>
+</span></span><span style="display:flex;"><span>alias ssht<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ssh -T&#39;</span> <span style="color:#75715e"># sshテスト用短縮(オプションは追加可)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># アーカイブ操作</span>
+</span></span><span style="display:flex;"><span>alias untar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tar -xvf&#39;</span>
+</span></span><span style="display:flex;"><span>alias untargz<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tar -xzvf&#39;</span>
+</span></span><span style="display:flex;"><span>alias targz<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tar -czvf&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 日付・ログ</span>
+</span></span><span style="display:flex;"><span>alias now<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;date +&#34;%Y-%m-%d %H:%M:%S&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>alias tailf<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tail -F&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PATHを見やすく表示</span>
 </span></span><span style="display:flex;"><span>alias path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;echo -e ${PATH//:/\\n}&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>alias delete-cache<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sc&#39;</span>
-</span></span><span style="display:flex;"><span>alias install-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -S&#39;</span>
-</span></span><span style="display:flex;"><span>alias list-group<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Sg&#39;</span>
-</span></span><span style="display:flex;"><span>alias list-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qqe&#39;</span>
-</span></span><span style="display:flex;"><span>alias search-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Ss&#39;</span>
-</span></span><span style="display:flex;"><span>alias show-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Si&#39;</span>
-</span></span><span style="display:flex;"><span>alias uninstall-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Rs&#39;</span>
-</span></span><span style="display:flex;"><span>alias update-package<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Syyu&#39;</span></span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Vim</span>
+</span></span><span style="display:flex;"><span>alias v<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim&#39;</span>            <span style="color:#75715e"># vimを短縮</span>
+</span></span><span style="display:flex;"><span>alias vi<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim&#39;</span>
+</span></span><span style="display:flex;"><span>alias viml<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -u NONE&#39;</span> <span style="color:#75715e"># プラグイン読み込みなし(デバッグ用)</span>
+</span></span><span style="display:flex;"><span>alias sv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudoedit&#39;</span>      <span style="color:#75715e"># rootで編集する際に推奨</span>
+</span></span><span style="display:flex;"><span>alias nv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;nvim&#39;</span>          <span style="color:#75715e"># neovimがある場合</span>
+</span></span><span style="display:flex;"><span>alias vdiff<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -d&#39;</span>     <span style="color:#75715e"># vimdiffの短縮(vim -dは差分モード)</span>
+</span></span><span style="display:flex;"><span>alias vnew<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim -p&#39;</span>      <span style="color:#75715e"># 複数ファイルをタブで開く: vnew file1 file2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Git</span>
+</span></span><span style="display:flex;"><span>alias gs<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git status&#39;</span>
+</span></span><span style="display:flex;"><span>alias ga<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add&#39;</span>
+</span></span><span style="display:flex;"><span>alias gc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git commit&#39;</span>
+</span></span><span style="display:flex;"><span>alias gca<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git commit -a&#39;</span>
+</span></span><span style="display:flex;"><span>alias gp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git push&#39;</span>
+</span></span><span style="display:flex;"><span>alias gpl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git pull&#39;</span>
+</span></span><span style="display:flex;"><span>alias gl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git log --oneline --graph --decorate --all&#39;</span>
+</span></span><span style="display:flex;"><span>alias gco<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git checkout&#39;</span>
+</span></span><span style="display:flex;"><span>alias gb<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git branch&#39;</span>
+</span></span><span style="display:flex;"><span>alias gcam<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git commit -am&#39;</span> <span style="color:#75715e"># 使いやすくする短縮</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pacman</span>
+</span></span><span style="display:flex;"><span>alias p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman&#39;</span>                    <span style="color:#75715e"># 短縮</span>
+</span></span><span style="display:flex;"><span>alias pi<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -S&#39;</span>                <span style="color:#75715e"># パッケージインストール</span>
+</span></span><span style="display:flex;"><span>alias psu<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Syu&#39;</span>             <span style="color:#75715e"># フルアップグレード</span>
+</span></span><span style="display:flex;"><span>alias ps<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Ss&#39;</span>               <span style="color:#75715e"># リポジトリ検索</span>
+</span></span><span style="display:flex;"><span>alias pq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qs&#39;</span>                    <span style="color:#75715e"># ローカルDB検索(読み取り専用)</span>
+</span></span><span style="display:flex;"><span>alias pv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Si&#39;</span>                    <span style="color:#75715e"># パッケージ情報(リポジトリ)</span>
+</span></span><span style="display:flex;"><span>alias pl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qi&#39;</span>                    <span style="color:#75715e"># インストール済みパッケージ情報</span>
+</span></span><span style="display:flex;"><span>alias pr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Rns&#39;</span>              <span style="color:#75715e"># パッケージ削除(依存も削除)</span>
+</span></span><span style="display:flex;"><span>alias pgr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Syyu&#39;</span>            <span style="color:#75715e"># DB強制再同期して更新</span>
+</span></span><span style="display:flex;"><span>alias pcache<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;paccache -rk2&#39;</span>             <span style="color:#75715e"># キャッシュ管理(paccacheが必要)</span>
+</span></span><span style="display:flex;"><span>alias pcache-clean<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo paccache -ruk0&#39;</span> <span style="color:#75715e"># 全キャッシュ削除</span></span></span></code></pre></div></div>
 </figure>
 <p>エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。</p>
 <p>たとえばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
