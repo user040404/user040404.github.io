@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-11-02 02:01:20">2025-11-02 02:01:20</time></div>
+<div id="date"><time datetime="2025-11-02 02:31:41">2025-11-02 02:31:41</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -137,8 +137,14 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># プロファイルを読み込む</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> reload {
-</span></span><span style="display:flex;"><span>    . $PROFILE.CurrentUserAllHosts;
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#e6db74">&#34;プロファイルをリロードしました: </span>$($PROFILE.CurrentUserAllHosts)<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    $path = $PROFILE.CurrentUserAllHosts
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Test-Path $path) {
+</span></span><span style="display:flex;"><span>        . $path
+</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#e6db74">&#34;プロファイルをリロードしました: </span>$($path)<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#e6db74">&#34;プロファイルが存在しません: </span>$($path)<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># PowerShellのバージョンを表示する</span>
