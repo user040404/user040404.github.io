@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-11-01 10:12:00">2025-11-01 10:12:00</time></div>
+<div id="date"><time datetime="2025-11-01 10:22:32">2025-11-01 10:22:32</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -129,30 +129,30 @@
 </span></span><span style="display:flex;"><span>function .. { Set-Location .. }
 </span></span><span style="display:flex;"><span>function ... { Set-Location ../.. }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 管理者権限でコマンドを再実行(sudo相当)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 管理者権限でコマンドを実行する(sudo相当)</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> sudo {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span>([Parameter(<span style="color:#a6e22e">Mandatory</span> = $true, <span style="color:#a6e22e">ValueFromRemainingArguments</span> = $true)]$Command)
 </span></span><span style="display:flex;"><span>    Start-Process pwsh -ArgumentList <span style="color:#e6db74">&#34;-NoProfile -Command &amp;{ </span>$Command<span style="color:#e6db74"> }&#34;</span> -Verb RunAs
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># プロファイルの再読み込み</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># プロファイルを読み込む</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> reload { . $PROFILE; Write-Host <span style="color:#e6db74">&#34;Profile reloaded.&#34;</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># PowerShellのバージョン表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PowerShellのバージョンを表示する</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> pwver { $PSVersionTable }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 強制削除</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイル・フォルダを強制削除する</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># function rmf {</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#     param([Parameter(Mandatory = $true)]$path)</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#     Remove-Item -LiteralPath $path -Recurse -Force</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># }</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># よく使うエイリアスの一覧表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># よく使うエイリアスを一覧表示する</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> aliases {
 </span></span><span style="display:flex;"><span>    Get-Alias | Where-Object { $_.Definition <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#39;Get-ChildItem|git|Move-Item|Copy-Item|Remove-Item|New-Item|Get-Process|Get-Content&#39;</span> } | Format-Table -AutoSize
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 空ファイルを作成(UNIX風)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 空ファイルを作成する(UNIX風)</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> touch {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span>([<span style="color:#66d9ef">string</span>]$name)
 </span></span><span style="display:flex;"><span>    New-Item -ItemType File -Name $name -Force
@@ -161,7 +161,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># カレントディレクトリをエクスプローラーで開く</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> ex { Invoke-Item (Get-Location) }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイルサイズを人間が読みやすい形式で表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイルサイズを人間が読みやすい形式で表示する</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> ls-size {
 </span></span><span style="display:flex;"><span>    Get-ChildItem | Select-Object Name, @{Name = <span style="color:#e6db74">&#34;Size(MB)&#34;</span>; Expression = { <span style="color:#e6db74">&#34;{0:N2}&#34;</span> <span style="color:#f92672">-f</span> ($_.Length / <span style="color:#ae81ff">1</span>MB) } }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
