@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-11-01 08:48:08">2025-11-01 08:48:08</time></div>
+<div id="date"><time datetime="2025-11-01 11:17:57">2025-11-01 11:17:57</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>テキストのパターンマッチング</h1>
 <nav id="TableOfContents">
@@ -25,14 +25,14 @@
 <p><a href="https://ja.wikipedia.org/wiki/%E3%83%AF%E3%82%A4%E3%83%AB%E3%83%89%E3%82%AB%E3%83%BC%E3%83%89_(%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86)">ワイルドカード</a>および<a href="https://ja.wikipedia.org/wiki/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>は文字列のパターンを指定する方法です。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>パターンに文字列が一致することを「マッチする」といい、パターンを指定するための文字としてメタキャラクタ(すべて半角)が定義されています。正規表現は処理系によって記法がまちまちですが、ここではすべての処理系に共通する基本的な正規表現を紹介します。処理系ごとの違いについては<a href="https://www.tohoho-web.com/ex/regexp.html">とほほの正規表現入門</a>を参照してください。</p>
 <h2 id="ワイルドカード">ワイルドカード</h2>
 <p>ワイルドカードに使用するメタキャラクタは?(疑問符)と*(アスタリスク)です。</p>
-<p>疑問符は任意の1文字を表します。</p>
+<p>疑問符は任意の1文字にマッチします。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo???はfoo123,fooabcなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
-<p>アスタリスクは任意の文字列を表します。</p>
+<p>アスタリスクは任意の文字列にマッチします。</p>
 
 
 <figure class="xCodeBlock">
@@ -48,7 +48,7 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$*+-.?[\]^{|}</span></span></code></pre></div></div>
 </figure>
 <p>これらのメタキャラクタはパターンの中で特別な意味を持ち他の文字とは区別されます。</p>
-<p>メタキャラクタ以外の文字はその文字自身を表します。</p>
+<p>メタキャラクタ以外の文字はその文字自身にマッチします。</p>
 
 
 <figure class="xCodeBlock">
@@ -65,14 +65,14 @@
 </span></span><span style="display:flex;"><span>パターンfoo\*barは文字列foo*barにマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>任意の1文字を表すには.(ピリオド)と[](角かっこ)を使用します。</p>
-<p>ピリオドは改行を除く1文字を表します。</p>
+<p>ピリオドは改行を除く1文字にマッチします。</p>
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo...barはfoofoobar,foobarbarなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
-<p>角かっこ内の文字列はその文字列の各文字を表します。</p>
+<p>角かっこ内の文字列はその文字列の各文字にマッチします。</p>
 
 
 <figure class="xCodeBlock">
@@ -190,7 +190,7 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*barは文字列foobarfoobarに対して文字列foobarfoobarにマッチします。
 </span></span><span style="display:flex;"><span>パターン.*?barは文字列foobarfoobarに対して文字列foobarにマッチします。</span></span></code></pre></div></div>
 </figure>
-<p>位置を表すにはハット記号とドル記号を使用します。ハット記号は行頭を表します。ドル記号は行末を表します。</p>
+<p>位置を表すにはハット記号とドル記号を使用します。ハット記号は行頭にマッチします。ドル記号は行末にマッチします。</p>
 
 
 <figure class="xCodeBlock">
@@ -220,7 +220,7 @@
 </span></span><span style="display:flex;"><span>パターン(foo)+barはfoobar,foofoobar,foofoofoobarなどの文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターン(foo|bar)fooはfoofoo,barfooの各文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
-<p>\1,\2,\3などはn番目の丸かっこで囲まれたパターンを表します。</p>
+<p>\1,\2,\3などはn番目の丸かっこで囲まれたパターンにマッチした文字列に置き換えられます。</p>
 
 
 <figure class="xCodeBlock">
@@ -232,31 +232,31 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列を表します。(ワイルドカードのアスタリスクと同じ意味になります)
-</span></span><span style="display:flex;"><span>パターン^$は空行を表します。
-</span></span><span style="display:flex;"><span>パターン^.*$は任意の1行を表します。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列にマッチします。(ワイルドカードのアスタリスクと同じ意味になります)
+</span></span><span style="display:flex;"><span>パターン^$は空行にマッチします。
+</span></span><span style="display:flex;"><span>パターン^.*$は任意の1行にマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[ -~]は制御文字を含まない表示可能な半角文字を表します。
-</span></span><span style="display:flex;"><span>パターン[\x00-\x7F]は制御文字を含む半角文字を表します。
+</span></span><span style="display:flex;"><span>パターン[ -~]は制御文字を含まない表示可能な半角文字にマッチします。
+</span></span><span style="display:flex;"><span>パターン[\x00-\x7F]は制御文字を含む半角文字にマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[｡-ﾟ]は半角カタカナを表します。
+</span></span><span style="display:flex;"><span>パターン[｡-ﾟ]は半角カタカナにマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[^\x00-\x7F]およびパターン[^ -~｡-ﾟ]は全角文字を表します。
+</span></span><span style="display:flex;"><span>パターン[^\x00-\x7F]およびパターン[^ -~｡-ﾟ]は全角文字にマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9]は半角の英数字を表します。
-</span></span><span style="display:flex;"><span>パターン[!-/:-@[-`{-~]は半角の記号を表します。
+</span></span><span style="display:flex;"><span>パターン[A-Za-z0-9]は半角の英数字にマッチします。
+</span></span><span style="display:flex;"><span>パターン[!-/:-@[-`{-~]は半角の記号にマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[Ａ-Ｚａ-ｚ０-９]は全角の英数字を表します。
-</span></span><span style="display:flex;"><span>パターン[！-～]は全角の記号を表します。
+</span></span><span style="display:flex;"><span>パターン[Ａ-Ｚａ-ｚ０-９]は全角の英数字にマッチします。
+</span></span><span style="display:flex;"><span>パターン[！-～]は全角の記号にマッチします。
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>パターン[\u3040-\u309F]はひらがなを表します。
-</span></span><span style="display:flex;"><span>パターン[\u30A0-\u30FF]はカタカナ(全角)を表します。
-</span></span><span style="display:flex;"><span>パターン[\u4E00-\u9FFF]は漢字(CJK統合漢字ブロック)を表します。
+</span></span><span style="display:flex;"><span>パターン[\u3040-\u309F]はひらがなにマッチします。
+</span></span><span style="display:flex;"><span>パターン[\u30A0-\u30FF]はカタカナ(全角)にマッチします。
+</span></span><span style="display:flex;"><span>パターン[\u4E00-\u9FFF]は漢字(CJK統合漢字ブロック)にマッチします。
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>パターン[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}はメールアドレスにマッチします。
 </span></span><span style="display:flex;"><span>パターンhttps?://[^\s/.?#].[^\s]*はURLにマッチします。
 </span></span><span style="display:flex;"><span>パターン(?:A-Za-z0-9?.)+[A-Za-z]{2,}はドメイン名にマッチします。
-</span></span><span style="display:flex;"><span>パターン&lt;([A-Za-z][A-Za-z0-9-]*)\b[^&gt;]*&gt;(.*?)&lt;/\1&gt;はタグに囲まれたHTMLの要素にマッチします。\1にタグ名\2に内部コンテンツがキャプチャされます。</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>パターン&lt;([A-Za-z][A-Za-z0-9-]*)\b[^&gt;]*&gt;(.*?)&lt;/\1&gt;はHTMLの要素にマッチします。\1にタグ名\2に内部コンテンツがキャプチャされます。</span></span></code></pre></div></div>
 </figure>
 <div class="footnotes" role="doc-endnotes">
 <hr>
