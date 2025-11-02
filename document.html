@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-28 16:09:10">2025-10-28 16:09:10</time></div>
+<div id="date"><time datetime="2025-11-02 15:31:41">2025-11-02 15:31:41</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>脱ワープロソフトのすすめ</h1>
 <nav id="TableOfContents">
@@ -104,12 +104,14 @@
 <li>メッセージダイアログが表示されたら[OK]をクリックしてLyXを再起動します。</li>
 </ol>
 <p>LyXには2つの設定メニュー [ツール] &gt; [設定] および [文書] &gt; [設定] があります。前者がアプリケーションの設定であり、後者が文書に関する設定です。詳細については<a href="https://texwiki.texjp.org/?LyX%2F%E8%A8%AD%E5%AE%9A">LyX/設定 - TeX Wiki</a>および<a href="https://qiita.com/tats-u/items/b7d207f6c453899fe29e">日本語環境のためのLyXの初期設定</a>を参照してください。LuaLaTeXのみを使用するのであれば(u)pLaTeXについての説明は無視してかまいません。ImageMagickはLyXと一緒にインストールされるので別途インストールする必要はありません。</p>
-<p><a href="https://texwiki.texjp.org/?LyX%2F%E8%A8%AD%E5%AE%9A#g3fd040c">レイアウトファイルの追加</a>にしたがってドキュメントクラスを追加します。</p>
-<p>フォントは以下のようにしてプリアンブルに指定します。詳細については<a href="https://texwiki.texjp.org/?LuaTeX-ja">LuaTeX-ja - TeX Wiki</a>および<a href="https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">LuaTeX-jaの使い方</a>を参照してください。</p>
+<p>文書の作成を始める前に以下のようにして文書のドキュメントクラスおよび文書で使用するフォントの設定を済ませておく必要があります。</p>
 <ol>
 <li>LyXを起動します。</li>
+<li><a href="https://texwiki.texjp.org/?LyX%2F%E8%A8%AD%E5%AE%9A#g3fd040c">レイアウトファイルの追加</a>にしたがってドキュメントクラス(jlreq)を追加します。</li>
 <li>メニューから [文書] &gt; [設定] を選択します。</li>
-<li>左のリストから[LaTeXプリアンブル]を選択して以下のようなフォントの設定を入力します。</li>
+<li>左のリストから[文書クラス]を選択しドキュメントクラスとして[JLReqクラス]を選択します。</li>
+<li>左のリストから[フォント]を選択して[非TeXフォントを使用]をチェックします。</li>
+<li>左のリストから[LaTeXプリアンブル]を選択して文書で使用するフォントを以下のように指定します。フォントの指定方法については<a href="https://texwiki.texjp.org/?LuaTeX-ja">LuaTeX-ja - TeX Wiki</a>および<a href="https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">LuaTeX-jaの使い方</a>を参照してください。</li>
 </ol>
 
 
@@ -122,7 +124,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setsansjfont</span>{BIZ UDGothic}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setmonofont</span>{UDEVGothic}</span></span></code></pre></div></div>
 </figure>
-<ol start="4">
+<ol start="7">
+<li>[文書の既定値として保存]をクリックします。</li>
 <li>[OK]をクリックします。</li>
 </ol>
 <p>所望のPDFビューアが立ち上がるようにするには以下のようにします。</p>
