@@ -1,84 +1,383 @@
+/* ダークテーマ — 和文優先フォントスタック */
+:root {
+    --bg: #1c1b22;
+    /* --bg: #0b0f12; */
+    --bg-2: #0f1417;
+    --surface: #0f1720;
+    --muted: #e6eef6;
+    /* --muted: #98a0a6; */
+    --text: #e6eef6;
+    --accent: #6ad1ff;
+    --accent-2: #7de2b8;
+    --danger: #ff6b6b;
+    --glass: rgba(255, 255, 255, 0.03);
+    --radius: 10px;
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    --focus: 0 0 0 3px rgba(106, 209, 255, 0.12);
+
+    --font-sans: "BIZ UDPGothic", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN",
+        "Yu Gothic UI", "YuGothic", "Noto Sans JP",
+        "Meiryo", "メイリオ", system-ui, -apple-system,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --font-mono: "SFMono-Regular", "Menlo", "Monaco", "Roboto Mono",
+        "Noto Sans Mono", "Courier New", monospace;
+
+    --spacing-xs: 6px;
+    --spacing-sm: 12px;
+    --spacing-md: 18px;
+    --spacing-lg: 28px;
+    --spacing-xl: 40px;
+
+    --jp-line-height: 1.85;
+}
+
+/* リセットとベース */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
 body {
-  color: white;
-  background: #1C1B22 /* url(./back.png) repeat */;
-  margin: 2em;
+    height: 100%;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: var(--jp-line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    padding: var(--spacing-lg);
+    /* ページ全体余白 */
 }
-/* p { text-indent: 1em; } */
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
-a:active {}
-a:focus {}
-a:link { color: gold; }
-a:visited { color: goldenrod; }
-em {
-  font-style: normal;
-  font-weight: bold;
+
+/* 中央コンテナ */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    /* 中央寄せ */
+    padding: 24px;
+    /* 内側余白 */
 }
+
+/* ヘッダー（stickyなら main に合わせる余白を確保） */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 64px;
+}
+
+main {
+    padding-top: 64px;
+}
+
+/* header 高さ分の余白 */
+
+/* 見出し */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text);
+    margin: 0 0 var(--spacing-sm) 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    -webkit-font-kerning: normal;
+}
+
 h1 {
-  text-align: center;
-  border-top: 3px solid white;
-  border-bottom: 3px solid white;
-  padding: 0.5em 0;
+    text-align: center;
+    border-top: 3px solid #e6eef6;
+    border-bottom: 3px solid #e6eef6;
+    padding: var(--spacing-sm);
+    font-size: 2.1rem;
+    margin-bottom: var(--spacing-md);
 }
+
 h2 {
-  border-bottom: 2px solid white;
-  padding: 0.5em 0;
+    border-bottom: 2px solid #e6eef6;
+    padding: var(--spacing-sm);
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-sm);
 }
+
 h3 {
-  border-left: 5px solid white;
-  padding: 0.25em 0.5em;
+    border-left: 5px solid #e6eef6;
+    padding: var(--spacing-sm);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
 }
+
+/* 段落・テキスト */
+p {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+/* セクション間の余白 */
+section {
+    margin: var(--spacing-lg) 0;
+}
+
+/* リストの余白 */
+ul,
+ol {
+    margin: 0 0 var(--spacing-md) 1.25rem;
+    padding: 0;
+}
+
+/* リンク */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color .18s ease, text-decoration .18s;
+}
+
+a:hover,
+a:focus {
+    color: var(--accent-2);
+    text-decoration: underline;
+    outline: none;
+}
+
+/* ボタン */
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .5rem .9rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform .08s ease, box-shadow .12s ease, background .12s;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button.primary {
+    background: linear-gradient(180deg, rgba(122, 216, 255, 0.08), rgba(106, 209, 255, 0.04));
+    border-color: rgba(106, 209, 255, 0.12);
+    color: #02161b;
+}
+
+/* カード */
+.card {
+    background: linear-gradient(180deg, var(--bg-2), var(--surface));
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: var(--spacing-md) 0;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* フォーム */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 10px 12px;
+    border-radius: 8px;
+    outline: none;
+    transition: box-shadow .12s, border-color .12s;
+    font-family: var(--font-sans);
+    margin-bottom: var(--spacing-sm);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: var(--focus);
+    border-color: rgba(106, 209, 255, 0.22);
+}
+
+/* テーブル */
 table {
-  border-collapse: collapse;
-  margin: 0 2em;
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
 }
-th { display: none; }
+
+th,
 td {
-  border: 1px solid dimgray;
-  border-right: 0;
-  border-left: 0;
-  padding: 0.2em;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
+
+th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+/* コードブロック */
+pre,
+code {
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.02);
+    color: #cfeefb;
+    padding: .25rem .4rem;
+    border-radius: 6px;
+    font-size: .93rem;
+}
+
 pre {
-  background: #101010 !important;
-  margin: 0;
-  padding: 0.5em;
-  white-space: pre-wrap;
+    padding: 12px;
+    overflow: auto;
+    margin-bottom: var(--spacing-md);
 }
-#title {}
-.box, figure.center { text-align: center; }
-#head, #date, footer { text-align: right; }
-.xCodeBlock_title {
-  display: inline-block;
-  background: #101010;
-  border-radius: 0.2em 0.2em 0 0;
-  padding: 0.2em 0.5em;
+
+/* 画像 */
+img {
+    max-width: 100%;
+    height: auto;
+    /* border-radius: 8px; */
+    display: block;
+    margin-bottom: var(--spacing-md);
+    margin-left: auto;
+    margin-right: auto;
 }
-.xCodeBlock_code {
+
+/* 小画面調整 */
+@media (max-width: 720px) {
+    :root {
+        --spacing-lg: 20px;
+        --spacing-md: 14px;
+    }
+
+    body {
+        padding: 16px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    main {
+        padding-top: 56px;
+    }
 }
-.xCodeBlock_code pre {
+
+/* ハイコントラスト（任意） */
+.high-contrast {
+    --bg: #050606;
+    --bg-2: #0b0c0d;
+    --muted: #9fb6c6;
+    --text: #ffffff;
+    --accent: #4fd1c5;
 }
+
+/* 重要ユーティリティ（外部reset上書き用） */
+.util-important {
+    all: unset !important;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* テーブル外周 */
+}
+
+thead th {
+    background: rgba(255, 255, 255, 0.03);
+    /* ヘッダー背景 */
+    color: var(--text);
+    font-weight: 700;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+th,
+td {
+    padding: 6px 7px;
+    /* padding: 12px 14px; */
+    /* 余白を拡大 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    /* 行の区切り */
+    vertical-align: middle;
+}
+
+/* 交互行の背景（zebra） */
+tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+/* ホバーで行を強調 */
+tbody tr:hover {
+    background: rgba(106, 209, 255, 0.04);
+}
+
+/* 小画面でのテーブル調整（スクロール） */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 必要ならヘッダーを固定する簡易スタイル（注意: ブラウザ依存） */
+.table-fixed thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+th {
+    display: none;
+}
+
+#head,
+#date,
+footer {
+    text-align: right;
+}
+
 .box {
-  display: flex;
-  justify-content:center;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
 }
+
 .item {
-  margin: 0.5em;
+    margin: var(--spacing-xs);
 }
-/*
-.xCodeBlock_title {
-  display: inline-block;
-  font-size: smaller;
-  border-radius: 0.5em 0.5em 0 0;
-  padding: 0 0.5em;
-  background: gray;
-  color: white;
-}
-.xCodeBlock_code {
-  margin-top: -2px;
-}
-.xCodeBlock_code pre {
-  padding: 0.5em;
-  white-space: pre-wrap;
-}
-*/
