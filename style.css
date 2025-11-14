@@ -290,7 +290,7 @@ code {
     background: rgba(255, 255, 255, 0.02) !important;
     /* background: rgba(255, 255, 255, 0.02); */
     color: #cfeefb;
-    padding: .25rem .4rem;
+    /* padding: .25rem .4rem; */
     /* border-radius: 6px; */
     font-size: .93rem;
 }
@@ -303,7 +303,8 @@ pre {
 
 .xCodeBlock_title {
     display: inline-block;
-    font-size: smaller;
+    font-size: .93rem;
+    /* font-size: smaller; */
     border-radius: 3px 3px 0 0;
     padding: 0 var(--spacing-xs);
     background: rgba(255, 255, 255, 0.04);
@@ -314,10 +315,10 @@ pre {
     margin-top: -16px;
 }
 
-/* .xCodeBlock_code pre {
-    padding: 0.5em;
+.xCodeBlock_code pre {
+    /* padding: 0.5em; */
     white-space: pre-wrap;
-} */
+}
 
 /* 画像 */
 img {
