@@ -237,7 +237,7 @@ table {
 
 th,
 td {
-    padding: 5px 6px;
+    padding: 0 6px;
     /* padding: 10px 12px; */
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     /* 余白を拡大 */
