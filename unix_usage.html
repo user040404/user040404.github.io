@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-11-07 06:12:32">2025-11-07 06:12:32</time></div>
+<div id="date"><time datetime="2025-11-17 03:22:22">2025-11-17 03:22:22</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1124,7 +1124,7 @@
 </span></span><span style="display:flex;"><span>alias ps<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Ss&#39;</span>               <span style="color:#75715e"># リポジトリ検索</span>
 </span></span><span style="display:flex;"><span>alias pq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qs&#39;</span>                    <span style="color:#75715e"># ローカルDB検索(読み取り専用)</span>
 </span></span><span style="display:flex;"><span>alias pv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Si&#39;</span>                    <span style="color:#75715e"># パッケージ情報(リポジトリ)</span>
-</span></span><span style="display:flex;"><span>alias pl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qi&#39;</span>                    <span style="color:#75715e"># インストール済みパッケージ情報</span>
+</span></span><span style="display:flex;"><span>alias pl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pacman -Qqe&#39;</span>                   <span style="color:#75715e"># インストール済みパッケージ情報</span>
 </span></span><span style="display:flex;"><span>alias pr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Rns&#39;</span>              <span style="color:#75715e"># パッケージ削除(依存も削除)</span>
 </span></span><span style="display:flex;"><span>alias pgr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman -Syyu&#39;</span>            <span style="color:#75715e"># DB強制再同期して更新</span>
 </span></span><span style="display:flex;"><span>alias pcache<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;paccache -rk2&#39;</span>             <span style="color:#75715e"># キャッシュ管理(paccacheが必要)</span>
@@ -1483,19 +1483,18 @@ set ssl_starttls = yes # STARTTLS
 <figcaption class="xCodeBlock_title">~/.bashrc</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># w3m-search: w3mで各種検索エンジンを開く関数</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 使い方:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34;        # DuckDuckGoで検索</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;apple&#34; ddg     # ddg: DuckDuckGo</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;apple&#34; wiki    # wiki: Wikipedia(検索結果ページ)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;word&#34; longman  # longman: ロングマン英和(Longman)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;単語&#34; kotobank # kotobank: コトバンク</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;term&#34; ewords   # ewords: e-Words</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34;    # DuckDuckGo</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34; w  # Wikipedia</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34; l  # ロングマン英和</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34; k  # コトバンク</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   w3m-search &#34;検索語&#34; e  # e-Words</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 例: w3m-search &#34;artificial intelligence&#34; wiki</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 例: w3m-search &#34;artificial intelligence&#34; w</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
 </span></span><span style="display:flex;"><span>w3m-search<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  local query engine url enc_q
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage: w3m-search \&#34;検索語\&#34; [engine]&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;使い方: w3m-search \&#34;検索語\&#34; [w|l|k|e]&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
@@ -1507,30 +1506,28 @@ set ssl_starttls = yes # STARTTLS
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$engine<span style="color:#e6db74">&#34;</span> in
 </span></span><span style="display:flex;"><span>    ddg|duckduckgo<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># DuckDuckGo 検索</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># DuckDuckGo</span>
 </span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://duckduckgo.com/?q=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>      ;;
-</span></span><span style="display:flex;"><span>    wiki|wikipedia<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Wikipedia 検索(言語は自動検出せず日本語優先; 日本語ページがなければ言語切替可)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 日本語クエリはja.wikipedia、英語クエリはen.wikipediaの検索結果へ飛ばす例</span>
+</span></span><span style="display:flex;"><span>    w|wiki|wikipedia<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Wikipedia(言語は自動検出せず日本語優先)</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> printf <span style="color:#e6db74">&#39;%s&#39;</span> <span style="color:#e6db74">&#34;</span>$query<span style="color:#e6db74">&#34;</span> | grep -qP <span style="color:#e6db74">&#39;[\x{3040}-\x{30FF}\x{4E00}-\x{9FFF}]&#39;</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://ja.wikipedia.org/w/index.php?search=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://ja.wikipedia.org/wiki/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://en.wikipedia.org/w/index.php?search=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://en.wikipedia.org/wiki/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>      ;;
-</span></span><span style="display:flex;"><span>    longman<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># ロングマン英和辞典(Longman Dictionary of Contemporary English)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Longmanのサイトは商用辞書ページ。以下はLongmanの検索ページにクエリを渡す例。</span>
-</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.ldoceonline.com/search/?q=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    l|longman<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># ロングマン英和辞典</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.ldoceonline.com/jp/dictionary/english-japanese/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>      ;;
-</span></span><span style="display:flex;"><span>    kotobank<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># コトバンク(複数辞典を横断検索)</span>
+</span></span><span style="display:flex;"><span>    k|kotobank<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># コトバンク</span>
 </span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://kotobank.jp/word/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>      ;;
-</span></span><span style="display:flex;"><span>    ewords<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># e-Words(IT用語辞典)</span>
-</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://e-words.jp/search.html?word=</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    e|ewords<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># e-Words</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://e-words.jp/w/</span><span style="color:#e6db74">${</span>enc_q<span style="color:#e6db74">}</span><span style="color:#e6db74">.html&#34;</span>
 </span></span><span style="display:flex;"><span>      ;;
 </span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Unknown engine: </span><span style="color:#e6db74">${</span>engine<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
