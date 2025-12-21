@@ -53,18 +53,18 @@
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr;      <span style="color:#75715e">// ポインタ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>ptrptr;  <span style="color:#75715e">// ポインタのポインタ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> str1[<span style="color:#ae81ff">256</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>ptrptr;  <span style="color:#75715e">// ポインタのポインタ
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> str1[<span style="color:#ae81ff">256</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> str2[<span style="color:#ae81ff">256</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bar&#34;</span>;
 </span></span><span style="display:flex;"><span>  ptr <span style="color:#f92672">=</span> str1;           <span style="color:#75715e">// ptrにstr1のアドレスを代入
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr);  <span style="color:#75715e">// fooと表示
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ptrptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ptr;        <span style="color:#75715e">// ptrのアドレスをptrptrに代入
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">*</span>ptrptr <span style="color:#f92672">=</span> str2;  <span style="color:#75715e">// ptrptrを参照してptrにstr2のアドレスを代入
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr);  <span style="color:#75715e">// barと表示
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> EXIT_SUCCESS;
+</span></span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr);  <span style="color:#75715e">// fooと表示
+</span></span></span><span style="display:flex;"><span>  ptrptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ptr;        <span style="color:#75715e">// ptrのアドレスをptrptrに代入
+</span></span></span><span style="display:flex;"><span>  <span style="color:#f92672">*</span>ptrptr <span style="color:#f92672">=</span> str2;  <span style="color:#75715e">// ptrptrを参照してptrにstr2のアドレスを代入
+</span></span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr);  <span style="color:#75715e">// barと表示
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> EXIT_SUCCESS;
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
 </figure>
 <p>ポインタにconstを適用する場合、ポインタの示すアドレスを定数にするのかそれともそのアドレスに置かれているデータを定数にするのかという問題が生じます。これは次のように書き分けます。</p>
@@ -73,10 +73,10 @@
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p; <span style="color:#75715e">// アドレスが定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p; <span style="color:#75715e">// データが定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> p; <span style="color:#75715e">// データが定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p; <span style="color:#75715e">// アドレス・データともに定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p; <span style="color:#75715e">// アドレス・データともに定数
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p; <span style="color:#75715e">// データが定数
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> p; <span style="color:#75715e">// データが定数
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p; <span style="color:#75715e">// アドレス・データともに定数
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p; <span style="color:#75715e">// アドレス・データともに定数
 </span></span></span></code></pre></div></div>
 </figure>
 <h3 id="クラスおよびオブジェクト">クラスおよびオブジェクト</h3>
@@ -110,7 +110,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">hello.c</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
 </span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;Hello, World!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> EXIT_SUCCESS;
@@ -132,7 +132,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">message.c</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windows.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> WINAPI <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR pCmdLine,
 </span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">int</span> showCmd) {
 </span></span><span style="display:flex;"><span>  MessageBox(NULL, <span style="color:#e6db74">&#34;こんにちは&#34;</span>, <span style="color:#e6db74">&#34;メッセージ&#34;</span>, MB_OK);
@@ -155,60 +155,60 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">window.c</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windows.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 記号定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define WINDOW_CLASS &#34;foo&#34;                 </span><span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define WINDOW_TITLE &#34;サンプルウィンドウ&#34;  </span><span style="color:#75715e">// タイトルバーの文字列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WINDOW_CLASS &#34;foo&#34;                 </span><span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WINDOW_TITLE &#34;サンプルウィンドウ&#34;  </span><span style="color:#75715e">// タイトルバーの文字列
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// プロトタイプ宣言
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
+</span></span></span><span style="display:flex;"><span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// エントリポイント
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> WINAPI <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> WINAPI <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
 </span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">int</span> iCmdShow) {
 </span></span><span style="display:flex;"><span>  WNDCLASSEX wc;  <span style="color:#75715e">// ウィンドウクラス構造体
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  HWND hWnd;      <span style="color:#75715e">// ウィンドウハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  MSG msg;        <span style="color:#75715e">// メッセージ構造体
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>  HWND hWnd;      <span style="color:#75715e">// ウィンドウハンドル
+</span></span></span><span style="display:flex;"><span>  MSG msg;        <span style="color:#75715e">// メッセージ構造体
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウクラスを設定
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.cbSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(wc);              <span style="color:#75715e">// 構造体のサイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.style <span style="color:#f92672">=</span> CS_HREDRAW <span style="color:#f92672">|</span> CS_VREDRAW;  <span style="color:#75715e">// スタイル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpfnWndProc <span style="color:#f92672">=</span> WindowProc;         <span style="color:#75715e">// ウィンドウプロシージャ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.cbClsExtra <span style="color:#f92672">=</span> wc.cbWndExtra <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">// 拡張領域のサイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hInstance <span style="color:#f92672">=</span> hInst;                <span style="color:#75715e">// インスタンスハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hIcon <span style="color:#f92672">=</span> LoadIcon(NULL, IDI_APPLICATION);  <span style="color:#75715e">// アイコン
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hIconSm <span style="color:#f92672">=</span> wc.hIcon;                       <span style="color:#75715e">// アイコン(小)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hCursor <span style="color:#f92672">=</span> LoadCursor(NULL, IDC_ARROW);    <span style="color:#75715e">// カーソル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hbrBackground <span style="color:#f92672">=</span> (HBRUSH)(COLOR_WINDOW);   <span style="color:#75715e">// 背景色
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpszMenuName <span style="color:#f92672">=</span> NULL;                      <span style="color:#75715e">// メニュー名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpszClassName <span style="color:#f92672">=</span> WINDOW_CLASS;             <span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>  wc.cbSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(wc);              <span style="color:#75715e">// 構造体のサイズ
+</span></span></span><span style="display:flex;"><span>  wc.style <span style="color:#f92672">=</span> CS_HREDRAW <span style="color:#f92672">|</span> CS_VREDRAW;  <span style="color:#75715e">// スタイル
+</span></span></span><span style="display:flex;"><span>  wc.lpfnWndProc <span style="color:#f92672">=</span> WindowProc;         <span style="color:#75715e">// ウィンドウプロシージャ
+</span></span></span><span style="display:flex;"><span>  wc.cbClsExtra <span style="color:#f92672">=</span> wc.cbWndExtra <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">// 拡張領域のサイズ
+</span></span></span><span style="display:flex;"><span>  wc.hInstance <span style="color:#f92672">=</span> hInst;                <span style="color:#75715e">// インスタンスハンドル
+</span></span></span><span style="display:flex;"><span>  wc.hIcon <span style="color:#f92672">=</span> LoadIcon(NULL, IDI_APPLICATION);  <span style="color:#75715e">// アイコン
+</span></span></span><span style="display:flex;"><span>  wc.hIconSm <span style="color:#f92672">=</span> wc.hIcon;                       <span style="color:#75715e">// アイコン(小)
+</span></span></span><span style="display:flex;"><span>  wc.hCursor <span style="color:#f92672">=</span> LoadCursor(NULL, IDC_ARROW);    <span style="color:#75715e">// カーソル
+</span></span></span><span style="display:flex;"><span>  wc.hbrBackground <span style="color:#f92672">=</span> (HBRUSH)(COLOR_WINDOW);   <span style="color:#75715e">// 背景色
+</span></span></span><span style="display:flex;"><span>  wc.lpszMenuName <span style="color:#f92672">=</span> NULL;                      <span style="color:#75715e">// メニュー名
+</span></span></span><span style="display:flex;"><span>  wc.lpszClassName <span style="color:#f92672">=</span> WINDOW_CLASS;             <span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウクラスを登録
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (RegisterClassEx(<span style="color:#f92672">&amp;</span>wc) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (RegisterClassEx(<span style="color:#f92672">&amp;</span>wc) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> EXIT_FAILURE;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウを作成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  hWnd <span style="color:#f92672">=</span> CreateWindow(WINDOW_CLASS,         <span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      WINDOW_TITLE,         <span style="color:#75715e">// タイトルバーの文字列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      WS_OVERLAPPEDWINDOW,  <span style="color:#75715e">// スタイル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// 位置
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// サイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL,   <span style="color:#75715e">// 親ウィンドウのハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL,   <span style="color:#75715e">// メニューハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      hInst,  <span style="color:#75715e">// インスタンスハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL    <span style="color:#75715e">// lpに渡す構造体のポインタ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span></span><span style="display:flex;"><span>  hWnd <span style="color:#f92672">=</span> CreateWindow(WINDOW_CLASS,         <span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span>                      WINDOW_TITLE,         <span style="color:#75715e">// タイトルバーの文字列
+</span></span></span><span style="display:flex;"><span>                      WS_OVERLAPPEDWINDOW,  <span style="color:#75715e">// スタイル
+</span></span></span><span style="display:flex;"><span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// 位置
+</span></span></span><span style="display:flex;"><span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// サイズ
+</span></span></span><span style="display:flex;"><span>                      NULL,   <span style="color:#75715e">// 親ウィンドウのハンドル
+</span></span></span><span style="display:flex;"><span>                      NULL,   <span style="color:#75715e">// メニューハンドル
+</span></span></span><span style="display:flex;"><span>                      hInst,  <span style="color:#75715e">// インスタンスハンドル
+</span></span></span><span style="display:flex;"><span>                      NULL    <span style="color:#75715e">// lpに渡す構造体のポインタ
+</span></span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (hWnd <span style="color:#f92672">==</span> NULL) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> EXIT_FAILURE;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウを表示
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ShowWindow(hWnd, iCmdShow);
+</span></span></span><span style="display:flex;"><span>  ShowWindow(hWnd, iCmdShow);
 </span></span><span style="display:flex;"><span>  UpdateWindow(hWnd);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// メッセージループ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span> (TRUE) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (TRUE) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> GetMessage(<span style="color:#f92672">&amp;</span>msg, NULL, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> i <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
@@ -221,7 +221,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// ウィンドウプロシージャ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
+</span></span></span><span style="display:flex;"><span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (msg) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> WM_DESTROY:
 </span></span><span style="display:flex;"><span>      PostQuitMessage(<span style="color:#ae81ff">0</span>);
@@ -257,60 +257,60 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">window.c</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windows.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 記号定数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define WINDOW_CLASS &#34;foo&#34;                 </span><span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define WINDOW_TITLE &#34;サンプルウィンドウ&#34;  </span><span style="color:#75715e">// タイトルバーの文字列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WINDOW_CLASS &#34;foo&#34;                 </span><span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WINDOW_TITLE &#34;サンプルウィンドウ&#34;  </span><span style="color:#75715e">// タイトルバーの文字列
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// プロトタイプ宣言
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
+</span></span></span><span style="display:flex;"><span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// エントリポイント
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> WINAPI <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> WINAPI <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
 </span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">int</span> iCmdShow) {
 </span></span><span style="display:flex;"><span>  WNDCLASSEX wc;  <span style="color:#75715e">// ウィンドウクラス構造体
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  HWND hWnd;      <span style="color:#75715e">// ウィンドウハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  MSG msg;        <span style="color:#75715e">// メッセージ構造体
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>  HWND hWnd;      <span style="color:#75715e">// ウィンドウハンドル
+</span></span></span><span style="display:flex;"><span>  MSG msg;        <span style="color:#75715e">// メッセージ構造体
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウクラスを設定
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.cbSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(wc);              <span style="color:#75715e">// 構造体のサイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.style <span style="color:#f92672">=</span> CS_HREDRAW <span style="color:#f92672">|</span> CS_VREDRAW;  <span style="color:#75715e">// スタイル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpfnWndProc <span style="color:#f92672">=</span> WindowProc;         <span style="color:#75715e">// ウィンドウプロシージャ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.cbClsExtra <span style="color:#f92672">=</span> wc.cbWndExtra <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">// 拡張領域のサイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hInstance <span style="color:#f92672">=</span> hInst;                <span style="color:#75715e">// インスタンスハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hIcon <span style="color:#f92672">=</span> LoadIcon(NULL, IDI_APPLICATION);  <span style="color:#75715e">// アイコン
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hIconSm <span style="color:#f92672">=</span> wc.hIcon;                       <span style="color:#75715e">// アイコン(小)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hCursor <span style="color:#f92672">=</span> LoadCursor(NULL, IDC_ARROW);    <span style="color:#75715e">// カーソル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.hbrBackground <span style="color:#f92672">=</span> (HBRUSH)(COLOR_WINDOW);   <span style="color:#75715e">// 背景色
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpszMenuName <span style="color:#f92672">=</span> NULL;                      <span style="color:#75715e">// メニュー名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  wc.lpszClassName <span style="color:#f92672">=</span> WINDOW_CLASS;             <span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>  wc.cbSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(wc);              <span style="color:#75715e">// 構造体のサイズ
+</span></span></span><span style="display:flex;"><span>  wc.style <span style="color:#f92672">=</span> CS_HREDRAW <span style="color:#f92672">|</span> CS_VREDRAW;  <span style="color:#75715e">// スタイル
+</span></span></span><span style="display:flex;"><span>  wc.lpfnWndProc <span style="color:#f92672">=</span> WindowProc;         <span style="color:#75715e">// ウィンドウプロシージャ
+</span></span></span><span style="display:flex;"><span>  wc.cbClsExtra <span style="color:#f92672">=</span> wc.cbWndExtra <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">// 拡張領域のサイズ
+</span></span></span><span style="display:flex;"><span>  wc.hInstance <span style="color:#f92672">=</span> hInst;                <span style="color:#75715e">// インスタンスハンドル
+</span></span></span><span style="display:flex;"><span>  wc.hIcon <span style="color:#f92672">=</span> LoadIcon(NULL, IDI_APPLICATION);  <span style="color:#75715e">// アイコン
+</span></span></span><span style="display:flex;"><span>  wc.hIconSm <span style="color:#f92672">=</span> wc.hIcon;                       <span style="color:#75715e">// アイコン(小)
+</span></span></span><span style="display:flex;"><span>  wc.hCursor <span style="color:#f92672">=</span> LoadCursor(NULL, IDC_ARROW);    <span style="color:#75715e">// カーソル
+</span></span></span><span style="display:flex;"><span>  wc.hbrBackground <span style="color:#f92672">=</span> (HBRUSH)(COLOR_WINDOW);   <span style="color:#75715e">// 背景色
+</span></span></span><span style="display:flex;"><span>  wc.lpszMenuName <span style="color:#f92672">=</span> NULL;                      <span style="color:#75715e">// メニュー名
+</span></span></span><span style="display:flex;"><span>  wc.lpszClassName <span style="color:#f92672">=</span> WINDOW_CLASS;             <span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウクラスを登録
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (RegisterClassEx(<span style="color:#f92672">&amp;</span>wc) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (RegisterClassEx(<span style="color:#f92672">&amp;</span>wc) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> EXIT_FAILURE;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウを作成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  hWnd <span style="color:#f92672">=</span> CreateWindow(WINDOW_CLASS,         <span style="color:#75715e">// ウィンドウクラス名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      WINDOW_TITLE,         <span style="color:#75715e">// タイトルバーの文字列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      WS_OVERLAPPEDWINDOW,  <span style="color:#75715e">// スタイル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// 位置
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// サイズ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL,   <span style="color:#75715e">// 親ウィンドウのハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL,   <span style="color:#75715e">// メニューハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      hInst,  <span style="color:#75715e">// インスタンスハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                      NULL    <span style="color:#75715e">// lpに渡す構造体のポインタ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span></span><span style="display:flex;"><span>  hWnd <span style="color:#f92672">=</span> CreateWindow(WINDOW_CLASS,         <span style="color:#75715e">// ウィンドウクラス名
+</span></span></span><span style="display:flex;"><span>                      WINDOW_TITLE,         <span style="color:#75715e">// タイトルバーの文字列
+</span></span></span><span style="display:flex;"><span>                      WS_OVERLAPPEDWINDOW,  <span style="color:#75715e">// スタイル
+</span></span></span><span style="display:flex;"><span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// 位置
+</span></span></span><span style="display:flex;"><span>                      CW_USEDEFAULT, CW_USEDEFAULT,  <span style="color:#75715e">// サイズ
+</span></span></span><span style="display:flex;"><span>                      NULL,   <span style="color:#75715e">// 親ウィンドウのハンドル
+</span></span></span><span style="display:flex;"><span>                      NULL,   <span style="color:#75715e">// メニューハンドル
+</span></span></span><span style="display:flex;"><span>                      hInst,  <span style="color:#75715e">// インスタンスハンドル
+</span></span></span><span style="display:flex;"><span>                      NULL    <span style="color:#75715e">// lpに渡す構造体のポインタ
+</span></span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (hWnd <span style="color:#f92672">==</span> NULL) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> EXIT_FAILURE;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ウィンドウを表示
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ShowWindow(hWnd, iCmdShow);
+</span></span></span><span style="display:flex;"><span>  ShowWindow(hWnd, iCmdShow);
 </span></span><span style="display:flex;"><span>  UpdateWindow(hWnd);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// メッセージループ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span> (TRUE) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (TRUE) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> GetMessage(<span style="color:#f92672">&amp;</span>msg, NULL, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> i <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
@@ -323,9 +323,9 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// ウィンドウプロシージャ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
+</span></span></span><span style="display:flex;"><span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> HMENU hMenu;  <span style="color:#75715e">// メニューハンドル
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">switch</span> (msg) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (msg) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> WM_CREATE:
 </span></span><span style="display:flex;"><span>      hMenu <span style="color:#f92672">=</span> LoadMenu(NULL, <span style="color:#e6db74">&#34;IDR_MENU&#34;</span>);
 </span></span><span style="display:flex;"><span>      SetMenu(hWnd, hMenu);
@@ -406,29 +406,29 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>CC <span style="color:#f92672">=</span> gcc <span style="color:#75715e"># 使用するコンパイラ</span>
 </span></span><span style="display:flex;"><span>CFLAGS <span style="color:#f92672">=</span> -g -O0 -Wall -fexec-charset<span style="color:#f92672">=</span>cp932 <span style="color:#75715e"># コンパイラのオプション(デバッグ用)</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># CFLAGS = -s -O2 -Wall -fexec-charset=cp932 # コンパイラのオプション(リリース用)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> all run clean
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># オブジェクトファイルから実行ファイルを作成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$(TARGET)</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>OBJECTS<span style="color:#66d9ef">)</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">$(TARGET)</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>OBJECTS<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> -o $@ $^
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ソースファイルからオブジェクトファイルを作成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">%.o</span><span style="color:#f92672">:</span> %.c
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">%.o</span><span style="color:#f92672">:</span> %.c
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> -c $&lt;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># リソースファイルからオブジェクトファイルを作成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">%.o</span><span style="color:#f92672">:</span> %.rc
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">%.o</span><span style="color:#f92672">:</span> %.rc
 </span></span><span style="display:flex;"><span>	windres -c <span style="color:#ae81ff">65001</span> -i $&lt; -o $@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ビルドして実行ファイルを実行
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">run</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">run</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>	./<span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># オブジェクトファイルおよび実行ファイルを削除
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>	-@rm -f <span style="color:#66d9ef">$(</span>OBJECTS<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>	-@rm -f <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
 </span></span></code></pre></div></div>
@@ -456,15 +456,15 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">window.cpp</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;wx/wx.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// アプリケーションの単一クラス
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> wxApp {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> wxApp {
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">bool</span> OnInit();
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// メインウィンドウのフレームクラス
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyFrame</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> wxFrame {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyFrame</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> wxFrame {
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  MyFrame(<span style="color:#66d9ef">const</span> wxString<span style="color:#f92672">&amp;</span> title, <span style="color:#66d9ef">const</span> wxPoint<span style="color:#f92672">&amp;</span> pos, <span style="color:#66d9ef">const</span> wxSize<span style="color:#f92672">&amp;</span> size);
 </span></span><span style="display:flex;"><span>
@@ -474,7 +474,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// アプリケーションを初期化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> MyApp<span style="color:#f92672">::</span>OnInit() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> MyApp<span style="color:#f92672">::</span>OnInit() {
 </span></span><span style="display:flex;"><span>  MyFrame<span style="color:#f92672">*</span> pFrame <span style="color:#f92672">=</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> MyFrame(_(<span style="color:#e6db74">&#34;サンプルウィンドウ&#34;</span>), wxDefaultPosition, wxSize(<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">480</span>));
 </span></span><span style="display:flex;"><span>  pFrame<span style="color:#f92672">-&gt;</span>Show(true);
@@ -483,7 +483,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// メインウィンドウを初期化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MyFrame<span style="color:#f92672">::</span>MyFrame(<span style="color:#66d9ef">const</span> wxString<span style="color:#f92672">&amp;</span> title, <span style="color:#66d9ef">const</span> wxPoint<span style="color:#f92672">&amp;</span> pos, <span style="color:#66d9ef">const</span> wxSize<span style="color:#f92672">&amp;</span> size)
+</span></span></span><span style="display:flex;"><span>MyFrame<span style="color:#f92672">::</span>MyFrame(<span style="color:#66d9ef">const</span> wxString<span style="color:#f92672">&amp;</span> title, <span style="color:#66d9ef">const</span> wxPoint<span style="color:#f92672">&amp;</span> pos, <span style="color:#66d9ef">const</span> wxSize<span style="color:#f92672">&amp;</span> size)
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> wxFrame(NULL, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, title, pos, size) {
 </span></span><span style="display:flex;"><span>  wxMenu<span style="color:#f92672">*</span> pMenu <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> wxMenu;
 </span></span><span style="display:flex;"><span>  pMenu<span style="color:#f92672">-&gt;</span>Append(wxID_ABOUT, _(<span style="color:#e6db74">&#34;バージョン情報(&amp;A)&#34;</span>));
@@ -497,15 +497,15 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 </span></span><span style="display:flex;"><span>  Center();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// イベントとハンドラを結合
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Bind(wxEVT_MENU, <span style="color:#f92672">&amp;</span>MyFrame<span style="color:#f92672">::</span>OnAbout, <span style="color:#66d9ef">this</span>, wxID_ABOUT);
+</span></span></span><span style="display:flex;"><span>  Bind(wxEVT_MENU, <span style="color:#f92672">&amp;</span>MyFrame<span style="color:#f92672">::</span>OnAbout, <span style="color:#66d9ef">this</span>, wxID_ABOUT);
 </span></span><span style="display:flex;"><span>  Bind(wxEVT_MENU, <span style="color:#f92672">&amp;</span>MyFrame<span style="color:#f92672">::</span>OnExit, <span style="color:#66d9ef">this</span>, wxID_EXIT);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// OnExitハンドラ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> MyFrame<span style="color:#f92672">::</span>OnExit(wxCommandEvent<span style="color:#f92672">&amp;</span> WXUNUSED(event)) { Close(true); }
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> MyFrame<span style="color:#f92672">::</span>OnExit(wxCommandEvent<span style="color:#f92672">&amp;</span> WXUNUSED(event)) { Close(true); }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// OnAboutハンドラ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> MyFrame<span style="color:#f92672">::</span>OnAbout(wxCommandEvent<span style="color:#f92672">&amp;</span> WXUNUSED(event)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> MyFrame<span style="color:#f92672">::</span>OnAbout(wxCommandEvent<span style="color:#f92672">&amp;</span> WXUNUSED(event)) {
 </span></span><span style="display:flex;"><span>  wxMessageBox(_(<span style="color:#e6db74">&#34;Version 1.00&#34;</span>), _(<span style="color:#e6db74">&#34;バージョン情報&#34;</span>),
 </span></span><span style="display:flex;"><span>               wxOK <span style="color:#f92672">|</span> wxICON_INFORMATION, <span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>}
@@ -529,7 +529,7 @@ MSYS2には[Geany](https://ja.wikipedia.org/wiki/Geany)/[gedit](https://ja.wikip
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#! /usr/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>clear;
 </span></span><span style="display:flex;"><span>cd /tmp;
 </span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;\nコードを入力してください:\n&#34;</span>;
