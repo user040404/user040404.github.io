@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-12-22 02:10:02">2025-12-22 02:10:02</time></div>
+<div id="date"><time datetime="2025-12-28 09:58:00">2025-12-28 09:58:00</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>DSPのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -119,7 +119,9 @@
 <li>左上の[Enable]をチェックして右下の[Presets]からプリセットを選択します。</li>
 <li>[Close]をクリックします。</li>
 </ol>
-<p>1by1のコンプレッサ(<a href="https://mpesch3.de/misc.html">dsp_1by1enh</a>)はWinampのDSPプラグインとしても使用できます。</p>
+<!--
+1by1のコンプレッサ([dsp_1by1enh](https://mpesch3.de/misc.html))はWinampのDSPプラグインとしても使用できます。
+ -->
 <h3 id="xmplayのdsp">XMPlayのDSP</h3>
 <p><a href="http://www.un4seen.com/xmplay.html">XMPlay</a>はイコライザ・コンプレッサ・リバーブの機能を標準装備しています。</p>
 <p>DSPの設定方法は次のとおり。</p>
@@ -152,7 +154,7 @@
 </ol>
 <h3 id="foobar2000のdsp">foobar2000のDSP</h3>
 <p><a href="http://www.foobar2000.org/">foobar2000</a>はプラグインを追加して機能を拡張できます。</p>
-<p>ここではイコライザ・コンプレッサ・リバーブのプラグインとして<a href="http://www.foobar2000.org/components/view/foo_dsp_xgeq">Graphic Equalizer</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_sqrcomp">SqrSoft Compressor</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_effect">Effect DSP</a>を追加します。</p>
+<p>ここではイコライザ・コンプレッサ・リバーブのプラグインとして<a href="http://www.foobar2000.org/components/view/foo_dsp_xgeq">Graphic Equalizer</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_vlevel">VLevel</a>/<a href="https://www.foobar2000.org/components/view/foo_dsp_effect">Effect DSP</a>を追加します。</p>
 <p>DSPの設定方法は次のとおり。</p>
 <ol>
 <li>foobar2000を起動します。</li>
@@ -160,13 +162,15 @@
 <li>表示されたダイアログの左のツリーから[Components]を選択します。</li>
 <li>[Install&hellip;]をクリックして上記のプラグインをインストールします。インストールが完了したらfoobar2000を再起動します。</li>
 <li>左のツリーから [Playback] &gt; [DSP Manager] を選択します。</li>
-<li>右の[Available DSPs]のリストから有効にしたいDSPの[＋]をクリックすると[Active DSPs]のリストにプラグインが追加されます。ここではGraphic Equalizer, SqrSoft Compressor, Reverbをこの順で有効にします。順番はドラッグで変更できます。[×]をクリックするとリストからプラグインが削除されます。</li>
+<li>右の[Available DSPs]のリストから有効にしたいDSPの[＋]をクリックすると[Active DSPs]のリストにプラグインが追加されます。ここではGraphic Equalizer, VLevel, Reverbをこの順で有効にします。順番はドラッグで変更できます。[×]をクリックするとリストからプラグインが削除されます。</li>
 <li>左の[Active DSPs]のリストからそれぞれのDSPの[&hellip;]をクリックします。各DSPの設定ダイアログが表示されるので逐一設定します。Graphic EqualizerはStereoのLeft/Right両方を設定する必要があるので注意してください。</li>
 <li>[OK]をクリックします。</li>
 </ol>
-<p><a href="https://foobar2000.xrea.jp/?DSP#j28af2f4">Winamp DSP Bridge</a>を追加するとWinampのDSPプラグインを使用できます。</p>
-<p>DSPの設定については試行錯誤しているのですが、コンプレッサをイコライザで挟むサンドイッチ方式が良さそうです。foobar2000の場合、標準装備のイコライザ → SqrSoft Compressor → Graphic Equalizerのように設定できます。
-これに<a href="https://foobar.hyv.fi/?view=foo_dsp_vlevel">VLevel</a>というコンプレッサを追加して、標準装備のイコライザ → SqrSoft Compressor → VLevel → Graphic Equalizerとするとかなり迫力のある音になります。最後のGraphic Equalizerで最終的な音量を調整します。</p>
+<!--
+[Winamp DSP Bridge](https://foobar2000.xrea.jp/?DSP#j28af2f4)を追加するとWinampのDSPプラグインを使用できます。
+ -->
+<p>DSPの設定については試行錯誤しているのですが、コンプレッサをイコライザで挟むサンドイッチ方式が良さそうです。foobar2000の場合、標準装備のイコライザ → VLevel → Graphic Equalizerのように設定できます。
+最後のGraphic Equalizerで最終的な音量を調整します。</p>
 
 
     </div><footer>
