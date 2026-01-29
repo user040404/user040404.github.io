@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-28 01:35:16">2025-10-28 01:35:16</time></div>
+<div id="date"><time datetime="2026-01-29 10:13:43">2026-01-29 10:13:43</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixのインストール</h1>
 <nav id="TableOfContents">
@@ -624,15 +624,28 @@ GRUBの設定を変更したらgrub-mkconfigを実行して設定を更新する
 </figure>
 <p>起動直後にLUKSで設定したパスワードを要求されます。パスワードが正しければルートパーティションが解錠されてシステムが起動します。</p>
 <h3 id="guestadditionsのインストール">GuestAdditionsのインストール</h3>
-<p>VirtualBoxのGuestAdditionsをインストールします。メニューから [デバイス] &gt; [Guest Additions CDイメージの挿入] を選択してください。</p>
-<p>CDドライブ/dev/sr0を確認します。</p>
+<p>VirtualBoxのGuestAdditionsをインストールします。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S virtualbox-guest-utils
+</span></span><span style="display:flex;"><span># systemctl enable vboxservice</span></span></code></pre></div></div>
+</figure>
+<!--
+メニューから [デバイス] > [Guest Additions CDイメージの挿入] を選択してください。
+
+CDドライブ/dev/sr0を確認します。
+
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lsblk</span></span></code></pre></div></div>
 </figure>
-<p>CDドライブをマウントします。</p>
+
+CDドライブをマウントします。
+
 
 
 <figure class="xCodeBlock">
@@ -640,20 +653,25 @@ GRUBの設定を変更したらgrub-mkconfigを実行して設定を更新する
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># mkdir /mnt/cdrom
 </span></span><span style="display:flex;"><span># mount /dev/sr0 /mnt/cdrom</span></span></code></pre></div></div>
 </figure>
-<p>CDの内容を確認します。</p>
+
+CDの内容を確認します。
+
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># ls /mnt/cdrom</span></span></code></pre></div></div>
 </figure>
-<p>CDのVBoxLinuxAdditions.runというスクリプトを実行します。</p>
+
+CDのVBoxLinuxAdditions.runというスクリプトを実行します。
+
 
 
 <figure class="xCodeBlock">
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># sh /mnt/cdrom/VBoxLinuxAdditions.run</span></span></code></pre></div></div>
 </figure>
+ -->
 <p>再起動後にGuestAdditionsが有効になっていることを確認します。</p>
 
 
