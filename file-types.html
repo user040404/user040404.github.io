@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-10-30 03:35:25">2025-10-30 03:35:25</time></div>
+<div id="date"><time datetime="2026-02-05 04:58:18">2026-02-05 04:58:18</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>ファイル・アプリケーションの分類</h1>
 <nav id="TableOfContents">
@@ -52,6 +52,7 @@
 <h2 id="はじめに">はじめに</h2>
 <p>よく使用するファイルの種類・ファイルフォーマットおよびそれらのファイルを扱うアプリケーションについて説明します。</p>
 <p>ファイルには<a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">テキストファイル</a>と<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA">バイナリファイル</a>があります。テキストファイルはテキストエディタで自由に読み書きできます。バイナリファイルは直接読み書きすることができず、特定のアプリケーションでしか扱えません。以下で紹介しているアーカイブファイル・イメージファイル・オーディオファイル・ビデオファイルはすべてバイナリファイルです。</p>
+<p>テキストファイルの文字コードは国や地域によってばらばらだったのですが、今はUnicodeで統一されています。UnicodeはBOM(Byte Order Mark)の有無とエンコード方式(UTF-8/UTF-16LE/UTF-16BE/UTF-32)によって分類されますが、BOM無しのUTF-8が世界標準になっています。ただし、Windows環境ではBOMがあることによって文字コードの誤判定を回避できることがあります。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <h2 id="実行可能ファイルの種類">実行可能ファイルの種類</h2>
 <ul>
 <li>EXEファイル(*.exe)
@@ -132,7 +133,7 @@ Windowsで使用される無圧縮のイメージフォーマットです。</li
 <ul>
 <li>JPEG[ジェイペグ、Joint Photographic Experts Group](*.jpg, *.jpeg,
 *.jpe, *.jfif, *.jfi, *.jif)
-写真の保存に適した非可逆圧縮のイメージフォーマットです。アプリケーションによっては保存する際に品質(0～100)やファイルサイズを指定できます。画質にこだわるのであれば品質の値は90～95くらいが適当です。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>JPEGによる圧縮を繰り返すと画質は劣化していくので編集中の画像はPNGで保存するようにしましょう。</li>
+写真の保存に適した非可逆圧縮のイメージフォーマットです。アプリケーションによっては保存する際に品質(0～100)やファイルサイズを指定できます。画質にこだわるのであれば品質の値は90～95くらいが適当です。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>JPEGによる圧縮を繰り返すと画質は劣化していくので編集中の画像はPNGで保存するようにしましょう。</li>
 </ul>
 <h2 id="オーディオファイルのフォーマット">オーディオファイルのフォーマット</h2>
 <p><a href="https://ja.wikipedia.org/wiki/%E9%9F%B3%E5%A3%B0%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">オーディオファイル</a>は無圧縮・可逆圧縮・非可逆圧縮の3つのフォーマットに分類できます。</p>
@@ -156,7 +157,7 @@ Windowsで使用される無圧縮のオーディオフォーマットです。�
 <li>AAC[Advanced Audio Coding](*.aac)
 MP3の後継として開発された非可逆圧縮オーディオフォーマットです。圧縮率が高く低ビットレートでも高音質を保つことができます。MP3と同様に広く普及しています。</li>
 <li>Vorbis[ヴォルビス](*.ogg)
-パテントフリーの非可逆圧縮オーディオフォーマットです。圧縮率が高く低ビットレートでも高音質を保つことができます。複数のエンコーダが存在しますが<a href="http://www.geocities.jp/aoyoume/aotuv/">aoTuV</a>(アオツブ)の音質が高く評価されています。Vorbisではビットレートの代わりにクオリティレベルという値を使用します。ビットレートとの対応は次のとおり。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+パテントフリーの非可逆圧縮オーディオフォーマットです。圧縮率が高く低ビットレートでも高音質を保つことができます。複数のエンコーダが存在しますが<a href="http://www.geocities.jp/aoyoume/aotuv/">aoTuV</a>(アオツブ)の音質が高く評価されています。Vorbisではビットレートの代わりにクオリティレベルという値を使用します。ビットレートとの対応は次のとおり。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
 </ul>
 <table>
   <thead>
@@ -255,7 +256,7 @@ VHSテープに使用されていた非可逆圧縮ビデオフォーマット�
 </ul>
 <p>H.264ではビットレートではなく品質(0～51)を指定するのが一般的であり、この値が小さいほど高画質ですがその分ファイルサイズは大きくなります。既定値は23であり18から28の間が推奨されています。画質にこだわるのであれば20くらいが適当です。</p>
 <h2 id="コンテナファイルのフォーマット">コンテナファイルのフォーマット</h2>
-<p>画像・音声・動画は<a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">コンテナファイル</a>に格納されます。イメージファイルの画像およびオーディオファイルの音声は専用のコンテナファイルに格納されます。たとえばMP3のコンテナファイルにはMP3の音声しか格納することができません。ビデオファイルでは動画と音声が多重化されて動画用のコンテナファイルに格納されます。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>格納できる動画のビデオフォーマットおよび音声のオーディオフォーマットはコンテナフォーマット毎に決められています。上記のビデオフォーマット(圧縮方法)と下記のコンテナフォーマット(動画形式)を混同しないように注意してください。</p>
+<p>画像・音声・動画は<a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">コンテナファイル</a>に格納されます。イメージファイルの画像およびオーディオファイルの音声は専用のコンテナファイルに格納されます。たとえばMP3のコンテナファイルにはMP3の音声しか格納することができません。ビデオファイルでは動画と音声が多重化されて動画用のコンテナファイルに格納されます。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>格納できる動画のビデオフォーマットおよび音声のオーディオフォーマットはコンテナフォーマット毎に決められています。上記のビデオフォーマット(圧縮方法)と下記のコンテナフォーマット(動画形式)を混同しないように注意してください。</p>
 <ul>
 <li>MP4(*.mp4, *.m4a, *.m4p, *.m4b, *.m4r, *.m4v)
 現在もっともよく使用されているコンテナフォーマットです。H.264とAACの組み合わせが一般的です。</li>
@@ -272,7 +273,7 @@ WMV専用のコンテナフォーマットです。ファイルの内部構造�
 <li>ASF[Advanced Systems Format](*.asf, *.asx, *.wmv, *.wvx, *.wma, *.wax)
 AVIの後継として開発されたコンテナフォーマットです。高機能ですがあまり使用されていません。</li>
 <li>FLV[Flash Video](*.flv)
-Adobe Flash Playerがサポートしているビデオフォーマットの動画を格納できるコンテナフォーマットです。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+Adobe Flash Playerがサポートしているビデオフォーマットの動画を格納できるコンテナフォーマットです。<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
 <li>F4V(*.f4v, *.f4p, *.f4a, *.f4b)
 FLVをH.264/AACに特化させたコンテナフォーマットです。</li>
 <li>MOV(*.mov, *.qt)
@@ -300,16 +301,19 @@ Blu-rayやデジタル放送で使用されているコンテナフォーマッ�
 <hr>
 <ol>
 <li id="fn:1">
-<p>元画像より高い品質を指定すると元のファイルサイズより大きくなってしまうことがあるので、元画像がJPEGであれば品質の値は80くらいが適当です。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>テキストファイルの文字コードを確実に判定する方法はありません。いくつかの方法によって推測されています。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p><a href="http://www.hydrogenaudio.org/">Hydrogenaudio</a>で行われたリスニングテストでは128kbpsに相当するクオリティレベルとして4.25という値が使用されました。エンコーダの実装上の問題を考慮して名目値よりも若干高めに設定されたようです。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>元画像より高い品質を指定すると元のファイルサイズより大きくなってしまうことがあるので、元画像がJPEGであれば品質の値は80くらいが適当です。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>動画のみであれば無音の動画が再生されます。音声のみであればオーディオファイルとして扱われます。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="http://www.hydrogenaudio.org/">Hydrogenaudio</a>で行われたリスニングテストでは128kbpsに相当するクオリティレベルとして4.25という値が使用されました。エンコーダの実装上の問題を考慮して名目値よりも若干高めに設定されたようです。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>かつてはFlash Playerでウェブの動画を再生していましたが現在はFlashからHTML5に移行しています。したがって今後FLVが使用されることはありません。&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>動画のみであれば無音の動画が再生されます。音声のみであればオーディオファイルとして扱われます。&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>かつてはFlash Playerでウェブの動画を再生していましたが現在はFlashからHTML5に移行しています。したがって今後FLVが使用されることはありません。&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

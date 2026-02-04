@@ -30,14 +30,14 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo???はfoo123,fooabcなどの文字列にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo???はfoo123,fooabcなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>アスタリスクは任意の文字列にマッチします。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo*barはfooで始まりbarで終わる文字列にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo*barはfooで始まりbarで終わる文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <h2 id="正規表現">正規表現</h2>
 <p>正規表現に使用するメタキャラクタは次のとおり。</p>
@@ -45,7 +45,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$*+-.?[\]^{|}</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$*+-.?[\]^{|}</span></span></code></pre></div></div>
 </figure>
 <p>これらのメタキャラクタはパターンの中で特別な意味を持ち他の文字とは区別されます。</p>
 <p>メタキャラクタ以外の文字はその文字自身にマッチします。</p>
@@ -53,7 +53,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfooは文字列fooにマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfooは文字列fooにマッチします。
 </span></span><span style="display:flex;"><span>パターンbarは文字列barにマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>メタキャラクタを普通の文字として扱いたいときは直前に\(バックスラッシュ)をつけます。これを「エスケープする」といいます。</p>
@@ -61,7 +61,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo\\barは文字列foo\barにマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo\\barは文字列foo\barにマッチします。
 </span></span><span style="display:flex;"><span>パターンfoo\*barは文字列foo*barにマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>任意の1文字を表すには.(ピリオド)と[](角かっこ)を使用します。</p>
@@ -70,28 +70,28 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo...barはfoofoobar,foobarbarなどの文字列にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo...barはfoofoobar,foobarbarなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>角かっこ内の文字列はその文字列の各文字にマッチします。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[bar]はbarの各文字にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[bar]はbarの各文字にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>角かっこ内に\(バックスラッシュ)を含める場合は\\としてエスケープします。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[\\]は文字\にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[\\]は文字\にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>角かっこ内に](閉じる角かっこ)を含める場合は\]としてエスケープします。[(開く角かっこ)はそのままで問題ありません。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[\]]は文字]にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[\]]は文字]にマッチします。
 </span></span><span style="display:flex;"><span>パターン[[]は文字[にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>角かっこ内の-(マイナス記号)は文字の範囲を指定するメタキャラクタになります。</p>
@@ -99,7 +99,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[0-9]は数字にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[0-9]は数字にマッチします。
 </span></span><span style="display:flex;"><span>パターン[a-z]は英小文字にマッチします。
 </span></span><span style="display:flex;"><span>パターン[-bar]は-barの各文字にマッチします。先頭のマイナス記号はメタキャラクタとして扱われません。
 </span></span><span style="display:flex;"><span>パターン[9-0]は無効な表現です。文字コードが左から右へ昇順になるように記述する必要があります。</span></span></code></pre></div></div>
@@ -109,7 +109,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[^bar]はbar以外の文字にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[^bar]はbar以外の文字にマッチします。
 </span></span><span style="display:flex;"><span>パターン[^0-9]は数字以外の文字にマッチします。
 </span></span><span style="display:flex;"><span>パターン[bar^]はbar^の各文字にマッチします。先頭に位置しないハット記号はメタキャラクタとして扱われません。</span></span></code></pre></div></div>
 </figure>
@@ -118,7 +118,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[.*]は.*の各文字にマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン[.*]は.*の各文字にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>パターンの連続を表すには*+?{}(アスタリスク、プラス記号、疑問符、波かっこ)を使用します。</p>
 <p>アスタリスクは直前のパターンの0回以上の連続を表します。</p>
@@ -126,7 +126,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf*ooはoo,foo,ffoo,ffffooなどの文字列にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf*ooはoo,foo,ffoo,ffffooなどの文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンba*rはbr,bar,baar,baaaarなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>プラス記号は直前のパターンの1回以上の連続を表します。</p>
@@ -134,7 +134,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf+ooはfoo,ffoo,ffffooなどの文字列にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf+ooはfoo,ffoo,ffffooなどの文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンba+rはbar,baar,baaaarなどの文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>疑問符は直前のパターンの0回以上1回以下の連続(直前のパターンの有無)を表します。</p>
@@ -142,7 +142,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf?ooはoo,fooの各文字列にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf?ooはoo,fooの各文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンba?rはbr,barの各文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>波かっこは直前のパターンの指定回数の連続を表します。</p>
@@ -172,7 +172,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf{3}ooは文字列fffooにマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンf{3}ooは文字列fffooにマッチします。
 </span></span><span style="display:flex;"><span>パターンf{2,3}ooはffoo,fffooの各文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>アスタリスク、プラス記号、疑問符、波かっこの直前にパターンがない表現は無効です。</p>
@@ -180,14 +180,14 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン*foo,+bar,?fooはすべて無効な表現です。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン*foo,+bar,?fooはすべて無効な表現です。</span></span></code></pre></div></div>
 </figure>
 <p>メタキャラクタとしてアスタリスクとプラス記号を含む表現は可能な限り長いパターンにマッチ(最長一致)します。可能な限り短いパターンにマッチ(最短一致)させるにはアスタリスクとプラス記号の直後に疑問符をつけます。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*barは文字列foobarfoobarに対して文字列foobarfoobarにマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*barは文字列foobarfoobarに対して文字列foobarfoobarにマッチします。
 </span></span><span style="display:flex;"><span>パターン.*?barは文字列foobarfoobarに対して文字列foobarにマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>位置を表すにはハット記号とドル記号を使用します。ハット記号は行頭にマッチします。ドル記号は行末にマッチします。</p>
@@ -195,7 +195,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン^fooは行頭にある文字列fooにマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン^fooは行頭にある文字列fooにマッチします。
 </span></span><span style="display:flex;"><span>パターン^.*barは行頭からbarまでの文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンfoo$は行末にある文字列fooにマッチします。
 </span></span><span style="display:flex;"><span>パターン^bar$はbarという文字列のみが存在する行にマッチします。
@@ -207,7 +207,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo|barはfoo,barの各文字列にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターンfoo|barはfoo,barの各文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンfoo|bar|foobarはfoo,bar,foobarの各文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターンf?oo|ba?rはoo,foo,br,barの各文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
@@ -216,7 +216,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン(foo)?barはbar,foobarの各文字列にマッチします。
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン(foo)?barはbar,foobarの各文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターン(foo)+barはfoobar,foofoobar,foofoofoobarなどの文字列にマッチします。
 </span></span><span style="display:flex;"><span>パターン(foo|bar)fooはfoofoo,barfooの各文字列にマッチします。</span></span></code></pre></div></div>
 </figure>
@@ -225,7 +225,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン(foo)(bar)\2\1は文字列foobarbarfooにマッチします。</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン(foo)(bar)\2\1は文字列foobarbarfooにマッチします。</span></span></code></pre></div></div>
 </figure>
 <p>丸かっこで囲んだグループをキャプチャしてほしくない場合は開く丸かっこを(?:とします。</p>
 <p>よく使用される慣用的な正規表現として以下のようなものがあります。</p>
@@ -233,7 +233,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列にマッチします。(ワイルドカードのアスタリスクと同じ意味になります)
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>パターン.*は任意の文字列にマッチします。(ワイルドカードのアスタリスクと同じ意味になります)
 </span></span><span style="display:flex;"><span>パターン^$は空行にマッチします。
 </span></span><span style="display:flex;"><span>パターン^.*$は任意の1行にマッチします。
 </span></span><span style="display:flex;"><span>
