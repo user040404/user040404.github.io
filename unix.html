@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-02-11 03:29:00">2026-02-11 03:29:00</time></div>
+<div id="date"><time datetime="2026-02-11 04:30:30">2026-02-11 04:30:30</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本事項</h1>
 <nav id="TableOfContents">
@@ -125,13 +125,13 @@ Command&quot;の略です。</p>
 <h2 id="パッケージマネージャ">パッケージマネージャ</h2>
 <p>利用できるアプリケーションは<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">パッケージ</a>という形で<a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA">リポジトリ</a>というサーバに置かれています。パッケージの形式はディストリビューションによって異なります。パッケージはパッケージマネージャを使用してインストール・アップデート・アンインストールします。インストール済みのパッケージをまとめてアップデートすることもできます。</p>
 <h2 id="ディスプレイサーバ">ディスプレイサーバ</h2>
-<p><a href="https://ja.wikipedia.org/wiki/X%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ディスプレイマネージャ</a>がログイン画面を表示します。ログインと同時に<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B5%E3%83%BC%E3%83%90">ディスプレイサーバ</a>が起動します。ログイン後は<a href="https://ja.wikipedia.org/wiki/X%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ウィンドウマネージャ</a>がウィンドウを制御します。<a href="https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ウィンドウシステム</a>には<a href="https://ja.wikipedia.org/wiki/X_Window_System">X Window System</a>や<a href="https://ja.wikipedia.org/wiki/Wayland">Wayland</a>を採用しています。</p>
+<p>システムを起動すると<a href="https://ja.wikipedia.org/wiki/X%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ディスプレイマネージャ</a>がログイン画面を表示します。ログインと同時に<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B5%E3%83%BC%E3%83%90">ディスプレイサーバ</a>が起動します。ディスプレイサーバはユーザからの入力を受け付けて、ウィンドウを開いたり画面を描画したりします。ログイン後は<a href="https://ja.wikipedia.org/wiki/X%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">ウィンドウマネージャ</a>がウィンドウを制御します。<a href="https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ウィンドウシステム</a>には<a href="https://ja.wikipedia.org/wiki/X_Window_System">X</a>や<a href="https://ja.wikipedia.org/wiki/Wayland">Wayland</a>を採用しています。Xではディスプレイサーバとウィンドウシステムの役割が分離しているので、ウィンドウマネージャを選択できます。</p>
 <h2 id="サウンドサーバ">サウンドサーバ</h2>
 <p>オーディオデバイスを制御する<a href="https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%83%B3%E3%83%89%E3%82%B5%E3%83%BC%E3%83%90">サウンドサーバ</a>は<a href="https://ja.wikipedia.org/wiki/PipeWire">PipeWire</a>です。</p>
 <h2 id="プリントサーバ">プリントサーバ</h2>
 <p>プリンタを制御する<a href="https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%82%B5%E3%83%BC%E3%83%90">プリントサーバ</a>は<a href="https://ja.wikipedia.org/wiki/CUPS">CUPS</a>(Common Unix Printing System)です。</p>
 <h2 id="日本語入力">日本語入力</h2>
-<p><a href="https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">日本語入力</a>の際は<a href="https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%97%E3%83%83%E3%83%88%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">入力メソッド</a>が入力を受け付けて変換エンジンが漢字に変換します。<a href="https://ja.wikipedia.org/wiki/Google_%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B#Mozc">Mozc</a>と<a href="https://ja.wikipedia.org/wiki/Fcitx">Fcitx</a>の組み合わせが一般的です。</p>
+<p><a href="https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">日本語入力</a>の際は<a href="https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%97%E3%83%83%E3%83%88%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">入力メソッド</a>が入力を受け付けて変換エンジンが漢字に変換します。<a href="https://ja.wikipedia.org/wiki/Fcitx">Fcitx</a>(入力メソッド)と<a href="https://ja.wikipedia.org/wiki/Google_%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B#Mozc">Mozc</a>(変換エンジン)の組み合わせが一般的です。</p>
 <h2 id="デスクトップ環境">デスクトップ環境</h2>
 <p>Windowsのような<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%92%B0%E5%A2%83">デスクトップ環境</a>も使用できます。代表的なデスクトップ環境は<a href="https://ja.wikipedia.org/wiki/GNOME">GNOME</a>と<a href="https://ja.wikipedia.org/wiki/KDE">KDE</a>です。より軽量なデスクトップ環境としては<a href="https://ja.wikipedia.org/wiki/Xfce">Xfce</a>や<a href="https://ja.wikipedia.org/wiki/LXQt">LXQt</a>などがあります。</p>
 <div class="footnotes" role="doc-endnotes">
