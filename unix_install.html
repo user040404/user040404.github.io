@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-02-10 09:45:00">2026-02-10 09:45:00</time></div>
+<div id="date"><time datetime="2026-03-01 01:26:42">2026-03-01 01:26:42</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixのインストール</h1>
 <nav id="TableOfContents">
@@ -56,7 +56,7 @@
 <h2 id="はじめに">はじめに</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Arch_Linux">ArchLinux</a>をWindowsの<a href="https://ja.wikipedia.org/wiki/VirtualBox">VirtualBox</a>にインストールします。詳細については<a href="https://wiki.archlinux.jp/index.php/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">ArchWiki</a>を参照してください。</p>
 <h2 id="biosmbrとuefigpt">BIOS/MBRとUEFI/GPT</h2>
-<p>LinuxをインストールするにあたってBIOS/MBRとUEFI/GPTの違いを理解しておく必要があります。両者は機能的には同じものでUEFI/GPTはBIOS/MBRの後継として開発されました。</p>
+<p>LinuxをインストールするにあたってBIOS/MBRとUEFI/GPTの違いを理解しておく必要があります。両者は機能的には同じものでUEFI/GPTはBIOS/MBRの後継として開発されました。UEFIはBIOSの新しい規格ですが、ここでは従来のBIOSをBIOS、UEFIに対応した新しいBIOSをUEFIと呼び分けることにします。</p>
 <p><a href="https://ja.wikipedia.org/wiki/Basic_Input/Output_System">BIOS</a>(Basic Input/Output System)および<a href="https://wiki.archlinux.jp/index.php/Unified_Extensible_Firmware_Interface">UEFI</a>(Unified Extensible Firmware Interface)にはWindowsなどのOSとPCの橋渡しをする役目があります。これらはPCにあらかじめ内蔵されたプログラム(ファームウェア)であり、電源投入時にハードウェアを初期化したりOSを起動したりします。</p>
 <p><a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%96%E3%83%BC%E3%83%88%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89">MBR</a>(Master Boot Record)および<a href="https://ja.wikipedia.org/wiki/GUID%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">GPT</a>(GUID Partition Table)はハードディスクなどのブロックデバイスの先頭にある小さな領域です。ここには<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3">パーティション</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>の構成情報がパーティションテーブルとして格納されています。</p>
 <p>OSをインストールすることができるパーティションを基本パーティション(Primary Partition)といいます。MBRでは4つの基本パーティションしか作成できませんが<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>GPTでは128の基本パーティションを作成できます。</p>
