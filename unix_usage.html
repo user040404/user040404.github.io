@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-13 01:28:16">2026-03-13 01:28:16</time></div>
+<div id="date"><time datetime="2026-03-13 06:43:23">2026-03-13 06:43:23</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -1029,7 +1029,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
-<p>以下のようにコマンドのエイリアス(alias: 別名)を定義できます。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
+<p>シェルでは以下のようにコマンドのエイリアス(alias: 別名)を定義できます。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 --></p>
 
 
 <figure class="xCodeBlock">
@@ -1050,6 +1050,7 @@
 </span></span><span style="display:flex;"><span>alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -FH --color=auto --group-directories-first&#39;</span>
 </span></span><span style="display:flex;"><span>alias la<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -A&#39;</span>
 </span></span><span style="display:flex;"><span>alias ll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -Alh --time-style=long-iso&#39;</span>
+</span></span><span style="display:flex;"><span>alias l<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;clear &amp;&amp; ll&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ファイル・ディレクトリ操作</span>
 </span></span><span style="display:flex;"><span>alias -- -<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd -&#39;</span>
@@ -1069,6 +1070,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 検索</span>
 </span></span><span style="display:flex;"><span>alias grep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias egrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep -E&#39;</span>
+</span></span><span style="display:flex;"><span>alias fgrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep -F&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Pacman</span>
 </span></span><span style="display:flex;"><span>alias pm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo pacman&#39;</span>
@@ -1117,7 +1120,7 @@
 </span></span><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
 -->
-<p>以下のように関数を定義してコマンドを自作することもできます。</p>
+<p>シェルでは以下のように関数を定義してコマンドを自作することもできます。</p>
 
 
 <figure class="xCodeBlock">
