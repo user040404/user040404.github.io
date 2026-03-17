@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2025-11-23 01:21:41">2025-11-23 01:21:41</time></div>
+<div id="date"><time datetime="2026-03-18 01:55:41">2026-03-18 01:55:41</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -178,12 +178,13 @@
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">%UserProfile%\Documents\PowerShell\profile.d\aliases.ps1</figcaption>
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name c -Value Clear-Host
-</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name dm -Value Disable-Monitor
-</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name lt -Value Lock-And-TurnOffMonitor
+</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name j -Value bat.exe    <span style="color:#75715e"># sharkdp.bat (色分け表示に対応したページャ)</span>
+</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name e -Value edit.exe   <span style="color:#75715e"># Microsoft.Edit (コンソールで使えるテキストエディタ)</span>
+</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name off -Value Disable-Monitor
+</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name lock -Value Lock-And-TurnOffMonitor
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name reboot -Value Restart-Computer
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name halt -Value Stop-Computer
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name which -Value Get-Command
-</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name edit -Value notepad.exe
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name open -Value Invoke-Item</span></span></code></pre></div></div>
 </figure>
 <p>functions.ps1には自分が行う作業をコマンドとして定義します。</p>
