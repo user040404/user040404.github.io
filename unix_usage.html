@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-14 14:12:25">2026-03-14 14:12:25</time></div>
+<div id="date"><time datetime="2026-03-17 09:24:04">2026-03-17 09:24:04</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -897,87 +897,70 @@
 
 <figure class="xCodeBlock">
 <figcaption class="xCodeBlock_title">~/.vimrc</figcaption>
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">vimrc</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">  &#34;すべての自動コマンドをクリア</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">autocmd</span>!
-</span></span><span style="display:flex;"><span><span style="color:#75715e">  &#34;~/.vimrcの変更を反映</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">autocmd</span> <span style="color:#a6e22e">BufWritePost</span>  ~<span style="color:#e6db74">/.vimrc  source ~/</span>.<span style="color:#a6e22e">vimrc</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">  &#34;カーソル位置を復元</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">autocmd</span> <span style="color:#a6e22e">BufReadPost</span> * <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;&#39;\&#34;&#34;</span>) &gt; <span style="color:#ae81ff">1</span> &amp;&amp; <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;&#39;\&#34;&#34;</span>) &lt;= <span style="color:#a6e22e">line</span>(<span style="color:#e6db74">&#34;$&#34;</span>) | <span style="color:#a6e22e">exe</span> <span style="color:#e6db74">&#34;normal! g`\&#34;&#34;</span> | <span style="color:#66d9ef">endif</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">END</span>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">enable</span>       <span style="color:#75715e">&#34; シンタックスハイライト</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; ファイル・ディレクトリに関する設定 ---------------------------------------</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">encoding</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span> <span style="color:#75715e">&#34;文字コードを指定</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">fileencodings</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span>,<span style="color:#a6e22e">iso</span><span style="color:#ae81ff">-2022</span>-<span style="color:#a6e22e">jp</span>,<span style="color:#a6e22e">sjis</span>,<span style="color:#a6e22e">euc</span>-<span style="color:#a6e22e">jp</span> <span style="color:#75715e">&#34;ファイルエンコードを指定</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">fileformats</span>=<span style="color:#a6e22e">unix</span>,<span style="color:#a6e22e">dos</span> <span style="color:#75715e">&#34;自動認識させる改行コードを指定</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hidden</span> <span style="color:#75715e">&#34;複数のバッファ(ファイル)を保持</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autochdir</span> <span style="color:#75715e">&#34;カレントディレクトリを自動的に移動</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 基本動作</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autochdir</span>                   <span style="color:#75715e">&#34; カレントディレクトリを自動的に移動</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backspace</span>=<span style="color:#a6e22e">indent</span>,<span style="color:#a6e22e">eol</span>,<span style="color:#a6e22e">start</span>  <span style="color:#75715e">&#34; バックスペースの動作を拡張</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>=<span style="color:#a6e22e">unnamedplus</span>       <span style="color:#75715e">&#34; システムクリップボード共有（必要なら）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hidden</span>                      <span style="color:#75715e">&#34; バッファを閉じずに切り替え可能</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">mouse</span>=<span style="color:#a6e22e">a</span>                     <span style="color:#75715e">&#34; マウスを有効化</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nocompatible</span>                <span style="color:#75715e">&#34; Vi互換モード無効</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;Ctrl+Tabで次のバッファ</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;Ctrl+Shift+Tabで前のバッファ</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">Tab</span>&gt; :<span style="color:#a6e22e">bn</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">S</span>-<span style="color:#a6e22e">Tab</span>&gt; :<span style="color:#a6e22e">bp</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backup</span> <span style="color:#75715e">&#34;バックアップファイル(*.*~)を作成</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backupdir</span>=<span style="color:#e6db74">/tmp/</span> <span style="color:#75715e">&#34;バックアップファイルを/tmpに保存</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">swapfile</span> <span style="color:#75715e">&#34;スワップファイル(.*.*.swp)を作成</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">directory</span>=<span style="color:#e6db74">/tmp/</span> <span style="color:#75715e">&#34;スワップファイルを/tmpに保存</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undofile</span> <span style="color:#75715e">&#34;アンドゥファイル(.*.*.un~)を作成</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undodir</span>=<span style="color:#e6db74">/tmp/</span> <span style="color:#75715e">&#34;アンドゥファイルを/tmpに保存</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; インターフェイス</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">background</span>=dark <span style="color:#75715e">&#34; ダークテーマ（好みで）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">cmdheight</span>=<span style="color:#ae81ff">2</span>     <span style="color:#75715e">&#34; コマンドラインの高さ</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">laststatus</span>=<span style="color:#ae81ff">2</span>    <span style="color:#75715e">&#34; 常にステータスライン表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span>          <span style="color:#75715e">&#34; 行番号</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; set relativenumber  &#34; 相対行番号（好みで）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; set ruler           &#34; ルーラー表示（行番号の右にカーソル位置などを表示）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftround</span>      <span style="color:#75715e">&#34; インデントをタブ幅の倍数に丸める</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showcmd</span>         <span style="color:#75715e">&#34; コマンド入力を表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showmode</span>        <span style="color:#75715e">&#34; モード表示（インサート、ビジュアルなど）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">signcolumn</span>=<span style="color:#a6e22e">yes</span>  <span style="color:#75715e">&#34; 常にシグナルカラムを表示（エラーなどのアイコン用）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">termguicolors</span>   <span style="color:#75715e">&#34; カラースキームを有効に（端末対応なら）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">wildmenu</span>        <span style="color:#75715e">&#34; コマンドライン補完をメニュー表示</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 表示に関する設定 ---------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">on</span> <span style="color:#75715e">&#34;構文を色分け表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">background</span>=dark <span style="color:#75715e">&#34;明るい背景色(light)もしくは暗い背景色(dark)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">cursorline</span> <span style="color:#75715e">&#34;カーソル行をハイライト</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">cursorcolumn</span> <span style="color:#75715e">&#34;カーソル列をハイライト</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">highlight</span> <span style="color:#a6e22e">cursorline</span> <span style="color:#a6e22e">ctermbg</span>=<span style="color:#ae81ff">235</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">highlight</span> <span style="color:#a6e22e">cursorcolumn</span> <span style="color:#a6e22e">ctermbg</span>=<span style="color:#ae81ff">235</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span> <span style="color:#75715e">&#34;行番号を表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;set ruler &#34;ルーラを表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">laststatus</span>=<span style="color:#ae81ff">2</span> <span style="color:#75715e">&#34;ステータスラインを表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">statusline</span>=%<span style="color:#a6e22e">F</span>%=(%<span style="color:#a6e22e">l</span>,%<span style="color:#ae81ff">02</span>v,<span style="color:#ae81ff">0</span>x%<span style="color:#ae81ff">02</span>B)\ %<span style="color:#a6e22e">m</span>%<span style="color:#a6e22e">h</span>%<span style="color:#a6e22e">w</span>\ %<span style="color:#a6e22e">Y</span><span style="color:#e6db74">/%{&amp;fenc!=&#39;&#39;?&amp;fenc:&amp;enc}/</span>%{&amp;<span style="color:#a6e22e">ff</span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">cmdheight</span>=<span style="color:#ae81ff">2</span> <span style="color:#75715e">&#34;コマンドラインの高さ</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">scrolloff</span>=<span style="color:#ae81ff">999</span> <span style="color:#75715e">&#34;カーソル位置の行を中央に表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">listchars</span>=<span style="color:#a6e22e">eol</span>:$,<span style="color:#a6e22e">tab</span>:&gt;-,<span style="color:#a6e22e">trail</span>:<span style="color:#a6e22e">_</span>,<span style="color:#a6e22e">extends</span>:&gt;,<span style="color:#a6e22e">precedes</span>:&lt;,<span style="color:#a6e22e">space</span>:<span style="color:#a6e22e">_</span>,<span style="color:#a6e22e">nbsp</span>:%
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;set list &#34;非表示文字を表示</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 編集</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autoindent</span>      <span style="color:#75715e">&#34; 自動インデント</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; set cursorcolumn    &#34; カーソル列をハイライト</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">cursorline</span>      <span style="color:#75715e">&#34; カーソル行をハイライト</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">expandtab</span>       <span style="color:#75715e">&#34; タブをスペースに変換</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nowrap</span>          <span style="color:#75715e">&#34; 自動改行を無効（好みで）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">scrolloff</span>=<span style="color:#ae81ff">999</span>   <span style="color:#75715e">&#34; カーソル位置を常に画面中央に表示</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftwidth</span>=<span style="color:#ae81ff">4</span>    <span style="color:#75715e">&#34; インデントの幅</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showmatch</span>       <span style="color:#75715e">&#34; 対応する括弧を強調</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartindent</span>     <span style="color:#75715e">&#34; スマートインデント</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">softtabstop</span>=<span style="color:#ae81ff">4</span>   <span style="color:#75715e">&#34; タブキーのスペース数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">tabstop</span>=<span style="color:#ae81ff">4</span>       <span style="color:#75715e">&#34; タブの幅</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; set textwidth=78    &#34; テキストの幅（自動改行の位置）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; set wrap            &#34; 行の折り返し（好みで）</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;全角スペースを表示</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">hi</span> <span style="color:#a6e22e">DoubleByteSpace</span> <span style="color:#a6e22e">ctermbg</span>=<span style="color:#a6e22e">blue</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">match</span> <span style="color:#a6e22e">DoubleByteSpace</span> <span style="color:#e6db74">/　/</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 検索</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span>    <span style="color:#75715e">&#34; 検索結果ハイライト</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">incsearch</span>   <span style="color:#75715e">&#34; インクリメンタル検索</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ignorecase</span>  <span style="color:#75715e">&#34; 大文字小文字を区別しない検索</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartcase</span>   <span style="color:#75715e">&#34; 大文字を含む検索語は大文字小文字を区別</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 入力に関する設定 ---------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">mouse</span>=<span style="color:#a6e22e">a</span> <span style="color:#75715e">&#34;マウスを有効化</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">textwidth</span>=<span style="color:#ae81ff">78</span> <span style="color:#75715e">&#34;行の文字数</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">wrap</span> <span style="color:#75715e">&#34;ウィンドウ幅で行の折り返し</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">tabstop</span>=<span style="color:#ae81ff">2</span> <span style="color:#75715e">&#34;タブキーを押したときのタブ幅</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">expandtab</span> <span style="color:#75715e">&#34;タブをタブ幅のスペースに置換</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftwidth</span>=<span style="color:#ae81ff">0</span> <span style="color:#75715e">&#34;改行・タブコマンドを入力したときのタブ幅(0ならtabstopの値)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftround</span> <span style="color:#75715e">&#34;タブ幅の倍数になるように調整</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autoindent</span> <span style="color:#75715e">&#34;前の行のインデントを維持</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span> <span style="color:#75715e">&#34;検索結果をハイライト</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">incsearch</span> <span style="color:#75715e">&#34;インクリメンタルサーチ</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ignorecase</span> <span style="color:#75715e">&#34;検索時に大文字小文字を無視</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartcase</span> <span style="color:#75715e">&#34;検索語に大文字を混ぜると検索時に大文字を区別</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showmatch</span> <span style="color:#75715e">&#34;括弧入力時に対応する括弧を強調</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">whichwrap</span>=<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">s</span>,&lt;,&gt;,[,] <span style="color:#75715e">&#34;矢印キーによる行移動を拡張</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backspace</span>=<span style="color:#a6e22e">indent</span>,<span style="color:#a6e22e">eol</span>,<span style="color:#a6e22e">start</span> <span style="color:#75715e">&#34;インサートモードのBS/Ctrl+w/Ctrl+uを拡張</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>+=<span style="color:#a6e22e">unnamed</span> <span style="color:#75715e">&#34;無名レジスタとクリップボードを同期</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>+=<span style="color:#a6e22e">autoselect</span> <span style="color:#75715e">&#34;選択範囲をクリップボードにコピー</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;set binary noeol &#34;ファイル末尾の改行なし</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; ファイル管理</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backup</span>                  <span style="color:#75715e">&#34; バックアップファイルを作成</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backupdir</span>=~<span style="color:#e6db74">/.vim/</span><span style="color:#a6e22e">backup</span> <span style="color:#75715e">&#34; バックアップファイルの保存場所</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">swapfile</span>                <span style="color:#75715e">&#34; スワップファイルを作成</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">directory</span>=~<span style="color:#e6db74">/.vim/</span><span style="color:#a6e22e">swap</span>   <span style="color:#75715e">&#34; スワップファイルの保存場所</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undofile</span>                <span style="color:#75715e">&#34; アンドゥファイルを作成</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undodir</span>=~<span style="color:#e6db74">/.vim/</span><span style="color:#a6e22e">undo</span>     <span style="color:#75715e">&#34; アンドゥファイルの保存場所</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">writebackup</span>             <span style="color:#75715e">&#34; 上書き保存前にバックアップファイルを作成</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;jjでインサートモードからノーマルモード</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; パフォーマンス</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">updatetime</span>=<span style="color:#ae81ff">300</span>  <span style="color:#75715e">&#34; CursorHoldイベントの発火時間を短縮</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">lazyredraw</span>      <span style="color:#75715e">&#34; 画面更新を最小限にして高速化</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; インサートモードでjjを押すとノーマルモードに戻る</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">inoremap</span> <span style="color:#a6e22e">jj</span> &lt;<span style="color:#a6e22e">ESC</span>&gt;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;&gt;,&lt;,=でインデント・逆インデント・自動インデント</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vnoremap</span> &gt; &gt;<span style="color:#a6e22e">gv</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vnoremap</span> &lt; &lt;<span style="color:#a6e22e">gv</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vnoremap</span> = =<span style="color:#a6e22e">gv</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34;バックスペースでハイライトを解除</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">BS</span>&gt; :&lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">u</span>&gt;<span style="color:#a6e22e">nohlsearch</span>&lt;<span style="color:#a6e22e">CR</span>&gt;&lt;<span style="color:#a6e22e">Esc</span>&gt;</span></span></code></pre></div></div>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; バッファ移動（Ctrl+Tab / Ctrl+Shift+Tab）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">Tab</span>&gt; :<span style="color:#a6e22e">bn</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">S</span>-<span style="color:#a6e22e">Tab</span>&gt; :<span style="color:#a6e22e">bp</span>&lt;<span style="color:#a6e22e">CR</span>&gt;</span></span></code></pre></div></div>
 </figure>
 <p>vimのヘルプを日本語化するには次のようにします。</p>
 
