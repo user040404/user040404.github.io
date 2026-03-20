@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-18 01:55:41">2026-03-18 01:55:41</time></div>
+<div id="date"><time datetime="2026-03-20 12:47:19">2026-03-20 12:47:19</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -85,17 +85,17 @@
 </ol>
 <p>ウェブページにブロックしたいものがあれば、右クリックメニューから[要素をブロック]を選択します。自動的にフィルタが作成されて[マイフィルター]に登録されます。</p>
 <h2 id="powershellのカスタマイズ">PowerShellのカスタマイズ</h2>
-<p><a href="https://ja.wikipedia.org/wiki/Windows_Terminal">Windowsターミナル</a>は、文字を入力してコマンドを実行するためのアプリケーションです。たとえば<a href="https://ja.wikipedia.org/wiki/Windows_Package_Manager">Windowsパッケージマネージャ</a>は、ターミナル上でwingetというコマンドを入力して、アプリケーションをインストールしたりアップデートしたりします。このようなコンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。ターミナル用のフォントとしてCascadiaが用意されています。</p>
-<p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。オブジェクト指向のPowerShellでは、やりたいことを簡単に記述できるようになりました。さまざまなデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
-<p>PowerShellの最新版をインストールします。</p>
+<p><a href="https://ja.wikipedia.org/wiki/Windows_Terminal">Windowsターミナル</a>は、文字を入力してコマンドを実行するためのアプリケーションです。<a href="https://ja.wikipedia.org/wiki/Windows_Package_Manager">Windowsパッケージマネージャ</a>のwingetというコマンドを使用すると、アプリケーションをインストールしたりアップデートしたりできます。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget install Microsoft.PowerShell</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget install Microsoft.PowerShell Microsoft.Edit sharkdp.bat</span></span></code></pre></div></div>
 </figure>
+<p>コンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。ターミナル用のフォントとしてCascadiaが用意されています。</p>
+<p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。オブジェクト指向のPowerShellでは、やりたいことを簡単に記述できるようになりました。さまざまなデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
 <p>頻繫に行う定型的な作業はPowerShellのスクリプトとして実行できます。スクリプトとは簡易的なプログラムのようなものです。PowerShellのコマンドの使い方やスクリプトの書き方については他の記事を参照してください。スクリプトは自分の手で書く必要はなく、Copilotなどの生成AIに書いてもらうといいでしょう。</p>
-<p>PowerShellの起動時に%UserProfile%\Documents\PowerShell\profile.ps1の内容が実行されます。このファイルを使用してPowerShellをカスタマイズできます。ここでは以下のようにしてprofile.dフォルダにあるスクリプトファイル(*.ps1)をインポートするようにします。こうすればスクリプトを目的に応じて複数のファイルに分割できます。</p>
+<p>PowerShellの起動時に%UserProfile%\Documents\PowerShell\profile.ps1の内容が実行されます。このファイルを使用してPowerShellをカスタマイズできます。ここでは以下のようにしてprofile.dフォルダにあるスクリプトファイル(*.ps1)をインポートするようにします。こうすればスクリプトを用途に応じて複数のファイルに分割できます。</p>
 
 
 <figure class="xCodeBlock">

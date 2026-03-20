@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-02-11 07:14:34">2026-02-11 07:14:34</time></div>
+<div id="date"><time datetime="2026-03-20 12:47:19">2026-03-20 12:47:19</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本事項</h1>
 <nav id="TableOfContents">
@@ -89,7 +89,7 @@
 <p><a href="https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%88">ブートローダ</a>はシステムを起動するプログラムです。ブートローダには<a href="https://wiki.archlinux.jp/index.php/Systemd-boot">systemd-boot</a>や<a href="https://ja.wikipedia.org/wiki/GNU_GRUB">GRUB</a>(GRand Unified Bootloader)などが使用されます。GRUBはWindowsや他のOSとのマルチブートにも対応していますが、同じシステムを立ち上げるだけならsystemd-bootで十分です。</p>
 <h2 id="ファイルシステム">ファイルシステム</h2>
 <p><a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ファイルシステム</a>には<a href="https://ja.wikipedia.org/wiki/Ext">ext</a>(Extended File
-System)や<a href="https://ja.wikipedia.org/wiki/XFS">XFS</a>(eXtents File System)などが使用されます。これらのファイルシステムは断片化しにくい設計になっているので、ディスクの内容が断片化することはほとんどありません。<a href="https://ja.wikipedia.org/wiki/File_Allocation_Table">FAT</a>や<a href="https://ja.wikipedia.org/wiki/NT_File_System">NTFS</a>にもアクセスできるので、Windowsとファイルをやり取りすることもできます。-Tオプションをつけてコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?df">df</a>を入力すると使用中のファイルシステムが表示されます。ファイルシステムの種類やそれぞれの違いについては<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B7%A5%B9%A5%C6%A5%E0">用語集:ファイルシステム: UNIX/Linuxの部屋</a>を参照してください。</p>
+System)や<a href="https://ja.wikipedia.org/wiki/XFS">XFS</a>(eXtents File System)などが使用されます。これらのファイルシステムは断片化しにくい設計になっているので、ディスクの内容が断片化することはほとんどありません。<a href="https://ja.wikipedia.org/wiki/File_Allocation_Table">FAT</a>や<a href="https://ja.wikipedia.org/wiki/NT_File_System">NTFS</a>にもアクセスできるので、Windowsとファイルをやり取りすることもできます。オプション-Tを指定してコマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?df">df</a>を入力すると使用中のファイルシステムが表示されます。ファイルシステムの種類やそれぞれの違いについては<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%A5%B7%A5%B9%A5%C6%A5%E0">用語集:ファイルシステム: UNIX/Linuxの部屋</a>を参照してください。</p>
 <h3 id="ファイル">ファイル</h3>
 <p>Windowsとは異なり<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D">ファイル名</a>の大文字と小文字は区別されます。Windowsのようにスペースを含むファイル名を扱うことはありません。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>ファイル名の頭にピリオドをつけたファイル(通称ドットファイル)は隠しファイルとして扱われます。Unixでは<a href="https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E5%AD%90">拡張子</a>のことをサフィクス(suffix)といいます。サフィクスはユーザがファイルの種類を判別するために使用されますが、サフィクスに基づいて動作するコマンドやアプリケーションもあります。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?touch">touch</a>で空ファイルを作成します。コマンド<a href="http://x68000.q-e-d.net/~68user/unix/pickup?chown">chown</a>でファイルの所有者・所有グループを変更します。ファイル名やファイルサイズの制約については<a href="http://x68000.q-e-d.net/~68user/unix/pickup?%A5%D5%A5%A1%A5%A4%A5%EB%C0%A9%B8%C2%A4%DE%A4%C8%A4%E1">用語集:ファイル制限まとめ: UNIX/Linuxの部屋</a>を参照してください。</p>
 <h3 id="ディレクトリ">ディレクトリ</h3>
