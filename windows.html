@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-20 13:23:49">2026-03-20 13:23:49</time></div>
+<div id="date"><time datetime="2026-03-20 15:27:47">2026-03-20 15:27:47</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Windowsのカスタマイズ</h1>
 <nav id="TableOfContents">
@@ -90,9 +90,10 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget install Microsoft.PowerShell Microsoft.Edit sharkdp.bat</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># winget update -r
+</span></span><span style="display:flex;"><span># winget install Microsoft.PowerShell Microsoft.Edit sharkdp.bat GNU.Wget2</span></span></code></pre></div></div>
 </figure>
-<p>ターミナルのメニューから[設定]を選択するとターミナルの見た目や機能を細かく設定できます。コンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。[プロファイル]の [既定値] &gt; [外観] からフォントを指定できます。ターミナル用のフォントとしてCascadiaが用意されています。日本語に対応した見やすいフォントとしては<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>や<a href="https://github.com/yuru7/PlemolJP">PlemolJP</a>などがあります。</p>
+<p>ターミナルのメニューから[設定]を選択するとターミナルの見た目や機能を細かくカスタマイズできます。コンソールアプリケーション(CUIのアプリケーション)をよく使用するのであれば、ターミナルのフォントや配色を見やすいものにしておきましょう。[プロファイル]の [既定値] &gt; [外観] からフォントを指定できます。ターミナル用のフォントとしてCascadiaが用意されています。日本語に対応した見やすいフォントとしては<a href="https://github.com/yuru7/udev-gothic">UDEV-Gothic</a>や<a href="https://github.com/yuru7/PlemolJP">PlemolJP</a>などがあります。</p>
 <p>ターミナルでWindowsを操作するにはPowerShellを使用します。PowerShellは従来のコマンドプロンプトを置き換えるものです。コマンドプロンプトは機能が乏しく、ほとんど使い物になりませんでした。オブジェクト指向のPowerShellでは、やりたいことを簡単に記述できるようになりました。さまざまなデータとそれらのデータを扱う処理をひとまとめにしたものがオブジェクトです。</p>
 <p>頻繫に行う定型的な作業はPowerShellのスクリプトとして実行できます。スクリプトとは簡易的なプログラムのようなものです。PowerShellのコマンドの使い方やスクリプトの書き方については他の記事を参照してください。スクリプトは自分の手で書く必要はなく、Copilotなどの生成AIに書いてもらうといいでしょう。</p>
 <p>PowerShellの起動時に%UserProfile%\Documents\PowerShell\profile.ps1の内容が実行されます。このファイルを使用してPowerShellをカスタマイズできます。ここでは以下のようにしてprofile.dフォルダにあるスクリプトファイル(*.ps1)をインポートするようにします。こうすればスクリプトを用途に応じて複数のファイルに分割できます。</p>
@@ -181,13 +182,13 @@
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name j -Value bat.exe    <span style="color:#75715e"># sharkdp.bat (色分け表示に対応したページャ)</span>
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name e -Value edit.exe   <span style="color:#75715e"># Microsoft.Edit (コンソールで使えるテキストエディタ)</span>
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name off -Value Disable-Monitor
-</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name lock -Value Lock-And-TurnOffMonitor
+</span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name lock -Value Lock-System
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name reboot -Value Restart-Computer
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name halt -Value Stop-Computer
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name which -Value Get-Command
 </span></span><span style="display:flex;"><span>Set-Alias -Confirm:$false -Name open -Value Invoke-Item</span></span></code></pre></div></div>
 </figure>
-<p>functions.ps1には自分が行う作業をコマンドとして定義します。</p>
+<p>functions.ps1には自分が行う作業をコマンド(関数)として定義します。</p>
 
 
 <figure class="xCodeBlock">
@@ -229,7 +230,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># システムをロックしてからディスプレイをOFFにする</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Lock-And-TurnOffMonitor {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Lock-System {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span>(
 </span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">int</span>]$DelaySeconds = <span style="color:#ae81ff">5</span>
 </span></span><span style="display:flex;"><span>    )

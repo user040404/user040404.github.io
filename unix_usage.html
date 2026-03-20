@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-20 13:23:49">2026-03-20 13:23:49</time></div>
+<div id="date"><time datetime="2026-03-20 15:27:47">2026-03-20 15:27:47</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -20,12 +20,12 @@
     <li><a href="#ディストリビューションの初期設定">ディストリビューションの初期設定</a></li>
     <li><a href="#パッケージマネージャpacmanyay">パッケージマネージャ(pacman/yay)</a></li>
     <li><a href="#シェルbash">シェル(bash)</a></li>
-    <li><a href="#テキストエディタvim">テキストエディタ(vim)</a></li>
+    <li><a href="#テキストエディタneovim">テキストエディタ(neovim)</a></li>
     <li><a href="#エイリアスおよびシェルスクリプト">エイリアスおよびシェルスクリプト</a></li>
     <li><a href="#バージョン管理システムgit">バージョン管理システム(git)</a></li>
     <li><a href="#ダウンロードマネージャcurlwget">ダウンロードマネージャ(curl/wget)</a></li>
     <li><a href="#ftpクライアントlftp">FTPクライアント(lftp)</a></li>
-    <li><a href="#メールクライアントmutt">メールクライアント(mutt)</a></li>
+    <li><a href="#メールクライアントneomutt">メールクライアント(neomutt)</a></li>
     <li><a href="#ウェブブラウザw3m">ウェブブラウザ(w3m)</a></li>
     <li><a href="#スクリプト言語nodejspythonperl">スクリプト言語(node.js/python/perl)</a></li>
   </ul>
@@ -230,7 +230,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># wheel グループの sudo 設定を有効化</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#39;^%wheel&#39;</span> /etc/sudoers; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#39;s/^# *%wheel/%wheel/&#39;</span> /etc/sudoers <span style="color:#f92672">||</span> true <span style="color:#75715e"># コメント付きの %wheel 行を単純にアンコメント</span>
+</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#39;s/^# *%wheel/%wheel/&#39;</span> /etc/sudoers <span style="color:#75715e"># コメント付きの %wheel 行を単純にアンコメント</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;wheel グループの sudo 権限を有効化しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>visudo -cf /etc/sudoers <span style="color:#75715e"># 変更後に構文チェック（推奨）</span>
@@ -245,7 +245,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === ロケール設定 ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#34;^</span><span style="color:#e6db74">${</span>LOCALE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> /etc/locale.gen; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#34;s/^# *\(</span><span style="color:#e6db74">${</span>LOCALE<span style="color:#e6db74">}</span><span style="color:#e6db74"> UTF-8\)/\1/&#34;</span> /etc/locale.gen <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#34;s/^# *\(</span><span style="color:#e6db74">${</span>LOCALE<span style="color:#e6db74">}</span><span style="color:#e6db74"> UTF-8\)/\1/&#34;</span> /etc/locale.gen
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;ロケール </span><span style="color:#e6db74">${</span>LOCALE<span style="color:#e6db74">}</span><span style="color:#e6db74"> を有効化しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>locale-gen
@@ -254,7 +254,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === タイムゾーン設定 ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;/usr/share/zoneinfo/</span><span style="color:#e6db74">${</span>TIMEZONE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  cp -a /etc/localtime /etc/localtime.bak 2&gt;/dev/null <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>  cp -a /etc/localtime /etc/localtime.bak 2&gt;/dev/null
 </span></span><span style="display:flex;"><span>  ln -sf <span style="color:#e6db74">&#34;/usr/share/zoneinfo/</span><span style="color:#e6db74">${</span>TIMEZONE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> /etc/localtime
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;タイムゾーンを </span><span style="color:#e6db74">${</span>TIMEZONE<span style="color:#e6db74">}</span><span style="color:#e6db74"> に設定しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
@@ -262,14 +262,14 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># hwclock は WSL 環境では失敗することがあるが無害</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> command -v hwclock &gt;/dev/null 2&gt;&amp;1; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  hwclock --systohc <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>  hwclock --systohc
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;システムクロックをハードウェアクロックに同期しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === シェル (zsh) をデフォルトにする場合、ユーザーのシェルを変更 ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER_SHELL<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/bin/zsh&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>  pacman -S --needed --noconfirm zsh
-</span></span><span style="display:flex;"><span>  chsh -s /bin/zsh <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>  chsh -s /bin/zsh <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;ユーザー </span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74"> のデフォルトシェルを zsh に変更しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
@@ -286,7 +286,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      cd ..
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      rm -rf yay
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    fi
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;&#39;</span> <span style="color:#f92672">||</span> true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;&#39;</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;AURヘルパー </span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74"> をインストールしました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
@@ -644,9 +644,9 @@
 <li>ゴミ箱機能: trash-cli</li>
 <li>ディレクトリのツリー表示: tree</li>
 <li>ディレクトリの同期: rsync</li>
+<li>ダウンロードマネージャ: wget</li>
 <li>メールクライアント: neomutt</li>
 <li>テキストブラウザ: w3m</li>
-<li>ダウンロードマネージャ: wget</li>
 <li>イメージビューア: feh/viu</li>
 <li>PDFビューア: mupdf</li>
 <li>メディアプレーヤ: mpv(スキンとしてuosc)</li>
@@ -864,7 +864,7 @@
       </tr>
   </tbody>
 </table>
-<h2 id="テキストエディタvim">テキストエディタ(vim)</h2>
+<h2 id="テキストエディタneovim">テキストエディタ(neovim)</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Vim">vim</a>はターミナルで使用できるテキストエディタです。neovimはvimを再設計したものです。詳細については<a href="https://maku77.github.io/vim/">まくまくVimノート</a>や<a href="http://nanasi.jp/">名無しのvim使い</a>を参照してください。</p>
 <p>neovimの設定は~/.config/nvim/init.vimに記述します。ここでは設定を管理しやすくするために~/.config/nvim/init.vimを分割して、~/.config/nvim/vimrc.d/00-settings.vimに基本設定、~/.config/nvim/vimrc.d/10-mappings.vimにキーマッピング、~/.config/nvim/vimrc.d/20-plugins.vimにプラグインを記述しています。(各設定ファイルを~/.config/nvim/init.vimでロードするようにしています)</p>
 <!-- so \~/.vimrcというコマンドを実行すると~/.vimrcがリロードされます。soはsourceの略です。 -->
@@ -1461,7 +1461,7 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp -vf ~/upload.rc</span></span></code></pre></div></div>
 </figure>
-<h2 id="メールクライアントmutt">メールクライアント(mutt)</h2>
+<h2 id="メールクライアントneomutt">メールクライアント(neomutt)</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Mutt">mutt</a>はターミナルで使用できるメールクライアントです。neomuttはmuttの機能を拡張したものになっています。詳細については<a href="https://wiki.archlinux.jp/index.php/Mutt">Mutt - ArchWiki</a>や<a href="https://www.emaillab.org/mutt/1.4/doc/manual_ja.html">The Mutt E-Mail Client</a>を参照してください。</p>
 <p>muttの設定を~/.muttrcに記述します。</p>
 
