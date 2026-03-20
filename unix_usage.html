@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-20 15:27:47">2026-03-20 15:27:47</time></div>
+<div id="date"><time datetime="2026-03-20 16:06:12">2026-03-20 16:06:12</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -20,7 +20,7 @@
     <li><a href="#ディストリビューションの初期設定">ディストリビューションの初期設定</a></li>
     <li><a href="#パッケージマネージャpacmanyay">パッケージマネージャ(pacman/yay)</a></li>
     <li><a href="#シェルbash">シェル(bash)</a></li>
-    <li><a href="#テキストエディタneovim">テキストエディタ(neovim)</a></li>
+    <li><a href="#テキストエディタmseditneovim">テキストエディタ(msedit/neovim)</a></li>
     <li><a href="#エイリアスおよびシェルスクリプト">エイリアスおよびシェルスクリプト</a></li>
     <li><a href="#バージョン管理システムgit">バージョン管理システム(git)</a></li>
     <li><a href="#ダウンロードマネージャcurlwget">ダウンロードマネージャ(curl/wget)</a></li>
@@ -652,7 +652,13 @@
 <li>メディアプレーヤ: mpv(スキンとしてuosc)</li>
 </ul>
 <h2 id="パッケージマネージャpacmanyay">パッケージマネージャ(pacman/yay)</h2>
-<p>パッケージの管理には<a href="https://ja.wikipedia.org/wiki/Pacman">pacman</a>を使用します。~/.aliasesにpacmanのエイリアス(コマンドの別名)を設定しているので参照してください。詳細については<a href="https://wiki.archlinux.jp/index.php/Pacman">pacman - ArchWiki</a>を参照してください。</p>
+<p>パッケージの管理には<a href="https://ja.wikipedia.org/wiki/Pacman">pacman</a>を使用します。~/.aliasesにpacmanのエイリアス(コマンドの別名)を設定しているので参照してください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ less ~/.aliases | grep pacman</span></span></code></pre></div></div>
+</figure>
 <p>ヘルプを表示</p>
 
 
@@ -733,6 +739,12 @@
 </figure>
 <p>pacmanの設定は/etc/pacman.confに記述されています。pacmanのメッセージをカラー表示するには[Misc options]の[Color]を有効にします。</p>
 <p>pacmanの代わりにyayを使用すればAUR(Arch User Repository)にもアクセスできます。AURには公式にはない多くのパッケージが収録されています。pacmanと同様のエイリアスを~/.aliasesに設定しているので参照してください。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ less ~/.aliases | grep yay</span></span></code></pre></div></div>
+</figure>
 <h2 id="シェルbash">シェル(bash)</h2>
 <p>入力したコマンドはシェルが実行します。デフォルトのシェルは<a href="https://ja.wikipedia.org/wiki/Bash">bash</a>です。詳細については<a href="https://www.tohoho-web.com/ex/shell.html">とほほのBash入門</a>/<a href="http://se.cite.ehime-u.ac.jp/~aman/memo/bash/">bash入門</a>/<a href="http://x68000.q-e-d.net/~68user/unix/">UNIXの部屋</a>などを参照してください。</p>
 <p>シェルの基本的なコマンドを以下に示します。</p>
@@ -864,7 +876,16 @@
       </tr>
   </tbody>
 </table>
-<h2 id="テキストエディタneovim">テキストエディタ(neovim)</h2>
+<h2 id="テキストエディタmseditneovim">テキストエディタ(msedit/neovim)</h2>
+<p><a href="https://ja.wikipedia.org/wiki/MS-DOS_Editor">msedit</a>はターミナルで使用できるテキストエディタです。
+mseditでテキストファイルを開くにはコマンドmseditにテキストファイルのパスを指定します。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ msedit ~/foo.txt</span></span></code></pre></div></div>
+</figure>
+<p>後述するvimの操作に慣れるまではmseditを使用するといいでしょう。</p>
 <p><a href="https://ja.wikipedia.org/wiki/Vim">vim</a>はターミナルで使用できるテキストエディタです。neovimはvimを再設計したものです。詳細については<a href="https://maku77.github.io/vim/">まくまくVimノート</a>や<a href="http://nanasi.jp/">名無しのvim使い</a>を参照してください。</p>
 <p>neovimの設定は~/.config/nvim/init.vimに記述します。ここでは設定を管理しやすくするために~/.config/nvim/init.vimを分割して、~/.config/nvim/vimrc.d/00-settings.vimに基本設定、~/.config/nvim/vimrc.d/10-mappings.vimにキーマッピング、~/.config/nvim/vimrc.d/20-plugins.vimにプラグインを記述しています。(各設定ファイルを~/.config/nvim/init.vimでロードするようにしています)</p>
 <!-- so \~/.vimrcというコマンドを実行すると~/.vimrcがリロードされます。soはsourceの略です。 -->
@@ -873,8 +894,8 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># nvim ~/foo.txt
-</span></span><span style="display:flex;"><span># nvim -R ~/foo.txt</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ nvim ~/foo.txt
+</span></span><span style="display:flex;"><span>$ nvim -R ~/foo.txt</span></span></code></pre></div></div>
 </figure>
 <p>vimには[ノーマル/インサート/ビジュアル/コマンド]の4つのモードがあります。編集コマンドを受け付けるノーマルモードで起動し、ノーマルモードを軸に他の3つのモードに遷移します。文字を入力するときはインサートモードに移行します。範囲を選択するときはビジュアルモードに移行します。検索や置換などのコマンドを実行するときはコマンドモードに移行します。ノーマルモードまたはビジュアルモードで:(コロン)を入力するとコマンドモードに移行し、下のコマンドラインから:に続けて任意のコマンドを入力できます。ノーマルモードに戻るにはEsc(Ctrl+[)もしくはCtrl+cを入力します。</p>
 <figure class="center"><img src="vim_mode.png">
@@ -1226,14 +1247,14 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># exec $SHELL -l</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ exec $SHELL -l</span></span></code></pre></div></div>
 </figure>
 <p>sourceコマンドを入力して設定ファイルをリロードします。sourceコマンドは.(ドット)コマンドで代用可能です。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># source ~/.bashrc</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ source ~/.bashrc</span></span></code></pre></div></div>
 </figure>
 <p>よく使用するコマンドのエイリアス(alias: 別名)を~/.aliasesに定義しているので参考にしてください。<!-- 詳細については[コマンド:alias: UNIXの部屋](http://x68000.q-e-d.net/~68user/unix/pickup?alias)を参照してください。 -->
 エイリアスを一時的に無効にしたい場合はコマンドの先頭に\(バックスラッシュ)をつけます。たとえばエイリアスとして設定したlsコマンドを本来のlsコマンドとして実行したいときは次のように入力します。</p>
@@ -1241,7 +1262,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># \ls</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ \ls</span></span></code></pre></div></div>
 </figure>
 <p>シェルでは以下のように関数を定義してコマンドを自作することもできます。</p>
 
@@ -1320,7 +1341,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git -v</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ git -v</span></span></code></pre></div></div>
 </figure>
 <p>gitのチュートリアルとしては<a href="https://backlog.com/ja/git-tutorial/">サル先生のGit入門</a>がオススメです。gitコマンドの使い方およびgitの設定については<a href="https://www.tohoho-web.com/ex/git.html">とほほのGit入門</a>や<a href="https://maku77.github.io/git/">まくまくGitノート</a>を参照してください。</p>
 <p>gitにはGUIのフロントエンドも用意されています。管理しているファイルの状態や更新履歴を確認する場合はターミナルよりもGUIの方が見やすくて便利かもしれません。</p>
@@ -1329,21 +1350,21 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git gui &amp;</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ git gui &amp;</span></span></code></pre></div></div>
 </figure>
 <p>ファイルの更新履歴を確認するにはgitkを起動します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># gitk &amp;</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ gitk &amp;</span></span></code></pre></div></div>
 </figure>
 <p>gitkの文字化けを解消するには以下のコマンドを入力します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># git config --global gui.encoding utf-8</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ git config --global gui.encoding utf-8</span></span></code></pre></div></div>
 </figure>
 <h2 id="ダウンロードマネージャcurlwget">ダウンロードマネージャ(curl/wget)</h2>
 <p>リモートのファイルをダウンロードするには<a href="https://ja.wikipedia.org/wiki/CURL">curl</a>および<a href="https://ja.wikipedia.org/wiki/GNU_Wget">wget</a>を使用します。</p>
@@ -1352,15 +1373,15 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># curl http://www.example.com/path/to/file
-</span></span><span style="display:flex;"><span># wget http://www.example.com/path/to/file</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ curl http://www.example.com/path/to/file
+</span></span><span style="display:flex;"><span>$ wget http://www.example.com/path/to/file</span></span></code></pre></div></div>
 </figure>
 <p>ウェブサイトをダウンロードするには以下のオプションと共にURLを指定してコマンドwgetを入力します。エイリアスを設定しておくと便利です。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># wget --mirror --convert-links --adjust-extension --page-requisites --no-parent http://www.example.com/</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ wget --mirror --convert-links --adjust-extension --page-requisites --no-parent http://www.example.com/</span></span></code></pre></div></div>
 </figure>
 <h2 id="ftpクライアントlftp">FTPクライアント(lftp)</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Lftp">lftp</a>はターミナルで使用できるFTPクライアントです。FTPサーバとファイルをやりとりするために使用します。</p>
@@ -1369,7 +1390,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ lftp
 </span></span><span style="display:flex;"><span>lftp :~&gt;</span></span></code></pre></div></div>
 </figure>
 <p>FTPサーバのアカウントにログインするには続けて次のように入力します。ユーザ名とホスト名を自身のものに置き換えてください。</p>
@@ -1435,7 +1456,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># vim ~/upload.rc</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ nvim ~/upload.rc</span></span></code></pre></div></div>
 </figure>
 
 
@@ -1459,7 +1480,7 @@
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># lftp -vf ~/upload.rc</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ lftp -vf ~/upload.rc</span></span></code></pre></div></div>
 </figure>
 <h2 id="メールクライアントneomutt">メールクライアント(neomutt)</h2>
 <p><a href="https://ja.wikipedia.org/wiki/Mutt">mutt</a>はターミナルで使用できるメールクライアントです。neomuttはmuttの機能を拡張したものになっています。詳細については<a href="https://wiki.archlinux.jp/index.php/Mutt">Mutt - ArchWiki</a>や<a href="https://www.emaillab.org/mutt/1.4/doc/manual_ja.html">The Mutt E-Mail Client</a>を参照してください。</p>
@@ -1491,7 +1512,7 @@
 </span></span><span style="display:flex;"><span>set from <span style="color:#f92672">=</span> YOUR_E-MAIL_ADDRESS <span style="color:#75715e"># メールアドレス</span>
 </span></span><span style="display:flex;"><span>set realname <span style="color:#f92672">=</span> YOUR_REAL_NAME <span style="color:#75715e"># 名前</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>set editor <span style="color:#f92672">=</span> vim <span style="color:#75715e"># メッセージの編集に使用するエディタ</span></span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>set editor <span style="color:#f92672">=</span> nvim <span style="color:#75715e"># メッセージの編集に使用するエディタ</span></span></span></code></pre></div></div>
 </figure>
 <!--
 set ssl_force_tls = yes # SSL/TLS
@@ -1502,7 +1523,7 @@ set ssl_starttls = yes # STARTTLS
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># neomutt</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ neomutt</span></span></code></pre></div></div>
 </figure>
 <p>メールサーバに接続すると受信したメールがリストされます。選択してSpaceを押すとメッセージが表示されます。メールボックスを変更するにはcを押します。続けてTabを押すとメールボックスがリストされます。選択してEnterを押すとメールボックスが変更されます。メールを作成するにはmを押します。宛先(To)と件名(Subject)を入力するとエディタが起動するのでメッセージを入力します。保存してyを押すとメールが送信されます。</p>
 <h2 id="ウェブブラウザw3m">ウェブブラウザ(w3m)</h2>
@@ -1512,7 +1533,7 @@ set ssl_starttls = yes # STARTTLS
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># w3m google.co.jp</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ w3m google.co.jp</span></span></code></pre></div></div>
 </figure>
 <p>基本的なキー操作はlessやvimに似ています。マウス操作にも対応しています。Hを押すとヘルプが表示されます。設定を変更したいならoを押します。qを押せば終了します。キーバインドを変更したい場合は~/.w3m/keymapを書き換えます。ウェブを検索する関数w3m-searchを~/.functionsに定義しているので使ってみてください。</p>
 <h2 id="スクリプト言語nodejspythonperl">スクリプト言語(node.js/python/perl)</h2>
@@ -1521,24 +1542,24 @@ set ssl_starttls = yes # STARTTLS
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># node --version
-</span></span><span style="display:flex;"><span># python --version
-</span></span><span style="display:flex;"><span># perl --version</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ node --version
+</span></span><span style="display:flex;"><span>$ python --version
+</span></span><span style="display:flex;"><span>$ perl --version</span></span></code></pre></div></div>
 </figure>
 <p>スクリプトが正しく実行されることを確認します。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># cd
-</span></span><span style="display:flex;"><span># mkdir hello
-</span></span><span style="display:flex;"><span># cd hello
-</span></span><span style="display:flex;"><span># echo &#39;console.log(&#34;Hello World!&#34;);&#39; &gt;hello.js
-</span></span><span style="display:flex;"><span># echo &#39;print (&#34;Hello World!&#34;)&#39; &gt;hello.py
-</span></span><span style="display:flex;"><span># echo &#39;print &#34;Hello World!\n&#34;;&#39; &gt;hello.pl
-</span></span><span style="display:flex;"><span># node hello.js
-</span></span><span style="display:flex;"><span># python hello.py
-</span></span><span style="display:flex;"><span># perl hello.pl</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ cd
+</span></span><span style="display:flex;"><span>$ mkdir hello
+</span></span><span style="display:flex;"><span>$ cd hello
+</span></span><span style="display:flex;"><span>$ echo &#39;console.log(&#34;Hello World!&#34;);&#39; &gt;hello.js
+</span></span><span style="display:flex;"><span>$ echo &#39;print (&#34;Hello World!&#34;)&#39; &gt;hello.py
+</span></span><span style="display:flex;"><span>$ echo &#39;print &#34;Hello World!\n&#34;;&#39; &gt;hello.pl
+</span></span><span style="display:flex;"><span>$ node hello.js
+</span></span><span style="display:flex;"><span>$ python hello.py
+</span></span><span style="display:flex;"><span>$ perl hello.pl</span></span></code></pre></div></div>
 </figure>
 
 
