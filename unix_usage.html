@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-20 16:06:12">2026-03-20 16:06:12</time></div>
+<div id="date"><time datetime="2026-03-20 20:31:37">2026-03-20 20:31:37</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -366,13 +366,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias ....=&#39;cd ../../..&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias cp=&#39;cp -piv&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias mv=&#39;mv -iv&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias rm=&#39;trash -v&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias tl=&#39;trash-list&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias tr=&#39;trash-restore&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias rm=&#39;trash -v&#39;         # ゴミ箱に移動
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias tl=&#39;trash-list&#39;       # ゴミ箱の内容を表示
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias tr=&#39;trash-restore&#39;    # ゴミ箱から復元
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># alias rm=&#39;rm -iv&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># alias rmrf=&#39;rm -rf&#39; # 注意して使用
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># alias rmrf=&#39;rm -rf&#39;         # 注意して使用
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias mkdir=&#39;mkdir -v&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias mkdirp=&#39;mkdir -p&#39; # 親ディレクトリも作成
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias mkdirp=&#39;mkdir -p&#39;     # 親ディレクトリも作成
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># alias rmdir=&#39;rmdir -v&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias rename=&#39;rename -iv&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias chmod=&#39;chmod -v&#39;
@@ -388,23 +388,6 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># プロセス管理
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias top=&#39;htop&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Pacman
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pm=&#39;sudo pacman&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmu=&#39;sudo pacman -Syu&#39;    # システム全体を更新
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmU=&#39;sudo pacman -Syyu&#39;   # パッケージのデータベースを強制更新してシステム全体を更新
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmi=&#39;sudo pacman -S&#39;      # パッケージのインストール
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pms=&#39;sudo pacman -Ss&#39;     # パッケージの検索
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmv=&#39;sudo pacman -Si&#39;     # パッケージ情報の表示
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmV=&#39;sudo pacman -Sii&#39;    # パッケージ情報の表示(詳細)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmq=&#39;sudo pacman -Qs&#39;     # インストール済みパッケージの検索
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pml=&#39;sudo pacman -Qi&#39;     # インストール済みパッケージ情報の表示
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmL=&#39;sudo pacman -Qe&#39;     # 明示的にインストールされたパッケージのリスト表示
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmlf=&#39;sudo pacman -Ql&#39;    # パッケージのファイルをリスト表示
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmlo=&#39;sudo pacman -Qdt&#39;   # 孤立したパッケージのリスト表示
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmro=&#39;pmlo &amp;&amp; sudo pacman -Rns $(pacman -Qtdq)&#39;   # 孤立したパッケージの削除
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmr=&#39;sudo pacman -Rns&#39;    # パッケージの削除と不要依存の削除
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias pmc=&#39;sudo pacman -Scc&#39;    # 全キャッシュの削除
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Yay (AURヘルパー)
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias yy=&#39;yay&#39;
@@ -652,13 +635,7 @@
 <li>メディアプレーヤ: mpv(スキンとしてuosc)</li>
 </ul>
 <h2 id="パッケージマネージャpacmanyay">パッケージマネージャ(pacman/yay)</h2>
-<p>パッケージの管理には<a href="https://ja.wikipedia.org/wiki/Pacman">pacman</a>を使用します。~/.aliasesにpacmanのエイリアス(コマンドの別名)を設定しているので参照してください。</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ less ~/.aliases | grep pacman</span></span></code></pre></div></div>
-</figure>
+<p>パッケージの管理には<a href="https://ja.wikipedia.org/wiki/Pacman">pacman</a>を使用します。</p>
 <p>ヘルプを表示</p>
 
 
@@ -738,12 +715,12 @@
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sc</span></span></code></pre></div></div>
 </figure>
 <p>pacmanの設定は/etc/pacman.confに記述されています。pacmanのメッセージをカラー表示するには[Misc options]の[Color]を有効にします。</p>
-<p>pacmanの代わりにyayを使用すればAUR(Arch User Repository)にもアクセスできます。AURには公式にはない多くのパッケージが収録されています。pacmanと同様のエイリアスを~/.aliasesに設定しているので参照してください。</p>
+<p>pacmanの代わりにyayを使用すればAUR(Arch User Repository)にもアクセスできます。AURには公式にはない多くのパッケージが収録されています。エイリアス(コマンドの別名)を~/.aliasesに設定しているので参照してください。yayの使い方はpacmanと同じですが、管理者権限は不要です。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ less ~/.aliases | grep yay</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ cat ~/.aliases | grep yay</span></span></code></pre></div></div>
 </figure>
 <h2 id="シェルbash">シェル(bash)</h2>
 <p>入力したコマンドはシェルが実行します。デフォルトのシェルは<a href="https://ja.wikipedia.org/wiki/Bash">bash</a>です。詳細については<a href="https://www.tohoho-web.com/ex/shell.html">とほほのBash入門</a>/<a href="http://se.cite.ehime-u.ac.jp/~aman/memo/bash/">bash入門</a>/<a href="http://x68000.q-e-d.net/~68user/unix/">UNIXの部屋</a>などを参照してください。</p>
