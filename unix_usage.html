@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-20 20:31:37">2026-03-20 20:31:37</time></div>
+<div id="date"><time datetime="2026-03-21 09:58:44">2026-03-21 09:58:44</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -170,7 +170,7 @@
           <td>コマンドの検索を終了</td>
       </tr>
       <tr>
-          <td>Alt+. もしくは Ctrl+[. もしくは Esc.</td>
+          <td>Ctrl+[+. もしくは Alt+. もしくは Esc+.</td>
           <td>直前に実行したコマンドの最後の単語を挿入</td>
       </tr>
   </tbody>
@@ -198,15 +198,23 @@
 </span></span><span style="display:flex;"><span>LOCALE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ja_JP.UTF-8&#34;</span>
 </span></span><span style="display:flex;"><span>TIMEZONE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Asia/Tokyo&#34;</span>
 </span></span><span style="display:flex;"><span>MIRROR_COUNTRY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Japan&#34;</span>
-</span></span><span style="display:flex;"><span>AUR_HELPER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yay&#34;</span>              <span style="color:#75715e"># インストールしたければ yay を使う</span>
+</span></span><span style="display:flex;"><span>AUR_HELPER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yay&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === root チェック ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;このスクリプトは root で実行してください。&#34;</span>
 </span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;rootのパスワードを設定してください:&#34;</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;root のパスワードを設定してください:&#34;</span>
 </span></span><span style="display:flex;"><span>  passwd root
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># === pacman.conf の設定 ===</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#39;^Color&#39;</span> /etc/pacman.conf; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	sed -i <span style="color:#e6db74">&#39;s/^# *Color/Color/&#39;</span> /etc/pacman.conf
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> grep -q <span style="color:#e6db74">&#39;^NoProgressBar&#39;</span> /etc/pacman.conf; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	sed -i <span style="color:#e6db74">&#39;s/^NoProgressBar/#NoProgressBar\nILoveCandy/&#39;</span> /etc/pacman.conf
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === 基本アップデート ===</span>
@@ -230,10 +238,10 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># wheel グループの sudo 設定を有効化</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#39;^%wheel&#39;</span> /etc/sudoers; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#39;s/^# *%wheel/%wheel/&#39;</span> /etc/sudoers <span style="color:#75715e"># コメント付きの %wheel 行を単純にアンコメント</span>
+</span></span><span style="display:flex;"><span>  sed -i <span style="color:#e6db74">&#39;s/^# *%wheel/%wheel/&#39;</span> /etc/sudoers
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;wheel グループの sudo 権限を有効化しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>visudo -cf /etc/sudoers <span style="color:#75715e"># 変更後に構文チェック（推奨）</span>
+</span></span><span style="display:flex;"><span>visudo -cf /etc/sudoers
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === ミラー最適化 ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> pacman -Qi reflector &gt;/dev/null 2&gt;&amp;1; <span style="color:#66d9ef">then</span>
@@ -273,9 +281,9 @@
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;ユーザー </span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74"> のデフォルトシェルを zsh に変更しました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># === AURヘルパー (yay) のインストール（任意） ===</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># === AUR ヘルパー (yay) のインストール ===</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yay&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;AURヘルパー </span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74"> をインストールしています...&#34;</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;AUR ヘルパー </span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74"> をインストールしています...&#34;</span>
 </span></span><span style="display:flex;"><span>  su - <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -c <span style="color:#e6db74">&#39;bash -lc &#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    set -e
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    cd /tmp
@@ -287,17 +295,17 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      rm -rf yay
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    fi
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;&#39;</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;AURヘルパー </span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74"> をインストールしました。&#34;</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;AUR ヘルパー </span><span style="color:#e6db74">${</span>AUR_HELPER<span style="color:#e6db74">}</span><span style="color:#e6db74"> をインストールしました。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># === SSH鍵作成（ユーザーとして） ===</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># === SSH 鍵作成（ユーザーとして） ===</span>
 </span></span><span style="display:flex;"><span>su - <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -c <span style="color:#e6db74">&#39;bash -lc &#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  if [ ! -f ~/.ssh/id_ed25519 ]; then
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    mkdir -p ~/.ssh
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N \&#34;\&#34; -C \&#34;${NEW_USER}@wsl\&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    chmod 700 ~/.ssh
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    chmod 600 ~/.ssh/id_ed25519
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    echo \&#34;SSH鍵を作成しました: ~/.ssh/id_ed25519\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    echo \&#34;SSH の鍵を作成しました: ~/.ssh/id_ed25519\&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  fi
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#39;</span>
 </span></span><span style="display:flex;"><span>
@@ -335,10 +343,10 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 履歴設定
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTFILE=~/.bash_history
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTSIZE=500        # セッション中に保持する件数
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTFILESIZE=2000   # ファイルに保存する最大件数
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTCONTROL=ignoredups:erasedups
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTTIMEFORMAT=&#39;%F %T &#39;  # 例: 2026-03-13 12:34:56
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTSIZE=500                     # セッション中に保持する件数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTFILESIZE=2000                # ファイルに保存する最大件数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTCONTROL=ignoredups:erasedups # 重複するコマンドを履歴から削除
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HISTTIMEFORMAT=&#39;%F %T &#39;          # 例: 2026-03-13 12:34:56
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39; &gt; ~/.aliases
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias a=&#39;alias&#39;
@@ -389,7 +397,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># プロセス管理
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias top=&#39;htop&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Yay (AURヘルパー)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># yay
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias yy=&#39;yay&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias yyu=&#39;yay -Syu&#39;    # システム全体を更新
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alias yyU=&#39;yay -Syyu&#39;   # パッケージデータベースを強制更新してシステム全体を更新
@@ -599,14 +607,14 @@
 </span></span><span style="display:flex;"><span>chown -vR <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> /home/<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>/.config
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;ユーザーの設定ファイルを配置しました。&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Neovimのプラグインをインストールしています...&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Neovim のプラグインをインストールしています...&#34;</span>
 </span></span><span style="display:flex;"><span>su - <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>NEW_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -c <span style="color:#e6db74">&#39;bash -lc &#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nvim +PlugInstall +qall
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nvim -c &#39;</span>helptags ALL<span style="color:#e6db74">&#39; -c qa
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nvim -c \&#34;helptags ALL\&#34; -c qa
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Neovimのプラグインをインストールしました。&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Neovim のプラグインをインストールしました。&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># === 最低限のチェック出力 ===</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;===== 設定完了 =====&#34;</span>
@@ -714,7 +722,6 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sc</span></span></code></pre></div></div>
 </figure>
-<p>pacmanの設定は/etc/pacman.confに記述されています。pacmanのメッセージをカラー表示するには[Misc options]の[Color]を有効にします。</p>
 <p>pacmanの代わりにyayを使用すればAUR(Arch User Repository)にもアクセスできます。AURには公式にはない多くのパッケージが収録されています。エイリアス(コマンドの別名)を~/.aliasesに設定しているので参照してください。yayの使い方はpacmanと同じですが、管理者権限は不要です。</p>
 
 
