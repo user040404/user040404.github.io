@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-03-21 09:58:44">2026-03-21 09:58:44</time></div>
+<div id="date"><time datetime="2026-03-21 10:11:55">2026-03-21 10:11:55</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>Unixの基本操作</h1>
 <nav id="TableOfContents">
@@ -658,13 +658,6 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S -h</span></span></code></pre></div></div>
 </figure>
-<p>インストール済みのパッケージを表示</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Qqe</span></span></code></pre></div></div>
-</figure>
 <p>インストール済みのパッケージをアップデート</p>
 
 
@@ -672,19 +665,19 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Syu</span></span></code></pre></div></div>
 </figure>
-<p>パッケージグループのリストを表示</p>
+<p>パッケージfooをインストール</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sg</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S foo</span></span></code></pre></div></div>
 </figure>
-<p>パッケージグループfooに含まれているパッケージを表示</p>
+<p>インストール済みのパッケージを表示</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sgg foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Qe</span></span></code></pre></div></div>
 </figure>
 <p>名前にfooを含むパッケージを検索(正規表現も使用可)</p>
 
@@ -701,12 +694,19 @@
 
 <div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Si foo</span></span></code></pre></div></div>
 </figure>
-<p>パッケージfooをインストール</p>
+<p>パッケージグループのリストを表示</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -S foo</span></span></code></pre></div></div>
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sg</span></span></code></pre></div></div>
+</figure>
+<p>パッケージグループfooに含まれているパッケージを表示</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># pacman -Sgg foo</span></span></code></pre></div></div>
 </figure>
 <p>パッケージfooをアンインストール</p>
 
