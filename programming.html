@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-04-03 02:54:12">2026-04-03 02:54:12</time></div>
+<div id="date"><time datetime="2026-04-03 06:32:20">2026-04-03 06:32:20</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>プログラミングの手引</h1>
 <nav id="TableOfContents">
@@ -32,19 +32,13 @@
 <p>以下に掲載するコードは<a href="https://ja.wikipedia.org/wiki/Rust_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)">Rust</a>というプログラミング言語で記述されています。Rustは<a href="https://ja.wikipedia.org/wiki/C%E8%A8%80%E8%AA%9E">C</a>および<a href="https://ja.wikipedia.org/wiki/C%2B%2B">C++</a>の後継として期待されている比較的新しいプログラミング言語です。CやC++よりも安全性が高く、CやC++と同じくらい高速なプログラムを作成できます。RustはCやC++と同様、<a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2">システムソフトウェア</a>の開発に適したプログラミング言語です。システムソフトウェアとはコンピュータのハードウェアを直接操作するようなプログラムのことです。Windowsのデスクトップで動作するような<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2">アプリケーションソフトウェア</a>の開発には<a href="https://ja.wikipedia.org/wiki/Java">Java</a>や<a href="https://ja.wikipedia.org/wiki/C_Sharp">C#</a>などのプログラミング言語が向いています。</p>
 <p>プログラムを作成するにはプログラムのソースコードを編集するためのコードエディタや、ソースファイルから実行ファイルを生成するためのビルドツールなどが必要です。プログラムを作成するために必要なプログラムを総称して<a href="https://ja.wikipedia.org/wiki/%E3%83%84%E3%83%BC%E3%83%AB%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3">ツールチェーン</a>といいます。デスクトップアプリケーションを作成するには<a href="https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%84%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%83%E3%83%88">GUIツールキット</a>と<a href="https://ja.wikipedia.org/wiki/GUI%E3%83%93%E3%83%AB%E3%83%80">GUIビルダ</a>も必要です。</p>
 <h2 id="開発環境の構築">開発環境の構築</h2>
-<p>WindowsターミナルからPowerShellを起動してください。開発環境として<a href="https://ja.wikipedia.org/wiki/Microsoft_Visual_Studio">Visual Studio</a>、コードエディタとして<a href="https://ja.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a>(以下VS Code)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>をインストールします。Visual Studio Installerが起動したら[個別のコンポーネント]から[x64/x86 用 MSVC ビルドツール]および[Windows 11 SDK]をチェックして[変更]をクリックします。</p>
+<p>WindowsターミナルからPowerShellを起動してください。</p>
+<p>ツールチェーンとして<a href="https://ja.wikipedia.org/wiki/Rust_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)">Rustup</a>および<a href="https://ja.wikipedia.org/wiki/Microsoft_Visual_Studio">Visual Studio</a>、コードエディタとして<a href="https://ja.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a>(以下VS Code)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>、デバッガ(後述)として<a href="https://ja.wikipedia.org/wiki/LLDB">LLDB</a>をインストールします。Visual Studio Installerが起動したら[個別のコンポーネント]から[x64/x86 用 MSVC ビルドツール]および[Windows 11 SDK]をチェックして[変更]をクリックします。</p>
 
 
 <figure class="xCodeBlock">
 
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ winget install Microsoft.VisualStudio.Community Microsoft.VisualStudioCode</span></span></code></pre></div></div>
-</figure>
-<p>ツールチェーンとして<a href="https://ja.wikipedia.org/wiki/Rust_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)">Rustup</a>、デバッガ(後述)として<a href="https://ja.wikipedia.org/wiki/LLDB">LLDB</a>をインストールします。</p>
-
-
-<figure class="xCodeBlock">
-
-<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ winget install Rustlang.Rustup LLVM.LLVM
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ winget install Rustlang.Rustup Microsoft.VisualStudio.Community Microsoft.VisualStudioCode LLVM.LLVM
 </span></span><span style="display:flex;"><span>$ rustup toolchain install stable-x86_64-pc-windows-msvc
 </span></span><span style="display:flex;"><span>$ rustup default stable-x86_64-pc-windows-msvc</span></span></code></pre></div></div>
 </figure>
@@ -138,7 +132,7 @@
 </span></span><span style="display:flex;"><span>    );
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
 </figure>
-<p>main.rsを実行します。ウィンドウが表示されたら成功です。</p>
+<p>パッケージにGUIツールキットのeframeを追加してmain.rsを実行します。ウィンドウが表示されたら成功です。</p>
 
 
 <figure class="xCodeBlock">
