@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-04-03 20:42:46">2026-04-03 20:42:46</time></div>
+<div id="date"><time datetime="2026-04-04 06:02:42">2026-04-04 06:02:42</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>プログラミングの手引</h1>
 <nav id="TableOfContents">
@@ -170,7 +170,21 @@
 </span></span><span style="display:flex;"><span>└── src/
 </span></span><span style="display:flex;"><span>    └── main.rs</span></span></code></pre></div></div>
 </figure>
-<p>Rustではプロジェクトのことをパッケージといい、プロジェクトが生成する実行ファイルおよび実行ファイルのもとになるソースファイルをクレートといいます。ソースファイルはモジュールとして複数のファイルに分割できます。src/main.rsが最上位のモジュール(ルートモジュール)になります。</p>
+<p>Rustではプロジェクトのことをパッケージといい、プロジェクトが生成する実行ファイルおよび実行ファイルのもとになるソースファイルをクレートといいます。ソースファイルはモジュールとして複数のファイルに分割できます。src/main.rsが最上位のモジュール(ルートモジュール)になります。モジュールに分割したsrc/main.rsは次のようなファイル・フォルダ構成になります。</p>
+
+
+<figure class="xCodeBlock">
+
+<div class="xCodeBlock_code"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>src/
+</span></span><span style="display:flex;"><span>├── main.rs
+</span></span><span style="display:flex;"><span>├── sub01.rs
+</span></span><span style="display:flex;"><span>├── sub02.rs
+</span></span><span style="display:flex;"><span>├── sub03.rs
+</span></span><span style="display:flex;"><span>└── sub03/
+</span></span><span style="display:flex;"><span>    └── subsub01.rs
+</span></span><span style="display:flex;"><span>    └── subsub02.rs</span></span></code></pre></div></div>
+</figure>
+<p>モジュールの詳細については<a href="https://maku77.github.io/p/gxj4n7q/">まくまく Rust ノート</a>を参照してください。</p>
 <h2 id="メモリ領域">メモリ領域</h2>
 <p>Rustのコードを読み書きするにあたって、変数のデータがコンピュータのメモリ上のどこに置かれているのかをイメージできるようにしておきましょう。メモリ領域はスタック領域・ヒープ領域・データ領域の3つに大きく分けられます。各領域は以下のように使い分けられます。</p>
 <ul>
