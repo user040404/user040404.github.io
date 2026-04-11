@@ -9,7 +9,7 @@
 </head>
 <body><header>
 <script type="text/javascript" src="//xa.shinobi.jp/ufo/190668700"></script><noscript><a href="//xa.shinobi.jp/bin/gg?190668700" target="_blank"><img src="//xa.shinobi.jp/bin/ll?190668700" border="0"></a><br><span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="//img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
-<div id="date"><time datetime="2026-04-11 21:06:18">2026-04-11 21:06:18</time></div>
+<div id="date"><time datetime="2026-04-12 01:23:48">2026-04-12 01:23:48</time></div>
 <div><a href="https://user040404.github.io/">トップページ</a></div>
 <h1>プログラミングの手引</h1>
 <nav id="TableOfContents">
@@ -22,6 +22,7 @@
     <li><a href="#プロジェクトの構成">プロジェクトの構成</a></li>
     <li><a href="#メモリ領域">メモリ領域</a></li>
     <li><a href="#オブジェクト指向">オブジェクト指向</a></li>
+    <li><a href="#cとrust">C++とRust</a></li>
   </ul>
 </nav>
 </header>
@@ -186,7 +187,11 @@
 </span></span><span style="display:flex;"><span>    └── subsub01.rs
 </span></span><span style="display:flex;"><span>    └── subsub02.rs</span></span></code></pre></div></div>
 </figure>
-<p>モジュールの詳細については<a href="https://maku77.github.io/p/gxj4n7q/">まくまく Rust ノート</a>を参照してください。</p>
+<p>モジュールの詳細については<a href="https://maku77.github.io/p/gxj4n7q/">まくまく Rust ノート</a>を参照してください。以下の記事も参考になります。</p>
+<ul>
+<li><a href="https://note.com/marupeke296/n/n65ac2671095e">Rustのライブラリ管理は「mod.rs」が大事（Rust 2015）</a></li>
+<li><a href="https://note.com/marupeke296/n/n2b4323c4c8f4">Rust：管理外のクレートやモジュールを使うには？</a></li>
+</ul>
 <figure class="center"><img src="rust01.png">
 </figure>
 
@@ -222,6 +227,10 @@
 <li><a href="https://note.com/marupeke296/n/ncbcfda58ac78">Rustの構造体はC++感覚で捉えちゃいけない</a></li>
 <li><a href="https://note.com/marupeke296/n/nd6d41b9be121">Rustはオブジェクト指向ではなくてコンポーネント指向</a></li>
 </ul>
+<h2 id="cとrust">C++とRust</h2>
+<p>C++とRustは習得するのが難しい言語だと言われます。しかし、ここで取り上げたメモリ領域とオブジェクト指向についての基本的な知識があれば、覚えることはたくさんありますがそれほど難しくはないと思います。</p>
+<p>Rustの仕様はかなり厳格で、C++などの言語と比べるとかなり異質に感じられますが、その厳格な仕様にしたがってさえいれば、つまらないミスでプログラムがクラッシュすることはほとんどありません。この厳格な仕様によってプログラムの安全性が担保されています。</p>
+<p>RustはC++のような純粋なオブジェクト指向ではありませんが、実用的なオブジェクト指向になっています。C++を先に習得して、C++との違いを意識しながらRustを習得するのが望ましいかもしれませんが、いきなりRustを学ぶことも悪いことではありません。</p>
 <!--
 ### メッセージボックスの表示
 
